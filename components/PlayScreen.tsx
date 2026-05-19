@@ -198,52 +198,55 @@ export default function PlayScreen({ song, videoId, onNextSong }: Props) {
 
             <div>
               <p className="text-center text-gray-200 text-sm mb-2">חשוף עוד</p>
-              <div className="flex justify-center gap-2 mb-8">
-                {INCREMENTS.map((n) => {
-                  const label = n === 0.25 ? '+¼' : n === 0.5 ? '+½' : '+1';
-                  return (
-                    <button
-                      key={n}
-                      dir="ltr"
-                      onClick={() => handleReveal(n)}
-                      disabled={!ready || revealDuration + n > 30}
-                      className="px-5 py-3 rounded-xl font-semibold text-lg transition-colors bg-gray-700 hover:bg-gray-600 active:bg-gray-500 disabled:bg-gray-800 disabled:text-gray-400 disabled:cursor-not-allowed"
-                    >
-                      {label}
-                    </button>
-                  );
-                })}
-              </div>
 
-              {/* התחל מ */}
-              <div className="mt-3">
-                <p className="text-sm text-gray-200 mb-1">התחל מ (שניות)</p>
-                <div className="flex items-center gap-3">
-                  <button
-                    onClick={() => handleStartCommit(startOffset + 1)}
-                    disabled={!ready || startOffset >= Math.floor(duration)}
-                    className="w-11 h-11 rounded-xl bg-gray-700 hover:bg-gray-600 active:bg-gray-500 text-xl font-bold disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
-                  >
-                    ‹
-                  </button>
-                  <input
-                    type="number"
-                    min={0}
-                    max={Math.floor(duration)}
-                    value={startOffset}
-                    disabled={!ready}
-                    onChange={(e) => handleStartInput(e.target.value)}
-                    onBlur={(e) => handleStartCommit(parseInt(e.target.value, 10) || 0)}
-                    onKeyDown={(e) => e.key === 'Enter' && handleStartCommit(startOffset)}
-                    className="flex-1 bg-gray-800 rounded-xl px-4 py-2 text-center text-2xl font-bold outline-none focus:ring-2 focus:ring-indigo-500 disabled:opacity-40 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
-                  />
-                  <button
-                    onClick={() => handleStartCommit(startOffset - 1)}
-                    disabled={!ready || startOffset <= 0}
-                    className="w-11 h-11 rounded-xl bg-gray-700 hover:bg-gray-600 active:bg-gray-500 text-xl font-bold disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
-                  >
-                    ›
-                  </button>
+              <div className="w-fit mx-auto">
+                <div className="flex gap-2 mb-8">
+                  {INCREMENTS.map((n) => {
+                    const label = n === 0.25 ? '+¼' : n === 0.5 ? '+½' : '+1';
+                    return (
+                      <button
+                        key={n}
+                        dir="ltr"
+                        onClick={() => handleReveal(n)}
+                        disabled={!ready || revealDuration + n > 30}
+                        className="px-5 py-3 rounded-xl font-semibold text-lg transition-colors bg-gray-700 hover:bg-gray-600 active:bg-gray-500 disabled:bg-gray-800 disabled:text-gray-400 disabled:cursor-not-allowed"
+                      >
+                        {label}
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* התחל מ */}
+                <div>
+                  <p className="text-sm text-gray-200 mb-1">התחל מ (שניות)</p>
+                  <div className="flex items-center gap-3">
+                    <button
+                      onClick={() => handleStartCommit(startOffset + 1)}
+                      disabled={!ready || startOffset >= Math.floor(duration)}
+                      className="w-11 h-11 rounded-xl bg-gray-700 hover:bg-gray-600 active:bg-gray-500 text-xl font-bold disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                    >
+                      ‹
+                    </button>
+                    <input
+                      type="number"
+                      min={0}
+                      max={Math.floor(duration)}
+                      value={startOffset}
+                      disabled={!ready}
+                      onChange={(e) => handleStartInput(e.target.value)}
+                      onBlur={(e) => handleStartCommit(parseInt(e.target.value, 10) || 0)}
+                      onKeyDown={(e) => e.key === 'Enter' && handleStartCommit(startOffset)}
+                      className="w-0 flex-1 bg-gray-800 rounded-xl px-4 py-2 text-center text-2xl font-bold outline-none focus:ring-2 focus:ring-indigo-500 disabled:opacity-40 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+                    />
+                    <button
+                      onClick={() => handleStartCommit(startOffset - 1)}
+                      disabled={!ready || startOffset <= 0}
+                      className="w-11 h-11 rounded-xl bg-gray-700 hover:bg-gray-600 active:bg-gray-500 text-xl font-bold disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                    >
+                      ›
+                    </button>
+                  </div>
                 </div>
               </div>
 
