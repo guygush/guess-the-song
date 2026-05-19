@@ -1,10 +1,12 @@
 {
-  "name": "Guess The Song",
-  "short_name": "GuessSong",
-  "description": "How many notes do you need?",
+  "name": "נחש את השיר",
+  "short_name": "נחש שיר",
+  "description": "כמה תווים אתה צריך?",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
+  "dir": "rtl",
+  "lang": "he",
   "background_color": "#030712",
   "theme_color": "#4F46E5",
   "icons": [

@@ -13,12 +13,10 @@ export default function SearchScreen({ onSelect }: Props) {
   const [loadingInitial, setLoadingInitial] = useState(false);
   const [hasMore, setHasMore] = useState(false);
 
-  // Full result buffer — all songs fetched, revealed incrementally
   const allSongsRef = useRef<Song[]>([]);
   const visibleCountRef = useRef(0);
   const sentinelRef = useRef<HTMLDivElement | null>(null);
 
-  // Initial search
   useEffect(() => {
     if (!query.trim()) {
       allSongsRef.current = [];
@@ -49,7 +47,6 @@ export default function SearchScreen({ onSelect }: Props) {
     return () => clearTimeout(timer);
   }, [query]);
 
-  // Reveal next page from the local buffer
   const showMore = useCallback(() => {
     const all = allSongsRef.current;
     const current = visibleCountRef.current;
@@ -60,7 +57,6 @@ export default function SearchScreen({ onSelect }: Props) {
     setHasMore(next < all.length);
   }, []);
 
-  // IntersectionObserver — fires showMore when sentinel enters view
   useEffect(() => {
     const sentinel = sentinelRef.current;
     if (!sentinel) return;
@@ -75,18 +71,18 @@ export default function SearchScreen({ onSelect }: Props) {
   return (
     <div className="flex flex-col h-dvh bg-gray-950 text-white">
       <div className="p-4 pt-8">
-        <h1 className="text-2xl font-bold text-center mb-6">Guess The Song</h1>
+        <h1 className="text-2xl font-bold text-center mb-6">נחש את השיר</h1>
         <div className="relative">
           <input
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search for a song..."
+            placeholder="חפש שיר..."
             className="w-full bg-gray-800 rounded-xl px-4 py-3 text-lg outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-500"
             autoFocus
           />
           {loadingInitial && (
-            <div className="absolute right-4 top-1/2 -translate-y-1/2">
+            <div className="absolute left-4 top-1/2 -translate-y-1/2">
               <div className="w-5 h-5 border-2 border-indigo-400 border-t-transparent rounded-full animate-spin" />
             </div>
           )}
@@ -98,7 +94,7 @@ export default function SearchScreen({ onSelect }: Props) {
           <button
             key={song.trackId}
             onClick={() => onSelect(song)}
-            className="w-full flex items-center gap-3 bg-gray-800 hover:bg-gray-700 active:bg-gray-600 rounded-xl p-3 text-left transition-colors"
+            className="w-full flex items-center gap-3 bg-gray-800 hover:bg-gray-700 active:bg-gray-600 rounded-xl p-3 text-right transition-colors"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -113,7 +109,6 @@ export default function SearchScreen({ onSelect }: Props) {
           </button>
         ))}
 
-        {/* Sentinel: always mounted so the observer never reconnects */}
         <div ref={sentinelRef} className="min-h-[48px] flex justify-center items-center">
           {hasMore && (
             <div className="w-6 h-6 border-2 border-indigo-400 border-t-transparent rounded-full animate-spin" />
@@ -121,7 +116,7 @@ export default function SearchScreen({ onSelect }: Props) {
         </div>
 
         {!loadingInitial && query.trim() && visible.length === 0 && (
-          <p className="text-center text-gray-300 mt-8">No results found</p>
+          <p className="text-center text-gray-300 mt-8">לא נמצאו תוצאות</p>
         )}
       </div>
     </div>

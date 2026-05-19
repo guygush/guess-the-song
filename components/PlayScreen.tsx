@@ -70,7 +70,6 @@ export default function PlayScreen({ song, videoId, onNextSong }: Props) {
     };
   }, [videoId]);
 
-  // Advance the slider in reveal mode while playing
   useEffect(() => {
     if (revealed && playing) {
       pollRef.current = setInterval(() => {
@@ -172,12 +171,12 @@ export default function PlayScreen({ song, videoId, onNextSong }: Props) {
 
       <div className="flex-1 flex flex-col justify-center gap-3 px-4">
 
-        {/* Guess mode */}
+        {/* מצב ניחוש */}
         {!revealed && (
           <>
             <div className="text-center">
               <p className="text-3xl font-bold text-indigo-400">{fmtReveal(revealDuration)}</p>
-              <p className="text-gray-300 text-xs">reveal duration</p>
+              <p className="text-gray-300 text-xs">משך חשיפה</p>
             </div>
 
             <div className="flex justify-center">
@@ -197,7 +196,7 @@ export default function PlayScreen({ song, videoId, onNextSong }: Props) {
             </div>
 
             <div>
-              <p className="text-center text-gray-200 text-sm mb-2">Reveal more</p>
+              <p className="text-center text-gray-200 text-sm mb-2">חשוף עוד</p>
               <div className="flex justify-center gap-2">
                 {INCREMENTS.map((n) => {
                   const label = n === 0.25 ? '+¼s' : n === 0.5 ? '+½s' : `+${n}s`;
@@ -214,16 +213,16 @@ export default function PlayScreen({ song, videoId, onNextSong }: Props) {
                 })}
               </div>
 
-              {/* Start at — textbox with arrows */}
+              {/* התחל מ */}
               <div className="mt-3">
-                <p className="text-sm text-gray-200 mb-1">Start at (seconds)</p>
+                <p className="text-sm text-gray-200 mb-1">התחל מ (שניות)</p>
                 <div className="flex items-center gap-3">
                   <button
                     onClick={() => handleStartCommit(startOffset - 1)}
                     disabled={!ready || startOffset <= 0}
                     className="w-11 h-11 rounded-xl bg-gray-700 hover:bg-gray-600 active:bg-gray-500 text-xl font-bold disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
                   >
-                    ‹
+                    ›
                   </button>
                   <input
                     type="number"
@@ -241,7 +240,7 @@ export default function PlayScreen({ song, videoId, onNextSong }: Props) {
                     disabled={!ready || startOffset >= Math.floor(duration)}
                     className="w-11 h-11 rounded-xl bg-gray-700 hover:bg-gray-600 active:bg-gray-500 text-xl font-bold disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
                   >
-                    ›
+                    ‹
                   </button>
                 </div>
               </div>
@@ -251,13 +250,13 @@ export default function PlayScreen({ song, videoId, onNextSong }: Props) {
                 disabled={!ready || revealDuration === 0.5}
                 className="mt-2 w-full py-1.5 rounded-xl text-sm text-gray-200 hover:text-white hover:bg-gray-700 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
               >
-                ↺ Reset to 0.5s
+                ↺ אפס ל-0.5 שניות
               </button>
             </div>
           </>
         )}
 
-        {/* Reveal mode */}
+        {/* מצב חשיפה */}
         {revealed && (
           <>
             <div className="flex justify-center">
@@ -278,8 +277,8 @@ export default function PlayScreen({ song, videoId, onNextSong }: Props) {
 
             <div>
               <div className="flex justify-between text-sm text-gray-200 mb-1">
-                <span>Start at</span>
                 <span className="text-white font-medium">{fmt(startOffset)}</span>
+                <span>התחל מ</span>
               </div>
               <input
                 type="range"
@@ -296,7 +295,7 @@ export default function PlayScreen({ song, videoId, onNextSong }: Props) {
                 className="w-full accent-indigo-500 disabled:opacity-40"
               />
               <div className="flex justify-between text-xs text-gray-300 mt-0.5">
-                <span>0:00</span><span>{fmt(Math.floor(duration))}</span>
+                <span>{fmt(Math.floor(duration))}</span><span>0:00</span>
               </div>
             </div>
 
@@ -304,13 +303,13 @@ export default function PlayScreen({ song, videoId, onNextSong }: Props) {
               onClick={() => { handleStop(); setRevealed(false); }}
               className="flex items-center gap-1 text-gray-200 hover:text-white transition-colors text-sm self-start"
             >
-              ← Back to guessing
+              → חזור לניחוש
             </button>
           </>
         )}
       </div>
 
-      {/* Bottom buttons */}
+      {/* כפתורי תחתית */}
       <div className="px-4 pb-4 pt-1 flex flex-col gap-2">
         {!revealed && (
           <button
@@ -318,7 +317,7 @@ export default function PlayScreen({ song, videoId, onNextSong }: Props) {
             disabled={!ready}
             className="w-full py-3 rounded-2xl bg-emerald-700 hover:bg-emerald-600 active:bg-emerald-800 font-semibold text-lg transition-colors disabled:opacity-40"
           >
-            Reveal song
+            חשוף את השיר
           </button>
         )}
         {revealed && (
@@ -326,7 +325,7 @@ export default function PlayScreen({ song, videoId, onNextSong }: Props) {
             onClick={handleNextSong}
             className="w-full py-3 rounded-2xl bg-gray-800 hover:bg-gray-700 active:bg-gray-600 font-semibold text-lg transition-colors"
           >
-            Next song
+            שיר הבא
           </button>
         )}
       </div>

@@ -2,13 +2,13 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Guess The Song',
-  description: 'How many notes do you need?',
+  title: 'נחש את השיר',
+  description: 'כמה תווים אתה צריך?',
   manifest: '/manifest.json',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',
-    title: 'Guess The Song',
+    title: 'נחש את השיר',
   },
 };
 
@@ -23,7 +23,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="he" dir="rtl">
       <head>
         <link rel="apple-touch-icon" href="/icon-192.png" />
       </head>
