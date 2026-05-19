@@ -7,7 +7,7 @@ interface Props {
   onSelect: (song: Song) => void;
 }
 
-const PREVIEW_SECONDS = 5;
+const PREVIEW_SECONDS = 10;
 
 export default function SearchScreen({ onSelect }: Props) {
   const [query, setQuery] = useState('');
