@@ -224,7 +224,7 @@ export default function PlayScreen({ song, videoId, onNextSong }: Props) {
                     disabled={!ready || startOffset >= Math.floor(duration)}
                     className="w-11 h-11 rounded-xl bg-gray-700 hover:bg-gray-600 active:bg-gray-500 text-xl font-bold disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
                   >
-                    ›
+                    ‹
                   </button>
                   <input
                     type="number"
@@ -242,7 +242,7 @@ export default function PlayScreen({ song, videoId, onNextSong }: Props) {
                     disabled={!ready || startOffset <= 0}
                     className="w-11 h-11 rounded-xl bg-gray-700 hover:bg-gray-600 active:bg-gray-500 text-xl font-bold disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
                   >
-                    ‹
+                    ›
                   </button>
                 </div>
               </div>
@@ -278,10 +278,6 @@ export default function PlayScreen({ song, videoId, onNextSong }: Props) {
             </div>
 
             <div>
-              <div className="flex justify-between text-sm text-gray-200 mb-1">
-                <span className="text-white font-medium">{fmt(startOffset)}</span>
-                <span>התחל מ</span>
-              </div>
               <div dir="ltr">
                 <input
                   type="range"
