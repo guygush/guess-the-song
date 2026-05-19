@@ -107,7 +107,7 @@ export default function SearchScreen({ onSelect }: Props) {
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="חפש שיר..."
+            placeholder="חפש שיר/זמר/להקה..."
             className="w-full bg-gray-800 rounded-xl px-4 py-3 text-lg outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-500"
             autoFocus
           />
