@@ -180,7 +180,7 @@ export default function PlayScreen({ song, videoId, onNextSong }: Props) {
               <p className="text-gray-300 text-xs">משך חשיפה</p>
             </div>
 
-            <div className="flex justify-center">
+            <div className="flex justify-center mb-4">
               <button
                 onClick={handlePlay}
                 disabled={!ready}
@@ -198,7 +198,7 @@ export default function PlayScreen({ song, videoId, onNextSong }: Props) {
 
             <div>
               <p className="text-center text-gray-200 text-sm mb-2">חשוף עוד</p>
-              <div className="flex justify-center gap-2">
+              <div className="flex justify-center gap-2 mb-8">
                 {INCREMENTS.map((n) => {
                   const label = n === 0.25 ? '+¼' : n === 0.5 ? '+½' : '+1';
                   return (
@@ -261,7 +261,7 @@ export default function PlayScreen({ song, videoId, onNextSong }: Props) {
         {/* מצב חשיפה */}
         {revealed && (
           <>
-            <div className="flex justify-center">
+            <div className="flex justify-center mb-4">
               <button
                 onClick={handlePlay}
                 disabled={!ready}
@@ -277,7 +277,7 @@ export default function PlayScreen({ song, videoId, onNextSong }: Props) {
               </button>
             </div>
 
-            <div>
+            <div className="mb-8">
               <div dir="ltr">
                 <input
                   type="range"
