@@ -1,0 +1,17 @@
+# dependencies
+node_modules/
+
+# Next.js
+.next/
+out/
+
+# env files (contains API keys)
+.env.local
+.env*.local
+
+# Vercel
+.vercel
+
+# misc
+.DS_Store
+*.pem
