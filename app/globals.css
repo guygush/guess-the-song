@@ -6,3 +6,8 @@ html, body {
   height: 100%;
   overscroll-behavior: none;
 }
+
+@keyframes progress-ring {
+  from { stroke-dashoffset: 113.1; }
+  to   { stroke-dashoffset: 0; }
+}

@@ -145,12 +145,27 @@ export default function SearchScreen({ onSelect }: Props) {
             {/* Preview play/stop button */}
             <button
               onClick={() => handlePreview(song)}
-              className={`w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center text-sm transition-colors ${
+              className={`relative w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center text-sm transition-colors ${
                 playingId === song.trackId
                   ? 'bg-red-500 hover:bg-red-600 active:bg-red-700'
                   : 'bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700'
               }`}
             >
+              {playingId === song.trackId && (
+                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 40 40">
+                  <circle
+                    cx="20" cy="20" r="18"
+                    fill="none"
+                    stroke="rgba(255,255,255,0.9)"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeDasharray="113.1"
+                    strokeDashoffset="113.1"
+                    transform="rotate(-90 20 20)"
+                    style={{ animation: `progress-ring ${PREVIEW_SECONDS}s linear forwards` }}
+                  />
+                </svg>
+              )}
               {playingId === song.trackId ? '■' : '▶'}
             </button>
           </div>
