@@ -10,7 +10,7 @@ interface Props {
   onNextSong: () => void;
 }
 
-const INCREMENTS = [0.25, 0.5, 1];
+const INCREMENTS = [1, 0.5, 0.25];
 const DEFAULT_DURATION = 300;
 
 function fmt(sec: number) {
@@ -20,7 +20,8 @@ function fmt(sec: number) {
 }
 
 function fmtReveal(sec: number) {
-  return Number.isInteger(sec) ? `${sec}s` : `${sec.toFixed(2).replace(/\.?0+$/, '')}s`;
+  const n = Number.isInteger(sec) ? `${sec}` : sec.toFixed(2).replace(/\.?0+$/, '');
+  return `${n} שניות`;
 }
 
 export default function PlayScreen({ song, videoId, onNextSong }: Props) {
@@ -199,10 +200,11 @@ export default function PlayScreen({ song, videoId, onNextSong }: Props) {
               <p className="text-center text-gray-200 text-sm mb-2">חשוף עוד</p>
               <div className="flex justify-center gap-2">
                 {INCREMENTS.map((n) => {
-                  const label = n === 0.25 ? '+¼s' : n === 0.5 ? '+½s' : `+${n}s`;
+                  const label = n === 0.25 ? '+¼' : n === 0.5 ? '+½' : '+1';
                   return (
                     <button
                       key={n}
+                      dir="ltr"
                       onClick={() => handleReveal(n)}
                       disabled={!ready || revealDuration + n > 30}
                       className="px-5 py-3 rounded-xl font-semibold text-lg transition-colors bg-gray-700 hover:bg-gray-600 active:bg-gray-500 disabled:bg-gray-800 disabled:text-gray-400 disabled:cursor-not-allowed"
@@ -218,8 +220,8 @@ export default function PlayScreen({ song, videoId, onNextSong }: Props) {
                 <p className="text-sm text-gray-200 mb-1">התחל מ (שניות)</p>
                 <div className="flex items-center gap-3">
                   <button
-                    onClick={() => handleStartCommit(startOffset - 1)}
-                    disabled={!ready || startOffset <= 0}
+                    onClick={() => handleStartCommit(startOffset + 1)}
+                    disabled={!ready || startOffset >= Math.floor(duration)}
                     className="w-11 h-11 rounded-xl bg-gray-700 hover:bg-gray-600 active:bg-gray-500 text-xl font-bold disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
                   >
                     ›
@@ -236,8 +238,8 @@ export default function PlayScreen({ song, videoId, onNextSong }: Props) {
                     className="flex-1 bg-gray-800 rounded-xl px-4 py-2 text-center text-2xl font-bold outline-none focus:ring-2 focus:ring-indigo-500 disabled:opacity-40 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
                   />
                   <button
-                    onClick={() => handleStartCommit(startOffset + 1)}
-                    disabled={!ready || startOffset >= Math.floor(duration)}
+                    onClick={() => handleStartCommit(startOffset - 1)}
+                    disabled={!ready || startOffset <= 0}
                     className="w-11 h-11 rounded-xl bg-gray-700 hover:bg-gray-600 active:bg-gray-500 text-xl font-bold disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
                   >
                     ‹
@@ -280,22 +282,24 @@ export default function PlayScreen({ song, videoId, onNextSong }: Props) {
                 <span className="text-white font-medium">{fmt(startOffset)}</span>
                 <span>התחל מ</span>
               </div>
-              <input
-                type="range"
-                min={0}
-                max={Math.floor(duration)}
-                step={1}
-                value={startOffset}
-                disabled={!ready}
-                onMouseDown={() => { scrubbingRef.current = true; }}
-                onTouchStart={() => { scrubbingRef.current = true; }}
-                onChange={(e) => setStartOffset(Number(e.target.value))}
-                onMouseUp={(e) => { scrubbingRef.current = false; handleStartCommit(Number((e.target as HTMLInputElement).value)); }}
-                onTouchEnd={(e) => { scrubbingRef.current = false; handleStartCommit(Number((e.target as HTMLInputElement).value)); }}
-                className="w-full accent-indigo-500 disabled:opacity-40"
-              />
-              <div className="flex justify-between text-xs text-gray-300 mt-0.5">
-                <span>{fmt(Math.floor(duration))}</span><span>0:00</span>
+              <div dir="ltr">
+                <input
+                  type="range"
+                  min={0}
+                  max={Math.floor(duration)}
+                  step={1}
+                  value={startOffset}
+                  disabled={!ready}
+                  onMouseDown={() => { scrubbingRef.current = true; }}
+                  onTouchStart={() => { scrubbingRef.current = true; }}
+                  onChange={(e) => setStartOffset(Number(e.target.value))}
+                  onMouseUp={(e) => { scrubbingRef.current = false; handleStartCommit(Number((e.target as HTMLInputElement).value)); }}
+                  onTouchEnd={(e) => { scrubbingRef.current = false; handleStartCommit(Number((e.target as HTMLInputElement).value)); }}
+                  className="w-full accent-indigo-500 disabled:opacity-40"
+                />
+                <div className="flex justify-between text-xs text-gray-300 mt-0.5">
+                  <span>0:00</span><span>{fmt(Math.floor(duration))}</span>
+                </div>
               </div>
             </div>
 
