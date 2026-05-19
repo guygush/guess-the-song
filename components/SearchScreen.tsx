@@ -7,15 +7,28 @@ interface Props {
   onSelect: (song: Song) => void;
 }
 
+const PREVIEW_SECONDS = 5;
+
 export default function SearchScreen({ onSelect }: Props) {
   const [query, setQuery] = useState('');
   const [visible, setVisible] = useState<Song[]>([]);
   const [loadingInitial, setLoadingInitial] = useState(false);
   const [hasMore, setHasMore] = useState(false);
+  const [playingId, setPlayingId] = useState<number | null>(null);
 
   const allSongsRef = useRef<Song[]>([]);
   const visibleCountRef = useRef(0);
   const sentinelRef = useRef<HTMLDivElement | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const stopTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Cleanup audio on unmount
+  useEffect(() => {
+    return () => {
+      audioRef.current?.pause();
+      if (stopTimerRef.current) clearTimeout(stopTimerRef.current);
+    };
+  }, []);
 
   useEffect(() => {
     if (!query.trim()) {
@@ -68,6 +81,23 @@ export default function SearchScreen({ onSelect }: Props) {
     return () => observer.disconnect();
   }, [showMore]);
 
+  const stopPreview = () => {
+    if (audioRef.current) { audioRef.current.pause(); audioRef.current = null; }
+    if (stopTimerRef.current) { clearTimeout(stopTimerRef.current); stopTimerRef.current = null; }
+    setPlayingId(null);
+  };
+
+  const handlePreview = (song: Song) => {
+    if (playingId === song.trackId) { stopPreview(); return; }
+    stopPreview();
+    const audio = new Audio(song.previewUrl);
+    audioRef.current = audio;
+    audio.play().catch(() => {});
+    setPlayingId(song.trackId);
+    audio.onended = stopPreview;
+    stopTimerRef.current = setTimeout(stopPreview, PREVIEW_SECONDS * 1000);
+  };
+
   return (
     <div className="flex flex-col h-dvh bg-gray-950 text-white">
       <div className="p-4 pt-8">
@@ -91,22 +121,39 @@ export default function SearchScreen({ onSelect }: Props) {
 
       <div className="flex-1 overflow-y-auto px-4 pb-6 space-y-2">
         {visible.map((song) => (
-          <button
+          <div
             key={song.trackId}
-            onClick={() => onSelect(song)}
-            className="w-full flex items-center gap-3 bg-gray-800 hover:bg-gray-700 active:bg-gray-600 rounded-xl p-3 text-right transition-colors"
+            className="flex items-center gap-2 bg-gray-800 rounded-xl p-3"
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={song.artworkUrl100}
-              alt=""
-              className="w-14 h-14 rounded-lg flex-shrink-0 object-cover"
-            />
-            <div className="min-w-0">
-              <p className="font-semibold truncate">{song.trackName}</p>
-              <p className="text-gray-200 text-sm truncate">{song.artistName}</p>
-            </div>
-          </button>
+            {/* Album art + song info → selects the song */}
+            <button
+              onClick={() => { stopPreview(); onSelect(song); }}
+              className="flex-1 flex items-center gap-3 text-right min-w-0"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={song.artworkUrl100}
+                alt=""
+                className="w-14 h-14 rounded-lg flex-shrink-0 object-cover"
+              />
+              <div className="min-w-0">
+                <p className="font-semibold truncate">{song.trackName}</p>
+                <p className="text-gray-200 text-sm truncate">{song.artistName}</p>
+              </div>
+            </button>
+
+            {/* Preview play/stop button */}
+            <button
+              onClick={() => handlePreview(song)}
+              className={`w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center text-sm transition-colors ${
+                playingId === song.trackId
+                  ? 'bg-red-500 hover:bg-red-600 active:bg-red-700'
+                  : 'bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700'
+              }`}
+            >
+              {playingId === song.trackId ? '■' : '▶'}
+            </button>
+          </div>
         ))}
 
         <div ref={sentinelRef} className="min-h-[48px] flex justify-center items-center">
