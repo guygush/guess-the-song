@@ -154,7 +154,7 @@ export default function PlayScreen({ song, videoId, onNextSong }: Props) {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-gray-950 text-white overflow-hidden">
+    <div className="flex flex-col h-dvh bg-gray-950 text-white overflow-hidden">
       {/* Hidden YouTube player */}
       <div style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden', opacity: 0 }}>
         <div ref={containerRef} />

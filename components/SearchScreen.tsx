@@ -73,7 +73,7 @@ export default function SearchScreen({ onSelect }: Props) {
   }, [showMore]);
 
   return (
-    <div className="flex flex-col h-screen bg-gray-950 text-white">
+    <div className="flex flex-col h-dvh bg-gray-950 text-white">
       <div className="p-4 pt-8">
         <h1 className="text-2xl font-bold text-center mb-6">Guess The Song</h1>
         <div className="relative">
