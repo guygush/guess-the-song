@@ -34,6 +34,7 @@ export default function OneWordScreen({ onBackToHub }: Props) {
   const [lastBc, setLastBc] = useState<string | null>(null);
   const [lastPg, setLastPg] = useState<string | null>(null);
   const [lastPoll, setLastPoll] = useState<string | null>(null);
+  const [channelStatus, setChannelStatus] = useState<string>('');
 
   // Keep refs so async callbacks always see current values without stale closures
   const roomIdRef = useRef(roomId);
@@ -186,6 +187,7 @@ export default function OneWordScreen({ onBackToHub }: Props) {
       })
 
       .subscribe(async (status) => {
+        setChannelStatus(status);
         if (status === 'SUBSCRIBED') {
           channel.track({ player_id: playerId });
           await channel.send({ type: 'broadcast', event: 'player_joined', payload: {} });
@@ -315,6 +317,7 @@ export default function OneWordScreen({ onBackToHub }: Props) {
 
       {roomId && (
         <div className="flex gap-2 justify-center py-1 flex-wrap">
+          <span className={`text-xs font-mono px-2 py-0.5 rounded-full ${channelStatus === 'SUBSCRIBED' ? 'bg-emerald-900 text-emerald-300' : 'bg-red-900 text-red-300'}`}>ws:{channelStatus || '…'}</span>
           {lastBc && <span className="text-xs font-mono bg-emerald-800 text-emerald-200 px-2 py-0.5 rounded-full">bc:{lastBc}</span>}
           {lastPg && <span className="text-xs font-mono bg-sky-800 text-sky-200 px-2 py-0.5 rounded-full">pg:{lastPg}</span>}
           {lastPoll && <span className="text-xs font-mono bg-amber-900 text-amber-200 px-2 py-0.5 rounded-full">poll:{lastPoll}</span>}
