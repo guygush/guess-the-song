@@ -3,12 +3,14 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { loadYouTubeApi } from '@/lib/youtube';
 import type { Song } from '@/lib/itunes';
+import Header from '@/components/Header';
 
 interface Props {
   song: Song;
   videoId: string;
   onNextSong: (winner?: string) => void;
   onFinish?: (winner?: string) => void;
+  onBack: () => void;
   hideMetadata?: boolean;
   groupPlayers?: string[];
 }
@@ -27,7 +29,7 @@ function fmtReveal(sec: number) {
   return `${n} שניות`;
 }
 
-export default function PlayScreen({ song, videoId, onNextSong, onFinish, hideMetadata, groupPlayers }: Props) {
+export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack, hideMetadata, groupPlayers }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const playerRef = useRef<YT.Player | null>(null);
   const stopTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -188,6 +190,8 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, hideMe
 
   return (
     <div className="flex flex-col h-dvh bg-gray-950 text-white overflow-hidden">
+      <Header title="זהה את השיר" onBack={onBack} />
+
       {/* Hidden YouTube player */}
       <div style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden', opacity: 0 }}>
         <div ref={containerRef} />

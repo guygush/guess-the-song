@@ -82,7 +82,7 @@ export default function Home() {
   }
 
   if (screen.name === 'summary') {
-    return <SummaryScreen players={screen.players} onDone={() => setScreen({ name: 'search' })} />;
+    return <SummaryScreen players={screen.players} onDone={() => setScreen({ name: 'hub' })} />;
   }
 
   if (screen.name === 'play') {
@@ -113,6 +113,7 @@ export default function Home() {
         groupPlayers={groupPlayers}
         onNextSong={onNextSong}
         onFinish={onFinish}
+        onBack={() => setScreen({ name: 'search' })}
       />
     );
   }

@@ -1,5 +1,7 @@
 'use client';
 
+import Header from '@/components/Header';
+
 interface Props {
   players: { name: string; score: number }[];
   onDone: () => void;
@@ -10,8 +12,9 @@ export default function SummaryScreen({ players, onDone }: Props) {
 
   return (
     <div className="flex flex-col h-dvh bg-gray-950 text-white">
+      <Header title="סיכום המשחק" onBack={onDone} />
+
       <div className="flex-1 flex flex-col justify-center px-6">
-        <h1 className="text-2xl font-bold text-center mb-8">סיכום המשחק</h1>
         <div className="flex flex-col gap-3">
           {sorted.map((player, index) => (
             <div

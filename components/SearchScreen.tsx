@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { searchSongs, PAGE_SIZE, type Song } from '@/lib/itunes';
 import { loadChartSongs, pickRandomSong, chartSongToSong, type TestConfig } from '@/lib/charts';
 import { findVideoId } from '@/lib/youtube';
+import Header from '@/components/Header';
 
 interface Props {
   onSelect: (song: Song, videoId?: string, hideMetadata?: boolean, testConfig?: TestConfig, groupPlayers?: string[]) => void;
@@ -179,9 +180,9 @@ export default function SearchScreen({ onSelect, onBackToHub }: Props) {
 
   return (
     <div className="flex flex-col h-dvh bg-gray-950 text-white">
-      <div className="p-4 pt-8">
-        <h1 className="text-2xl font-bold text-center mb-6">נחש את השיר</h1>
+      <Header title="זהה את השיר" onBack={onBackToHub} />
 
+      <div className="p-4 pt-4">
         {/* Mode toggle */}
         <div className="flex bg-gray-800 rounded-xl p-1 mb-4">
           <button
@@ -339,13 +340,6 @@ export default function SearchScreen({ onSelect, onBackToHub }: Props) {
           </button>
         </div>
       )}
-
-      {/* Back to hub */}
-      <div className="pb-4 flex justify-center">
-        <button onClick={onBackToHub} className="text-indigo-400 hover:text-indigo-300 text-sm transition-colors">
-          בחר משחק אחר
-        </button>
-      </div>
 
       {/* Group game modal */}
       {showGroupModal && (
