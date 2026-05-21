@@ -9,9 +9,10 @@ interface Props {
   myPlayerId: string;
   players: Player[];
   hints: Hint[];
+  onBroadcast: (event: string) => void;
 }
 
-export default function GameSubScreen({ room, myPlayerId, players, hints }: Props) {
+export default function GameSubScreen({ room, myPlayerId, players, hints, onBroadcast }: Props) {
   const [hintInput, setHintInput] = useState('');
   const [guessInput, setGuessInput] = useState('');
   const [submitting, setSubmitting] = useState(false);
@@ -30,6 +31,7 @@ export default function GameSubScreen({ room, myPlayerId, players, hints }: Prop
     setSubmitting(true);
     try {
       await sendHint(room.id, room.current_turn, myPlayerId, hintInput.trim());
+      onBroadcast('hint_sent');
       setHintInput('');
     } finally {
       setSubmitting(false);
@@ -41,6 +43,7 @@ export default function GameSubScreen({ room, myPlayerId, players, hints }: Prop
     setSubmitting(true);
     try {
       await sendGuess(room, guessInput.trim());
+      onBroadcast('guess_made');
       setGuessInput('');
     } finally {
       setSubmitting(false);

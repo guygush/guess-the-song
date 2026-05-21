@@ -86,6 +86,29 @@ export default function OneWordScreen({ onBackToHub }: Props) {
         }
       })
 
+      // Broadcast — a hint was sent; re-fetch hints for current turn
+      .on('broadcast', { event: 'hint_sent' }, async () => {
+        const { data } = await supabase.from('ow_hints').select('*')
+          .eq('room_id', roomIdRef.current)
+          .eq('turn_number', roomRef.current?.current_turn ?? 0);
+        if (data) setHints(data as Hint[]);
+      })
+
+      // Broadcast — guess was made; fetch guess and switch to summary
+      .on('broadcast', { event: 'guess_made' }, async () => {
+        const rid = roomIdRef.current;
+        const turn = roomRef.current?.current_turn ?? 0;
+        const [{ data: guessData }, { data: allGuesses }] = await Promise.all([
+          supabase.from('ow_guesses').select('*').eq('room_id', rid).eq('turn_number', turn).maybeSingle(),
+          supabase.from('ow_guesses').select('id').eq('room_id', rid),
+        ]);
+        if (guessData) {
+          setCurrentGuess(guessData as Guess);
+          setTotalTurns(allGuesses?.length ?? 0);
+          setSubScreen('summary');
+        }
+      })
+
       // Room changes — filter by PK (always safe)
       .on('postgres_changes', { event: '*', schema: 'public', table: 'ow_rooms', filter: `id=eq.${roomId}` }, payload => {
         const r = payload.new as Room;
@@ -233,7 +256,9 @@ export default function OneWordScreen({ onBackToHub }: Props) {
           roomId={roomId}
           isOrganizer={isOrganizer}
           players={players}
-          onStart={() => {
+          onStart={async () => {
+            const { data } = await supabase.from('ow_rooms').select('*').eq('id', roomId).single();
+            if (data) setRoom(data as Room);
             channelRef.current?.send({ type: 'broadcast', event: 'game_started', payload: {} });
             setSubScreen('game');
           }}
@@ -246,6 +271,7 @@ export default function OneWordScreen({ onBackToHub }: Props) {
           myPlayerId={playerId}
           players={players}
           hints={hints}
+          onBroadcast={(event) => channelRef.current?.send({ type: 'broadcast', event, payload: {} })}
         />
       )}
 
