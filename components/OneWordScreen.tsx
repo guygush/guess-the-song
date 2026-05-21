@@ -31,7 +31,9 @@ export default function OneWordScreen({ onBackToHub }: Props) {
   const [hints, setHints] = useState<Hint[]>([]);
   const [currentGuess, setCurrentGuess] = useState<Guess | null>(null);
   const [totalTurns, setTotalTurns] = useState(0);
-  const [lastSync, setLastSync] = useState<{ via: SyncVia; event: string } | null>(null);
+  const [lastBc, setLastBc] = useState<string | null>(null);
+  const [lastPg, setLastPg] = useState<string | null>(null);
+  const [lastPoll, setLastPoll] = useState<string | null>(null);
 
   // Keep refs so async callbacks always see current values without stale closures
   const roomIdRef = useRef(roomId);
@@ -42,7 +44,11 @@ export default function OneWordScreen({ onBackToHub }: Props) {
   roomRef.current = room;
   isOrganizerRef.current = isOrganizer;
 
-  const sync = (via: SyncVia, event: string) => setLastSync({ via, event });
+  const sync = (via: SyncVia, event: string) => {
+    if (via === 'bc') setLastBc(event);
+    else if (via === 'pg') setLastPg(event);
+    else setLastPoll(event);
+  };
 
   // Mark player inactive on unload
   useEffect(() => {
@@ -302,18 +308,16 @@ export default function OneWordScreen({ onBackToHub }: Props) {
 
   const showBack = subScreen === 'join' || subScreen === 'lobby';
 
-  const syncColor =
-    lastSync?.via === 'bc' ? 'bg-emerald-800 text-emerald-200' :
-    lastSync?.via === 'pg' ? 'bg-sky-800 text-sky-200' :
-    'bg-amber-900 text-amber-200';
 
   return (
     <div className="flex flex-col h-dvh bg-gray-950 text-white">
       <Header title="במילה אחת" onBack={showBack ? handleBack : undefined} />
 
-      {lastSync && roomId && (
-        <div className={`flex justify-center py-1 text-xs font-mono ${syncColor}`}>
-          {lastSync.via}:{lastSync.event}
+      {roomId && (
+        <div className="flex gap-2 justify-center py-1 flex-wrap">
+          {lastBc && <span className="text-xs font-mono bg-emerald-800 text-emerald-200 px-2 py-0.5 rounded-full">bc:{lastBc}</span>}
+          {lastPg && <span className="text-xs font-mono bg-sky-800 text-sky-200 px-2 py-0.5 rounded-full">pg:{lastPg}</span>}
+          {lastPoll && <span className="text-xs font-mono bg-amber-900 text-amber-200 px-2 py-0.5 rounded-full">poll:{lastPoll}</span>}
         </div>
       )}
 
