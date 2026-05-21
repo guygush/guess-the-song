@@ -54,6 +54,7 @@ export default function Home() {
         videoId={screen.videoId}
         hideMetadata={screen.hideMetadata}
         onNextSong={screen.testConfig ? () => handleTestNext(screen.testConfig!) : () => setScreen({ name: 'search' })}
+        onFinish={screen.testConfig ? () => setScreen({ name: 'search' }) : undefined}
       />
     );
   }

@@ -8,6 +8,7 @@ interface Props {
   song: Song;
   videoId: string;
   onNextSong: () => void;
+  onFinish?: () => void;
   hideMetadata?: boolean;
 }
 
@@ -25,7 +26,7 @@ function fmtReveal(sec: number) {
   return `${n} שניות`;
 }
 
-export default function PlayScreen({ song, videoId, onNextSong, hideMetadata }: Props) {
+export default function PlayScreen({ song, videoId, onNextSong, onFinish, hideMetadata }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const playerRef = useRef<YT.Player | null>(null);
   const stopTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -376,12 +377,22 @@ export default function PlayScreen({ song, videoId, onNextSong, hideMetadata }: 
           </button>
         )}
         {revealed && (
-          <button
-            onClick={handleNextSong}
-            className="w-full py-3 rounded-2xl bg-gray-800 hover:bg-gray-700 active:bg-gray-600 font-semibold text-lg transition-colors"
-          >
-            שיר הבא
-          </button>
+          <>
+            <button
+              onClick={handleNextSong}
+              className="w-full py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 font-semibold text-lg transition-colors"
+            >
+              שיר הבא
+            </button>
+            {onFinish && (
+              <button
+                onClick={() => { handleStop(); onFinish(); }}
+                className="w-full py-3 rounded-2xl bg-gray-800 hover:bg-gray-700 active:bg-gray-600 font-semibold text-lg transition-colors mt-1"
+              >
+                סיים
+              </button>
+            )}
+          </>
         )}
       </div>
     </div>
