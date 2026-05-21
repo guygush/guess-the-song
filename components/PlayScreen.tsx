@@ -8,6 +8,7 @@ interface Props {
   song: Song;
   videoId: string;
   onNextSong: () => void;
+  hideMetadata?: boolean;
 }
 
 const INCREMENTS = [1, 0.5, 0.25];
@@ -24,19 +25,38 @@ function fmtReveal(sec: number) {
   return `${n} שניות`;
 }
 
-export default function PlayScreen({ song, videoId, onNextSong }: Props) {
+export default function PlayScreen({ song, videoId, onNextSong, hideMetadata }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const playerRef = useRef<YT.Player | null>(null);
   const stopTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const scrubbingRef = useRef(false);
+  const revealedRef = useRef(false);
 
   const [ready, setReady] = useState(false);
   const [playing, setPlaying] = useState(false);
+  const [snippetKey, setSnippetKey] = useState(0);
   const [startOffset, setStartOffset] = useState(0);
   const [revealDuration, setRevealDuration] = useState(0.5);
   const [duration, setDuration] = useState(DEFAULT_DURATION);
   const [revealed, setRevealed] = useState(false);
+
+  useEffect(() => {
+    if (!hideMetadata || !('mediaSession' in navigator)) return;
+    const proto = MediaSession.prototype;
+    const descriptor = Object.getOwnPropertyDescriptor(proto, 'metadata');
+    Object.defineProperty(proto, 'metadata', {
+      set(value: MediaMetadata | null) {
+        descriptor?.set?.call(
+          this,
+          revealedRef.current ? value : new MediaMetadata({ title: 'נחש את השיר', artist: '', artwork: [] })
+        );
+      },
+      get() { return descriptor?.get?.call(this); },
+      configurable: true,
+    });
+    return () => { if (descriptor) Object.defineProperty(proto, 'metadata', descriptor); };
+  }, [hideMetadata]);
 
   useEffect(() => {
     let player: YT.Player;
@@ -95,6 +115,7 @@ export default function PlayScreen({ song, videoId, onNextSong }: Props) {
     p.seekTo(offset, true);
     p.playVideo();
     setPlaying(true);
+    setSnippetKey(k => k + 1);
     stopTimerRef.current = setTimeout(() => {
       p.pauseVideo();
       setPlaying(false);
@@ -133,6 +154,7 @@ export default function PlayScreen({ song, videoId, onNextSong }: Props) {
   };
 
   const handleRevealSong = () => {
+    revealedRef.current = true;
     setRevealed(true);
     playFree(startOffset);
   };
@@ -160,15 +182,17 @@ export default function PlayScreen({ song, videoId, onNextSong }: Props) {
         <div ref={containerRef} />
       </div>
 
-      {/* Song info */}
-      <div className="flex items-center gap-3 px-4 pt-4 pb-2">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={song.artworkUrl100} alt="" className="w-12 h-12 rounded-xl flex-shrink-0 object-cover" />
-        <div className="min-w-0">
-          <p className="font-bold truncate">{song.trackName}</p>
-          <p className="text-gray-200 text-sm truncate">{song.artistName}</p>
+      {/* Song info — hidden before reveal in test-yourself mode */}
+      {(!hideMetadata || revealed) && (
+        <div className="flex items-center gap-3 px-4 pt-4 pb-2">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          {song.artworkUrl100 && <img src={song.artworkUrl100} alt="" className="w-12 h-12 rounded-xl flex-shrink-0 object-cover" />}
+          <div className="min-w-0">
+            <p className="font-bold truncate">{song.trackName}</p>
+            <p className="text-gray-200 text-sm truncate">{song.artistName}</p>
+          </div>
         </div>
-      </div>
+      )}
 
       <div className="flex-1 flex flex-col justify-center gap-3 px-4">
 
@@ -184,12 +208,27 @@ export default function PlayScreen({ song, videoId, onNextSong }: Props) {
               <button
                 onClick={handlePlay}
                 disabled={!ready}
-                className={`w-16 h-16 rounded-full flex items-center justify-center text-2xl shadow-lg transition-colors disabled:opacity-40 disabled:cursor-not-allowed ${
+                className={`relative w-16 h-16 rounded-full flex items-center justify-center text-2xl shadow-lg transition-colors disabled:opacity-40 disabled:cursor-not-allowed ${
                   playing
                     ? 'bg-red-500 hover:bg-red-600 active:bg-red-700'
                     : 'bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700'
                 }`}
               >
+                {playing && (
+                  <svg key={snippetKey} className="absolute inset-0 w-full h-full" viewBox="0 0 40 40">
+                    <circle
+                      cx="20" cy="20" r="18"
+                      fill="none"
+                      stroke="rgba(255,255,255,0.9)"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeDasharray="113.1"
+                      strokeDashoffset="113.1"
+                      transform="rotate(-90 20 20)"
+                      style={{ animation: `progress-ring ${revealDuration}s linear forwards` }}
+                    />
+                  </svg>
+                )}
                 {!ready ? (
                   <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
                 ) : playing ? '■' : '▶'}
@@ -302,12 +341,25 @@ export default function PlayScreen({ song, videoId, onNextSong }: Props) {
               </div>
             </div>
 
-            <button
-              onClick={() => { handleStop(); setRevealed(false); }}
-              className="flex items-center gap-1 text-gray-200 hover:text-white transition-colors text-sm self-start"
-            >
-              → חזור לניחוש
-            </button>
+            <div className="flex items-center justify-between">
+              <button
+                onClick={() => { handleStop(); setRevealed(false); }}
+                className="flex items-center gap-1 text-gray-200 hover:text-white transition-colors text-sm"
+              >
+                → חזור לניחוש
+              </button>
+              <a
+                href={`https://www.youtube.com/watch?v=${videoId}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-sm text-red-400 hover:text-red-300 transition-colors"
+              >
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+                פתח ביוטיוב
+              </a>
+            </div>
           </>
         )}
       </div>
