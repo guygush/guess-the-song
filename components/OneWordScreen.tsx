@@ -172,7 +172,7 @@ export default function OneWordScreen({ onBackToHub }: Props) {
     channelRef.current?.send({ type: 'broadcast', event, payload });
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Polling fallback — refresh players + room status every 3s while in lobby
+  // Polling — refresh players + room status every 1s while in lobby
   useEffect(() => {
     if (subScreen !== 'lobby' || !roomId) return;
     const interval = setInterval(async () => {
@@ -190,11 +190,11 @@ export default function OneWordScreen({ onBackToHub }: Props) {
         }
       }
       setLastPoll('lobby');
-    }, 3000);
+    }, 1000);
     return () => clearInterval(interval);
   }, [subScreen, roomId]);
 
-  // Polling fallback — check for next turn or game end every 3s while in summary
+  // Polling — check for next turn or game end every 1s while in summary
   useEffect(() => {
     if (subScreen !== 'summary' || !roomId) return;
     const capturedTurn = roomRef.current?.current_turn;
@@ -209,11 +209,11 @@ export default function OneWordScreen({ onBackToHub }: Props) {
         setSubScreen('game');
       }
       setLastPoll('summary');
-    }, 3000);
+    }, 1000);
     return () => clearInterval(interval);
   }, [subScreen, roomId]);
 
-  // Polling fallback — refresh hints and check for guess every 2s while in game
+  // Polling — refresh hints and check for guess every 500ms while in game
   useEffect(() => {
     if (subScreen !== 'game' || !roomId || !room?.guesser_order?.length) return;
     const turnNumber = room.current_turn;
@@ -234,7 +234,7 @@ export default function OneWordScreen({ onBackToHub }: Props) {
         setSubScreen('summary');
       }
       setLastPoll('game');
-    }, 2000);
+    }, 500);
     return () => clearInterval(interval);
   }, [subScreen, roomId, room?.current_turn, room?.guesser_order?.length]);
 
