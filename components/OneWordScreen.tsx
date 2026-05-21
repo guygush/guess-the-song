@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { supabase } from '@/lib/supabase';
+import { getPusher, publish } from '@/lib/pusher-client';
 import { markInactive, endGame } from '@/lib/oneword-rooms';
 import type { Room, Player, Hint, Guess } from '@/lib/oneword-rooms';
 import Header from '@/components/Header';
@@ -31,20 +32,12 @@ export default function OneWordScreen({ onBackToHub }: Props) {
   const [currentGuess, setCurrentGuess] = useState<Guess | null>(null);
   const [totalTurns, setTotalTurns] = useState(0);
 
-  const [lastBc, setLastBc] = useState<string | null>(null);
-  const [lastPoll, setLastPoll] = useState<string | null>(null);
-  const [channelStatus, setChannelStatus] = useState<string>('');
-
-  // Keep refs so async callbacks always see current values without stale closures
   const roomIdRef = useRef(roomId);
-  const roomRef = useRef(room);
   const isOrganizerRef = useRef(isOrganizer);
-  const channelRef = useRef<ReturnType<typeof supabase.channel> | null>(null);
+  const channelNameRef = useRef<string>('');
   roomIdRef.current = roomId;
-  roomRef.current = room;
   isOrganizerRef.current = isOrganizer;
 
-  // Mark player inactive on unload
   useEffect(() => {
     if (!roomId) return;
     const handleUnload = () => {
@@ -55,11 +48,9 @@ export default function OneWordScreen({ onBackToHub }: Props) {
     return () => window.removeEventListener('beforeunload', handleUnload);
   }, [roomId, playerId]);
 
-  // Subscribe to all realtime changes once we have a roomId
   useEffect(() => {
     if (!roomId) return;
 
-    // Load initial state
     async function load() {
       const [{ data: roomData }, { data: playersData }] = await Promise.all([
         supabase.from('ow_rooms').select('*').eq('id', roomId).single(),
@@ -70,89 +61,56 @@ export default function OneWordScreen({ onBackToHub }: Props) {
     }
     load();
 
-    // No colon in channel name (Phoenix treats "topic:subtopic" as special)
-    // No self:true — sender applies own state directly via handleBroadcast
-    const channel = supabase.channel('ow-' + roomId)
+    const channelName = 'ow-' + roomId;
+    channelNameRef.current = channelName;
+    const pusher = getPusher();
+    const channel = pusher.subscribe(channelName);
 
-      .on('broadcast', { event: 'player_joined' }, async () => {
-        const { data } = await supabase.from('ow_players').select('*').eq('room_id', roomIdRef.current);
-        if (data) setPlayers(data as Player[]);
-        setLastBc('player_joined');
-      })
+    channel.bind('player_joined', async () => {
+      const { data } = await supabase.from('ow_players').select('*').eq('room_id', roomIdRef.current);
+      if (data) setPlayers(data as Player[]);
+    });
 
-      .on('broadcast', { event: 'game_started' }, (msg) => {
-        const r = (msg.payload as { room?: Room }).room;
-        if (r) {
-          setRoom(r);
-          setHints([]);
-          setCurrentGuess(null);
-          setSubScreen('game');
-          setLastBc('game_started');
-        }
-      })
+    channel.bind('game_started', (msg: { room?: Room }) => {
+      if (msg.room) {
+        setRoom(msg.room);
+        setHints([]);
+        setCurrentGuess(null);
+        setSubScreen('game');
+      }
+    });
 
-      .on('broadcast', { event: 'hint_sent' }, (msg) => {
-        const h = (msg.payload as { hint?: Hint }).hint;
-        if (!h) return;
-        setHints(prev => prev.some(x => x.id === h.id) ? prev : [...prev, h]);
-        setLastBc('hint_sent');
-      })
+    channel.bind('hint_sent', (msg: { hint?: Hint }) => {
+      const h = msg.hint;
+      if (!h) return;
+      setHints(prev => prev.some(x => x.id === h.id) ? prev : [...prev, h]);
+    });
 
-      .on('broadcast', { event: 'guess_made' }, (msg) => {
-        const { guess, room: updatedRoom } = msg.payload as { guess?: Guess; room?: Room };
-        if (!guess) return;
-        setCurrentGuess(guess);
-        setTotalTurns(t => t + 1);
-        if (updatedRoom) setRoom(updatedRoom);
-        setSubScreen('summary');
-        setLastBc('guess_made');
-      })
+    channel.bind('guess_made', (msg: { guess?: Guess; room?: Room }) => {
+      if (!msg.guess) return;
+      setCurrentGuess(msg.guess);
+      setTotalTurns(t => t + 1);
+      if (msg.room) setRoom(msg.room);
+      setSubScreen('summary');
+    });
 
-      .on('broadcast', { event: 'next_turn' }, (msg) => {
-        const r = (msg.payload as { room?: Room }).room;
-        if (r) {
-          setRoom(r);
-          setHints([]);
-          setCurrentGuess(null);
-          setSubScreen('game');
-          setLastBc('next_turn');
-        }
-      })
+    channel.bind('next_turn', (msg: { room?: Room }) => {
+      if (msg.room) {
+        setRoom(msg.room);
+        setHints([]);
+        setCurrentGuess(null);
+        setSubScreen('game');
+      }
+    });
 
-      .on('presence', { event: 'leave' }, async ({ leftPresences }) => {
-        const leftIds = (leftPresences as unknown as Array<{ player_id: string }>).map(p => p.player_id);
-        const rid = roomIdRef.current;
-        const currentRoom = roomRef.current;
-        for (const id of leftIds) {
-          await markInactive(id, rid);
-          if (id === currentRoom?.organizer_id) {
-            await endGame(rid, 'מנהל המשחק עזב');
-            return;
-          }
-        }
-        const { data } = await supabase.from('ow_players').select('*').eq('room_id', rid).eq('is_active', true);
-        if (data && data.length < 3 && currentRoom?.status === 'playing') {
-          await endGame(rid, 'המשחק הסתיים כי נשארו פחות מ-3 שחקנים');
-        }
-      })
+    publish(channelName, 'player_joined', {});
 
-      .subscribe((status, err) => {
-        setChannelStatus(err ? `${status}:${err.message}` : status);
-        if (status === 'SUBSCRIBED') {
-          channel.track({ player_id: playerId });
-          channel.send({ type: 'broadcast', event: 'player_joined', payload: {} });
-        }
-      });
-
-    channelRef.current = channel;
     return () => {
-      channelRef.current = null;
-      supabase.removeChannel(channel);
+      getPusher().unsubscribe(channelName);
+      channelNameRef.current = '';
     };
-  }, [roomId, playerId]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [roomId, playerId]);
 
-  // Apply broadcast payload locally (for the sender, since self-echo is off)
-  // and send to other clients via the channel.
   const handleBroadcast = useCallback((event: string, payload: Record<string, unknown>) => {
     if (event === 'hint_sent') {
       const h = (payload as { hint?: Hint }).hint;
@@ -169,83 +127,17 @@ export default function OneWordScreen({ onBackToHub }: Props) {
       const r = (payload as { room?: Room }).room;
       if (r) { setRoom(r); setHints([]); setCurrentGuess(null); }
     }
-    channelRef.current?.send({ type: 'broadcast', event, payload });
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    if (channelNameRef.current) {
+      publish(channelNameRef.current, event, payload);
+    }
+  }, []);
 
-  // Polling — refresh players + room status every 1s while in lobby
-  useEffect(() => {
-    if (subScreen !== 'lobby' || !roomId) return;
-    const interval = setInterval(async () => {
-      const [{ data: playersData }, { data: roomData }] = await Promise.all([
-        supabase.from('ow_players').select('*').eq('room_id', roomId),
-        supabase.from('ow_rooms').select('*').eq('id', roomId).single(),
-      ]);
-      if (playersData) setPlayers(playersData as Player[]);
-      if (roomData) {
-        setRoom(roomData as Room);
-        if ((roomData as Room).status === 'playing') {
-          setHints([]);
-          setCurrentGuess(null);
-          setSubScreen('game');
-        }
-      }
-      setLastPoll('lobby');
-    }, 1000);
-    return () => clearInterval(interval);
-  }, [subScreen, roomId]);
-
-  // Polling — check for next turn or game end every 1s while in summary
-  useEffect(() => {
-    if (subScreen !== 'summary' || !roomId) return;
-    const capturedTurn = roomRef.current?.current_turn;
-    const interval = setInterval(async () => {
-      const { data: roomData } = await supabase.from('ow_rooms').select('*').eq('id', roomId).single();
-      if (!roomData) return;
-      const r = roomData as Room;
-      setRoom(r);
-      if (r.current_turn !== capturedTurn) {
-        setHints([]);
-        setCurrentGuess(null);
-        setSubScreen('game');
-      }
-      setLastPoll('summary');
-    }, 1000);
-    return () => clearInterval(interval);
-  }, [subScreen, roomId]);
-
-  // Polling — refresh hints and check for guess every 500ms while in game
-  useEffect(() => {
-    if (subScreen !== 'game' || !roomId || !room?.guesser_order?.length) return;
-    const turnNumber = room.current_turn;
-    const interval = setInterval(async () => {
-      const [{ data: hintData }, { data: guessData }] = await Promise.all([
-        supabase.from('ow_hints').select('*').eq('room_id', roomId).eq('turn_number', turnNumber),
-        supabase.from('ow_guesses').select('*').eq('room_id', roomId).eq('turn_number', turnNumber).maybeSingle(),
-      ]);
-      if (hintData) setHints(hintData as Hint[]);
-      if (guessData) {
-        setCurrentGuess(guessData as Guess);
-        const [{ data: all }, { data: freshRoom }] = await Promise.all([
-          supabase.from('ow_guesses').select('id').eq('room_id', roomId),
-          supabase.from('ow_rooms').select('*').eq('id', roomId).single(),
-        ]);
-        if (all) setTotalTurns(all.length);
-        if (freshRoom) setRoom(freshRoom as Room);
-        setSubScreen('summary');
-      }
-      setLastPoll('game');
-    }, 500);
-    return () => clearInterval(interval);
-  }, [subScreen, roomId, room?.current_turn, room?.guesser_order?.length]);
-
-  // When entering the game screen, always fetch fresh room data (guesser_order, current_word)
   useEffect(() => {
     if (subScreen !== 'game' || !roomId) return;
     supabase.from('ow_rooms').select('*').eq('id', roomId).single()
       .then(({ data }) => { if (data) setRoom(data as Room); });
   }, [subScreen, roomId]);
 
-  // Load turn-specific data when current_turn advances (e.g. after next turn)
   useEffect(() => {
     if (!roomId || !room) return;
     async function loadTurnData() {
@@ -285,16 +177,6 @@ export default function OneWordScreen({ onBackToHub }: Props) {
     <div className="flex flex-col h-dvh bg-gray-950 text-white">
       <Header title="במילה אחת" onBack={showBack ? handleBack : undefined} />
 
-      {roomId && (
-        <div className="flex gap-2 justify-center py-1 flex-wrap">
-          <span className={`text-xs font-mono px-2 py-0.5 rounded-full ${channelStatus === 'SUBSCRIBED' ? 'bg-emerald-900 text-emerald-300' : 'bg-red-900 text-red-300'}`}>
-            ws:{channelStatus || '…'}
-          </span>
-          {lastBc && <span className="text-xs font-mono bg-emerald-800 text-emerald-200 px-2 py-0.5 rounded-full">bc:{lastBc}</span>}
-          {lastPoll && <span className="text-xs font-mono bg-amber-900 text-amber-200 px-2 py-0.5 rounded-full">poll:{lastPoll}</span>}
-        </div>
-      )}
-
       {subScreen === 'join' && (
         <JoinSubScreen playerId={playerId} onJoined={handleJoined} />
       )}
@@ -308,7 +190,7 @@ export default function OneWordScreen({ onBackToHub }: Props) {
             const { data } = await supabase.from('ow_rooms').select('*').eq('id', roomId).single();
             if (data) {
               setRoom(data as Room);
-              channelRef.current?.send({ type: 'broadcast', event: 'game_started', payload: { room: data } });
+              await publish(channelNameRef.current, 'game_started', { room: data });
               setSubScreen('game');
             }
           }}
