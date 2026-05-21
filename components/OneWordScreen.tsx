@@ -35,6 +35,7 @@ export default function OneWordScreen({ onBackToHub }: Props) {
   const roomIdRef = useRef(roomId);
   const roomRef = useRef(room);
   const isOrganizerRef = useRef(isOrganizer);
+  const channelRef = useRef<ReturnType<typeof supabase.channel> | null>(null);
   roomIdRef.current = roomId;
   roomRef.current = room;
   isOrganizerRef.current = isOrganizer;
@@ -72,6 +73,17 @@ export default function OneWordScreen({ onBackToHub }: Props) {
       .on('broadcast', { event: 'player_joined' }, async () => {
         const { data } = await supabase.from('ow_players').select('*').eq('room_id', roomIdRef.current);
         if (data) setPlayers(data as Player[]);
+      })
+
+      // Broadcast — organizer started the game; fetch fresh room state and switch screen
+      .on('broadcast', { event: 'game_started' }, async () => {
+        const { data } = await supabase.from('ow_rooms').select('*').eq('id', roomIdRef.current).single();
+        if (data) {
+          setRoom(data as Room);
+          setHints([]);
+          setCurrentGuess(null);
+          setSubScreen('game');
+        }
       })
 
       // Room changes — filter by PK (always safe)
@@ -144,15 +156,30 @@ export default function OneWordScreen({ onBackToHub }: Props) {
         }
       });
 
-    return () => { supabase.removeChannel(channel); };
+    channelRef.current = channel;
+    return () => {
+      channelRef.current = null;
+      supabase.removeChannel(channel);
+    };
   }, [roomId, playerId]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Polling fallback — refresh player list every 3s while in lobby
+  // Polling fallback — refresh players + room status every 3s while in lobby
   useEffect(() => {
     if (subScreen !== 'lobby' || !roomId) return;
     const interval = setInterval(async () => {
-      const { data } = await supabase.from('ow_players').select('*').eq('room_id', roomId);
-      if (data) setPlayers(data as Player[]);
+      const [{ data: playersData }, { data: roomData }] = await Promise.all([
+        supabase.from('ow_players').select('*').eq('room_id', roomId),
+        supabase.from('ow_rooms').select('*').eq('id', roomId).single(),
+      ]);
+      if (playersData) setPlayers(playersData as Player[]);
+      if (roomData) {
+        setRoom(roomData as Room);
+        if ((roomData as Room).status === 'playing') {
+          setHints([]);
+          setCurrentGuess(null);
+          setSubScreen('game');
+        }
+      }
     }, 3000);
     return () => clearInterval(interval);
   }, [subScreen, roomId]);
@@ -206,7 +233,10 @@ export default function OneWordScreen({ onBackToHub }: Props) {
           roomId={roomId}
           isOrganizer={isOrganizer}
           players={players}
-          onStart={() => setSubScreen('game')}
+          onStart={() => {
+            channelRef.current?.send({ type: 'broadcast', event: 'game_started', payload: {} });
+            setSubScreen('game');
+          }}
         />
       )}
 
