@@ -207,6 +207,13 @@ export default function OneWordScreen({ onBackToHub }: Props) {
     return () => clearInterval(interval);
   }, [subScreen, roomId]);
 
+  // When entering the game screen, always fetch fresh room data (guesser_order, current_word)
+  useEffect(() => {
+    if (subScreen !== 'game' || !roomId) return;
+    supabase.from('ow_rooms').select('*').eq('id', roomId).single()
+      .then(({ data }) => { if (data) setRoom(data as Room); });
+  }, [subScreen, roomId]);
+
   // Load turn-specific data when current_turn advances (e.g. after next turn)
   useEffect(() => {
     if (!roomId || !room) return;

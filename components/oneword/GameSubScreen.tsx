@@ -50,6 +50,15 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, onBroa
     }
   }
 
+  // Room data not yet populated — wait for fresh fetch
+  if (!room.guesser_order.length) {
+    return (
+      <div className="flex-1 flex items-center justify-center">
+        <div className="w-8 h-8 border-2 border-indigo-400 border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
+  }
+
   if (amGuesser) {
     return (
       <div className="flex-1 flex flex-col px-6 pt-6 gap-6">
