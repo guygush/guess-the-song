@@ -68,6 +68,12 @@ export default function OneWordScreen({ onBackToHub }: Props) {
     const channel = supabase
       .channel(`room:${roomId}`)
 
+      // Broadcast — a player connected to the channel; re-fetch player list
+      .on('broadcast', { event: 'player_joined' }, async () => {
+        const { data } = await supabase.from('ow_players').select('*').eq('room_id', roomIdRef.current);
+        if (data) setPlayers(data as Player[]);
+      })
+
       // Room changes — filter by PK (always safe)
       .on('postgres_changes', { event: '*', schema: 'public', table: 'ow_rooms', filter: `id=eq.${roomId}` }, payload => {
         const r = payload.new as Room;
@@ -131,12 +137,25 @@ export default function OneWordScreen({ onBackToHub }: Props) {
         }
       })
 
-      .subscribe();
-
-    channel.track({ player_id: playerId });
+      .subscribe(async (status) => {
+        if (status === 'SUBSCRIBED') {
+          channel.track({ player_id: playerId });
+          await channel.send({ type: 'broadcast', event: 'player_joined', payload: {} });
+        }
+      });
 
     return () => { supabase.removeChannel(channel); };
   }, [roomId, playerId]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Polling fallback — refresh player list every 3s while in lobby
+  useEffect(() => {
+    if (subScreen !== 'lobby' || !roomId) return;
+    const interval = setInterval(async () => {
+      const { data } = await supabase.from('ow_players').select('*').eq('room_id', roomId);
+      if (data) setPlayers(data as Player[]);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [subScreen, roomId]);
 
   // Load turn-specific data when current_turn advances (e.g. after next turn)
   useEffect(() => {
