@@ -20,10 +20,10 @@ export default function SummaryScreen({ players, onDone }: Props) {
                 index === 0 ? 'bg-indigo-600' : 'bg-gray-800'
               }`}
             >
+              <span className="font-semibold text-lg">{player.name}</span>
               <span className={`text-2xl font-bold ${index === 0 ? 'text-white' : 'text-gray-300'}`}>
                 {player.score}
               </span>
-              <span className="font-semibold text-lg">{player.name}</span>
             </div>
           ))}
         </div>
