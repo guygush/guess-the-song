@@ -1,19 +1,23 @@
 'use client';
 
 import { useState } from 'react';
+import GameHubScreen from '@/components/GameHubScreen';
 import SearchScreen from '@/components/SearchScreen';
 import LoadingScreen from '@/components/LoadingScreen';
 import PlayScreen from '@/components/PlayScreen';
 import SummaryScreen from '@/components/SummaryScreen';
+import OneWordScreen from '@/components/OneWordScreen';
 import { findVideoId } from '@/lib/youtube';
 import { loadChartSongs, pickRandomSong, chartSongToSong, type TestConfig } from '@/lib/charts';
 import type { Song } from '@/lib/itunes';
 
 type Screen =
+  | { name: 'hub' }
   | { name: 'search' }
   | { name: 'loading'; song: Song; hideMetadata?: boolean; testConfig?: TestConfig; groupPlayers?: string[]; scores?: Record<string, number> }
   | { name: 'play'; song: Song; videoId: string; hideMetadata?: boolean; testConfig?: TestConfig; groupPlayers?: string[]; scores: Record<string, number> }
-  | { name: 'summary'; players: { name: string; score: number }[] };
+  | { name: 'summary'; players: { name: string; score: number }[] }
+  | { name: 'one-word' };
 
 function addPoint(scores: Record<string, number>, winner: string | undefined): Record<string, number> {
   if (!winner) return scores;
@@ -21,7 +25,7 @@ function addPoint(scores: Record<string, number>, winner: string | undefined): R
 }
 
 export default function Home() {
-  const [screen, setScreen] = useState<Screen>({ name: 'search' });
+  const [screen, setScreen] = useState<Screen>({ name: 'hub' });
 
   async function handleSelect(
     song: Song,
@@ -59,6 +63,18 @@ export default function Home() {
     } catch {
       setScreen({ name: 'search' });
     }
+  }
+
+  if (screen.name === 'hub') {
+    return (
+      <GameHubScreen
+        onSelectGame={(game) => setScreen(game === 'one-word' ? { name: 'one-word' } : { name: 'search' })}
+      />
+    );
+  }
+
+  if (screen.name === 'one-word') {
+    return <OneWordScreen onBackToHub={() => setScreen({ name: 'hub' })} />;
   }
 
   if (screen.name === 'loading') {
@@ -101,5 +117,5 @@ export default function Home() {
     );
   }
 
-  return <SearchScreen onSelect={handleSelect} />;
+  return <SearchScreen onSelect={handleSelect} onBackToHub={() => setScreen({ name: 'hub' })} />;
 }

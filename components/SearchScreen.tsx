@@ -7,6 +7,7 @@ import { findVideoId } from '@/lib/youtube';
 
 interface Props {
   onSelect: (song: Song, videoId?: string, hideMetadata?: boolean, testConfig?: TestConfig, groupPlayers?: string[]) => void;
+  onBackToHub: () => void;
 }
 
 const PREVIEW_SECONDS = 10;
@@ -19,7 +20,7 @@ const LANGUAGES: { id: 'hebrew' | 'foreign' | 'both'; label: string }[] = [
   { id: 'foreign', label: 'אנגלית' },
 ];
 
-export default function SearchScreen({ onSelect }: Props) {
+export default function SearchScreen({ onSelect, onBackToHub }: Props) {
   const [mode, setMode] = useState<'search' | 'test'>('search');
 
   // Search mode
@@ -338,6 +339,13 @@ export default function SearchScreen({ onSelect }: Props) {
           </button>
         </div>
       )}
+
+      {/* Back to hub */}
+      <div className="pb-4 flex justify-center">
+        <button onClick={onBackToHub} className="text-indigo-400 hover:text-indigo-300 text-sm transition-colors">
+          בחר משחק אחר
+        </button>
+      </div>
 
       {/* Group game modal */}
       {showGroupModal && (
