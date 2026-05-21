@@ -12,7 +12,6 @@ import GameSubScreen from '@/components/oneword/GameSubScreen';
 import TurnSummarySubScreen from '@/components/oneword/TurnSummarySubScreen';
 
 type SubScreen = 'join' | 'lobby' | 'game' | 'summary';
-type SyncVia = 'bc' | 'poll';
 
 interface Props {
   onBackToHub: () => void;
@@ -31,6 +30,7 @@ export default function OneWordScreen({ onBackToHub }: Props) {
   const [hints, setHints] = useState<Hint[]>([]);
   const [currentGuess, setCurrentGuess] = useState<Guess | null>(null);
   const [totalTurns, setTotalTurns] = useState(0);
+
   const [lastBc, setLastBc] = useState<string | null>(null);
   const [lastPoll, setLastPoll] = useState<string | null>(null);
   const [channelStatus, setChannelStatus] = useState<string>('');
@@ -43,11 +43,6 @@ export default function OneWordScreen({ onBackToHub }: Props) {
   roomIdRef.current = roomId;
   roomRef.current = room;
   isOrganizerRef.current = isOrganizer;
-
-  const sync = (via: SyncVia, event: string) => {
-    if (via === 'bc') setLastBc(event);
-    else setLastPoll(event);
-  };
 
   // Mark player inactive on unload
   useEffect(() => {
@@ -75,13 +70,14 @@ export default function OneWordScreen({ onBackToHub }: Props) {
     }
     load();
 
-    const channel = supabase
-      .channel(`room:${roomId}`, { config: { broadcast: { self: true } } })
+    // No colon in channel name (Phoenix treats "topic:subtopic" as special)
+    // No self:true — sender applies own state directly via handleBroadcast
+    const channel = supabase.channel('ow-' + roomId)
 
       .on('broadcast', { event: 'player_joined' }, async () => {
         const { data } = await supabase.from('ow_players').select('*').eq('room_id', roomIdRef.current);
         if (data) setPlayers(data as Player[]);
-        sync('bc', 'player_joined');
+        setLastBc('player_joined');
       })
 
       .on('broadcast', { event: 'game_started' }, (msg) => {
@@ -91,7 +87,7 @@ export default function OneWordScreen({ onBackToHub }: Props) {
           setHints([]);
           setCurrentGuess(null);
           setSubScreen('game');
-          sync('bc', 'game_started');
+          setLastBc('game_started');
         }
       })
 
@@ -99,7 +95,7 @@ export default function OneWordScreen({ onBackToHub }: Props) {
         const h = (msg.payload as { hint?: Hint }).hint;
         if (!h) return;
         setHints(prev => prev.some(x => x.id === h.id) ? prev : [...prev, h]);
-        sync('bc', 'hint_sent');
+        setLastBc('hint_sent');
       })
 
       .on('broadcast', { event: 'guess_made' }, (msg) => {
@@ -109,7 +105,7 @@ export default function OneWordScreen({ onBackToHub }: Props) {
         setTotalTurns(t => t + 1);
         if (updatedRoom) setRoom(updatedRoom);
         setSubScreen('summary');
-        sync('bc', 'guess_made');
+        setLastBc('guess_made');
       })
 
       .on('broadcast', { event: 'next_turn' }, (msg) => {
@@ -119,22 +115,14 @@ export default function OneWordScreen({ onBackToHub }: Props) {
           setHints([]);
           setCurrentGuess(null);
           setSubScreen('game');
-          sync('bc', 'next_turn');
+          setLastBc('next_turn');
         }
-      })
-
-      .on('presence', { event: 'sync' }, async () => {
-        const rid = roomIdRef.current;
-        if (!rid) return;
-        const { data } = await supabase.from('ow_players').select('*').eq('room_id', rid);
-        if (data) setPlayers(data as Player[]);
       })
 
       .on('presence', { event: 'leave' }, async ({ leftPresences }) => {
         const leftIds = (leftPresences as unknown as Array<{ player_id: string }>).map(p => p.player_id);
         const rid = roomIdRef.current;
         const currentRoom = roomRef.current;
-
         for (const id of leftIds) {
           await markInactive(id, rid);
           if (id === currentRoom?.organizer_id) {
@@ -148,11 +136,11 @@ export default function OneWordScreen({ onBackToHub }: Props) {
         }
       })
 
-      .subscribe(async (status) => {
-        setChannelStatus(status);
+      .subscribe((status, err) => {
+        setChannelStatus(err ? `${status}:${err.message}` : status);
         if (status === 'SUBSCRIBED') {
           channel.track({ player_id: playerId });
-          await channel.send({ type: 'broadcast', event: 'player_joined', payload: {} });
+          channel.send({ type: 'broadcast', event: 'player_joined', payload: {} });
         }
       });
 
@@ -162,6 +150,27 @@ export default function OneWordScreen({ onBackToHub }: Props) {
       supabase.removeChannel(channel);
     };
   }, [roomId, playerId]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Apply broadcast payload locally (for the sender, since self-echo is off)
+  // and send to other clients via the channel.
+  const handleBroadcast = useCallback((event: string, payload: Record<string, unknown>) => {
+    if (event === 'hint_sent') {
+      const h = (payload as { hint?: Hint }).hint;
+      if (h) setHints(prev => prev.some(x => x.id === h.id) ? prev : [...prev, h]);
+    } else if (event === 'guess_made') {
+      const { guess, room: updatedRoom } = payload as { guess?: Guess; room?: Room };
+      if (guess) {
+        setCurrentGuess(guess);
+        setTotalTurns(t => t + 1);
+        if (updatedRoom) setRoom(updatedRoom);
+        setSubScreen('summary');
+      }
+    } else if (event === 'next_turn') {
+      const r = (payload as { room?: Room }).room;
+      if (r) { setRoom(r); setHints([]); setCurrentGuess(null); }
+    }
+    channelRef.current?.send({ type: 'broadcast', event, payload });
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Polling fallback — refresh players + room status every 3s while in lobby
   useEffect(() => {
@@ -180,7 +189,7 @@ export default function OneWordScreen({ onBackToHub }: Props) {
           setSubScreen('game');
         }
       }
-      sync('poll', 'lobby');
+      setLastPoll('lobby');
     }, 3000);
     return () => clearInterval(interval);
   }, [subScreen, roomId]);
@@ -199,7 +208,7 @@ export default function OneWordScreen({ onBackToHub }: Props) {
         setCurrentGuess(null);
         setSubScreen('game');
       }
-      sync('poll', 'summary');
+      setLastPoll('summary');
     }, 3000);
     return () => clearInterval(interval);
   }, [subScreen, roomId]);
@@ -224,7 +233,7 @@ export default function OneWordScreen({ onBackToHub }: Props) {
         if (freshRoom) setRoom(freshRoom as Room);
         setSubScreen('summary');
       }
-      sync('poll', 'game');
+      setLastPoll('game');
     }, 2000);
     return () => clearInterval(interval);
   }, [subScreen, roomId, room?.current_turn, room?.guesser_order?.length]);
@@ -272,14 +281,15 @@ export default function OneWordScreen({ onBackToHub }: Props) {
 
   const showBack = subScreen === 'join' || subScreen === 'lobby';
 
-
   return (
     <div className="flex flex-col h-dvh bg-gray-950 text-white">
       <Header title="במילה אחת" onBack={showBack ? handleBack : undefined} />
 
       {roomId && (
         <div className="flex gap-2 justify-center py-1 flex-wrap">
-          <span className={`text-xs font-mono px-2 py-0.5 rounded-full ${channelStatus === 'SUBSCRIBED' ? 'bg-emerald-900 text-emerald-300' : 'bg-red-900 text-red-300'}`}>ws:{channelStatus || '…'}</span>
+          <span className={`text-xs font-mono px-2 py-0.5 rounded-full ${channelStatus === 'SUBSCRIBED' ? 'bg-emerald-900 text-emerald-300' : 'bg-red-900 text-red-300'}`}>
+            ws:{channelStatus || '…'}
+          </span>
           {lastBc && <span className="text-xs font-mono bg-emerald-800 text-emerald-200 px-2 py-0.5 rounded-full">bc:{lastBc}</span>}
           {lastPoll && <span className="text-xs font-mono bg-amber-900 text-amber-200 px-2 py-0.5 rounded-full">poll:{lastPoll}</span>}
         </div>
@@ -311,7 +321,7 @@ export default function OneWordScreen({ onBackToHub }: Props) {
           myPlayerId={playerId}
           players={players}
           hints={hints}
-          onBroadcast={(event, payload) => channelRef.current?.send({ type: 'broadcast', event, payload })}
+          onBroadcast={handleBroadcast}
         />
       )}
 
@@ -325,10 +335,9 @@ export default function OneWordScreen({ onBackToHub }: Props) {
           onNextTurn={() => setSubScreen('game')}
           onEndGame={() => setSubScreen('summary')}
           onBackToHub={onBackToHub}
-          onBroadcast={(event, payload) => channelRef.current?.send({ type: 'broadcast', event, payload })}
+          onBroadcast={handleBroadcast}
         />
       )}
-
     </div>
   );
 }
