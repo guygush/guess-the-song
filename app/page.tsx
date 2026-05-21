@@ -4,40 +4,58 @@ import { useState } from 'react';
 import SearchScreen from '@/components/SearchScreen';
 import LoadingScreen from '@/components/LoadingScreen';
 import PlayScreen from '@/components/PlayScreen';
+import SummaryScreen from '@/components/SummaryScreen';
 import { findVideoId } from '@/lib/youtube';
 import { loadChartSongs, pickRandomSong, chartSongToSong, type TestConfig } from '@/lib/charts';
 import type { Song } from '@/lib/itunes';
 
 type Screen =
   | { name: 'search' }
-  | { name: 'loading'; song: Song; hideMetadata?: boolean; testConfig?: TestConfig }
-  | { name: 'play'; song: Song; videoId: string; hideMetadata?: boolean; testConfig?: TestConfig };
+  | { name: 'loading'; song: Song; hideMetadata?: boolean; testConfig?: TestConfig; groupPlayers?: string[]; scores?: Record<string, number> }
+  | { name: 'play'; song: Song; videoId: string; hideMetadata?: boolean; testConfig?: TestConfig; groupPlayers?: string[]; scores: Record<string, number> }
+  | { name: 'summary'; players: { name: string; score: number }[] };
+
+function addPoint(scores: Record<string, number>, winner: string | undefined): Record<string, number> {
+  if (!winner) return scores;
+  return { ...scores, [winner]: (scores[winner] ?? 0) + 1 };
+}
 
 export default function Home() {
   const [screen, setScreen] = useState<Screen>({ name: 'search' });
 
-  async function handleSelect(song: Song, knownVideoId?: string, hideMetadata?: boolean, testConfig?: TestConfig) {
-    setScreen({ name: 'loading', song, hideMetadata, testConfig });
+  async function handleSelect(
+    song: Song,
+    knownVideoId?: string,
+    hideMetadata?: boolean,
+    testConfig?: TestConfig,
+    groupPlayers?: string[],
+  ) {
+    const scores: Record<string, number> = {};
+    setScreen({ name: 'loading', song, hideMetadata, testConfig, groupPlayers, scores });
     try {
       const videoId = knownVideoId ?? await findVideoId(song.trackName, song.artistName);
       if (!videoId) throw new Error('No YouTube result found');
-      setScreen({ name: 'play', song, videoId, hideMetadata, testConfig });
+      setScreen({ name: 'play', song, videoId, hideMetadata, testConfig, groupPlayers, scores });
     } catch (err) {
       console.error(err);
       setScreen({ name: 'search' });
     }
   }
 
-  async function handleTestNext(config: TestConfig) {
+  async function handleTestNext(
+    config: TestConfig,
+    groupPlayers?: string[],
+    scores?: Record<string, number>,
+  ) {
     try {
       const songs = await loadChartSongs();
       const picked = pickRandomSong(songs, config.language, config.decades, config.topOnly);
       if (!picked) { setScreen({ name: 'search' }); return; }
       const song = chartSongToSong(picked);
-      setScreen({ name: 'loading', song, hideMetadata: true, testConfig: config });
+      setScreen({ name: 'loading', song, hideMetadata: true, testConfig: config, groupPlayers, scores });
       const videoId = await findVideoId(picked.song, picked.performer);
       if (!videoId) { setScreen({ name: 'search' }); return; }
-      setScreen({ name: 'play', song, videoId, hideMetadata: true, testConfig: config });
+      setScreen({ name: 'play', song, videoId, hideMetadata: true, testConfig: config, groupPlayers, scores: scores ?? {} });
     } catch {
       setScreen({ name: 'search' });
     }
@@ -47,14 +65,38 @@ export default function Home() {
     return <LoadingScreen songName={screen.song.trackName} artist={screen.song.artistName} hideMetadata={screen.hideMetadata} />;
   }
 
+  if (screen.name === 'summary') {
+    return <SummaryScreen players={screen.players} onDone={() => setScreen({ name: 'search' })} />;
+  }
+
   if (screen.name === 'play') {
+    const { testConfig, groupPlayers, scores } = screen;
+
+    const onNextSong = (winner?: string) => {
+      if (!testConfig) { setScreen({ name: 'search' }); return; }
+      handleTestNext(testConfig, groupPlayers, addPoint(scores, winner));
+    };
+
+    const onFinish = testConfig ? (winner?: string) => {
+      const newScores = addPoint(scores, winner);
+      if (groupPlayers) {
+        setScreen({
+          name: 'summary',
+          players: groupPlayers.map(name => ({ name, score: newScores[name] ?? 0 })),
+        });
+      } else {
+        setScreen({ name: 'search' });
+      }
+    } : undefined;
+
     return (
       <PlayScreen
         song={screen.song}
         videoId={screen.videoId}
         hideMetadata={screen.hideMetadata}
-        onNextSong={screen.testConfig ? () => handleTestNext(screen.testConfig!) : () => setScreen({ name: 'search' })}
-        onFinish={screen.testConfig ? () => setScreen({ name: 'search' }) : undefined}
+        groupPlayers={groupPlayers}
+        onNextSong={onNextSong}
+        onFinish={onFinish}
       />
     );
   }

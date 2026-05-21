@@ -6,7 +6,7 @@ import { loadChartSongs, pickRandomSong, chartSongToSong, type TestConfig } from
 import { findVideoId } from '@/lib/youtube';
 
 interface Props {
-  onSelect: (song: Song, videoId?: string, hideMetadata?: boolean, testConfig?: TestConfig) => void;
+  onSelect: (song: Song, videoId?: string, hideMetadata?: boolean, testConfig?: TestConfig, groupPlayers?: string[]) => void;
 }
 
 const PREVIEW_SECONDS = 10;
@@ -35,6 +35,12 @@ export default function SearchScreen({ onSelect }: Props) {
   const [topOnly, setTopOnly] = useState(true);
   const [loadingRandom, setLoadingRandom] = useState(false);
   const [randomError, setRandomError] = useState(false);
+
+  // Group game modal
+  const [showGroupModal, setShowGroupModal] = useState(false);
+  const [playerInputs, setPlayerInputs] = useState<string[]>(Array(6).fill(''));
+  const [loadingGroup, setLoadingGroup] = useState(false);
+  const [groupError, setGroupError] = useState(false);
 
   const allSongsRef = useRef<Song[]>([]);
   const visibleCountRef = useRef(0);
@@ -117,6 +123,8 @@ export default function SearchScreen({ onSelect }: Props) {
     stopTimerRef.current = setTimeout(stopPreview, PREVIEW_SECONDS * 1000);
   };
 
+  const getTestConfig = (): TestConfig => ({ language: selectedLanguage, decades: selectedDecades, topOnly });
+
   const handleTestYourself = async () => {
     setLoadingRandom(true);
     setRandomError(false);
@@ -128,13 +136,40 @@ export default function SearchScreen({ onSelect }: Props) {
       const videoId = await findVideoId(picked.song, picked.performer);
       if (!videoId) { setRandomError(true); return; }
       stopPreview();
-      onSelect(song, videoId, true, { language: selectedLanguage, decades: selectedDecades, topOnly });
+      onSelect(song, videoId, true, getTestConfig());
     } catch {
       setRandomError(true);
     } finally {
       setLoadingRandom(false);
     }
   };
+
+  const handleStartGroupGame = async () => {
+    const players = playerInputs.map(s => s.trim()).filter(Boolean);
+    if (players.length < 2) return;
+    setLoadingGroup(true);
+    setGroupError(false);
+    try {
+      const songs = await loadChartSongs();
+      const picked = pickRandomSong(songs, selectedLanguage, selectedDecades, topOnly);
+      if (!picked) { setGroupError(true); return; }
+      const song = chartSongToSong(picked);
+      const videoId = await findVideoId(picked.song, picked.performer);
+      if (!videoId) { setGroupError(true); return; }
+      stopPreview();
+      onSelect(song, videoId, true, getTestConfig(), players);
+    } catch {
+      setGroupError(true);
+    } finally {
+      setLoadingGroup(false);
+    }
+  };
+
+  const updatePlayerInput = (index: number, value: string) =>
+    setPlayerInputs(prev => prev.map((v, i) => i === index ? value : v));
+
+  const filledPlayers = playerInputs.filter(s => s.trim());
+  const anyLoading = loadingRandom || loadingGroup;
 
   const pill = (active: boolean) =>
     `px-4 py-2 rounded-xl text-sm font-semibold transition-colors ${
@@ -286,13 +321,68 @@ export default function SearchScreen({ onSelect }: Props) {
 
           <button
             onClick={handleTestYourself}
-            disabled={loadingRandom}
-            className="w-full py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 font-semibold text-lg transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center"
+            disabled={anyLoading}
+            className="w-full py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 font-semibold text-lg transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center mb-3"
           >
             {loadingRandom
               ? <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
-              : 'בחר שיר בשבילי'}
+              : 'משחק אישי'}
           </button>
+
+          <button
+            onClick={() => { setShowGroupModal(true); setGroupError(false); }}
+            disabled={anyLoading}
+            className="w-full py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 font-semibold text-lg transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center"
+          >
+            משחק קבוצתי
+          </button>
+        </div>
+      )}
+
+      {/* Group game modal */}
+      {showGroupModal && (
+        <div
+          className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 px-4"
+          onClick={() => { if (!loadingGroup) setShowGroupModal(false); }}
+        >
+          <div className="bg-gray-900 rounded-2xl w-full max-w-sm p-5" onClick={e => e.stopPropagation()}>
+            <div className="flex items-center justify-between mb-5">
+              <h2 className="text-lg font-bold">הזן שמות שחקנים</h2>
+              <button
+                onClick={() => { if (!loadingGroup) setShowGroupModal(false); }}
+                className="text-gray-400 hover:text-white text-xl w-8 h-8 flex items-center justify-center transition-colors"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="flex flex-col gap-2.5 mb-5">
+              {playerInputs.map((name, i) => (
+                <input
+                  key={i}
+                  value={name}
+                  onChange={e => updatePlayerInput(i, e.target.value)}
+                  placeholder={`שחקן ${i + 1}`}
+                  disabled={loadingGroup}
+                  className="bg-gray-800 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-500 disabled:opacity-50"
+                />
+              ))}
+            </div>
+
+            {groupError && (
+              <p className="text-center text-red-400 text-sm mb-3">לא נמצאו שירים, נסה קריטריונים אחרים</p>
+            )}
+
+            <button
+              onClick={handleStartGroupGame}
+              disabled={filledPlayers.length < 2 || loadingGroup}
+              className="w-full py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 font-semibold text-lg transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center"
+            >
+              {loadingGroup
+                ? <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                : 'התחל'}
+            </button>
+          </div>
         </div>
       )}
     </div>

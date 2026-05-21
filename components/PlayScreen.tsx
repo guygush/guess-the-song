@@ -7,9 +7,10 @@ import type { Song } from '@/lib/itunes';
 interface Props {
   song: Song;
   videoId: string;
-  onNextSong: () => void;
-  onFinish?: () => void;
+  onNextSong: (winner?: string) => void;
+  onFinish?: (winner?: string) => void;
   hideMetadata?: boolean;
+  groupPlayers?: string[];
 }
 
 const INCREMENTS = [1, 0.5, 0.25];
@@ -26,7 +27,7 @@ function fmtReveal(sec: number) {
   return `${n} שניות`;
 }
 
-export default function PlayScreen({ song, videoId, onNextSong, onFinish, hideMetadata }: Props) {
+export default function PlayScreen({ song, videoId, onNextSong, onFinish, hideMetadata, groupPlayers }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const playerRef = useRef<YT.Player | null>(null);
   const stopTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -41,6 +42,8 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, hideMe
   const [revealDuration, setRevealDuration] = useState(0.5);
   const [duration, setDuration] = useState(DEFAULT_DURATION);
   const [revealed, setRevealed] = useState(false);
+  const [selectedWinner, setSelectedWinner] = useState<string | null>(null);
+  const [showWinnerWarning, setShowWinnerWarning] = useState(false);
 
   useEffect(() => {
     if (!hideMetadata || !('mediaSession' in navigator)) return;
@@ -160,11 +163,6 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, hideMe
     playFree(startOffset);
   };
 
-  const handleNextSong = () => {
-    handleStop();
-    onNextSong();
-  };
-
   const handleStartCommit = (val: number) => {
     const clamped = Math.max(0, Math.min(Math.floor(duration), val));
     setStartOffset(clamped);
@@ -174,6 +172,18 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, hideMe
   const handleStartInput = (raw: string) => {
     const n = parseInt(raw, 10);
     if (!isNaN(n)) setStartOffset(Math.max(0, Math.min(Math.floor(duration), n)));
+  };
+
+  const tryNext = () => {
+    if (groupPlayers && !selectedWinner) { setShowWinnerWarning(true); return; }
+    handleStop();
+    onNextSong(selectedWinner ?? undefined);
+  };
+
+  const tryFinish = () => {
+    if (groupPlayers && !selectedWinner) { setShowWinnerWarning(true); return; }
+    handleStop();
+    onFinish?.(selectedWinner ?? undefined);
   };
 
   return (
@@ -195,7 +205,7 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, hideMe
         </div>
       )}
 
-      <div className="flex-1 flex flex-col justify-center gap-3 px-4">
+      <div className={`flex-1 flex flex-col gap-3 px-4 overflow-y-auto ${revealed && groupPlayers ? 'pt-4' : 'justify-center'}`}>
 
         {/* מצב ניחוש */}
         {!revealed && (
@@ -304,7 +314,7 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, hideMe
         {/* מצב חשיפה */}
         {revealed && (
           <>
-            <div className="flex justify-center mb-4">
+            <div className="flex justify-center mb-2">
               <button
                 onClick={handlePlay}
                 disabled={!ready}
@@ -320,7 +330,7 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, hideMe
               </button>
             </div>
 
-            <div className="mb-8">
+            <div className="mb-4">
               <div dir="ltr">
                 <input
                   type="range"
@@ -342,9 +352,9 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, hideMe
               </div>
             </div>
 
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between mb-2">
               <button
-                onClick={() => { handleStop(); setRevealed(false); }}
+                onClick={() => { handleStop(); setRevealed(false); revealedRef.current = false; }}
                 className="flex items-center gap-1 text-gray-200 hover:text-white transition-colors text-sm"
               >
                 → חזור לניחוש
@@ -361,6 +371,31 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, hideMe
                 פתח ביוטיוב
               </a>
             </div>
+
+            {/* Group game: winner selection */}
+            {groupPlayers && (
+              <div className="mt-2 pb-2">
+                <p className="text-center text-gray-200 text-sm font-semibold mb-3">מי זיהה את השיר ראשון?</p>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  {groupPlayers.map(player => (
+                    <button
+                      key={player}
+                      onClick={() => { setSelectedWinner(player); setShowWinnerWarning(false); }}
+                      className={`px-5 py-2.5 rounded-xl font-semibold text-sm transition-colors ${
+                        selectedWinner === player
+                          ? 'bg-indigo-600 text-white'
+                          : 'bg-gray-700 hover:bg-gray-600 text-white'
+                      }`}
+                    >
+                      {player}
+                    </button>
+                  ))}
+                </div>
+                {showWinnerWarning && (
+                  <p className="text-center text-red-400 text-sm mt-3">בחר את השחקן שזיהה את השיר</p>
+                )}
+              </div>
+            )}
           </>
         )}
       </div>
@@ -379,14 +414,14 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, hideMe
         {revealed && (
           <>
             <button
-              onClick={handleNextSong}
+              onClick={tryNext}
               className="w-full py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 font-semibold text-lg transition-colors"
             >
               שיר הבא
             </button>
             {onFinish && (
               <button
-                onClick={() => { handleStop(); onFinish(); }}
+                onClick={tryFinish}
                 className="w-full py-3 rounded-2xl bg-gray-800 hover:bg-gray-700 active:bg-gray-600 font-semibold text-lg transition-colors mt-1"
               >
                 סיים
