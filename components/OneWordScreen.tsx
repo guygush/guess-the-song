@@ -94,7 +94,7 @@ export default function OneWordScreen({ onBackToHub }: Props) {
       })
       // Presence for dropout detection
       .on('presence', { event: 'leave' }, async ({ leftPresences }) => {
-        const leftIds = (leftPresences as Array<{ player_id: string }>).map(p => p.player_id);
+        const leftIds = (leftPresences as unknown as Array<{ player_id: string }>).map(p => p.player_id);
         for (const id of leftIds) {
           await markInactive(id, roomId);
           if (id === room?.organizer_id) {
