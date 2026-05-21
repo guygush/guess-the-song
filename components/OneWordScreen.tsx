@@ -311,6 +311,12 @@ export default function OneWordScreen({ onBackToHub }: Props) {
     <div className="flex flex-col h-dvh bg-gray-950 text-white">
       <Header title="במילה אחת" onBack={showBack ? handleBack : undefined} />
 
+      {lastSync && roomId && (
+        <div className={`flex justify-center py-1 text-xs font-mono ${syncColor}`}>
+          {lastSync.via}:{lastSync.event}
+        </div>
+      )}
+
       {subScreen === 'join' && (
         <JoinSubScreen playerId={playerId} onJoined={handleJoined} />
       )}
@@ -355,11 +361,6 @@ export default function OneWordScreen({ onBackToHub }: Props) {
         />
       )}
 
-      {lastSync && roomId && (
-        <div className={`fixed bottom-3 right-3 z-50 text-xs px-2.5 py-1 rounded-full font-mono opacity-75 pointer-events-none ${syncColor}`}>
-          {lastSync.via}:{lastSync.event}
-        </div>
-      )}
     </div>
   );
 }
