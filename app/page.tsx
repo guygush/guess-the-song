@@ -33,8 +33,9 @@ export default function Home() {
 
   // Push a history entry for every forward navigation so Android back can pop it.
   useEffect(() => {
-    if (screen.name === 'hub') return;
-    if (suppressPushRef.current) { suppressPushRef.current = false; return; }
+    const suppress = suppressPushRef.current;
+    suppressPushRef.current = false;
+    if (screen.name === 'hub' || suppress) return;
     window.history.pushState(null, '');
   }, [screen]);
 
