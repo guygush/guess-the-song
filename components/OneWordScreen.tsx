@@ -31,24 +31,26 @@ export default function OneWordScreen({ onBackToHub }: Props) {
   const [currentGuess, setCurrentGuess] = useState<Guess | null>(null);
   const [totalTurns, setTotalTurns] = useState(0);
 
+  // Keep refs so async callbacks always see current values without stale closures
   const roomIdRef = useRef(roomId);
-  roomIdRef.current = roomId;
+  const roomRef = useRef(room);
   const isOrganizerRef = useRef(isOrganizer);
+  roomIdRef.current = roomId;
+  roomRef.current = room;
   isOrganizerRef.current = isOrganizer;
 
   // Mark player inactive on unload
   useEffect(() => {
     if (!roomId) return;
     const handleUnload = () => {
-      const id = roomIdRef.current;
-      markInactive(playerId, id);
-      if (isOrganizerRef.current) endGame(id, 'מנהל המשחק עזב');
+      markInactive(playerId, roomIdRef.current);
+      if (isOrganizerRef.current) endGame(roomIdRef.current, 'מנהל המשחק עזב');
     };
     window.addEventListener('beforeunload', handleUnload);
     return () => window.removeEventListener('beforeunload', handleUnload);
   }, [roomId, playerId]);
 
-  // Subscribe to room, players, hints, guesses once we have a roomId
+  // Subscribe to all realtime changes once we have a roomId
   useEffect(() => {
     if (!roomId) return;
 
@@ -65,7 +67,8 @@ export default function OneWordScreen({ onBackToHub }: Props) {
 
     const channel = supabase
       .channel(`room:${roomId}`)
-      // Room changes
+
+      // Room changes — filter by PK (always safe)
       .on('postgres_changes', { event: '*', schema: 'public', table: 'ow_rooms', filter: `id=eq.${roomId}` }, payload => {
         const r = payload.new as Room;
         setRoom(r);
@@ -76,46 +79,58 @@ export default function OneWordScreen({ onBackToHub }: Props) {
         }
         if (r.status === 'ended') setSubScreen('summary');
       })
-      // Player changes
-      .on('postgres_changes', { event: '*', schema: 'public', table: 'ow_players', filter: `room_id=eq.${roomId}` }, async () => {
-        const { data } = await supabase.from('ow_players').select('*').eq('room_id', roomId);
+
+      // Player changes — no server-side filter; check room_id client-side
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'ow_players' }, async payload => {
+        const record = (payload.new ?? payload.old) as Player | undefined;
+        if (!record || record.room_id !== roomIdRef.current) return;
+        const { data } = await supabase.from('ow_players').select('*').eq('room_id', roomIdRef.current);
         if (data) setPlayers(data as Player[]);
       })
-      // Hints
-      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'ow_hints', filter: `room_id=eq.${roomId}` }, payload => {
-        setHints(prev => [...prev, payload.new as Hint]);
+
+      // Hints — no server-side filter; check room_id client-side
+      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'ow_hints' }, payload => {
+        const h = payload.new as Hint;
+        if (h.room_id !== roomIdRef.current) return;
+        setHints(prev => [...prev, h]);
       })
-      // Guesses
-      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'ow_guesses', filter: `room_id=eq.${roomId}` }, payload => {
+
+      // Guesses — no server-side filter; check room_id client-side
+      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'ow_guesses' }, payload => {
         const g = payload.new as Guess;
+        if (g.room_id !== roomIdRef.current) return;
         setCurrentGuess(g);
         setTotalTurns(t => t + 1);
         setSubScreen('summary');
       })
-      // Presence for dropout detection
+
+      // Presence — detect dropouts
       .on('presence', { event: 'leave' }, async ({ leftPresences }) => {
         const leftIds = (leftPresences as unknown as Array<{ player_id: string }>).map(p => p.player_id);
+        const rid = roomIdRef.current;
+        const currentRoom = roomRef.current;
+
         for (const id of leftIds) {
-          await markInactive(id, roomId);
-          if (id === room?.organizer_id) {
-            await endGame(roomId, 'מנהל המשחק עזב');
+          await markInactive(id, rid);
+          if (id === currentRoom?.organizer_id) {
+            await endGame(rid, 'מנהל המשחק עזב');
             return;
           }
         }
-        const { data } = await supabase.from('ow_players').select('*').eq('room_id', roomId).eq('is_active', true);
-        if (data && data.length < 3 && room?.status === 'playing') {
-          await endGame(roomId, 'המשחק הסתיים כי נשארו פחות מ-3 שחקנים');
+        const { data } = await supabase.from('ow_players').select('*').eq('room_id', rid).eq('is_active', true);
+        if (data && data.length < 3 && currentRoom?.status === 'playing') {
+          await endGame(rid, 'המשחק הסתיים כי נשארו פחות מ-3 שחקנים');
         }
       })
+
       .subscribe();
 
-    // Track own presence
     channel.track({ player_id: playerId });
 
     return () => { supabase.removeChannel(channel); };
   }, [roomId, playerId]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Load hints/guess when re-entering game or summary after reconnect
+  // Load turn-specific data when current_turn advances (e.g. after next turn)
   useEffect(() => {
     if (!roomId || !room) return;
     async function loadTurnData() {
@@ -143,9 +158,10 @@ export default function OneWordScreen({ onBackToHub }: Props) {
     } else if (subScreen === 'lobby') {
       markInactive(playerId, roomId);
       setRoomId('');
+      setPlayers([]);
+      setRoom(null);
       setSubScreen('join');
     }
-    // no back from game/summary — use End Game button
   }, [subScreen, onBackToHub, playerId, roomId]);
 
   const showBack = subScreen === 'join' || subScreen === 'lobby';
