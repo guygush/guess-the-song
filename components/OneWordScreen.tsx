@@ -12,6 +12,7 @@ import GameSubScreen from '@/components/oneword/GameSubScreen';
 import TurnSummarySubScreen from '@/components/oneword/TurnSummarySubScreen';
 
 type SubScreen = 'join' | 'lobby' | 'game' | 'summary';
+type SyncVia = 'bc' | 'poll' | 'pg';
 
 interface Props {
   onBackToHub: () => void;
@@ -30,6 +31,7 @@ export default function OneWordScreen({ onBackToHub }: Props) {
   const [hints, setHints] = useState<Hint[]>([]);
   const [currentGuess, setCurrentGuess] = useState<Guess | null>(null);
   const [totalTurns, setTotalTurns] = useState(0);
+  const [lastSync, setLastSync] = useState<{ via: SyncVia; event: string } | null>(null);
 
   // Keep refs so async callbacks always see current values without stale closures
   const roomIdRef = useRef(roomId);
@@ -39,6 +41,8 @@ export default function OneWordScreen({ onBackToHub }: Props) {
   roomIdRef.current = roomId;
   roomRef.current = room;
   isOrganizerRef.current = isOrganizer;
+
+  const sync = (via: SyncVia, event: string) => setLastSync({ via, event });
 
   // Mark player inactive on unload
   useEffect(() => {
@@ -69,13 +73,12 @@ export default function OneWordScreen({ onBackToHub }: Props) {
     const channel = supabase
       .channel(`room:${roomId}`, { config: { broadcast: { self: true } } })
 
-      // Broadcast — a player connected to the channel; re-fetch player list
       .on('broadcast', { event: 'player_joined' }, async () => {
         const { data } = await supabase.from('ow_players').select('*').eq('room_id', roomIdRef.current);
         if (data) setPlayers(data as Player[]);
+        sync('bc', 'player_joined');
       })
 
-      // Broadcast — organizer started the game; room arrives in payload, no DB fetch needed
       .on('broadcast', { event: 'game_started' }, (msg) => {
         const r = (msg.payload as { room?: Room }).room;
         if (r) {
@@ -83,17 +86,17 @@ export default function OneWordScreen({ onBackToHub }: Props) {
           setHints([]);
           setCurrentGuess(null);
           setSubScreen('game');
+          sync('bc', 'game_started');
         }
       })
 
-      // Broadcast — a hint was sent; hint arrives in payload, append directly (no DB fetch)
       .on('broadcast', { event: 'hint_sent' }, (msg) => {
         const h = (msg.payload as { hint?: Hint }).hint;
         if (!h) return;
         setHints(prev => prev.some(x => x.id === h.id) ? prev : [...prev, h]);
+        sync('bc', 'hint_sent');
       })
 
-      // Broadcast — guess was made; guess + updated room arrive in payload, no DB fetch needed
       .on('broadcast', { event: 'guess_made' }, (msg) => {
         const { guess, room: updatedRoom } = msg.payload as { guess?: Guess; room?: Room };
         if (!guess) return;
@@ -101,9 +104,9 @@ export default function OneWordScreen({ onBackToHub }: Props) {
         setTotalTurns(t => t + 1);
         if (updatedRoom) setRoom(updatedRoom);
         setSubScreen('summary');
+        sync('bc', 'guess_made');
       })
 
-      // Broadcast — organizer started next turn; room arrives in payload, no DB fetch needed
       .on('broadcast', { event: 'next_turn' }, (msg) => {
         const r = (msg.payload as { room?: Room }).room;
         if (r) {
@@ -111,10 +114,10 @@ export default function OneWordScreen({ onBackToHub }: Props) {
           setHints([]);
           setCurrentGuess(null);
           setSubScreen('game');
+          sync('bc', 'next_turn');
         }
       })
 
-      // Room changes — filter by PK (always safe)
       .on('postgres_changes', { event: '*', schema: 'public', table: 'ow_rooms', filter: `id=eq.${roomId}` }, payload => {
         const r = payload.new as Room;
         setRoom(r);
@@ -124,33 +127,33 @@ export default function OneWordScreen({ onBackToHub }: Props) {
           setSubScreen('game');
         }
         if (r.status === 'ended') setSubScreen('summary');
+        sync('pg', 'rooms');
       })
 
-      // Player changes — no server-side filter; check room_id client-side
       .on('postgres_changes', { event: '*', schema: 'public', table: 'ow_players' }, async payload => {
         const record = (payload.new ?? payload.old) as Player | undefined;
         if (!record || record.room_id !== roomIdRef.current) return;
         const { data } = await supabase.from('ow_players').select('*').eq('room_id', roomIdRef.current);
         if (data) setPlayers(data as Player[]);
+        sync('pg', 'players');
       })
 
-      // Hints — no server-side filter; check room_id client-side; dedup by id (broadcast may have delivered first)
       .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'ow_hints' }, payload => {
         const h = payload.new as Hint;
         if (h.room_id !== roomIdRef.current) return;
         setHints(prev => prev.some(x => x.id === h.id) ? prev : [...prev, h]);
+        sync('pg', 'hints');
       })
 
-      // Guesses — no server-side filter; check room_id client-side
       .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'ow_guesses' }, payload => {
         const g = payload.new as Guess;
         if (g.room_id !== roomIdRef.current) return;
         setCurrentGuess(g);
         setTotalTurns(t => t + 1);
         setSubScreen('summary');
+        sync('pg', 'guesses');
       })
 
-      // Presence sync — re-fetch players whenever anyone joins or leaves the channel
       .on('presence', { event: 'sync' }, async () => {
         const rid = roomIdRef.current;
         if (!rid) return;
@@ -158,7 +161,6 @@ export default function OneWordScreen({ onBackToHub }: Props) {
         if (data) setPlayers(data as Player[]);
       })
 
-      // Presence leave — detect dropouts and end game if needed
       .on('presence', { event: 'leave' }, async ({ leftPresences }) => {
         const leftIds = (leftPresences as unknown as Array<{ player_id: string }>).map(p => p.player_id);
         const rid = roomIdRef.current;
@@ -208,6 +210,7 @@ export default function OneWordScreen({ onBackToHub }: Props) {
           setSubScreen('game');
         }
       }
+      sync('poll', 'lobby');
     }, 3000);
     return () => clearInterval(interval);
   }, [subScreen, roomId]);
@@ -226,6 +229,7 @@ export default function OneWordScreen({ onBackToHub }: Props) {
         setCurrentGuess(null);
         setSubScreen('game');
       }
+      sync('poll', 'summary');
     }, 3000);
     return () => clearInterval(interval);
   }, [subScreen, roomId]);
@@ -250,6 +254,7 @@ export default function OneWordScreen({ onBackToHub }: Props) {
         if (freshRoom) setRoom(freshRoom as Room);
         setSubScreen('summary');
       }
+      sync('poll', 'game');
     }, 2000);
     return () => clearInterval(interval);
   }, [subScreen, roomId, room?.current_turn, room?.guesser_order?.length]);
@@ -297,6 +302,11 @@ export default function OneWordScreen({ onBackToHub }: Props) {
 
   const showBack = subScreen === 'join' || subScreen === 'lobby';
 
+  const syncColor =
+    lastSync?.via === 'bc' ? 'bg-emerald-800 text-emerald-200' :
+    lastSync?.via === 'pg' ? 'bg-sky-800 text-sky-200' :
+    'bg-amber-900 text-amber-200';
+
   return (
     <div className="flex flex-col h-dvh bg-gray-950 text-white">
       <Header title="במילה אחת" onBack={showBack ? handleBack : undefined} />
@@ -343,6 +353,12 @@ export default function OneWordScreen({ onBackToHub }: Props) {
           onBackToHub={onBackToHub}
           onBroadcast={(event, payload) => channelRef.current?.send({ type: 'broadcast', event, payload })}
         />
+      )}
+
+      {lastSync && roomId && (
+        <div className={`fixed bottom-3 right-3 z-50 text-xs px-2.5 py-1 rounded-full font-mono opacity-75 pointer-events-none ${syncColor}`}>
+          {lastSync.via}:{lastSync.event}
+        </div>
       )}
     </div>
   );
