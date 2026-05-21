@@ -12,7 +12,7 @@ import GameSubScreen from '@/components/oneword/GameSubScreen';
 import TurnSummarySubScreen from '@/components/oneword/TurnSummarySubScreen';
 
 type SubScreen = 'join' | 'lobby' | 'game' | 'summary';
-type SyncVia = 'bc' | 'poll' | 'pg';
+type SyncVia = 'bc' | 'poll';
 
 interface Props {
   onBackToHub: () => void;
@@ -32,7 +32,6 @@ export default function OneWordScreen({ onBackToHub }: Props) {
   const [currentGuess, setCurrentGuess] = useState<Guess | null>(null);
   const [totalTurns, setTotalTurns] = useState(0);
   const [lastBc, setLastBc] = useState<string | null>(null);
-  const [lastPg, setLastPg] = useState<string | null>(null);
   const [lastPoll, setLastPoll] = useState<string | null>(null);
   const [channelStatus, setChannelStatus] = useState<string>('');
 
@@ -47,7 +46,6 @@ export default function OneWordScreen({ onBackToHub }: Props) {
 
   const sync = (via: SyncVia, event: string) => {
     if (via === 'bc') setLastBc(event);
-    else if (via === 'pg') setLastPg(event);
     else setLastPoll(event);
   };
 
@@ -123,42 +121,6 @@ export default function OneWordScreen({ onBackToHub }: Props) {
           setSubScreen('game');
           sync('bc', 'next_turn');
         }
-      })
-
-      .on('postgres_changes', { event: '*', schema: 'public', table: 'ow_rooms', filter: `id=eq.${roomId}` }, payload => {
-        const r = payload.new as Room;
-        setRoom(r);
-        if (r.status === 'playing') {
-          setHints([]);
-          setCurrentGuess(null);
-          setSubScreen('game');
-        }
-        if (r.status === 'ended') setSubScreen('summary');
-        sync('pg', 'rooms');
-      })
-
-      .on('postgres_changes', { event: '*', schema: 'public', table: 'ow_players' }, async payload => {
-        const record = (payload.new ?? payload.old) as Player | undefined;
-        if (!record || record.room_id !== roomIdRef.current) return;
-        const { data } = await supabase.from('ow_players').select('*').eq('room_id', roomIdRef.current);
-        if (data) setPlayers(data as Player[]);
-        sync('pg', 'players');
-      })
-
-      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'ow_hints' }, payload => {
-        const h = payload.new as Hint;
-        if (h.room_id !== roomIdRef.current) return;
-        setHints(prev => prev.some(x => x.id === h.id) ? prev : [...prev, h]);
-        sync('pg', 'hints');
-      })
-
-      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'ow_guesses' }, payload => {
-        const g = payload.new as Guess;
-        if (g.room_id !== roomIdRef.current) return;
-        setCurrentGuess(g);
-        setTotalTurns(t => t + 1);
-        setSubScreen('summary');
-        sync('pg', 'guesses');
       })
 
       .on('presence', { event: 'sync' }, async () => {
@@ -319,7 +281,6 @@ export default function OneWordScreen({ onBackToHub }: Props) {
         <div className="flex gap-2 justify-center py-1 flex-wrap">
           <span className={`text-xs font-mono px-2 py-0.5 rounded-full ${channelStatus === 'SUBSCRIBED' ? 'bg-emerald-900 text-emerald-300' : 'bg-red-900 text-red-300'}`}>ws:{channelStatus || '…'}</span>
           {lastBc && <span className="text-xs font-mono bg-emerald-800 text-emerald-200 px-2 py-0.5 rounded-full">bc:{lastBc}</span>}
-          {lastPg && <span className="text-xs font-mono bg-sky-800 text-sky-200 px-2 py-0.5 rounded-full">pg:{lastPg}</span>}
           {lastPoll && <span className="text-xs font-mono bg-amber-900 text-amber-200 px-2 py-0.5 rounded-full">poll:{lastPoll}</span>}
         </div>
       )}
