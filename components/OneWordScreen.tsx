@@ -67,7 +67,7 @@ export default function OneWordScreen({ onBackToHub }: Props) {
     load();
 
     const channel = supabase
-      .channel(`room:${roomId}`)
+      .channel(`room:${roomId}`, { config: { broadcast: { self: true } } })
 
       // Broadcast — a player connected to the channel; re-fetch player list
       .on('broadcast', { event: 'player_joined' }, async () => {
@@ -206,6 +206,26 @@ export default function OneWordScreen({ onBackToHub }: Props) {
     }, 3000);
     return () => clearInterval(interval);
   }, [subScreen, roomId]);
+
+  // Polling fallback — refresh hints and check for guess every 2s while in game
+  useEffect(() => {
+    if (subScreen !== 'game' || !roomId || !room?.guesser_order?.length) return;
+    const turnNumber = room.current_turn;
+    const interval = setInterval(async () => {
+      const [{ data: hintData }, { data: guessData }] = await Promise.all([
+        supabase.from('ow_hints').select('*').eq('room_id', roomId).eq('turn_number', turnNumber),
+        supabase.from('ow_guesses').select('*').eq('room_id', roomId).eq('turn_number', turnNumber).maybeSingle(),
+      ]);
+      if (hintData) setHints(hintData as Hint[]);
+      if (guessData) {
+        setCurrentGuess(guessData as Guess);
+        supabase.from('ow_guesses').select('id').eq('room_id', roomId)
+          .then(({ data: all }) => { if (all) setTotalTurns(all.length); });
+        setSubScreen('summary');
+      }
+    }, 2000);
+    return () => clearInterval(interval);
+  }, [subScreen, roomId, room?.current_turn, room?.guesser_order?.length]);
 
   // When entering the game screen, always fetch fresh room data (guesser_order, current_word)
   useEffect(() => {
