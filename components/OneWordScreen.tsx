@@ -104,7 +104,15 @@ export default function OneWordScreen({ onBackToHub }: Props) {
         setSubScreen('summary');
       })
 
-      // Presence — detect dropouts
+      // Presence sync — re-fetch players whenever anyone joins or leaves the channel
+      .on('presence', { event: 'sync' }, async () => {
+        const rid = roomIdRef.current;
+        if (!rid) return;
+        const { data } = await supabase.from('ow_players').select('*').eq('room_id', rid);
+        if (data) setPlayers(data as Player[]);
+      })
+
+      // Presence leave — detect dropouts and end game if needed
       .on('presence', { event: 'leave' }, async ({ leftPresences }) => {
         const leftIds = (leftPresences as unknown as Array<{ player_id: string }>).map(p => p.player_id);
         const rid = roomIdRef.current;
