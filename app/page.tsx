@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import GameHubScreen from '@/components/GameHubScreen';
 import SearchScreen from '@/components/SearchScreen';
 import LoadingScreen from '@/components/LoadingScreen';
@@ -26,6 +26,32 @@ function addPoint(scores: Record<string, number>, winner: string | undefined): R
 
 export default function Home() {
   const [screen, setScreen] = useState<Screen>({ name: 'hub' });
+  const screenRef = useRef(screen);
+  const suppressPushRef = useRef(false);
+
+  screenRef.current = screen;
+
+  // Push a history entry for every forward navigation so Android back can pop it.
+  useEffect(() => {
+    if (screen.name === 'hub') return;
+    if (suppressPushRef.current) { suppressPushRef.current = false; return; }
+    window.history.pushState(null, '');
+  }, [screen]);
+
+  // Handle Android / browser hardware back button.
+  useEffect(() => {
+    const onPopState = () => {
+      suppressPushRef.current = true;
+      const s = screenRef.current;
+      if (s.name === 'search' || s.name === 'one-word' || s.name === 'summary') {
+        setScreen({ name: 'hub' });
+      } else if (s.name === 'play' || s.name === 'loading') {
+        setScreen({ name: 'search' });
+      }
+    };
+    window.addEventListener('popstate', onPopState);
+    return () => window.removeEventListener('popstate', onPopState);
+  }, []);
 
   async function handleSelect(
     song: Song,
