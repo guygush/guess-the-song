@@ -13,15 +13,17 @@ interface Props {
   onNextTurn: () => void;
   onEndGame: () => void;
   onBackToHub: () => void;
+  onBroadcast: (event: string) => void;
 }
 
-export default function TurnSummarySubScreen({ room, isOrganizer, players, guess, totalTurns, onNextTurn, onEndGame, onBackToHub }: Props) {
+export default function TurnSummarySubScreen({ room, isOrganizer, players, guess, totalTurns, onNextTurn, onEndGame, onBackToHub, onBroadcast }: Props) {
   const [loading, setLoading] = useState<'next' | 'end' | null>(null);
 
   async function handleNext() {
     setLoading('next');
     try {
       await nextTurn(room, players);
+      onBroadcast('next_turn');
       onNextTurn();
     } finally {
       setLoading(null);
@@ -47,7 +49,7 @@ export default function TurnSummarySubScreen({ room, isOrganizer, players, guess
         <div className="bg-gray-900 rounded-2xl p-6 w-full text-center">
           <p className="text-gray-400 text-sm mb-1">ניקוד סופי</p>
           <p className="text-5xl font-bold text-indigo-400">{room.total_score}</p>
-          <p className="text-gray-400 text-sm mt-1">מתוך {totalTurns} תורות</p>
+          <p className="text-gray-400 text-sm mt-1">מתוך {totalTurns} תורים</p>
         </div>
         {room.end_reason && (
           <p className="text-gray-400 text-sm text-center">{room.end_reason}</p>
@@ -74,7 +76,7 @@ export default function TurnSummarySubScreen({ room, isOrganizer, players, guess
       <div className="bg-gray-900 rounded-2xl p-4 text-center">
         <p className="text-gray-400 text-sm">ניקוד</p>
         <p className="text-4xl font-bold text-indigo-400">{room.total_score}</p>
-        <p className="text-gray-500 text-sm">מתוך {totalTurns} תורות</p>
+        <p className="text-gray-500 text-sm">מתוך {totalTurns} תורים</p>
       </div>
 
       <div className="mt-auto pb-4 flex flex-col gap-3">

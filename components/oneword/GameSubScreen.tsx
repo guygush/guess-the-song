@@ -137,7 +137,13 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, onBroa
         </div>
       ) : null}
 
-      {hints.length > 0 && (
+      {hints.length > 0 && !myHint && (
+        <p className="text-center text-gray-400 text-sm">
+          {hints.length} מתוך {activeHinters.length} רמזים נשלחו
+        </p>
+      )}
+
+      {myHint && (
         <div>
           <p className="text-gray-400 text-sm mb-2">
             רמזים שנשלחו ({hints.length}/{activeHinters.length})
