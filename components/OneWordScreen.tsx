@@ -75,47 +75,39 @@ export default function OneWordScreen({ onBackToHub }: Props) {
         if (data) setPlayers(data as Player[]);
       })
 
-      // Broadcast — organizer started the game; fetch fresh room state and switch screen
-      .on('broadcast', { event: 'game_started' }, async () => {
-        const { data } = await supabase.from('ow_rooms').select('*').eq('id', roomIdRef.current).single();
-        if (data) {
-          setRoom(data as Room);
+      // Broadcast — organizer started the game; room arrives in payload, no DB fetch needed
+      .on('broadcast', { event: 'game_started' }, (msg) => {
+        const r = (msg.payload as { room?: Room }).room;
+        if (r) {
+          setRoom(r);
           setHints([]);
           setCurrentGuess(null);
           setSubScreen('game');
         }
       })
 
-      // Broadcast — a hint was sent; re-fetch hints for current turn
-      .on('broadcast', { event: 'hint_sent' }, async () => {
-        const { data } = await supabase.from('ow_hints').select('*')
-          .eq('room_id', roomIdRef.current)
-          .eq('turn_number', roomRef.current?.current_turn ?? 0);
-        if (data) setHints(data as Hint[]);
+      // Broadcast — a hint was sent; hint arrives in payload, append directly (no DB fetch)
+      .on('broadcast', { event: 'hint_sent' }, (msg) => {
+        const h = (msg.payload as { hint?: Hint }).hint;
+        if (!h) return;
+        setHints(prev => prev.some(x => x.id === h.id) ? prev : [...prev, h]);
       })
 
-      // Broadcast — guess was made; fetch guess + fresh room (for updated score) and switch to summary
-      .on('broadcast', { event: 'guess_made' }, async () => {
-        const rid = roomIdRef.current;
-        const turn = roomRef.current?.current_turn ?? 0;
-        const [{ data: guessData }, { data: allGuesses }, { data: freshRoom }] = await Promise.all([
-          supabase.from('ow_guesses').select('*').eq('room_id', rid).eq('turn_number', turn).maybeSingle(),
-          supabase.from('ow_guesses').select('id').eq('room_id', rid),
-          supabase.from('ow_rooms').select('*').eq('id', rid).single(),
-        ]);
-        if (guessData) {
-          setCurrentGuess(guessData as Guess);
-          setTotalTurns(allGuesses?.length ?? 0);
-          if (freshRoom) setRoom(freshRoom as Room);
-          setSubScreen('summary');
-        }
+      // Broadcast — guess was made; guess + updated room arrive in payload, no DB fetch needed
+      .on('broadcast', { event: 'guess_made' }, (msg) => {
+        const { guess, room: updatedRoom } = msg.payload as { guess?: Guess; room?: Room };
+        if (!guess) return;
+        setCurrentGuess(guess);
+        setTotalTurns(t => t + 1);
+        if (updatedRoom) setRoom(updatedRoom);
+        setSubScreen('summary');
       })
 
-      // Broadcast — organizer started next turn; fetch fresh room and switch to game
-      .on('broadcast', { event: 'next_turn' }, async () => {
-        const { data } = await supabase.from('ow_rooms').select('*').eq('id', roomIdRef.current).single();
-        if (data) {
-          setRoom(data as Room);
+      // Broadcast — organizer started next turn; room arrives in payload, no DB fetch needed
+      .on('broadcast', { event: 'next_turn' }, (msg) => {
+        const r = (msg.payload as { room?: Room }).room;
+        if (r) {
+          setRoom(r);
           setHints([]);
           setCurrentGuess(null);
           setSubScreen('game');
@@ -142,11 +134,11 @@ export default function OneWordScreen({ onBackToHub }: Props) {
         if (data) setPlayers(data as Player[]);
       })
 
-      // Hints — no server-side filter; check room_id client-side
+      // Hints — no server-side filter; check room_id client-side; dedup by id (broadcast may have delivered first)
       .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'ow_hints' }, payload => {
         const h = payload.new as Hint;
         if (h.room_id !== roomIdRef.current) return;
-        setHints(prev => [...prev, h]);
+        setHints(prev => prev.some(x => x.id === h.id) ? prev : [...prev, h]);
       })
 
       // Guesses — no server-side filter; check room_id client-side
@@ -320,9 +312,11 @@ export default function OneWordScreen({ onBackToHub }: Props) {
           players={players}
           onStart={async () => {
             const { data } = await supabase.from('ow_rooms').select('*').eq('id', roomId).single();
-            if (data) setRoom(data as Room);
-            channelRef.current?.send({ type: 'broadcast', event: 'game_started', payload: {} });
-            setSubScreen('game');
+            if (data) {
+              setRoom(data as Room);
+              channelRef.current?.send({ type: 'broadcast', event: 'game_started', payload: { room: data } });
+              setSubScreen('game');
+            }
           }}
         />
       )}
@@ -333,7 +327,7 @@ export default function OneWordScreen({ onBackToHub }: Props) {
           myPlayerId={playerId}
           players={players}
           hints={hints}
-          onBroadcast={(event) => channelRef.current?.send({ type: 'broadcast', event, payload: {} })}
+          onBroadcast={(event, payload) => channelRef.current?.send({ type: 'broadcast', event, payload })}
         />
       )}
 
@@ -347,7 +341,7 @@ export default function OneWordScreen({ onBackToHub }: Props) {
           onNextTurn={() => setSubScreen('game')}
           onEndGame={() => setSubScreen('summary')}
           onBackToHub={onBackToHub}
-          onBroadcast={(event) => channelRef.current?.send({ type: 'broadcast', event, payload: {} })}
+          onBroadcast={(event, payload) => channelRef.current?.send({ type: 'broadcast', event, payload })}
         />
       )}
     </div>

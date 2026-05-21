@@ -95,24 +95,30 @@ export async function startGame(roomId: string): Promise<void> {
   }).eq('id', roomId);
 }
 
-export async function sendHint(roomId: string, turnNumber: number, playerId: string, word: string): Promise<void> {
-  await supabase.from('ow_hints').insert({ room_id: roomId, turn_number: turnNumber, player_id: playerId, word });
+export async function sendHint(roomId: string, turnNumber: number, playerId: string, word: string): Promise<Hint> {
+  const { data, error } = await supabase.from('ow_hints')
+    .insert({ room_id: roomId, turn_number: turnNumber, player_id: playerId, word })
+    .select()
+    .single();
+  if (error) throw error;
+  return data as Hint;
 }
 
-export async function sendGuess(room: Room, guessText: string): Promise<void> {
+export async function sendGuess(room: Room, guessText: string): Promise<{ guess: Guess; updatedRoom: Room }> {
   const isCorrect = guessText.trim() === room.current_word.trim();
-  await supabase.from('ow_guesses').insert({
-    room_id: room.id,
-    turn_number: room.current_turn,
-    guess: guessText.trim(),
-    is_correct: isCorrect,
-  });
+  const { data, error } = await supabase.from('ow_guesses')
+    .insert({ room_id: room.id, turn_number: room.current_turn, guess: guessText.trim(), is_correct: isCorrect })
+    .select()
+    .single();
+  if (error) throw error;
+  const updatedRoom: Room = { ...room, total_score: isCorrect ? room.total_score + 1 : room.total_score };
   if (isCorrect) {
-    await supabase.from('ow_rooms').update({ total_score: room.total_score + 1 }).eq('id', room.id);
+    await supabase.from('ow_rooms').update({ total_score: updatedRoom.total_score }).eq('id', room.id);
   }
+  return { guess: data as Guess, updatedRoom };
 }
 
-export async function nextTurn(room: Room, activePlayers: Player[]): Promise<void> {
+export async function nextTurn(room: Room, activePlayers: Player[]): Promise<Room> {
   const activeIds = activePlayers.filter(p => p.is_active).map(p => p.id);
   // advance guesser index cyclically, skipping inactive
   let nextIdx = (room.current_turn + 1) % room.guesser_order.length;
@@ -120,11 +126,9 @@ export async function nextTurn(room: Room, activePlayers: Player[]): Promise<voi
     if (activeIds.includes(room.guesser_order[nextIdx])) break;
     nextIdx = (nextIdx + 1) % room.guesser_order.length;
   }
-
-  await supabase.from('ow_rooms').update({
-    current_turn: nextIdx,
-    current_word: pickWord(),
-  }).eq('id', room.id);
+  const newWord = pickWord();
+  await supabase.from('ow_rooms').update({ current_turn: nextIdx, current_word: newWord }).eq('id', room.id);
+  return { ...room, current_turn: nextIdx, current_word: newWord };
 }
 
 export async function endGame(roomId: string, reason?: string): Promise<void> {

@@ -13,7 +13,7 @@ interface Props {
   onNextTurn: () => void;
   onEndGame: () => void;
   onBackToHub: () => void;
-  onBroadcast: (event: string) => void;
+  onBroadcast: (event: string, payload: Record<string, unknown>) => void;
 }
 
 export default function TurnSummarySubScreen({ room, isOrganizer, players, guess, totalTurns, onNextTurn, onEndGame, onBackToHub, onBroadcast }: Props) {
@@ -22,8 +22,8 @@ export default function TurnSummarySubScreen({ room, isOrganizer, players, guess
   async function handleNext() {
     setLoading('next');
     try {
-      await nextTurn(room, players);
-      onBroadcast('next_turn');
+      const updatedRoom = await nextTurn(room, players);
+      onBroadcast('next_turn', { room: updatedRoom });
       onNextTurn();
     } finally {
       setLoading(null);
