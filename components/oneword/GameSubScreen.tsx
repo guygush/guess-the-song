@@ -238,7 +238,10 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
           <p className="text-center text-gray-400 text-sm">ממתין לאישור המנהל...</p>
         )}
         {showHints && hintsApproved && (
-          <p className="text-center text-emerald-400 text-sm">רמזים אושרו ✓</p>
+          <div className="flex flex-col items-center gap-3 py-4">
+            <div className="w-8 h-8 border-2 border-indigo-400 border-t-transparent rounded-full animate-spin" />
+            <p className="text-gray-400">ממתין לניחוש של {guesser?.name}...</p>
+          </div>
         )}
       </div>
 
