@@ -48,7 +48,7 @@ export default function JoinSubScreen({ playerId, onJoined }: Props) {
 
   return (
     <div className="flex-1 overflow-y-auto overflow-x-hidden min-h-0 flex flex-col justify-center px-6 pb-safe gap-6">
-      <div className="mb-6">
+      <div className="mb-12">
         <p className="text-sm text-gray-400 mb-2">השם שלך</p>
         <input
           value={name}
