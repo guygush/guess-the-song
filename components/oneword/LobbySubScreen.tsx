@@ -27,27 +27,29 @@ export default function LobbySubScreen({ roomId, isOrganizer, players, onStart }
   }
 
   return (
-    <div className="flex-1 flex flex-col px-6 pt-6 gap-6">
-      <div className="bg-gray-900 rounded-2xl p-5 text-center">
-        <p className="text-gray-400 text-sm mb-1">קוד חדר</p>
-        <p className="text-4xl font-bold tracking-widest text-indigo-400">{roomId}</p>
-        <p className="text-gray-500 text-xs mt-2">שתף עם החברים</p>
-      </div>
+    <div className="flex-1 flex flex-col">
+      <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden px-6 pt-6 flex flex-col gap-6">
+        <div className="bg-gray-900 rounded-2xl p-5 text-center">
+          <p className="text-gray-400 text-sm mb-1">קוד חדר</p>
+          <p className="text-4xl font-bold tracking-widest text-indigo-400">{roomId}</p>
+          <p className="text-gray-500 text-xs mt-2">שתף עם החברים</p>
+        </div>
 
-      <div>
-        <p className="text-sm text-gray-400 mb-3">משתתפים ({activePlayers.length})</p>
-        <div className="flex flex-col gap-2">
-          {activePlayers.map(p => (
-            <div key={p.id} className="flex items-center gap-3 bg-gray-800 rounded-xl px-4 py-3">
-              <div className="w-2 h-2 rounded-full bg-emerald-400" />
-              <span className="font-semibold">{p.name}</span>
-              {p.is_organizer && <span className="text-xs text-gray-400 mr-auto">מנהל המשחק</span>}
-            </div>
-          ))}
+        <div>
+          <p className="text-sm text-gray-400 mb-3">משתתפים ({activePlayers.length})</p>
+          <div className="flex flex-col gap-2">
+            {activePlayers.map(p => (
+              <div key={p.id} className="flex items-center gap-3 bg-gray-800 rounded-xl px-4 py-3">
+                <div className="w-2 h-2 rounded-full bg-emerald-400" />
+                <span className="font-semibold">{p.name}</span>
+                {p.is_organizer && <span className="text-xs text-gray-400 mr-auto">מנהל המשחק</span>}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
-      <div className="mt-auto pb-4">
+      <div className="px-6 pt-3 pb-safe">
         {isOrganizer ? (
           <>
             {activePlayers.length < 3 && (

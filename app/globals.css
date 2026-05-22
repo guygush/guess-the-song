@@ -7,6 +7,12 @@ html, body {
   overscroll-behavior: none;
 }
 
+/* Bottom padding that respects Android/iOS gesture nav safe area */
+.pb-safe {
+  padding-bottom: 1rem;
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}
+
 @keyframes progress-ring {
   from { stroke-dashoffset: 113.1; }
   to   { stroke-dashoffset: 0; }

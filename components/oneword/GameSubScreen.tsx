@@ -61,8 +61,6 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
   const myHint = hints.find(h => h.player_id === myPlayerId);
   const allHintsSent = activeHinters.every(p => hints.some(h => h.player_id === p.id));
 
-  // When the organizer is the guesser, delegate moderation to the first non-organizer
-  // active player in guesser_order — same person every time across the whole game.
   const organizerIsGuesser = guesserId === room.organizer_id;
   const alternateModerator = organizerIsGuesser
     ? room.guesser_order.find(id => id !== room.organizer_id && activePlayers.some(p => p.id === id)) ?? null
@@ -70,7 +68,6 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
   const isAlternateModerator = myPlayerId === alternateModerator;
   const effectiveIsOrganizer = isOrganizer || isAlternateModerator;
 
-  // Auto-approve only as a last resort if no alternate could be found (requires <3 players, shouldn't happen)
   const effectiveHintsApproved = (isOrganizer && amGuesser && !alternateModerator) ? allHintsSent : hintsApproved;
 
   async function handleSendHint() {
@@ -114,35 +111,42 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
   if (amGuesser) {
     const visibleHints = hints.filter(h => !rejectedHintIds.includes(h.id));
     return (
-      <div className="flex-1 flex flex-col px-6 pt-6 gap-6">
-        <div className="bg-gray-900 rounded-2xl p-5 text-center">
-          <p className="text-gray-400 text-sm mb-1">התור שלך לנחש</p>
-          <p className="text-2xl font-bold text-indigo-400">?</p>
+      <div className="flex-1 flex flex-col">
+        <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden px-6 pt-6 flex flex-col gap-6">
+          <div className="bg-gray-900 rounded-2xl p-5 text-center">
+            <p className="text-gray-400 text-sm mb-1">התור שלך לנחש</p>
+            <p className="text-2xl font-bold text-indigo-400">?</p>
+          </div>
+
+          {!effectiveHintsApproved ? (
+            <div className="flex-1 flex flex-col items-center justify-center gap-3">
+              <div className="w-8 h-8 border-2 border-indigo-400 border-t-transparent rounded-full animate-spin" />
+              {!allHintsSent ? (
+                <>
+                  <p className="text-gray-400">מחכה לרמזים...</p>
+                  <p className="text-gray-600 text-sm">{hints.length} מתוך {activeHinters.length} רמזים התקבלו</p>
+                </>
+              ) : (
+                <p className="text-gray-400">ממתין לאישור המנהל...</p>
+              )}
+            </div>
+          ) : (
+            <>
+              <p className="text-gray-400 text-sm">הרמזים שקיבלת:</p>
+              <div className="flex flex-wrap gap-2">
+                {visibleHints.map(h => (
+                  <span key={h.id} className="bg-indigo-900 text-indigo-200 px-4 py-2 rounded-xl font-semibold text-lg">
+                    {h.word}
+                  </span>
+                ))}
+              </div>
+            </>
+          )}
         </div>
 
-        {!effectiveHintsApproved ? (
-          <div className="flex-1 flex flex-col items-center justify-center gap-3">
-            <div className="w-8 h-8 border-2 border-indigo-400 border-t-transparent rounded-full animate-spin" />
-            {!allHintsSent ? (
-              <>
-                <p className="text-gray-400">מחכה לרמזים...</p>
-                <p className="text-gray-600 text-sm">{hints.length} מתוך {activeHinters.length} רמזים התקבלו</p>
-              </>
-            ) : (
-              <p className="text-gray-400">ממתין לאישור המנהל...</p>
-            )}
-          </div>
-        ) : (
-          <div className="flex-1 flex flex-col gap-4">
-            <p className="text-gray-400 text-sm">הרמזים שקיבלת:</p>
-            <div className="flex flex-wrap gap-2">
-              {visibleHints.map(h => (
-                <span key={h.id} className="bg-indigo-900 text-indigo-200 px-4 py-2 rounded-xl font-semibold text-lg">
-                  {h.word}
-                </span>
-              ))}
-            </div>
-            <div className="mt-auto flex gap-2">
+        {effectiveHintsApproved && (
+          <div className="px-6 pt-3 pb-safe">
+            <div className="flex gap-2">
               <input
                 value={guessInput}
                 onChange={e => setGuessInput(e.target.value)}
@@ -169,81 +173,85 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
   const showHints = !!myHint;
 
   return (
-    <div className="flex-1 flex flex-col px-6 pt-6 gap-6">
-      <div className="bg-gray-900 rounded-2xl p-5 text-center">
-        <p className="text-gray-400 text-sm mb-1">המילה לתאר</p>
-        <p className="text-3xl font-bold">{room.current_word}</p>
-        <p className="text-gray-500 text-xs mt-2">{guesser?.name} מנסה לנחש</p>
+    <div className="flex-1 flex flex-col">
+      <div className="flex-1 min-h-0 overflow-y-auto px-6 pt-6 flex flex-col gap-6">
+        <div className="bg-gray-900 rounded-2xl p-5 text-center">
+          <p className="text-gray-400 text-sm mb-1">המילה לתאר</p>
+          <p className="text-3xl font-bold">{room.current_word}</p>
+          <p className="text-gray-500 text-xs mt-2">{guesser?.name} מנסה לנחש</p>
+        </div>
+
+        {/* Hint input — shown until submitted */}
+        {!myHint && (
+          <div className="flex gap-2">
+            <input
+              value={hintInput}
+              onChange={e => setHintInput(e.target.value)}
+              onKeyDown={e => e.key === 'Enter' && handleSendHint()}
+              placeholder="רמז במילה אחת..."
+              disabled={submitting}
+              className="flex-1 bg-gray-800 rounded-xl px-4 py-3 text-lg outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-500 disabled:opacity-50"
+            />
+            <button
+              onClick={handleSendHint}
+              disabled={!hintInput.trim() || submitting}
+              className="px-5 rounded-2xl bg-indigo-600 hover:bg-indigo-500 font-bold transition-colors disabled:opacity-40"
+            >
+              {submitting ? '...' : 'שלח'}
+            </button>
+          </div>
+        )}
+
+        {/* Hints grid */}
+        {showHints && hints.length > 0 && (
+          <div className="flex flex-col gap-3">
+            <p className="text-gray-400 text-sm">
+              רמזים שהתקבלו ({hints.length}/{activeHinters.length})
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {hints.map(h => {
+                const sender = players.find(p => p.id === h.player_id);
+                return (
+                  <HintCard
+                    key={h.id}
+                    hint={h}
+                    senderName={sender?.name}
+                    rejected={rejectedHintIds.includes(h.id)}
+                    showRejectButton={effectiveIsOrganizer}
+                    onToggleReject={() => handleToggleReject(h)}
+                  />
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* Count for hinters before submitting */}
+        {!showHints && hints.length > 0 && (
+          <p className="text-center text-gray-400 text-sm">
+            {hints.length} מתוך {activeHinters.length} רמזים נשלחו
+          </p>
+        )}
+
+        {/* Status lines */}
+        {showHints && allHintsSent && !hintsApproved && !effectiveIsOrganizer && (
+          <p className="text-center text-gray-400 text-sm">ממתין לאישור המנהל...</p>
+        )}
+        {showHints && hintsApproved && (
+          <p className="text-center text-emerald-400 text-sm">רמזים אושרו ✓</p>
+        )}
       </div>
 
-      {/* Hint input — shown until submitted */}
-      {!myHint && (
-        <div className="flex gap-2">
-          <input
-            value={hintInput}
-            onChange={e => setHintInput(e.target.value)}
-            onKeyDown={e => e.key === 'Enter' && handleSendHint()}
-            placeholder="רמז במילה אחת..."
-            disabled={submitting}
-            className="flex-1 bg-gray-800 rounded-xl px-4 py-3 text-lg outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-500 disabled:opacity-50"
-          />
+      {/* Approve button — pinned at bottom for effective organizer */}
+      {effectiveIsOrganizer && allHintsSent && !hintsApproved && (
+        <div className="px-6 pt-3 pb-safe">
           <button
-            onClick={handleSendHint}
-            disabled={!hintInput.trim() || submitting}
-            className="px-5 rounded-2xl bg-indigo-600 hover:bg-indigo-500 font-bold transition-colors disabled:opacity-40"
+            onClick={() => onBroadcast('hints_approved', {})}
+            className="w-full py-4 rounded-2xl bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 font-bold text-lg transition-colors"
           >
-            {submitting ? '...' : 'שלח'}
+            אשר רמזים ושלח לניחוש
           </button>
         </div>
-      )}
-
-      {/* Hints grid — visible to effective organizer always, to other hinters after they submit */}
-      {showHints && hints.length > 0 && (
-        <div className="flex flex-col gap-3">
-          <p className="text-gray-400 text-sm">
-            רמזים שהתקבלו ({hints.length}/{activeHinters.length})
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {hints.map(h => {
-              const sender = players.find(p => p.id === h.player_id);
-              return (
-                <HintCard
-                  key={h.id}
-                  hint={h}
-                  senderName={sender?.name}
-                  rejected={rejectedHintIds.includes(h.id)}
-                  showRejectButton={effectiveIsOrganizer}
-                  onToggleReject={() => handleToggleReject(h)}
-                />
-              );
-            })}
-          </div>
-        </div>
-      )}
-
-      {/* Count for hinters who haven't submitted yet */}
-      {!showHints && hints.length > 0 && (
-        <p className="text-center text-gray-400 text-sm">
-          {hints.length} מתוך {activeHinters.length} רמזים נשלחו
-        </p>
-      )}
-
-      {/* Status line */}
-      {showHints && allHintsSent && !hintsApproved && !effectiveIsOrganizer && (
-        <p className="text-center text-gray-400 text-sm">ממתין לאישור המנהל...</p>
-      )}
-      {showHints && hintsApproved && (
-        <p className="text-center text-emerald-400 text-sm">רמזים אושרו ✓</p>
-      )}
-
-      {/* Effective organizer approve button */}
-      {effectiveIsOrganizer && allHintsSent && !hintsApproved && (
-        <button
-          onClick={() => onBroadcast('hints_approved', {})}
-          className="w-full py-4 rounded-2xl bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 font-bold text-lg transition-colors"
-        >
-          אשר רמזים ושלח לניחוש
-        </button>
       )}
     </div>
   );

@@ -45,42 +45,48 @@ export default function TurnSummarySubScreen({ room, isOrganizer, players, guess
 
   if (room.status === 'ended') {
     return (
-      <div className="flex-1 flex flex-col items-center justify-center px-6 gap-6">
-        <p className="text-2xl font-bold text-center">המשחק נגמר!</p>
-        <div className="bg-gray-900 rounded-2xl p-6 w-full text-center">
-          <p className="text-gray-400 text-sm mb-1">ניקוד סופי</p>
-          <p className="text-5xl font-bold text-indigo-400">{room.total_score}</p>
-          <p className="text-gray-400 text-sm mt-1">מתוך {totalTurns} תורים</p>
+      <div className="flex-1 flex flex-col">
+        <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden px-6 pt-6 flex flex-col items-center justify-center gap-6">
+          <p className="text-2xl font-bold text-center">המשחק נגמר!</p>
+          <div className="bg-gray-900 rounded-2xl p-6 w-full text-center">
+            <p className="text-gray-400 text-sm mb-1">ניקוד סופי</p>
+            <p className="text-5xl font-bold text-indigo-400">{room.total_score}</p>
+            <p className="text-gray-400 text-sm mt-1">מתוך {totalTurns} תורים</p>
+          </div>
+          {room.end_reason && (
+            <p className="text-gray-400 text-sm text-center">{room.end_reason}</p>
+          )}
         </div>
-        {room.end_reason && (
-          <p className="text-gray-400 text-sm text-center">{room.end_reason}</p>
-        )}
-        <button
-          onClick={onBackToHub}
-          className="w-full py-4 rounded-2xl bg-gray-700 hover:bg-gray-600 font-bold text-lg transition-colors"
-        >
-          בחזרה למסך הראשי
-        </button>
+        <div className="px-6 pt-3 pb-safe">
+          <button
+            onClick={onBackToHub}
+            className="w-full py-4 rounded-2xl bg-gray-700 hover:bg-gray-600 font-bold text-lg transition-colors"
+          >
+            בחזרה למסך הראשי
+          </button>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="flex-1 flex flex-col px-6 pt-6 gap-5">
-      <div className={`rounded-2xl p-5 text-center ${guess.is_correct ? 'bg-emerald-900/50' : 'bg-red-900/30'}`}>
-        <p className="text-4xl mb-2">{guess.is_correct ? '✓' : '✗'}</p>
-        <p className="text-gray-400 text-sm">המילה הייתה</p>
-        <p className="text-2xl font-bold">{room.current_word}</p>
-        <p className="text-gray-400 text-sm mt-2">הניחוש: <span className="text-white font-semibold">{guess.guess}</span></p>
+    <div className="flex-1 flex flex-col">
+      <div className="flex-1 min-h-0 overflow-y-auto px-6 pt-6 flex flex-col gap-5">
+        <div className={`rounded-2xl p-5 text-center ${guess.is_correct ? 'bg-emerald-900/50' : 'bg-red-900/30'}`}>
+          <p className="text-4xl mb-2">{guess.is_correct ? '✓' : '✗'}</p>
+          <p className="text-gray-400 text-sm">המילה הייתה</p>
+          <p className="text-2xl font-bold">{room.current_word}</p>
+          <p className="text-gray-400 text-sm mt-2">הניחוש: <span className="text-white font-semibold">{guess.guess}</span></p>
+        </div>
+
+        <div className="bg-gray-900 rounded-2xl p-4 text-center">
+          <p className="text-gray-400 text-sm">ניקוד</p>
+          <p className="text-4xl font-bold text-indigo-400">{room.total_score}</p>
+          <p className="text-gray-500 text-sm">מתוך {totalTurns} תורים</p>
+        </div>
       </div>
 
-      <div className="bg-gray-900 rounded-2xl p-4 text-center">
-        <p className="text-gray-400 text-sm">ניקוד</p>
-        <p className="text-4xl font-bold text-indigo-400">{room.total_score}</p>
-        <p className="text-gray-500 text-sm">מתוך {totalTurns} תורים</p>
-      </div>
-
-      <div className="mt-auto pb-4 flex flex-col gap-3">
+      <div className="px-6 pt-3 pb-safe flex flex-col gap-3">
         {isOrganizer ? (
           <>
             <button
