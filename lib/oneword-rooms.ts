@@ -135,15 +135,15 @@ export async function sendGuess(room: Room, guessText: string): Promise<{ guess:
 
 export async function nextTurn(room: Room, activePlayers: Player[]): Promise<Room> {
   const activeIds = activePlayers.filter(p => p.is_active).map(p => p.id);
-  // advance guesser index cyclically, skipping inactive
-  let nextIdx = (room.current_turn + 1) % room.guesser_order.length;
-  for (let i = 0; i < room.guesser_order.length; i++) {
-    if (activeIds.includes(room.guesser_order[nextIdx])) break;
-    nextIdx = (nextIdx + 1) % room.guesser_order.length;
+  const len = room.guesser_order.length;
+  let nextTurnNumber = room.current_turn + 1;
+  for (let i = 0; i < len; i++) {
+    if (activeIds.includes(room.guesser_order[nextTurnNumber % len])) break;
+    nextTurnNumber++;
   }
   const newWord = pickWord();
-  await supabase.from('ow_rooms').update({ current_turn: nextIdx, current_word: newWord }).eq('id', room.id);
-  return { ...room, current_turn: nextIdx, current_word: newWord };
+  await supabase.from('ow_rooms').update({ current_turn: nextTurnNumber, current_word: newWord }).eq('id', room.id);
+  return { ...room, current_turn: nextTurnNumber, current_word: newWord };
 }
 
 export async function endGame(roomId: string): Promise<void> {
