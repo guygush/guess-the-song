@@ -51,9 +51,24 @@ function shuffle<T>(arr: T[]): T[] {
   return a;
 }
 
+async function cleanupOldRooms(): Promise<void> {
+  const cutoff = new Date(Date.now() - 4 * 60 * 60 * 1000).toISOString();
+  const [{ data: oldRooms }] = await Promise.all([
+    supabase.from('ow_rooms').select('id').or(`status.eq.ended,created_at.lt.${cutoff}`),
+  ]);
+  const ids = oldRooms?.map(r => r.id) ?? [];
+  if (!ids.length) return;
+  await Promise.all([
+    supabase.from('ow_guesses').delete().in('room_id', ids),
+    supabase.from('ow_hints').delete().in('room_id', ids),
+    supabase.from('ow_players').delete().in('room_id', ids),
+  ]);
+  await supabase.from('ow_rooms').delete().in('id', ids);
+}
+
 export async function createRoom(playerId: string, playerName: string): Promise<Room> {
+  await cleanupOldRooms().catch(() => {}); // best-effort; never block room creation
   let id = '';
-  // retry until we get a unique code
   for (let i = 0; i < 10; i++) {
     id = randomCode();
     const { data } = await supabase.from('ow_rooms').select('id').eq('id', id).maybeSingle();
@@ -131,8 +146,13 @@ export async function nextTurn(room: Room, activePlayers: Player[]): Promise<Roo
   return { ...room, current_turn: nextIdx, current_word: newWord };
 }
 
-export async function endGame(roomId: string, reason?: string): Promise<void> {
-  await supabase.from('ow_rooms').update({ status: 'ended', end_reason: reason ?? null }).eq('id', roomId);
+export async function endGame(roomId: string): Promise<void> {
+  await Promise.all([
+    supabase.from('ow_guesses').delete().eq('room_id', roomId),
+    supabase.from('ow_hints').delete().eq('room_id', roomId),
+    supabase.from('ow_players').delete().eq('room_id', roomId),
+  ]);
+  await supabase.from('ow_rooms').delete().eq('id', roomId);
 }
 
 export async function markInactive(playerId: string, roomId: string): Promise<void> {

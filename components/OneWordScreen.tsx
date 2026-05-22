@@ -44,7 +44,7 @@ export default function OneWordScreen({ onBackToHub }: Props) {
     if (!roomId) return;
     const handleUnload = () => {
       markInactive(playerId, roomIdRef.current);
-      if (isOrganizerRef.current) endGame(roomIdRef.current, 'מנהל המשחק עזב');
+      if (isOrganizerRef.current) endGame(roomIdRef.current);
     };
     window.addEventListener('beforeunload', handleUnload);
     return () => window.removeEventListener('beforeunload', handleUnload);
