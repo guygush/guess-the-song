@@ -63,7 +63,8 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
 
   // When the organizer is the guesser, delegate moderation to the first non-organizer
   // active player in guesser_order — same person every time across the whole game.
-  const alternateModerator = (isOrganizer && amGuesser)
+  const organizerIsGuesser = guesserId === room.organizer_id;
+  const alternateModerator = organizerIsGuesser
     ? room.guesser_order.find(id => id !== room.organizer_id && activePlayers.some(p => p.id === id)) ?? null
     : null;
   const isAlternateModerator = myPlayerId === alternateModerator;
