@@ -107,10 +107,10 @@ export default function OneWordScreen({ onBackToHub }: Props) {
       }
     });
 
-    channel.bind('hint_rejected', (msg: { hintId?: string }) => {
-      const id = msg.hintId;
+    channel.bind('hint_rejected', (msg: { hintId?: string; rejected?: boolean }) => {
+      const { hintId: id, rejected } = msg;
       if (!id) return;
-      setRejectedHintIds(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]);
+      setRejectedHintIds(prev => rejected ? (prev.includes(id) ? prev : [...prev, id]) : prev.filter(x => x !== id));
     });
 
     channel.bind('hints_approved', () => {
@@ -141,8 +141,8 @@ export default function OneWordScreen({ onBackToHub }: Props) {
       const r = (payload as { room?: Room }).room;
       if (r) { setRoom(r); setHints([]); setCurrentGuess(null); setRejectedHintIds([]); setHintsApproved(false); }
     } else if (event === 'hint_rejected') {
-      const { hintId } = payload as { hintId?: string };
-      if (hintId) setRejectedHintIds(prev => prev.includes(hintId) ? prev.filter(x => x !== hintId) : [...prev, hintId]);
+      const { hintId, rejected } = payload as { hintId?: string; rejected?: boolean };
+      if (hintId !== undefined) setRejectedHintIds(prev => rejected ? (prev.includes(hintId) ? prev : [...prev, hintId]) : prev.filter(x => x !== hintId));
     } else if (event === 'hints_approved') {
       setHintsApproved(true);
     }

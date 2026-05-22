@@ -15,6 +15,38 @@ interface Props {
   onBroadcast: (event: string, payload: Record<string, unknown>) => void;
 }
 
+interface HintCardProps {
+  hint: Hint;
+  senderName?: string;
+  rejected: boolean;
+  showRejectButton: boolean;
+  onToggleReject: () => void;
+}
+
+function HintCard({ hint, senderName, rejected, showRejectButton, onToggleReject }: HintCardProps) {
+  return (
+    <div className={`relative overflow-hidden rounded-xl px-4 py-2 text-center min-w-[80px] transition-colors ${rejected ? 'bg-red-950' : 'bg-gray-800'}`}>
+      <p className={`font-semibold ${rejected ? 'text-gray-500' : ''}`}>{hint.word}</p>
+      {senderName && <p className="text-xs text-gray-500">{senderName}</p>}
+      {rejected && (
+        <div className="absolute inset-0 pointer-events-none">
+          <svg className="w-full h-full" preserveAspectRatio="none">
+            <line x1="0" y1="0" x2="100%" y2="100%" stroke="rgb(239 68 68)" strokeWidth="2" />
+          </svg>
+        </div>
+      )}
+      {showRejectButton && (
+        <button
+          onClick={onToggleReject}
+          className={`absolute top-1 right-1 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold transition-colors ${rejected ? 'bg-red-700 hover:bg-red-600 text-white' : 'bg-gray-600 hover:bg-red-700 text-gray-300 hover:text-white'}`}
+        >
+          ✕
+        </button>
+      )}
+    </div>
+  );
+}
+
 export default function GameSubScreen({ room, myPlayerId, players, hints, isOrganizer, rejectedHintIds, hintsApproved, onBroadcast }: Props) {
   const [hintInput, setHintInput] = useState('');
   const [guessInput, setGuessInput] = useState('');
@@ -29,7 +61,6 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
   const myHint = hints.find(h => h.player_id === myPlayerId);
   const allHintsSent = activeHinters.every(p => hints.some(h => h.player_id === p.id));
 
-  // If organizer is the guesser, skip approval — auto-approve
   const effectiveHintsApproved = (isOrganizer && amGuesser) ? allHintsSent : hintsApproved;
 
   async function handleSendHint() {
@@ -56,12 +87,9 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
     }
   }
 
-  function handleToggleReject(hintId: string) {
-    onBroadcast('hint_rejected', { hintId });
-  }
-
-  function handleApprove() {
-    onBroadcast('hints_approved', {});
+  function handleToggleReject(hint: Hint) {
+    const rejected = !rejectedHintIds.includes(hint.id);
+    onBroadcast('hint_rejected', { hintId: hint.id, rejected });
   }
 
   if (!room.guesser_order.length) {
@@ -75,7 +103,6 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
   // ── Guesser view ──────────────────────────────────────────────────────
   if (amGuesser) {
     const visibleHints = hints.filter(h => !rejectedHintIds.includes(h.id));
-
     return (
       <div className="flex-1 flex flex-col px-6 pt-6 gap-6">
         <div className="bg-gray-900 rounded-2xl p-5 text-center">
@@ -129,6 +156,8 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
   }
 
   // ── Hinter view ───────────────────────────────────────────────────────
+  const showHints = isOrganizer || !!myHint;
+
   return (
     <div className="flex-1 flex flex-col px-6 pt-6 gap-6">
       <div className="bg-gray-900 rounded-2xl p-5 text-center">
@@ -137,7 +166,7 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
         <p className="text-gray-500 text-xs mt-2">{guesser?.name} מנסה לנחש</p>
       </div>
 
-      {/* Hint input — shown to all hinters until they submit */}
+      {/* Hint input — shown until submitted */}
       {!myHint && (
         <div className="flex gap-2">
           <input
@@ -158,8 +187,8 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
         </div>
       )}
 
-      {/* Organizer sees all hints with rejection toggles */}
-      {isOrganizer && hints.length > 0 && (
+      {/* Hints grid — visible to organizer always, to other hinters after they submit */}
+      {showHints && hints.length > 0 && (
         <div className="flex flex-col gap-3">
           <p className="text-gray-400 text-sm">
             רמזים שהתקבלו ({hints.length}/{activeHinters.length})
@@ -167,54 +196,44 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
           <div className="flex flex-wrap gap-2">
             {hints.map(h => {
               const sender = players.find(p => p.id === h.player_id);
-              const rejected = rejectedHintIds.includes(h.id);
               return (
-                <div
+                <HintCard
                   key={h.id}
-                  className={`flex items-center gap-2 rounded-xl px-4 py-2 transition-colors ${rejected ? 'bg-red-950 opacity-60' : 'bg-gray-800'}`}
-                >
-                  <div className="text-center">
-                    <p className={`font-semibold ${rejected ? 'line-through text-gray-500' : ''}`}>{h.word}</p>
-                    <p className="text-xs text-gray-500">{sender?.name}</p>
-                  </div>
-                  <button
-                    onClick={() => handleToggleReject(h.id)}
-                    className={`w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold transition-colors ${rejected ? 'bg-red-700 hover:bg-red-600 text-white' : 'bg-gray-600 hover:bg-red-700 text-gray-300 hover:text-white'}`}
-                  >
-                    ✕
-                  </button>
-                </div>
+                  hint={h}
+                  senderName={sender?.name}
+                  rejected={rejectedHintIds.includes(h.id)}
+                  showRejectButton={isOrganizer}
+                  onToggleReject={() => handleToggleReject(h)}
+                />
               );
             })}
           </div>
-          {allHintsSent && !hintsApproved && (
-            <button
-              onClick={handleApprove}
-              className="w-full py-4 rounded-2xl bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 font-bold text-lg transition-colors mt-2"
-            >
-              אשר רמזים ושלח לניחוש
-            </button>
-          )}
-          {hintsApproved && (
-            <p className="text-center text-emerald-400 text-sm">רמזים אושרו ✓</p>
-          )}
         </div>
       )}
 
-      {/* Non-organizer hinters: show count after submitting */}
-      {!isOrganizer && myHint && (
-        <p className="text-center text-gray-400 text-sm">
-          {allHintsSent
-            ? hintsApproved ? 'המנהל אישר את הרמזים' : 'ממתין לאישור המנהל...'
-            : `${hints.length} מתוך ${activeHinters.length} רמזים נשלחו`}
-        </p>
-      )}
-
-      {/* Non-organizer hinters: show count before submitting */}
-      {!isOrganizer && !myHint && hints.length > 0 && (
+      {/* Count for hinters who haven't submitted yet */}
+      {!showHints && hints.length > 0 && (
         <p className="text-center text-gray-400 text-sm">
           {hints.length} מתוך {activeHinters.length} רמזים נשלחו
         </p>
+      )}
+
+      {/* Status line */}
+      {showHints && allHintsSent && !hintsApproved && !isOrganizer && (
+        <p className="text-center text-gray-400 text-sm">ממתין לאישור המנהל...</p>
+      )}
+      {showHints && hintsApproved && (
+        <p className="text-center text-emerald-400 text-sm">רמזים אושרו ✓</p>
+      )}
+
+      {/* Organizer approve button */}
+      {isOrganizer && allHintsSent && !hintsApproved && (
+        <button
+          onClick={() => onBroadcast('hints_approved', {})}
+          className="w-full py-4 rounded-2xl bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 font-bold text-lg transition-colors"
+        >
+          אשר רמזים ושלח לניחוש
+        </button>
       )}
     </div>
   );

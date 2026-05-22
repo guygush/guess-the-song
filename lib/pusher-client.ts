@@ -12,9 +12,10 @@ export function getPusher(): PusherJs {
 }
 
 export async function publish(channel: string, event: string, payload: unknown): Promise<void> {
+  const socketId = getPusher().connection.socket_id;
   await fetch('/api/pusher', {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({ channel, event, payload }),
+    body: JSON.stringify({ channel, event, payload, socketId }),
   });
 }
