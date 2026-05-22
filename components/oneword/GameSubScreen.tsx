@@ -166,7 +166,7 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
   }
 
   // ── Hinter view ───────────────────────────────────────────────────────
-  const showHints = effectiveIsOrganizer || !!myHint;
+  const showHints = !!myHint;
 
   return (
     <div className="flex-1 flex flex-col px-6 pt-6 gap-6">
