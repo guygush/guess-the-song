@@ -34,6 +34,7 @@ export default function TurnSummarySubScreen({ room, isOrganizer, players, guess
     setLoading('end');
     try {
       await endGame(room.id);
+      onBroadcast('game_ended', { room: { ...room, status: 'ended' } });
       onEndGame();
     } finally {
       setLoading(null);

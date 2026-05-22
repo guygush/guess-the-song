@@ -117,6 +117,10 @@ export default function OneWordScreen({ onBackToHub }: Props) {
       setHintsApproved(true);
     });
 
+    channel.bind('game_ended', (msg: { room?: Room }) => {
+      if (msg.room) setRoom(msg.room);
+    });
+
     publish(channelName, 'player_joined', {});
 
     return () => {
@@ -145,6 +149,9 @@ export default function OneWordScreen({ onBackToHub }: Props) {
       if (hintId !== undefined) setRejectedHintIds(prev => rejected ? (prev.includes(hintId) ? prev : [...prev, hintId]) : prev.filter(x => x !== hintId));
     } else if (event === 'hints_approved') {
       setHintsApproved(true);
+    } else if (event === 'game_ended') {
+      const r = (payload as { room?: Room }).room;
+      if (r) setRoom(r);
     }
     if (channelNameRef.current) {
       publish(channelNameRef.current, event, payload);
