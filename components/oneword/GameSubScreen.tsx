@@ -61,7 +61,16 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
   const myHint = hints.find(h => h.player_id === myPlayerId);
   const allHintsSent = activeHinters.every(p => hints.some(h => h.player_id === p.id));
 
-  const effectiveHintsApproved = (isOrganizer && amGuesser) ? allHintsSent : hintsApproved;
+  // When the organizer is the guesser, delegate moderation to the first non-organizer
+  // active player in guesser_order — same person every time across the whole game.
+  const alternateModerator = (isOrganizer && amGuesser)
+    ? room.guesser_order.find(id => id !== room.organizer_id && activePlayers.some(p => p.id === id)) ?? null
+    : null;
+  const isAlternateModerator = myPlayerId === alternateModerator;
+  const effectiveIsOrganizer = isOrganizer || isAlternateModerator;
+
+  // Auto-approve only as a last resort if no alternate could be found (requires <3 players, shouldn't happen)
+  const effectiveHintsApproved = (isOrganizer && amGuesser && !alternateModerator) ? allHintsSent : hintsApproved;
 
   async function handleSendHint() {
     if (!hintInput.trim() || submitting) return;
@@ -156,7 +165,7 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
   }
 
   // ── Hinter view ───────────────────────────────────────────────────────
-  const showHints = isOrganizer || !!myHint;
+  const showHints = effectiveIsOrganizer || !!myHint;
 
   return (
     <div className="flex-1 flex flex-col px-6 pt-6 gap-6">
@@ -187,7 +196,7 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
         </div>
       )}
 
-      {/* Hints grid — visible to organizer always, to other hinters after they submit */}
+      {/* Hints grid — visible to effective organizer always, to other hinters after they submit */}
       {showHints && hints.length > 0 && (
         <div className="flex flex-col gap-3">
           <p className="text-gray-400 text-sm">
@@ -202,7 +211,7 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
                   hint={h}
                   senderName={sender?.name}
                   rejected={rejectedHintIds.includes(h.id)}
-                  showRejectButton={isOrganizer}
+                  showRejectButton={effectiveIsOrganizer}
                   onToggleReject={() => handleToggleReject(h)}
                 />
               );
@@ -219,15 +228,15 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
       )}
 
       {/* Status line */}
-      {showHints && allHintsSent && !hintsApproved && !isOrganizer && (
+      {showHints && allHintsSent && !hintsApproved && !effectiveIsOrganizer && (
         <p className="text-center text-gray-400 text-sm">ממתין לאישור המנהל...</p>
       )}
       {showHints && hintsApproved && (
         <p className="text-center text-emerald-400 text-sm">רמזים אושרו ✓</p>
       )}
 
-      {/* Organizer approve button */}
-      {isOrganizer && allHintsSent && !hintsApproved && (
+      {/* Effective organizer approve button */}
+      {effectiveIsOrganizer && allHintsSent && !hintsApproved && (
         <button
           onClick={() => onBroadcast('hints_approved', {})}
           className="w-full py-4 rounded-2xl bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 font-bold text-lg transition-colors"
