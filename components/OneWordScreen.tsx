@@ -31,6 +31,8 @@ export default function OneWordScreen({ onBackToHub }: Props) {
   const [hints, setHints] = useState<Hint[]>([]);
   const [currentGuess, setCurrentGuess] = useState<Guess | null>(null);
   const [totalTurns, setTotalTurns] = useState(0);
+  const [rejectedHintIds, setRejectedHintIds] = useState<string[]>([]);
+  const [hintsApproved, setHintsApproved] = useState(false);
 
   const roomIdRef = useRef(roomId);
   const isOrganizerRef = useRef(isOrganizer);
@@ -99,8 +101,20 @@ export default function OneWordScreen({ onBackToHub }: Props) {
         setRoom(msg.room);
         setHints([]);
         setCurrentGuess(null);
+        setRejectedHintIds([]);
+        setHintsApproved(false);
         setSubScreen('game');
       }
+    });
+
+    channel.bind('hint_rejected', (msg: { hintId?: string }) => {
+      const id = msg.hintId;
+      if (!id) return;
+      setRejectedHintIds(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]);
+    });
+
+    channel.bind('hints_approved', () => {
+      setHintsApproved(true);
     });
 
     publish(channelName, 'player_joined', {});
@@ -125,7 +139,12 @@ export default function OneWordScreen({ onBackToHub }: Props) {
       }
     } else if (event === 'next_turn') {
       const r = (payload as { room?: Room }).room;
-      if (r) { setRoom(r); setHints([]); setCurrentGuess(null); }
+      if (r) { setRoom(r); setHints([]); setCurrentGuess(null); setRejectedHintIds([]); setHintsApproved(false); }
+    } else if (event === 'hint_rejected') {
+      const { hintId } = payload as { hintId?: string };
+      if (hintId) setRejectedHintIds(prev => prev.includes(hintId) ? prev.filter(x => x !== hintId) : [...prev, hintId]);
+    } else if (event === 'hints_approved') {
+      setHintsApproved(true);
     }
     if (channelNameRef.current) {
       publish(channelNameRef.current, event, payload);
@@ -203,6 +222,9 @@ export default function OneWordScreen({ onBackToHub }: Props) {
           myPlayerId={playerId}
           players={players}
           hints={hints}
+          isOrganizer={isOrganizer}
+          rejectedHintIds={rejectedHintIds}
+          hintsApproved={hintsApproved}
           onBroadcast={handleBroadcast}
         />
       )}
