@@ -17,7 +17,7 @@ export default function LoadingScreen({ songName, artist, hideMetadata }: Props)
         <div className="w-12 h-12 border-4 border-indigo-400 border-t-transparent rounded-full animate-spin" />
         <div className="text-center">
           {hideMetadata ? (
-            <p className="text-lg font-semibold text-gray-400">מוצא שיר...</p>
+            <p className="text-lg font-semibold text-gray-300">מוצא שיר...</p>
           ) : (
             <>
               <p className="text-lg font-semibold">{songName}</p>

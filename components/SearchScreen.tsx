@@ -284,7 +284,7 @@ export default function SearchScreen({ onSelect, onBackToHub }: Props) {
         <div className="flex-1 overflow-y-auto px-4 pb-6 pt-2">
 
           <div className="mb-5">
-            <p className="text-sm text-gray-400 mb-2">שפה</p>
+            <p className="text-sm text-gray-300 mb-2">שפה</p>
             <div className="flex gap-2">
               {LANGUAGES.map(({ id, label }) => (
                 <button key={id} onClick={() => { setSelectedLanguage(id); setRandomError(false); }} className={pill(selectedLanguage === id)}>
@@ -295,7 +295,7 @@ export default function SearchScreen({ onSelect, onBackToHub }: Props) {
           </div>
 
           <div className="mb-5">
-            <p className="text-sm text-gray-400 mb-2">עשור</p>
+            <p className="text-sm text-gray-300 mb-2">עשור</p>
             <div className="flex flex-wrap gap-2">
               {DECADES.map((d) => (
                 <button key={d} onClick={() => { setSelectedDecades(prev => prev.includes(d) ? prev.filter(x => x !== d) : [...prev, d]); setRandomError(false); }} className={pill(selectedDecades.includes(d))}>
@@ -306,7 +306,7 @@ export default function SearchScreen({ onSelect, onBackToHub }: Props) {
           </div>
 
           <div className="mb-6">
-            <p className="text-sm text-gray-400 mb-2">מיקום</p>
+            <p className="text-sm text-gray-300 mb-2">מיקום</p>
             <div className="flex gap-2">
               <button onClick={() => { setTopOnly(true); setRandomError(false); }} className={pill(topOnly)}>
                 טופ 5

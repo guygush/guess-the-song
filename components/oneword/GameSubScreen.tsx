@@ -27,7 +27,7 @@ function HintCard({ hint, senderName, rejected, showRejectButton, onToggleReject
   return (
     <div className={`relative overflow-hidden rounded-xl px-4 py-2 text-center min-w-[80px] transition-colors ${rejected ? 'bg-red-950' : 'bg-gray-800'}`}>
       <p className={`font-semibold ${rejected ? 'text-gray-500' : ''}`}>{hint.word}</p>
-      {senderName && <p className="text-xs text-gray-500">{senderName}</p>}
+      {senderName && <p className="text-xs text-gray-400">{senderName}</p>}
       {rejected && (
         <div className="absolute inset-0 pointer-events-none">
           <svg className="w-full h-full" preserveAspectRatio="none">
@@ -114,7 +114,7 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
       <div className="flex-1 flex flex-col">
         <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden px-6 pt-6 flex flex-col gap-6">
           <div className="bg-gray-900 rounded-2xl p-5 text-center">
-            <p className="text-gray-400 text-sm mb-1">התור שלך לנחש</p>
+            <p className="text-gray-300 text-sm mb-1">התור שלך לנחש</p>
             <p className="text-2xl font-bold text-indigo-400">?</p>
           </div>
 
@@ -123,16 +123,16 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
               <div className="w-8 h-8 border-2 border-indigo-400 border-t-transparent rounded-full animate-spin" />
               {!allHintsSent ? (
                 <>
-                  <p className="text-gray-400">מחכה לרמזים...</p>
-                  <p className="text-gray-600 text-sm">{hints.length} מתוך {activeHinters.length} רמזים התקבלו</p>
+                  <p className="text-gray-300">מחכה לרמזים...</p>
+                  <p className="text-gray-400 text-sm">{hints.length} מתוך {activeHinters.length} רמזים התקבלו</p>
                 </>
               ) : (
-                <p className="text-gray-400">ממתין לאישור המנהל...</p>
+                <p className="text-gray-300">ממתין לאישור המנהל...</p>
               )}
             </div>
           ) : (
             <>
-              <p className="text-gray-400 text-sm">הרמזים שקיבלת:</p>
+              <p className="text-gray-300 text-sm">הרמזים שקיבלת:</p>
               <div className="flex flex-wrap gap-2">
                 {visibleHints.map(h => (
                   <span key={h.id} className="bg-indigo-900 text-indigo-200 px-4 py-2 rounded-xl font-semibold text-lg">
@@ -176,9 +176,9 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
     <div className="flex-1 flex flex-col">
       <div className="flex-1 min-h-0 overflow-y-auto px-6 pt-6 flex flex-col gap-6">
         <div className="bg-gray-900 rounded-2xl p-5 text-center">
-          <p className="text-gray-400 text-sm mb-1">המילה לתאר</p>
+          <p className="text-gray-300 text-sm mb-1">המילה לתאר</p>
           <p className="text-3xl font-bold">{room.current_word}</p>
-          <p className="text-gray-500 text-xs mt-2">{guesser?.name} מנסה לנחש</p>
+          <p className="text-gray-400 text-xs mt-2">{guesser?.name} מנסה לנחש</p>
         </div>
 
         {/* Hint input — shown until submitted */}
@@ -205,7 +205,7 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
         {/* Hints grid */}
         {showHints && hints.length > 0 && (
           <div className="flex flex-col gap-3">
-            <p className="text-gray-400 text-sm">
+            <p className="text-gray-300 text-sm">
               רמזים שהתקבלו ({hints.length}/{activeHinters.length})
             </p>
             <div className="flex flex-wrap gap-2">
@@ -228,19 +228,19 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
 
         {/* Count for hinters before submitting */}
         {!showHints && hints.length > 0 && (
-          <p className="text-center text-gray-400 text-sm">
+          <p className="text-center text-gray-300 text-sm">
             {hints.length} מתוך {activeHinters.length} רמזים נשלחו
           </p>
         )}
 
         {/* Status lines */}
         {showHints && allHintsSent && !hintsApproved && !effectiveIsOrganizer && (
-          <p className="text-center text-gray-400 text-sm">ממתין לאישור המנהל...</p>
+          <p className="text-center text-gray-300 text-sm">ממתין לאישור המנהל...</p>
         )}
         {showHints && hintsApproved && (
           <div className="flex flex-col items-center gap-3 py-4">
             <div className="w-8 h-8 border-2 border-indigo-400 border-t-transparent rounded-full animate-spin" />
-            <p className="text-gray-400">ממתין לניחוש של {guesser?.name}...</p>
+            <p className="text-gray-300">ממתין לניחוש של {guesser?.name}...</p>
           </div>
         )}
       </div>

@@ -49,7 +49,7 @@ export default function JoinSubScreen({ playerId, onJoined }: Props) {
   return (
     <div className="flex-1 overflow-y-auto overflow-x-hidden min-h-0 flex flex-col justify-center px-6 pb-safe gap-6">
       <div className="mb-12">
-        <p className="text-sm text-gray-400 mb-2">השם שלך</p>
+        <p className="text-sm text-gray-300 mb-2">השם שלך</p>
         <input
           value={name}
           onChange={e => setName(e.target.value)}
@@ -59,7 +59,7 @@ export default function JoinSubScreen({ playerId, onJoined }: Props) {
         />
       </div>
 
-      <div className="flex items-center gap-3 text-gray-600">
+      <div className="flex items-center gap-3 text-gray-500">
         <div className="flex-1 h-px bg-gray-800" />
         <span className="text-sm">הצטרף לחדר קיים</span>
         <div className="flex-1 h-px bg-gray-800" />
@@ -85,7 +85,7 @@ export default function JoinSubScreen({ playerId, onJoined }: Props) {
         </button>
       </div>
 
-      <div className="flex items-center gap-3 text-gray-600">
+      <div className="flex items-center gap-3 text-gray-500">
         <div className="flex-1 h-px bg-gray-800" />
         <span className="text-sm">או</span>
         <div className="flex-1 h-px bg-gray-800" />

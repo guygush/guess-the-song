@@ -12,7 +12,7 @@ export default function GameHubScreen({ onSelectGame }: Props) {
       <Header title="משחקי משפחה" />
 
       <div className="flex-1 flex flex-col items-center justify-center px-6">
-        <p className="text-gray-400 mb-12 text-center">בחרו משחק להתחיל</p>
+        <p className="text-gray-300 mb-12 text-center">בחרו משחק להתחיל</p>
 
         <div className="flex flex-col gap-4 w-full max-w-xs">
           <button
