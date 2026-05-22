@@ -92,7 +92,7 @@ export default function TurnSummarySubScreen({ room, isOrganizer, players, guess
             <button
               onClick={handleNext}
               disabled={busy}
-              className="w-full py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 font-bold text-lg transition-colors disabled:opacity-40 flex items-center justify-center"
+              className="w-full py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 font-bold text-lg transition-colors disabled:opacity-60 flex items-center justify-center"
             >
               {loading === 'next'
                 ? <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -101,7 +101,7 @@ export default function TurnSummarySubScreen({ room, isOrganizer, players, guess
             <button
               onClick={handleEnd}
               disabled={busy}
-              className="w-full py-3 rounded-2xl bg-gray-800 hover:bg-gray-700 font-semibold transition-colors disabled:opacity-40 flex items-center justify-center"
+              className="w-full py-3 rounded-2xl bg-gray-800 hover:bg-gray-700 font-semibold transition-colors disabled:opacity-60 flex items-center justify-center"
             >
               {loading === 'end'
                 ? <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />

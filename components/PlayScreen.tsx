@@ -223,7 +223,7 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
               <button
                 onClick={handlePlay}
                 disabled={!ready}
-                className={`relative w-16 h-16 rounded-full flex items-center justify-center text-2xl shadow-lg transition-colors disabled:opacity-40 disabled:cursor-not-allowed ${
+                className={`relative w-16 h-16 rounded-full flex items-center justify-center text-2xl shadow-lg transition-colors disabled:opacity-60 disabled:cursor-not-allowed ${
                   playing
                     ? 'bg-red-500 hover:bg-red-600 active:bg-red-700'
                     : 'bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700'
@@ -263,7 +263,7 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
                         dir="ltr"
                         onClick={() => handleReveal(n)}
                         disabled={!ready || revealDuration + n > 30}
-                        className="px-5 py-3 rounded-xl font-semibold text-lg transition-colors bg-gray-700 hover:bg-gray-600 active:bg-gray-500 disabled:bg-gray-800 disabled:text-gray-400 disabled:cursor-not-allowed"
+                        className="px-5 py-3 rounded-xl font-semibold text-lg transition-colors bg-gray-700 hover:bg-gray-600 active:bg-gray-500 disabled:bg-gray-800 disabled:text-gray-300 disabled:cursor-not-allowed"
                       >
                         {label}
                       </button>
@@ -278,7 +278,7 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
                     <button
                       onClick={() => handleStartCommit(startOffset + 1)}
                       disabled={!ready || startOffset >= Math.floor(duration)}
-                      className="w-11 h-11 rounded-xl bg-gray-700 hover:bg-gray-600 active:bg-gray-500 text-xl font-bold disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                      className="w-11 h-11 rounded-xl bg-gray-700 hover:bg-gray-600 active:bg-gray-500 text-xl font-bold disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                     >
                       ‹
                     </button>
@@ -291,12 +291,12 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
                       onChange={(e) => handleStartInput(e.target.value)}
                       onBlur={(e) => handleStartCommit(parseInt(e.target.value, 10) || 0)}
                       onKeyDown={(e) => e.key === 'Enter' && handleStartCommit(startOffset)}
-                      className="w-0 flex-1 bg-gray-800 rounded-xl px-4 py-2 text-center text-2xl font-bold outline-none focus:ring-2 focus:ring-indigo-500 disabled:opacity-40 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+                      className="w-0 flex-1 bg-gray-800 rounded-xl px-4 py-2 text-center text-2xl font-bold outline-none focus:ring-2 focus:ring-indigo-500 disabled:opacity-60 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
                     />
                     <button
                       onClick={() => handleStartCommit(startOffset - 1)}
                       disabled={!ready || startOffset <= 0}
-                      className="w-11 h-11 rounded-xl bg-gray-700 hover:bg-gray-600 active:bg-gray-500 text-xl font-bold disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                      className="w-11 h-11 rounded-xl bg-gray-700 hover:bg-gray-600 active:bg-gray-500 text-xl font-bold disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                     >
                       ›
                     </button>
@@ -307,7 +307,7 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
               <button
                 onClick={handleReset}
                 disabled={!ready || revealDuration === 0.5}
-                className="mt-2 w-full py-1.5 rounded-xl text-sm text-gray-200 hover:text-white hover:bg-gray-700 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+                className="mt-2 w-full py-1.5 rounded-xl text-sm text-gray-200 hover:text-white hover:bg-gray-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 ↺ אפס ל-0.5 שניות
               </button>
@@ -322,7 +322,7 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
               <button
                 onClick={handlePlay}
                 disabled={!ready}
-                className={`w-16 h-16 rounded-full flex items-center justify-center text-2xl shadow-lg transition-colors disabled:opacity-40 disabled:cursor-not-allowed ${
+                className={`w-16 h-16 rounded-full flex items-center justify-center text-2xl shadow-lg transition-colors disabled:opacity-60 disabled:cursor-not-allowed ${
                   playing
                     ? 'bg-red-500 hover:bg-red-600 active:bg-red-700'
                     : 'bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700'
@@ -348,7 +348,7 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
                   onChange={(e) => setStartOffset(Number(e.target.value))}
                   onMouseUp={(e) => { scrubbingRef.current = false; handleStartCommit(Number((e.target as HTMLInputElement).value)); }}
                   onTouchEnd={(e) => { scrubbingRef.current = false; handleStartCommit(Number((e.target as HTMLInputElement).value)); }}
-                  className="w-full accent-indigo-500 disabled:opacity-40"
+                  className="w-full accent-indigo-500 disabled:opacity-60"
                 />
                 <div className="flex justify-between text-xs text-gray-300 mt-0.5">
                   <span>0:00</span><span>{fmt(Math.floor(duration))}</span>
@@ -410,7 +410,7 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
           <button
             onClick={handleRevealSong}
             disabled={!ready}
-            className="w-full py-3 rounded-2xl bg-emerald-700 hover:bg-emerald-600 active:bg-emerald-800 font-semibold text-lg transition-colors disabled:opacity-40"
+            className="w-full py-3 rounded-2xl bg-emerald-700 hover:bg-emerald-600 active:bg-emerald-800 font-semibold text-lg transition-colors disabled:opacity-60"
           >
             חשוף את השיר
           </button>

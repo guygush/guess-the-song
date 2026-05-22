@@ -60,7 +60,7 @@ export default function LobbySubScreen({ roomId, isOrganizer, players, onStart }
             <button
               onClick={handleStart}
               disabled={!canStart || loading}
-              className="w-full py-4 rounded-2xl bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 font-bold text-lg transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center"
+              className="w-full py-4 rounded-2xl bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 font-bold text-lg transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center"
             >
               {loading
                 ? <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />

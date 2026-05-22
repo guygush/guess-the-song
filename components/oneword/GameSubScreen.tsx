@@ -153,12 +153,12 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
                 onKeyDown={e => e.key === 'Enter' && handleSendGuess()}
                 placeholder="הניחוש שלך..."
                 disabled={submitting}
-                className="flex-1 min-w-0 bg-gray-800 rounded-xl px-4 py-3 text-lg outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-500 disabled:opacity-50"
+                className="flex-1 min-w-0 bg-gray-800 rounded-xl px-4 py-3 text-lg outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-500 disabled:opacity-60"
               />
               <button
                 onClick={handleSendGuess}
                 disabled={!guessInput.trim() || submitting}
-                className="shrink-0 px-5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 font-bold transition-colors disabled:opacity-40"
+                className="shrink-0 px-5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 font-bold transition-colors disabled:opacity-60"
               >
                 {submitting ? '...' : 'שלח'}
               </button>
@@ -190,12 +190,12 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
               onKeyDown={e => e.key === 'Enter' && handleSendHint()}
               placeholder="רמז במילה אחת..."
               disabled={submitting}
-              className="flex-1 min-w-0 bg-gray-800 rounded-xl px-4 py-3 text-lg outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-500 disabled:opacity-50"
+              className="flex-1 min-w-0 bg-gray-800 rounded-xl px-4 py-3 text-lg outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-500 disabled:opacity-60"
             />
             <button
               onClick={handleSendHint}
               disabled={!hintInput.trim() || submitting}
-              className="shrink-0 px-5 rounded-2xl bg-indigo-600 hover:bg-indigo-500 font-bold transition-colors disabled:opacity-40"
+              className="shrink-0 px-5 rounded-2xl bg-indigo-600 hover:bg-indigo-500 font-bold transition-colors disabled:opacity-60"
             >
               {submitting ? '...' : 'שלח'}
             </button>

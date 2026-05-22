@@ -55,7 +55,7 @@ export default function JoinSubScreen({ playerId, onJoined }: Props) {
           onChange={e => setName(e.target.value)}
           placeholder="הכנס שם..."
           disabled={busy}
-          className="w-full bg-gray-800 rounded-xl px-4 py-3 text-lg outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-500 disabled:opacity-50"
+          className="w-full bg-gray-800 rounded-xl px-4 py-3 text-lg outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-500 disabled:opacity-60"
         />
       </div>
 
@@ -72,12 +72,12 @@ export default function JoinSubScreen({ playerId, onJoined }: Props) {
           placeholder="קוד חדר"
           maxLength={4}
           disabled={busy}
-          className="flex-1 min-w-0 bg-gray-800 rounded-xl px-4 py-3 text-lg text-center tracking-widest font-bold outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-500 disabled:opacity-50"
+          className="flex-1 min-w-0 bg-gray-800 rounded-xl px-4 py-3 text-lg text-center tracking-widest font-bold outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-500 disabled:opacity-60"
         />
         <button
           onClick={handleJoin}
           disabled={!trimmedName || !roomCode.trim() || busy}
-          className="shrink-0 px-5 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 font-bold transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center"
+          className="shrink-0 px-5 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 font-bold transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center"
         >
           {loading === 'join'
             ? <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -94,7 +94,7 @@ export default function JoinSubScreen({ playerId, onJoined }: Props) {
       <button
         onClick={handleCreate}
         disabled={!trimmedName || busy}
-        className="w-full py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 font-bold text-lg transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center"
+        className="w-full py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 font-bold text-lg transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center"
       >
         {loading === 'create'
           ? <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
