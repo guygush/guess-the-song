@@ -17,7 +17,7 @@ export default function JoinSubScreen({ playerId, onJoined }: Props) {
   const trimmedName = name.trim();
 
   async function handleCreate() {
-    if (!trimmedName) return;
+    if (!trimmedName) { setError('נא להזין שם'); return; }
     setLoading('create');
     setError('');
     try {
@@ -31,7 +31,8 @@ export default function JoinSubScreen({ playerId, onJoined }: Props) {
   }
 
   async function handleJoin() {
-    if (!trimmedName || !roomCode.trim()) return;
+    if (!trimmedName) { setError('נא להזין שם'); return; }
+    if (!roomCode.trim()) { setError('נא להזין קוד חדר'); return; }
     setLoading('join');
     setError('');
     try {
@@ -76,7 +77,7 @@ export default function JoinSubScreen({ playerId, onJoined }: Props) {
         />
         <button
           onClick={handleJoin}
-          disabled={!trimmedName || !roomCode.trim() || busy}
+          disabled={busy}
           className="shrink-0 px-5 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 font-bold transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center"
         >
           {loading === 'join'
@@ -93,7 +94,7 @@ export default function JoinSubScreen({ playerId, onJoined }: Props) {
 
       <button
         onClick={handleCreate}
-        disabled={!trimmedName || busy}
+        disabled={busy}
         className="w-full py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 font-bold text-lg transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center"
       >
         {loading === 'create'

@@ -13,11 +13,16 @@ interface Props {
 
 export default function LobbySubScreen({ roomId, isOrganizer, players, onStart }: Props) {
   const activePlayers = players.filter(p => p.is_active);
-  const canStart = isOrganizer && activePlayers.length >= 3;
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   async function handleStart() {
+    if (activePlayers.length < 3) {
+      setError(`צריך לפחות ${3 - activePlayers.length} שחקנים נוספים`);
+      return;
+    }
     setLoading(true);
+    setError('');
     try {
       await startGame(roomId);
       onStart();
@@ -52,14 +57,10 @@ export default function LobbySubScreen({ roomId, isOrganizer, players, onStart }
       <div className="px-6 pt-3 pb-safe">
         {isOrganizer ? (
           <>
-            {activePlayers.length < 3 && (
-              <p className="text-center text-gray-300 text-sm mb-3">
-                ממתין לעוד {3 - activePlayers.length} שחקנים לפחות...
-              </p>
-            )}
+            {error && <p className="text-center text-red-400 text-sm mb-3">{error}</p>}
             <button
               onClick={handleStart}
-              disabled={!canStart || loading}
+              disabled={loading}
               className="w-full py-4 rounded-2xl bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 font-bold text-lg transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center"
             >
               {loading

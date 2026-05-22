@@ -51,6 +51,8 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
   const [hintInput, setHintInput] = useState('');
   const [guessInput, setGuessInput] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [hintError, setHintError] = useState('');
+  const [guessError, setGuessError] = useState('');
 
   const activePlayers = players.filter(p => p.is_active);
   const guesserId = room.guesser_order[room.current_turn % room.guesser_order.length];
@@ -71,8 +73,10 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
   const effectiveHintsApproved = (isOrganizer && amGuesser && !alternateModerator) ? allHintsSent : hintsApproved;
 
   async function handleSendHint() {
-    if (!hintInput.trim() || submitting) return;
+    if (submitting) return;
+    if (!hintInput.trim()) { setHintError('נא להזין רמז'); return; }
     setSubmitting(true);
+    setHintError('');
     try {
       const hint = await sendHint(room.id, room.current_turn, myPlayerId, hintInput.trim());
       onBroadcast('hint_sent', { hint });
@@ -83,8 +87,10 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
   }
 
   async function handleSendGuess() {
-    if (!guessInput.trim() || submitting) return;
+    if (submitting) return;
+    if (!guessInput.trim()) { setGuessError('נא להזין ניחוש'); return; }
     setSubmitting(true);
+    setGuessError('');
     try {
       const { guess, updatedRoom } = await sendGuess(room, guessInput.trim());
       onBroadcast('guess_made', { guess, room: updatedRoom });
@@ -146,10 +152,11 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
 
         {effectiveHintsApproved && (
           <div className="px-6 pt-3 pb-safe">
+            {guessError && <p className="text-red-400 text-sm text-right mb-1">{guessError}</p>}
             <div className="flex gap-2">
               <input
                 value={guessInput}
-                onChange={e => setGuessInput(e.target.value)}
+                onChange={e => { setGuessInput(e.target.value); setGuessError(''); }}
                 onKeyDown={e => e.key === 'Enter' && handleSendGuess()}
                 placeholder="הניחוש שלך..."
                 disabled={submitting}
@@ -157,7 +164,7 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
               />
               <button
                 onClick={handleSendGuess}
-                disabled={!guessInput.trim() || submitting}
+                disabled={submitting}
                 className="shrink-0 px-5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 font-bold transition-colors disabled:opacity-60"
               >
                 {submitting ? '...' : 'שלח'}
@@ -183,22 +190,25 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
 
         {/* Hint input — shown until submitted */}
         {!myHint && (
-          <div className="flex gap-2">
-            <input
-              value={hintInput}
-              onChange={e => setHintInput(e.target.value)}
-              onKeyDown={e => e.key === 'Enter' && handleSendHint()}
-              placeholder="רמז במילה אחת..."
-              disabled={submitting}
-              className="flex-1 min-w-0 bg-gray-800 rounded-xl px-4 py-3 text-lg outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-500 disabled:opacity-60"
-            />
-            <button
-              onClick={handleSendHint}
-              disabled={!hintInput.trim() || submitting}
-              className="shrink-0 px-5 rounded-2xl bg-indigo-600 hover:bg-indigo-500 font-bold transition-colors disabled:opacity-60"
-            >
-              {submitting ? '...' : 'שלח'}
-            </button>
+          <div className="flex flex-col gap-1">
+            {hintError && <p className="text-red-400 text-sm text-right">{hintError}</p>}
+            <div className="flex gap-2">
+              <input
+                value={hintInput}
+                onChange={e => { setHintInput(e.target.value); setHintError(''); }}
+                onKeyDown={e => e.key === 'Enter' && handleSendHint()}
+                placeholder="רמז במילה אחת..."
+                disabled={submitting}
+                className="flex-1 min-w-0 bg-gray-800 rounded-xl px-4 py-3 text-lg outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-500 disabled:opacity-60"
+              />
+              <button
+                onClick={handleSendHint}
+                disabled={submitting}
+                className="shrink-0 px-5 rounded-2xl bg-indigo-600 hover:bg-indigo-500 font-bold transition-colors disabled:opacity-60"
+              >
+                {submitting ? '...' : 'שלח'}
+              </button>
+            </div>
           </div>
         )}
 
