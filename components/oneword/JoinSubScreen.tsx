@@ -59,19 +59,9 @@ export default function JoinSubScreen({ playerId, onJoined }: Props) {
         />
       </div>
 
-      <button
-        onClick={handleCreate}
-        disabled={!trimmedName || busy}
-        className="w-full py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 font-bold text-lg transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center"
-      >
-        {loading === 'create'
-          ? <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
-          : 'צור חדר'}
-      </button>
-
       <div className="flex items-center gap-3 text-gray-600">
         <div className="flex-1 h-px bg-gray-800" />
-        <span className="text-sm">או</span>
+        <span className="text-sm">הצטרף לחדר קיים</span>
         <div className="flex-1 h-px bg-gray-800" />
       </div>
 
@@ -94,6 +84,22 @@ export default function JoinSubScreen({ playerId, onJoined }: Props) {
             : 'הצטרף'}
         </button>
       </div>
+
+      <div className="flex items-center gap-3 text-gray-600">
+        <div className="flex-1 h-px bg-gray-800" />
+        <span className="text-sm">או</span>
+        <div className="flex-1 h-px bg-gray-800" />
+      </div>
+
+      <button
+        onClick={handleCreate}
+        disabled={!trimmedName || busy}
+        className="w-full py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 font-bold text-lg transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center"
+      >
+        {loading === 'create'
+          ? <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
+          : 'צור חדר'}
+      </button>
 
       {error && <p className="text-red-400 text-center text-sm">{error}</p>}
     </div>
