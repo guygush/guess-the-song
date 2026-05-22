@@ -75,19 +75,19 @@ export default function JoinSubScreen({ playerId, onJoined }: Props) {
         <div className="flex-1 h-px bg-gray-800" />
       </div>
 
-      <div className="flex flex-col gap-2">
+      <div className="flex gap-2">
         <input
           value={roomCode}
           onChange={e => setRoomCode(e.target.value.toUpperCase())}
           placeholder="קוד חדר"
           maxLength={4}
           disabled={busy}
-          className="w-full bg-gray-800 rounded-xl px-4 py-3 text-lg text-center tracking-widest font-bold outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-500 disabled:opacity-50"
+          className="flex-1 min-w-0 bg-gray-800 rounded-xl px-4 py-3 text-lg text-center tracking-widest font-bold outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-500 disabled:opacity-50"
         />
         <button
           onClick={handleJoin}
           disabled={!trimmedName || !roomCode.trim() || busy}
-          className="w-full py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 font-bold transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center"
+          className="shrink-0 px-5 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 font-bold transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center"
         >
           {loading === 'join'
             ? <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
