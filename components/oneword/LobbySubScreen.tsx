@@ -32,44 +32,51 @@ export default function LobbySubScreen({ roomId, isOrganizer, players, onStart }
   }
 
   return (
-    <div className="flex-1 flex flex-col">
-      <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden px-6 pt-6 flex flex-col gap-6">
-        <div className="bg-gray-900 rounded-2xl p-5 text-center">
-          <p className="text-gray-300 text-sm mb-1">קוד חדר</p>
-          <p className="text-4xl font-bold tracking-widest text-indigo-400">{roomId}</p>
-          <p className="text-gray-400 text-xs mt-2">שתף עם החברים</p>
+    <div className="flex-1 flex flex-col min-h-0 overflow-hidden">
+
+      {/* Scrollable content */}
+      <div className="flex-1 min-h-0 overflow-y-auto px-5 pt-4 pb-2 flex flex-col gap-4">
+
+        {/* Room code card */}
+        <div className="bg-[#141414] border border-white/[0.06] rounded-2xl p-5 text-center flex-shrink-0">
+          <p className="text-xs text-white/40 font-semibold tracking-widest uppercase mb-2">קוד חדר</p>
+          <p className="text-4xl font-black tracking-widest text-[#FFDA57]" dir="ltr">{roomId}</p>
+          <p className="text-white/30 text-xs mt-2">שתף עם החברים</p>
         </div>
 
-        <div>
-          <p className="text-sm text-gray-300 mb-3">משתתפים ({activePlayers.length})</p>
-          <div className="flex flex-col gap-2">
-            {activePlayers.map(p => (
-              <div key={p.id} className="flex items-center gap-3 bg-gray-800 rounded-xl px-4 py-3">
-                <div className="w-2 h-2 rounded-full bg-emerald-400" />
-                <span className="font-semibold">{p.name}</span>
-                {p.is_organizer && <span className="text-xs text-gray-400 mr-auto">מנהל המשחק</span>}
-              </div>
-            ))}
-          </div>
+        {/* Players list */}
+        <div className="flex flex-col gap-2">
+          <p className="text-xs text-white/40 font-semibold tracking-widest uppercase">משתתפים ({activePlayers.length})</p>
+          {activePlayers.map(p => (
+            <div key={p.id} className="flex items-center gap-3 bg-[#141414] border border-white/[0.06] rounded-xl px-4 py-3">
+              <div className="w-2 h-2 rounded-full bg-[#FFDA57] flex-shrink-0" />
+              <span className="font-semibold text-sm flex-1">{p.name}</span>
+              {p.is_organizer && <span className="text-xs text-white/30">מנהל</span>}
+            </div>
+          ))}
         </div>
       </div>
 
-      <div className="px-6 pt-3 pb-safe">
+      {/* Footer */}
+      <div className="px-5 pt-3 pb-safe flex-shrink-0">
         {isOrganizer ? (
           <>
-            {error && <p className="text-center text-red-400 text-sm mb-3">{error}</p>}
+            {error && <p className="text-center text-[#FF4757] text-sm mb-3">{error}</p>}
             <button
               onClick={handleStart}
               disabled={loading}
-              className="w-full py-4 rounded-2xl bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 font-bold text-lg transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center"
+              className="w-full py-4 rounded-2xl bg-[#FFDA57] text-[#0C0C0C] font-black text-lg active:opacity-80 transition-opacity disabled:opacity-50 flex items-center justify-center"
             >
               {loading
-                ? <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                ? <div className="w-6 h-6 border-[2.5px] border-[#0C0C0C]/20 border-t-[#0C0C0C] rounded-full animate-spin" />
                 : 'התחל משחק'}
             </button>
           </>
         ) : (
-          <p className="text-center text-gray-300">ממתין למנהל המשחק להתחיל...</p>
+          <div className="flex items-center justify-center gap-2 py-3">
+            <div className="w-4 h-4 border-2 border-[#FFDA57]/20 border-t-[#FFDA57] rounded-full animate-spin" />
+            <p className="text-white/50 text-sm">ממתין למנהל...</p>
+          </div>
         )}
       </div>
     </div>

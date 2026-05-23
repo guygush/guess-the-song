@@ -48,61 +48,68 @@ export default function JoinSubScreen({ playerId, onJoined }: Props) {
   const busy = loading !== null;
 
   return (
-    <div className="flex-1 overflow-y-auto overflow-x-hidden min-h-0 flex flex-col justify-center px-6 pb-safe gap-6">
-      <div className="mb-12">
-        <p className="text-sm text-gray-300 mb-2">השם שלך</p>
+    <div className="flex-1 flex flex-col justify-center px-5 pb-safe gap-5 min-h-0 overflow-hidden">
+
+      {/* Name input */}
+      <div className="flex flex-col gap-1.5">
+        <p className="text-xs text-white/40 font-semibold tracking-widest uppercase">השם שלך</p>
         <input
           value={name}
           onChange={e => setName(e.target.value)}
           placeholder="הכנס שם..."
           disabled={busy}
-          className="w-full bg-gray-800 rounded-xl px-4 py-3 text-lg outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-500 disabled:opacity-60"
+          className="w-full bg-[#141414] border border-white/[0.08] rounded-xl px-4 py-3 text-base text-white outline-none focus:border-[#FFDA57]/50 placeholder-white/20 disabled:opacity-50 transition-colors"
         />
       </div>
 
-      <div className="flex items-center gap-3 text-gray-500">
-        <div className="flex-1 h-px bg-gray-800" />
-        <span className="text-sm">הצטרף לחדר קיים</span>
-        <div className="flex-1 h-px bg-gray-800" />
+      {/* Join divider */}
+      <div className="flex items-center gap-3">
+        <div className="flex-1 h-px bg-white/[0.06]" />
+        <span className="text-xs text-white/30">הצטרף לחדר קיים</span>
+        <div className="flex-1 h-px bg-white/[0.06]" />
       </div>
 
+      {/* Join row */}
       <div className="flex gap-2">
         <input
           value={roomCode}
           onChange={e => setRoomCode(e.target.value.toUpperCase())}
           placeholder="קוד חדר"
           maxLength={4}
+          dir="ltr"
           disabled={busy}
-          className="flex-1 min-w-0 bg-gray-800 rounded-xl px-4 py-3 text-lg text-center tracking-widest font-bold outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-500 disabled:opacity-60"
+          className="flex-1 min-w-0 bg-[#141414] border border-white/[0.08] rounded-xl px-4 py-3 text-base text-center tracking-widest font-bold text-white outline-none focus:border-[#FFDA57]/50 placeholder-white/20 disabled:opacity-50 transition-colors"
         />
         <button
           onClick={handleJoin}
           disabled={busy}
-          className="shrink-0 px-5 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 font-bold transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center"
+          className="shrink-0 px-5 py-3 rounded-xl bg-white/[0.06] border border-white/[0.08] text-white/80 font-bold transition-colors disabled:opacity-50 flex items-center justify-center active:bg-white/[0.10]"
         >
           {loading === 'join'
-            ? <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+            ? <div className="w-5 h-5 border-[2.5px] border-white/20 border-t-white rounded-full animate-spin" />
             : 'הצטרף'}
         </button>
       </div>
 
-      <div className="flex items-center gap-3 text-gray-500">
-        <div className="flex-1 h-px bg-gray-800" />
-        <span className="text-sm">או</span>
-        <div className="flex-1 h-px bg-gray-800" />
+      {/* Or divider */}
+      <div className="flex items-center gap-3">
+        <div className="flex-1 h-px bg-white/[0.06]" />
+        <span className="text-xs text-white/30">או</span>
+        <div className="flex-1 h-px bg-white/[0.06]" />
       </div>
 
+      {/* Create */}
       <button
         onClick={handleCreate}
         disabled={busy}
-        className="w-full py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 font-bold text-lg transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center"
+        className="w-full py-4 rounded-2xl bg-[#FFDA57] text-[#0C0C0C] font-black text-lg active:opacity-80 transition-opacity disabled:opacity-50 flex items-center justify-center"
       >
         {loading === 'create'
-          ? <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
+          ? <div className="w-6 h-6 border-[2.5px] border-[#0C0C0C]/20 border-t-[#0C0C0C] rounded-full animate-spin" />
           : 'צור חדר'}
       </button>
 
-      {error && <p className="text-red-400 text-center text-sm">{error}</p>}
+      {error && <p className="text-[#FF4757] text-center text-sm">{error}</p>}
     </div>
   );
 }

@@ -25,20 +25,28 @@ interface HintCardProps {
 
 function HintCard({ hint, senderName, rejected, showRejectButton, onToggleReject }: HintCardProps) {
   return (
-    <div className={`relative overflow-hidden rounded-xl px-4 py-2 text-center min-w-[80px] transition-colors ${rejected ? 'bg-red-950' : 'bg-gray-800'}`}>
-      <p className={`font-semibold ${rejected ? 'text-gray-500' : ''}`}>{hint.word}</p>
-      {senderName && <p className="text-xs text-gray-400">{senderName}</p>}
+    <div className={`relative overflow-hidden rounded-xl px-3 py-2 text-center min-w-[72px] border transition-colors ${
+      rejected
+        ? 'bg-[#FF4757]/10 border-[#FF4757]/20'
+        : 'bg-[#141414] border-white/[0.08]'
+    }`}>
+      <p className={`font-bold text-sm ${rejected ? 'text-white/30' : 'text-white'}`}>{hint.word}</p>
+      {senderName && <p className="text-xs text-white/30 mt-0.5">{senderName}</p>}
       {rejected && (
         <div className="absolute inset-0 pointer-events-none">
           <svg className="w-full h-full" preserveAspectRatio="none">
-            <line x1="0" y1="0" x2="100%" y2="100%" stroke="rgb(239 68 68)" strokeWidth="2" />
+            <line x1="0" y1="0" x2="100%" y2="100%" stroke="#FF4757" strokeWidth="1.5" opacity="0.5" />
           </svg>
         </div>
       )}
       {showRejectButton && (
         <button
           onClick={onToggleReject}
-          className={`absolute top-1 right-1 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold transition-colors ${rejected ? 'bg-red-700 hover:bg-red-600 text-white' : 'bg-gray-600 hover:bg-red-700 text-gray-300 hover:text-white'}`}
+          className={`absolute top-1 right-1 w-4 h-4 rounded-full flex items-center justify-center text-[10px] font-bold transition-colors ${
+            rejected
+              ? 'bg-[#FF4757]/40 text-white'
+              : 'bg-white/[0.10] text-white/40 hover:bg-[#FF4757]/40 hover:text-white'
+          }`}
         >
           ✕
         </button>
@@ -69,7 +77,6 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
     : null;
   const isAlternateModerator = myPlayerId === alternateModerator;
   const effectiveIsOrganizer = isOrganizer || isAlternateModerator;
-
   const effectiveHintsApproved = (isOrganizer && amGuesser && !alternateModerator) ? allHintsSent : hintsApproved;
 
   async function handleSendHint() {
@@ -108,51 +115,52 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
   if (!room.guesser_order.length) {
     return (
       <div className="flex-1 flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-indigo-400 border-t-transparent rounded-full animate-spin" />
+        <div className="w-8 h-8 border-2 border-[#FFDA57]/20 border-t-[#FFDA57] rounded-full animate-spin" />
       </div>
     );
   }
 
-  // ── Guesser view ──────────────────────────────────────────────────────
+  // ── Guesser view ──
   if (amGuesser) {
     const visibleHints = hints.filter(h => !rejectedHintIds.includes(h.id));
     return (
-      <div className="flex-1 flex flex-col">
-        <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden px-6 pt-6 flex flex-col gap-6">
-          <div className="bg-gray-900 rounded-2xl p-5 text-center">
-            <p className="text-gray-300 text-sm mb-1">התור שלך לנחש</p>
-            <p className="text-2xl font-bold text-indigo-400">?</p>
+      <div className="flex-1 flex flex-col min-h-0 overflow-hidden">
+        <div className="flex-1 min-h-0 overflow-y-auto px-5 pt-4 pb-2 flex flex-col gap-4">
+
+          <div className="bg-[#141414] border border-white/[0.06] rounded-2xl p-5 text-center flex-shrink-0">
+            <p className="text-xs text-white/40 font-semibold tracking-widest uppercase mb-2">התור שלך לנחש</p>
+            <div className="text-4xl font-black text-[#FFDA57]">?</div>
           </div>
 
           {!effectiveHintsApproved ? (
-            <div className="flex-1 flex flex-col items-center justify-center gap-3">
-              <div className="w-8 h-8 border-2 border-indigo-400 border-t-transparent rounded-full animate-spin" />
+            <div className="flex-1 flex flex-col items-center justify-center gap-3 py-6">
+              <div className="w-8 h-8 border-2 border-[#FFDA57]/20 border-t-[#FFDA57] rounded-full animate-spin" />
               {!allHintsSent ? (
                 <>
-                  <p className="text-gray-300">מחכה לרמזים...</p>
-                  <p className="text-gray-400 text-sm">{hints.length} מתוך {activeHinters.length} רמזים התקבלו</p>
+                  <p className="text-white/50 text-sm">מחכה לרמזים...</p>
+                  <p className="text-white/30 text-xs">{hints.length} מתוך {activeHinters.length} רמזים התקבלו</p>
                 </>
               ) : (
-                <p className="text-gray-300">ממתין לאישור המנהל...</p>
+                <p className="text-white/50 text-sm">ממתין לאישור המנהל...</p>
               )}
             </div>
           ) : (
-            <>
-              <p className="text-gray-300 text-sm">הרמזים שקיבלת:</p>
+            <div className="flex flex-col gap-3">
+              <p className="text-xs text-white/40 font-semibold tracking-widest uppercase">הרמזים שלך</p>
               <div className="flex flex-wrap gap-2">
                 {visibleHints.map(h => (
-                  <span key={h.id} className="bg-indigo-900 text-indigo-200 px-4 py-2 rounded-xl font-semibold text-lg">
+                  <span key={h.id} className="bg-[#FFDA57]/10 text-[#FFDA57] border border-[#FFDA57]/20 px-4 py-2 rounded-xl font-bold text-base">
                     {h.word}
                   </span>
                 ))}
               </div>
-            </>
+            </div>
           )}
         </div>
 
         {effectiveHintsApproved && (
-          <div className="px-6 pt-3 pb-safe">
-            {guessError && <p className="text-red-400 text-sm text-right mb-1">{guessError}</p>}
+          <div className="px-5 pt-3 pb-safe flex-shrink-0">
+            {guessError && <p className="text-[#FF4757] text-sm text-right mb-2">{guessError}</p>}
             <div className="flex gap-2">
               <input
                 value={guessInput}
@@ -160,14 +168,16 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
                 onKeyDown={e => e.key === 'Enter' && handleSendGuess()}
                 placeholder="הניחוש שלך..."
                 disabled={submitting}
-                className="flex-1 min-w-0 bg-gray-800 rounded-xl px-4 py-3 text-lg outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-500 disabled:opacity-60"
+                className="flex-1 min-w-0 bg-[#141414] border border-white/[0.08] rounded-xl px-4 py-3 text-base text-white outline-none focus:border-[#FFDA57]/50 placeholder-white/20 disabled:opacity-50 transition-colors"
               />
               <button
                 onClick={handleSendGuess}
                 disabled={submitting}
-                className="shrink-0 px-5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 font-bold transition-colors disabled:opacity-60"
+                className="shrink-0 px-5 rounded-xl bg-[#FFDA57] text-[#0C0C0C] font-black transition-opacity active:opacity-80 disabled:opacity-50 flex items-center justify-center"
               >
-                {submitting ? '...' : 'שלח'}
+                {submitting
+                  ? <div className="w-5 h-5 border-[2px] border-[#0C0C0C]/20 border-t-[#0C0C0C] rounded-full animate-spin" />
+                  : 'שלח'}
               </button>
             </div>
           </div>
@@ -176,22 +186,24 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
     );
   }
 
-  // ── Hinter view ───────────────────────────────────────────────────────
+  // ── Hinter view ──
   const showHints = !!myHint;
 
   return (
-    <div className="flex-1 flex flex-col">
-      <div className="flex-1 min-h-0 overflow-y-auto px-6 pt-6 flex flex-col gap-6">
-        <div className="bg-gray-900 rounded-2xl p-5 text-center">
-          <p className="text-gray-300 text-sm mb-1">המילה לתאר</p>
-          <p className="text-3xl font-bold">{room.current_word}</p>
-          <p className="text-gray-400 text-xs mt-2">{guesser?.name} מנסה לנחש</p>
+    <div className="flex-1 flex flex-col min-h-0 overflow-hidden">
+      <div className="flex-1 min-h-0 overflow-y-auto px-5 pt-4 pb-2 flex flex-col gap-4">
+
+        {/* Word card */}
+        <div className="bg-[#141414] border border-white/[0.06] rounded-2xl p-5 text-center flex-shrink-0">
+          <p className="text-xs text-white/40 font-semibold tracking-widest uppercase mb-2">המילה לתאר</p>
+          <p className="text-3xl font-black">{room.current_word}</p>
+          <p className="text-white/30 text-xs mt-2">{guesser?.name} מנסה לנחש</p>
         </div>
 
-        {/* Hint input — shown until submitted */}
+        {/* Hint input */}
         {!myHint && (
-          <div className="flex flex-col gap-1">
-            {hintError && <p className="text-red-400 text-sm text-right">{hintError}</p>}
+          <div className="flex flex-col gap-1.5 flex-shrink-0">
+            {hintError && <p className="text-[#FF4757] text-sm text-right">{hintError}</p>}
             <div className="flex gap-2">
               <input
                 value={hintInput}
@@ -199,14 +211,16 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
                 onKeyDown={e => e.key === 'Enter' && handleSendHint()}
                 placeholder="רמז במילה אחת..."
                 disabled={submitting}
-                className="flex-1 min-w-0 bg-gray-800 rounded-xl px-4 py-3 text-lg outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-500 disabled:opacity-60"
+                className="flex-1 min-w-0 bg-[#141414] border border-white/[0.08] rounded-xl px-4 py-3 text-base text-white outline-none focus:border-[#FFDA57]/50 placeholder-white/20 disabled:opacity-50 transition-colors"
               />
               <button
                 onClick={handleSendHint}
                 disabled={submitting}
-                className="shrink-0 px-5 rounded-2xl bg-indigo-600 hover:bg-indigo-500 font-bold transition-colors disabled:opacity-60"
+                className="shrink-0 px-5 rounded-xl bg-[#FFDA57] text-[#0C0C0C] font-black transition-opacity active:opacity-80 disabled:opacity-50 flex items-center justify-center"
               >
-                {submitting ? '...' : 'שלח'}
+                {submitting
+                  ? <div className="w-5 h-5 border-[2px] border-[#0C0C0C]/20 border-t-[#0C0C0C] rounded-full animate-spin" />
+                  : 'שלח'}
               </button>
             </div>
           </div>
@@ -215,7 +229,7 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
         {/* Hints grid */}
         {showHints && hints.length > 0 && (
           <div className="flex flex-col gap-3">
-            <p className="text-gray-300 text-sm">
+            <p className="text-xs text-white/40 font-semibold tracking-widest uppercase">
               רמזים שהתקבלו ({hints.length}/{activeHinters.length})
             </p>
             <div className="flex flex-wrap gap-2">
@@ -236,31 +250,34 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
           </div>
         )}
 
-        {/* Count for hinters before submitting */}
+        {/* Count before submitting */}
         {!showHints && hints.length > 0 && (
-          <p className="text-center text-gray-300 text-sm">
+          <p className="text-center text-white/40 text-sm flex-shrink-0">
             {hints.length} מתוך {activeHinters.length} רמזים נשלחו
           </p>
         )}
 
-        {/* Status lines */}
+        {/* Status messages */}
         {showHints && allHintsSent && !hintsApproved && !effectiveIsOrganizer && (
-          <p className="text-center text-gray-300 text-sm">ממתין לאישור המנהל...</p>
+          <div className="flex items-center justify-center gap-2 py-2 flex-shrink-0">
+            <div className="w-4 h-4 border-2 border-[#FFDA57]/20 border-t-[#FFDA57] rounded-full animate-spin" />
+            <p className="text-white/50 text-sm">ממתין לאישור המנהל...</p>
+          </div>
         )}
         {showHints && hintsApproved && (
-          <div className="flex flex-col items-center gap-3 py-4">
-            <div className="w-8 h-8 border-2 border-indigo-400 border-t-transparent rounded-full animate-spin" />
-            <p className="text-gray-300">ממתין לניחוש של {guesser?.name}...</p>
+          <div className="flex items-center justify-center gap-2 py-2 flex-shrink-0">
+            <div className="w-4 h-4 border-2 border-[#FFDA57]/20 border-t-[#FFDA57] rounded-full animate-spin" />
+            <p className="text-white/50 text-sm">ממתין לניחוש של {guesser?.name}...</p>
           </div>
         )}
       </div>
 
-      {/* Approve button — pinned at bottom for effective organizer */}
+      {/* Approve button */}
       {effectiveIsOrganizer && allHintsSent && !hintsApproved && (
-        <div className="px-6 pt-3 pb-safe">
+        <div className="px-5 pt-3 pb-safe flex-shrink-0">
           <button
             onClick={() => onBroadcast('hints_approved', {})}
-            className="w-full py-4 rounded-2xl bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 font-bold text-lg transition-colors"
+            className="w-full py-4 rounded-2xl bg-[#FFDA57] text-[#0C0C0C] font-black text-lg active:opacity-80 transition-opacity"
           >
             אשר רמזים ושלח לניחוש
           </button>

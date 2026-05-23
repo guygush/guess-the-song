@@ -17,3 +17,13 @@ html, body {
   from { stroke-dashoffset: 113.1; }
   to   { stroke-dashoffset: 0; }
 }
+
+@keyframes progress-ring-large {
+  from { stroke-dashoffset: 213.6; }
+  to   { stroke-dashoffset: 0; }
+}
+
+@keyframes mba {
+  from { transform: scaleY(0.3); }
+  to   { transform: scaleY(1); }
+}

@@ -200,7 +200,7 @@ export default function OneWordScreen({ onBackToHub }: Props) {
   const showBack = subScreen === 'join' || subScreen === 'lobby';
 
   return (
-    <div className="flex flex-col h-dvh bg-gray-950 text-white overflow-hidden">
+    <div className="flex flex-col h-dvh bg-[#0C0C0C] text-white overflow-hidden">
       <Header title="במילה אחת" onBack={showBack ? handleBack : undefined} />
 
       {subScreen === 'join' && (

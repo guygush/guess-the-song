@@ -45,22 +45,22 @@ export default function TurnSummarySubScreen({ room, isOrganizer, players, guess
 
   if (room.status === 'ended') {
     return (
-      <div className="flex-1 flex flex-col">
-        <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden px-6 pt-6 flex flex-col items-center justify-center gap-6">
-          <p className="text-2xl font-bold text-center">המשחק נגמר!</p>
-          <div className="bg-gray-900 rounded-2xl p-6 w-full text-center">
-            <p className="text-gray-300 text-sm mb-1">ניקוד סופי</p>
-            <p className="text-5xl font-bold text-indigo-400">{room.total_score}</p>
-            <p className="text-gray-300 text-sm mt-1">מתוך {totalTurns} תורים</p>
+      <div className="flex-1 flex flex-col min-h-0 overflow-hidden">
+        <div className="flex-1 flex flex-col items-center justify-center px-5 gap-6">
+          <div className="text-4xl">🏆</div>
+          <div className="bg-[#141414] border border-white/[0.06] rounded-2xl p-6 w-full text-center">
+            <p className="text-xs text-white/40 font-semibold tracking-widest uppercase mb-2">ניקוד סופי</p>
+            <p className="text-5xl font-black text-[#FFDA57]" dir="ltr">{room.total_score}</p>
+            <p className="text-white/30 text-sm mt-2">מתוך {totalTurns} תורים</p>
           </div>
           {room.end_reason && (
-            <p className="text-gray-300 text-sm text-center">{room.end_reason}</p>
+            <p className="text-white/40 text-sm text-center">{room.end_reason}</p>
           )}
         </div>
-        <div className="px-6 pt-3 pb-safe">
+        <div className="px-5 pt-3 pb-safe flex-shrink-0">
           <button
             onClick={onBackToHub}
-            className="w-full py-4 rounded-2xl bg-gray-700 hover:bg-gray-600 font-bold text-lg transition-colors"
+            className="w-full py-4 rounded-2xl bg-[#FFDA57] text-[#0C0C0C] font-black text-lg active:opacity-80 transition-opacity"
           >
             בחזרה למסך הראשי
           </button>
@@ -70,46 +70,56 @@ export default function TurnSummarySubScreen({ room, isOrganizer, players, guess
   }
 
   return (
-    <div className="flex-1 flex flex-col">
-      <div className="flex-1 min-h-0 overflow-y-auto px-6 pt-6 flex flex-col gap-5">
-        <div className={`rounded-2xl p-5 text-center ${guess.is_correct ? 'bg-emerald-900/50' : 'bg-red-900/30'}`}>
-          <p className="text-4xl mb-2">{guess.is_correct ? '✓' : '✗'}</p>
-          <p className="text-gray-300 text-sm">המילה הייתה</p>
-          <p className="text-2xl font-bold">{room.current_word}</p>
-          <p className="text-gray-300 text-sm mt-2">הניחוש: <span className="text-white font-semibold">{guess.guess}</span></p>
+    <div className="flex-1 flex flex-col min-h-0 overflow-hidden">
+      <div className="flex-1 flex flex-col px-5 pt-4 gap-4 min-h-0 overflow-y-auto">
+
+        {/* Result card */}
+        <div className={`rounded-2xl p-5 text-center border flex-shrink-0 ${
+          guess.is_correct
+            ? 'bg-[#FFDA57]/10 border-[#FFDA57]/25'
+            : 'bg-[#FF4757]/10 border-[#FF4757]/20'
+        }`}>
+          <p className="text-3xl mb-2">{guess.is_correct ? '✓' : '✗'}</p>
+          <p className="text-xs text-white/40 font-semibold tracking-widest uppercase mb-2">המילה הייתה</p>
+          <p className={`text-2xl font-black ${guess.is_correct ? 'text-[#FFDA57]' : 'text-white'}`}>{room.current_word}</p>
+          <p className="text-white/40 text-sm mt-2">הניחוש: <span className="text-white font-bold">{guess.guess}</span></p>
         </div>
 
-        <div className="bg-gray-900 rounded-2xl p-4 text-center">
-          <p className="text-gray-300 text-sm">ניקוד</p>
-          <p className="text-4xl font-bold text-indigo-400">{room.total_score}</p>
-          <p className="text-gray-400 text-sm">מתוך {totalTurns} תורים</p>
+        {/* Score card */}
+        <div className="bg-[#141414] border border-white/[0.06] rounded-2xl p-4 text-center flex-shrink-0">
+          <p className="text-xs text-white/40 font-semibold tracking-widest uppercase mb-1">ניקוד</p>
+          <p className="text-4xl font-black text-[#FFDA57]" dir="ltr">{room.total_score}</p>
+          <p className="text-white/30 text-xs mt-1">מתוך {totalTurns} תורים</p>
         </div>
       </div>
 
-      <div className="px-6 pt-3 pb-safe flex flex-col gap-3">
+      <div className="px-5 pt-3 pb-safe flex-shrink-0 flex flex-col gap-3">
         {isOrganizer ? (
           <>
             <button
               onClick={handleNext}
               disabled={busy}
-              className="w-full py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 font-bold text-lg transition-colors disabled:opacity-60 flex items-center justify-center"
+              className="w-full py-4 rounded-2xl bg-[#FFDA57] text-[#0C0C0C] font-black text-lg active:opacity-80 transition-opacity disabled:opacity-50 flex items-center justify-center"
             >
               {loading === 'next'
-                ? <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                ? <div className="w-6 h-6 border-[2.5px] border-[#0C0C0C]/20 border-t-[#0C0C0C] rounded-full animate-spin" />
                 : 'תור הבא'}
             </button>
             <button
               onClick={handleEnd}
               disabled={busy}
-              className="w-full py-3 rounded-2xl bg-gray-800 hover:bg-gray-700 font-semibold transition-colors disabled:opacity-60 flex items-center justify-center"
+              className="w-full py-3 rounded-2xl bg-white/[0.06] border border-white/[0.08] text-white/70 font-semibold transition-colors disabled:opacity-50 active:bg-white/[0.10] flex items-center justify-center"
             >
               {loading === 'end'
-                ? <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                ? <div className="w-5 h-5 border-2 border-white/20 border-t-white/70 rounded-full animate-spin" />
                 : 'סיים משחק'}
             </button>
           </>
         ) : (
-          <p className="text-center text-gray-300">ממתין לתור הבא...</p>
+          <div className="flex items-center justify-center gap-2 py-3">
+            <div className="w-4 h-4 border-2 border-[#FFDA57]/20 border-t-[#FFDA57] rounded-full animate-spin" />
+            <p className="text-white/50 text-sm">ממתין לתור הבא...</p>
+          </div>
         )}
       </div>
     </div>
