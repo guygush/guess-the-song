@@ -68,13 +68,31 @@ export async function searchPopularSong(
   return { song, videoId };
 }
 
+function cleanArtist(name: string): string {
+  // Strip soloist annotations like ", סולן: יגאל בשן" or ", סולנית: ..."
+  return name.split(/,|סולן:|סולנית:/)[0].trim();
+}
+
 export async function findVideoId(trackName: string, artistName: string): Promise<string | null> {
-  const q = encodeURIComponent(`${trackName} ${artistName}`);
-  const url = `https://www.googleapis.com/youtube/v3/search?q=${q}&type=video&part=id&maxResults=1&key=${API_KEY}`;
+  const q = encodeURIComponent(`${trackName} ${cleanArtist(artistName)}`);
+  const url = `https://www.googleapis.com/youtube/v3/search?q=${q}&type=video&part=id,snippet&maxResults=5&key=${API_KEY}`;
   const res = await fetch(url);
   if (!res.ok) return null;
   const data = await res.json();
-  return (data.items?.[0]?.id?.videoId as string) ?? null;
+  const items: { id: { videoId: string }; snippet: { title: string } }[] =
+    (data.items ?? []).filter((item: { id?: { videoId?: string } }) => item.id?.videoId);
+  if (!items.length) return null;
+
+  // Prefer a result whose title contains at least one significant word from the song name.
+  // This prevents YouTube returning a different song by the same performer when the exact
+  // song has no strong match (common with old/obscure tracks).
+  const keywords = trackName.split(/\s+/).filter(w => w.length >= 3);
+  if (keywords.length > 0) {
+    const match = items.find(item => keywords.some(w => item.snippet.title.includes(w)));
+    if (match) return match.id.videoId;
+  }
+
+  return items[0].id.videoId;
 }
 
 // Module-level singleton so the API script is only injected once
