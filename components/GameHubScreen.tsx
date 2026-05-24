@@ -61,7 +61,7 @@ export default function GameHubScreen({ onSelectGame }: Props) {
                 style={{
                   background: `linear-gradient(to bottom, ${game.accentColor}dd, ${game.accentColor})`,
                   border: `2px solid ${game.borderColor}`,
-                  boxShadow: `0 4px 0 ${game.shadowColor}`,
+                  boxShadow: `0 3px 10px ${game.shadowColor}88, 0 1px 2px rgba(0,0,0,0.07)`,
                 }}
               >
                 {game.emoji}

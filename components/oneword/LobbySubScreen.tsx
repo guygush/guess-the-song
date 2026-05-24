@@ -40,7 +40,7 @@ export default function LobbySubScreen({ roomId, isOrganizer, players, onStart }
 
         {/* Room code card */}
         <div className="candy-card rounded-3xl p-5 text-center flex-shrink-0"
-          style={{ background: 'rgba(255,219,44,0.12)', borderColor: '#b8860b', boxShadow: '0 4px 0 #c4a882' }}
+          style={{ background: 'rgba(255,219,44,0.12)', borderColor: '#b8860b', boxShadow: '0 3px 8px rgba(196,168,130,0.3), 0 1px 2px rgba(0,0,0,0.06)' }}
         >
           <p className="text-xs text-brown-light font-bold tracking-widest uppercase mb-2">קוד חדר</p>
           <p className="text-4xl font-black tracking-widest text-brown" dir="ltr"
@@ -52,7 +52,7 @@ export default function LobbySubScreen({ roomId, isOrganizer, players, onStart }
         <div className="flex flex-col gap-2">
           <p className="text-xs text-brown-light font-bold tracking-widest uppercase">משתתפים ({activePlayers.length})</p>
           {activePlayers.map((p, i) => (
-            <div key={p.id} className="flex items-center gap-3 candy-card rounded-2xl px-4 py-3" style={{ boxShadow: '0 3px 0 #c4a882' }}>
+            <div key={p.id} className="flex items-center gap-3 candy-card rounded-2xl px-4 py-3" style={{ boxShadow: '0 3px 8px rgba(196,168,130,0.3), 0 1px 2px rgba(0,0,0,0.06)' }}>
               <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold text-white flex-shrink-0"
                 style={{ background: PLAYER_COLORS[i % PLAYER_COLORS.length] }}>
                 {p.name.charAt(0)}

@@ -14,7 +14,7 @@ export default function Header({ title, onBack, wavy = true }: Props) {
           <button
             onClick={onBack}
             className="absolute left-4 w-10 h-10 rounded-full flex items-center justify-center"
-            style={{ background: '#f4e6d4', border: '2px solid #dcc9ad', boxShadow: '0 3px 0 #c4a882' }}
+            style={{ background: '#f4e6d4', border: '2px solid #dcc9ad', boxShadow: '0 3px 8px rgba(196,168,130,0.3), 0 1px 2px rgba(0,0,0,0.06)' }}
             aria-label="חזור"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">

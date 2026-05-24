@@ -39,8 +39,8 @@ export default function SummaryScreen({ players, onDone }: Props) {
               key={name}
               className="flex items-center gap-3 px-4 py-3.5 rounded-3xl candy-card"
               style={isFirst
-                ? { background: 'rgba(255,219,44,0.15)', borderColor: '#b8860b', boxShadow: '0 4px 0 #c4a882' }
-                : { boxShadow: '0 3px 0 #c4a882' }
+                ? { background: 'rgba(255,219,44,0.15)', borderColor: '#b8860b', boxShadow: '0 3px 8px rgba(196,168,130,0.3), 0 1px 2px rgba(0,0,0,0.06)' }
+                : { boxShadow: '0 3px 8px rgba(196,168,130,0.3), 0 1px 2px rgba(0,0,0,0.06)' }
               }
             >
               <span className="text-xl w-8 text-center flex-shrink-0">{MEDALS[i] ?? `${i + 1}.`}</span>

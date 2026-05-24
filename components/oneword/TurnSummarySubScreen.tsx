@@ -48,7 +48,7 @@ export default function TurnSummarySubScreen({ room, isOrganizer, players, guess
       <div className="flex-1 flex flex-col min-h-0 overflow-hidden">
         <div className="flex-1 flex flex-col items-center justify-center px-5 gap-6">
           <div className="text-5xl">🏆</div>
-          <div className="candy-card rounded-3xl p-6 w-full text-center" style={{ boxShadow: '0 4px 0 #c4a882' }}>
+          <div className="candy-card rounded-3xl p-6 w-full text-center" style={{ boxShadow: '0 3px 8px rgba(196,168,130,0.3), 0 1px 2px rgba(0,0,0,0.06)' }}>
             <p className="text-xs text-brown-light font-bold tracking-widest uppercase mb-2">ניקוד סופי</p>
             <p className="text-5xl font-black text-brown" dir="ltr"
               style={{ textShadow: '0 2px 0 #c4a882' }}>{room.total_score}</p>
@@ -78,8 +78,8 @@ export default function TurnSummarySubScreen({ room, isOrganizer, players, guess
         {/* Result card */}
         <div className="candy-card rounded-3xl p-5 text-center flex-shrink-0"
           style={guess.is_correct
-            ? { background: 'rgba(255,219,44,0.12)', borderColor: '#b8860b', boxShadow: '0 4px 0 #c4a882' }
-            : { background: 'rgba(192,57,43,0.06)', borderColor: 'rgba(192,57,43,0.3)', boxShadow: '0 4px 0 rgba(192,57,43,0.2)' }
+            ? { background: 'rgba(255,219,44,0.12)', borderColor: '#b8860b', boxShadow: '0 3px 8px rgba(196,168,130,0.3), 0 1px 2px rgba(0,0,0,0.06)' }
+            : { background: 'rgba(192,57,43,0.06)', borderColor: 'rgba(192,57,43,0.3)', boxShadow: '0 3px 8px rgba(192,57,43,0.2)' }
           }
         >
           <p className="text-3xl mb-2">{guess.is_correct ? '✓' : '✗'}</p>
@@ -91,7 +91,7 @@ export default function TurnSummarySubScreen({ room, isOrganizer, players, guess
         </div>
 
         {/* Score card */}
-        <div className="candy-card rounded-3xl p-4 text-center flex-shrink-0" style={{ boxShadow: '0 4px 0 #c4a882' }}>
+        <div className="candy-card rounded-3xl p-4 text-center flex-shrink-0" style={{ boxShadow: '0 3px 8px rgba(196,168,130,0.3), 0 1px 2px rgba(0,0,0,0.06)' }}>
           <p className="text-xs text-brown-light font-bold tracking-widest uppercase mb-1">ניקוד</p>
           <p className="text-4xl font-black text-brown" dir="ltr"
             style={{ textShadow: '0 2px 0 #c4a882' }}>{room.total_score}</p>

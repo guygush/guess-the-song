@@ -196,7 +196,7 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
         <button
           onClick={onBack}
           className="absolute left-4 w-10 h-10 rounded-full flex items-center justify-center"
-          style={{ background: '#f4e6d4', border: '2px solid #dcc9ad', boxShadow: '0 3px 0 #c4a882' }}
+          style={{ background: '#f4e6d4', border: '2px solid #dcc9ad', boxShadow: '0 3px 8px rgba(196,168,130,0.3), 0 1px 2px rgba(0,0,0,0.06)' }}
         >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
             <path d="M15 19l-7-7 7-7" stroke="#8b5e34" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -237,7 +237,7 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
                     style={{
                       background: isWinner ? 'rgba(255,219,44,0.2)' : '#fff',
                       border: `2.5px solid ${isWinner ? '#ffbf00' : '#dcc9ad'}`,
-                      boxShadow: isWinner ? '0 4px 0 #e6a800' : '0 4px 0 #c4a882',
+                      boxShadow: isWinner ? '0 3px 8px rgba(230,168,0,0.4)' : '0 3px 8px rgba(196,168,130,0.3), 0 1px 2px rgba(0,0,0,0.06)',
                     }}
                   >
                     <span className="text-xs font-bold w-5 text-center text-brown-light" dir="ltr">{i + 1}</span>
@@ -270,7 +270,7 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
                 <button
                   onClick={() => { setShowScores(false); onFinish?.(selectedWinner ?? undefined); }}
                   className="w-full py-3 rounded-[2.5rem] font-bold text-base"
-                  style={{ background: '#f0e6d0', border: '2.5px solid #dcc9ad', color: '#8b5e34', boxShadow: '0 4px 0 #c4a882' }}
+                  style={{ background: '#f0e6d0', border: '2.5px solid #dcc9ad', color: '#8b5e34', boxShadow: '0 3px 8px rgba(196,168,130,0.3), 0 1px 2px rgba(0,0,0,0.06)' }}
                 >
                   סיים משחק
                 </button>
@@ -289,14 +289,14 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
           {(!hideMetadata || revealed) && (
             revealed ? (
               <div className="flex flex-col items-center mx-4 mt-3 px-3 py-2.5 rounded-2xl flex-shrink-0 text-center"
-                style={{ background: '#fff', border: '2px solid #dcc9ad', boxShadow: '0 3px 0 #c4a882' }}
+                style={{ background: '#fff', border: '2px solid #dcc9ad', boxShadow: '0 3px 8px rgba(196,168,130,0.3), 0 1px 2px rgba(0,0,0,0.06)' }}
               >
                 <p className="font-bold text-sm text-brown">{song.trackName}</p>
                 <p className="text-xs text-brown-light mt-0.5">{song.artistName}</p>
               </div>
             ) : (
               <div className="flex items-center gap-3 mx-4 mt-3 px-3 py-2.5 rounded-2xl flex-shrink-0"
-                style={{ background: '#fff', border: '2px solid #dcc9ad', boxShadow: '0 3px 0 #c4a882' }}
+                style={{ background: '#fff', border: '2px solid #dcc9ad', boxShadow: '0 3px 8px rgba(196,168,130,0.3), 0 1px 2px rgba(0,0,0,0.06)' }}
               >
                 {song.artworkUrl100 && (
                   // eslint-disable-next-line @next/next/no-img-element
@@ -476,7 +476,7 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
                           style={{
                             background: `linear-gradient(to bottom, ${color}dd, ${color})`,
                             border: `2.5px solid ${color}99`,
-                            boxShadow: `0 5px 0 ${color}88`,
+                            boxShadow: `0 3px 10px ${color}55`,
                             textShadow: '0 1px 2px rgba(0,0,0,0.25)',
                           }}
                         >
@@ -487,7 +487,7 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
                     <button
                       onClick={() => handleSelectWinner(null)}
                       className="col-span-2 py-4 rounded-3xl font-bold text-sm text-brown"
-                      style={{ background: '#f0e6d0', border: '2px solid #dcc9ad', boxShadow: '0 3px 0 #c4a882' }}
+                      style={{ background: '#f0e6d0', border: '2px solid #dcc9ad', boxShadow: '0 3px 8px rgba(196,168,130,0.3), 0 1px 2px rgba(0,0,0,0.06)' }}
                     >
                       אף אחד לא זיהה
                     </button>
@@ -522,7 +522,7 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
                   <button
                     onClick={() => { handleStop(); onFinish?.(undefined); }}
                     className="w-full py-4 rounded-[2.5rem] font-bold text-base text-brown"
-                    style={{ background: '#f0e6d0', border: '2.5px solid #dcc9ad', boxShadow: '0 4px 0 #c4a882' }}
+                    style={{ background: '#f0e6d0', border: '2.5px solid #dcc9ad', boxShadow: '0 3px 8px rgba(196,168,130,0.3), 0 1px 2px rgba(0,0,0,0.06)' }}
                   >
                     סיים
                   </button>

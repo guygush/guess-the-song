@@ -29,8 +29,8 @@ function HintCard({ hint, senderName, rejected, showRejectButton, onToggleReject
       rejected ? '' : ''
     }`}
       style={rejected
-        ? { background: 'rgba(192,57,43,0.06)', borderColor: 'rgba(192,57,43,0.3)', boxShadow: '0 3px 0 rgba(192,57,43,0.2)' }
-        : { boxShadow: '0 3px 0 #c4a882' }
+        ? { background: 'rgba(192,57,43,0.06)', borderColor: 'rgba(192,57,43,0.3)', boxShadow: '0 3px 8px rgba(192,57,43,0.2)' }
+        : { boxShadow: '0 3px 8px rgba(196,168,130,0.3), 0 1px 2px rgba(0,0,0,0.06)' }
       }
     >
       <p className={`font-bold text-sm text-brown ${rejected ? 'opacity-30' : ''}`}>{hint.word}</p>
@@ -131,7 +131,7 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
         <div className="flex-1 min-h-0 overflow-y-auto px-5 pt-4 pb-2 flex flex-col gap-4">
 
           <div className="candy-card rounded-3xl p-5 text-center flex-shrink-0"
-            style={{ boxShadow: '0 4px 0 #c4a882' }}
+            style={{ boxShadow: '0 3px 8px rgba(196,168,130,0.3), 0 1px 2px rgba(0,0,0,0.06)' }}
           >
             <p className="text-xs text-brown-light font-bold tracking-widest uppercase mb-2">התור שלך לנחש</p>
             <div className="text-4xl font-black text-brown" style={{ opacity: 0.2 }}>?</div>
@@ -200,7 +200,7 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
 
         {/* Word card */}
         <div className="candy-card rounded-3xl p-5 text-center flex-shrink-0"
-          style={{ background: 'rgba(255,219,44,0.1)', borderColor: '#b8860b', boxShadow: '0 4px 0 #c4a882' }}
+          style={{ background: 'rgba(255,219,44,0.1)', borderColor: '#b8860b', boxShadow: '0 3px 8px rgba(196,168,130,0.3), 0 1px 2px rgba(0,0,0,0.06)' }}
         >
           <p className="text-xs text-brown-light font-bold tracking-widest uppercase mb-2">המילה לתאר</p>
           <p className="text-3xl font-black text-brown">{room.current_word}</p>
