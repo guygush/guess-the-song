@@ -14,8 +14,8 @@ import type { Song } from '@/lib/itunes';
 type Screen =
   | { name: 'hub' }
   | { name: 'search' }
-  | { name: 'loading'; song: Song; hideMetadata?: boolean; testConfig?: TestConfig; groupPlayers?: string[]; scores?: Record<string, number> }
-  | { name: 'play'; song: Song; videoId: string; hideMetadata?: boolean; testConfig?: TestConfig; groupPlayers?: string[]; scores: Record<string, number> }
+  | { name: 'loading'; song: Song; hideMetadata?: boolean; testConfig?: TestConfig; groupPlayers?: string[]; scores?: Record<string, number>; playedSongs?: Set<string> }
+  | { name: 'play'; song: Song; videoId: string; hideMetadata?: boolean; testConfig?: TestConfig; groupPlayers?: string[]; scores: Record<string, number>; playedSongs?: Set<string> }
   | { name: 'summary'; players: { name: string; score: number }[] }
   | { name: 'one-word' };
 
@@ -28,20 +28,42 @@ export default function Home() {
   const [screen, setScreen] = useState<Screen>({ name: 'hub' });
   const screenRef = useRef(screen);
   const suppressPushRef = useRef(false);
+  const hasHistoryEntryRef = useRef(false);
+  const ignoreNextPopStateRef = useRef(false);
 
   screenRef.current = screen;
 
-  // Push a history entry for every forward navigation so Android back can pop it.
+  // Keep exactly one history entry while away from hub.
+  // Push once on first departure, replaceState on subsequent transitions,
+  // and consume the entry via history.back() when returning to hub programmatically.
   useEffect(() => {
+    if (screen.name === 'hub') {
+      if (hasHistoryEntryRef.current) {
+        ignoreNextPopStateRef.current = true;
+        window.history.back();
+        hasHistoryEntryRef.current = false;
+      }
+      return;
+    }
     const suppress = suppressPushRef.current;
     suppressPushRef.current = false;
-    if (screen.name === 'hub' || suppress) return;
-    window.history.pushState(null, '');
+    if (suppress) return;
+    if (hasHistoryEntryRef.current) {
+      window.history.replaceState(null, '');
+    } else {
+      window.history.pushState(null, '');
+      hasHistoryEntryRef.current = true;
+    }
   }, [screen]);
 
   // Handle Android / browser hardware back button.
   useEffect(() => {
     const onPopState = () => {
+      if (ignoreNextPopStateRef.current) {
+        ignoreNextPopStateRef.current = false;
+        return;
+      }
+      hasHistoryEntryRef.current = false;
       suppressPushRef.current = true;
       const s = screenRef.current;
       if (s.name === 'search' || s.name === 'one-word' || s.name === 'summary') {
@@ -62,11 +84,12 @@ export default function Home() {
     groupPlayers?: string[],
   ) {
     const scores: Record<string, number> = {};
-    setScreen({ name: 'loading', song, hideMetadata, testConfig, groupPlayers, scores });
+    const playedSongs = testConfig ? new Set([`${song.trackName}|${song.artistName}`]) : undefined;
+    setScreen({ name: 'loading', song, hideMetadata, testConfig, groupPlayers, scores, playedSongs });
     try {
       const videoId = knownVideoId ?? await findVideoId(song.trackName, song.artistName);
       if (!videoId) throw new Error('No YouTube result found');
-      setScreen({ name: 'play', song, videoId, hideMetadata, testConfig, groupPlayers, scores });
+      setScreen({ name: 'play', song, videoId, hideMetadata, testConfig, groupPlayers, scores, playedSongs });
     } catch (err) {
       console.error(err);
       setScreen({ name: 'search' });
@@ -77,16 +100,18 @@ export default function Home() {
     config: TestConfig,
     groupPlayers?: string[],
     scores?: Record<string, number>,
+    playedSongs?: Set<string>,
   ) {
     try {
       const songs = await loadChartSongs();
-      const picked = pickRandomSong(songs, config.language, config.decades, config.topOnly);
+      const picked = pickRandomSong(songs, config.language, config.decades, config.topOnly, playedSongs);
       if (!picked) { setScreen({ name: 'search' }); return; }
       const song = chartSongToSong(picked);
-      setScreen({ name: 'loading', song, hideMetadata: true, testConfig: config, groupPlayers, scores });
+      const newPlayed = new Set([...(playedSongs ?? []), `${picked.song}|${picked.performer}`]);
+      setScreen({ name: 'loading', song, hideMetadata: true, testConfig: config, groupPlayers, scores, playedSongs: newPlayed });
       const videoId = await findVideoId(picked.song, picked.performer);
       if (!videoId) { setScreen({ name: 'search' }); return; }
-      setScreen({ name: 'play', song, videoId, hideMetadata: true, testConfig: config, groupPlayers, scores: scores ?? {} });
+      setScreen({ name: 'play', song, videoId, hideMetadata: true, testConfig: config, groupPlayers, scores: scores ?? {}, playedSongs: newPlayed });
     } catch {
       setScreen({ name: 'search' });
     }
@@ -117,7 +142,7 @@ export default function Home() {
 
     const onNextSong = (winner?: string) => {
       if (!testConfig) { setScreen({ name: 'search' }); return; }
-      handleTestNext(testConfig, groupPlayers, addPoint(scores, winner));
+      handleTestNext(testConfig, groupPlayers, addPoint(scores, winner), screen.playedSongs);
     };
 
     const onFinish = testConfig ? (winner?: string) => {
@@ -138,6 +163,7 @@ export default function Home() {
         videoId={screen.videoId}
         hideMetadata={screen.hideMetadata}
         groupPlayers={groupPlayers}
+        scores={scores}
         onNextSong={onNextSong}
         onFinish={onFinish}
         onBack={() => setScreen({ name: 'search' })}

@@ -33,6 +33,7 @@ export function pickRandomSong(
   language: 'hebrew' | 'foreign' | 'both',
   decades: string[],
   topOnly: boolean,
+  exclude?: Set<string>,
 ): ChartSong | null {
   let pool = songs;
 
@@ -51,6 +52,10 @@ export function pickRandomSong(
 
   if (topOnly) {
     pool = pool.filter(s => s.position <= 5);
+  }
+
+  if (exclude?.size) {
+    pool = pool.filter(s => !exclude.has(`${s.song}|${s.performer}`));
   }
 
   if (!pool.length) return null;
