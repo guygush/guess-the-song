@@ -17,6 +17,7 @@ interface Props {
 
 const INCREMENTS = [1, 0.5, 0.25];
 const DEFAULT_DURATION = 300;
+const PLAYER_COLORS = ['#5EB3F8', '#FF6B9D', '#3ECF8E', '#B69AF0', '#FF8C42', '#FFDA57'];
 
 function fmt(sec: number) {
   const m = Math.floor(sec / 60);
@@ -24,9 +25,11 @@ function fmt(sec: number) {
   return `${m}:${String(Math.floor(s)).padStart(2, '0')}`;
 }
 
-function fmtReveal(sec: number) {
-  const n = Number.isInteger(sec) ? `${sec}` : sec.toFixed(2).replace(/\.?0+$/, '');
-  return `${n}s`;
+function fmtDur(sec: number) {
+  if (sec === 0.25) return '¼s';
+  if (sec === 0.5) return '½s';
+  if (Number.isInteger(sec)) return `${sec}s`;
+  return `${sec}s`;
 }
 
 export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack, hideMetadata, groupPlayers, scores }: Props) {
@@ -171,18 +174,12 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
     if (revealed) playFree(clamped); else playSnippet(clamped, revealDuration);
   };
 
-  const handleStartInput = (raw: string) => {
-    const n = parseInt(raw, 10);
-    if (!isNaN(n)) setStartOffset(Math.max(0, Math.min(Math.floor(duration), n)));
-  };
-
   const handleSelectWinner = (player: string | null) => {
     handleStop();
     setSelectedWinner(player);
     setShowScores(true);
   };
 
-  // ── Derived score data (used when showScores) ───────────────────
   const scoreBase = scores ?? {};
   const displayScores = groupPlayers
     ? [...groupPlayers]
@@ -191,343 +188,411 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
     : [];
   const scoreMax = displayScores[0]?.score || 1;
 
-  // ── Single return — hidden player div always stays in the DOM ───
-  return (
-    <div className="flex flex-col h-dvh bg-[#0C0C0C] text-white overflow-hidden">
+  // ── Shared header ────────────────────────────────────────────────
+  const Header = ({ title }: { title?: string }) => (
+    <header className="play-header flex-shrink-0">
+      <div className="flex items-center justify-between px-4 py-3 text-brown">
+        {/* Back */}
+        <button
+          onClick={onBack}
+          className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
+          style={{ background: '#f4e6d4', border: '2px solid #dcc9ad', boxShadow: '0 3px 0 #c4a882' }}
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M15 19l-7-7 7-7" stroke="#8b5e34" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
 
-      {/* Hidden YouTube player — must always be mounted */}
+        {/* Title */}
+        <span className="flex-1 text-center text-sm font-bold text-brown truncate px-3">
+          {title ?? 'משחקי לילה - זהה את השיר'}
+        </span>
+
+        {/* Dots */}
+        <div className="flex gap-1 items-center flex-shrink-0">
+          <div className="w-2 h-2 rounded-full" style={{ background: '#8b5e34' }} />
+          <div className="w-2 h-2 rounded-full" style={{ background: '#8b5e34' }} />
+          <div className="w-2 h-2 rounded-full" style={{ background: '#8b5e34' }} />
+        </div>
+      </div>
+      <div className="play-wavy opacity-50" />
+    </header>
+  );
+
+  return (
+    <div className="flex flex-col h-dvh play-page overflow-hidden">
+
+      {/* Hidden YouTube player */}
       <div style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden', opacity: 0 }}>
         <div ref={containerRef} />
       </div>
 
-      {/* ── Score screen ── */}
+      {/* ── SCORE SCREEN ── */}
       {showScores && groupPlayers && (
         <>
-          <div className="relative flex items-center justify-center h-13 flex-shrink-0 px-4">
-            <button onClick={onBack} className="absolute left-3 w-9 h-9 flex items-center justify-center text-white/40 hover:text-[#FFDA57] transition-colors">
-              <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-            </button>
-            <span className="text-sm font-bold text-white/70">ניקוד</span>
-          </div>
+          <Header />
+          <div className="flex-1 flex flex-col min-h-0 px-5 pt-4 pb-safe overflow-y-auto">
 
-          <div className="text-center px-4 py-3 flex-shrink-0">
-            {selectedWinner
-              ? <p className="text-lg font-black text-[#FFDA57]">{selectedWinner} זיהה את השיר!</p>
-              : <p className="text-lg font-black text-white/40">אף אחד לא זיהה</p>
-            }
-            <p className="text-white/35 text-xs mt-1 truncate">{song.trackName} — {song.artistName}</p>
-          </div>
-
-          <div className="flex-1 flex flex-col justify-center px-5 gap-2.5 min-h-0">
-            {displayScores.map(({ name, score }) => (
-              <div
-                key={name}
-                className={`flex items-center gap-3 px-4 py-3 rounded-2xl border ${
-                  name === selectedWinner
-                    ? 'bg-[#FFDA57]/10 border-[#FFDA57]/25'
-                    : 'bg-[#141414] border-white/[0.06]'
-                }`}
-              >
-                <span className={`font-bold flex-1 text-base ${name === selectedWinner ? 'text-[#FFDA57]' : 'text-white'}`}>{name}</span>
-                <div className="w-14 h-1.5 bg-white/[0.08] rounded-full overflow-hidden" dir="ltr">
-                  <div className="h-full rounded-full bg-[#FFDA57]" style={{ width: `${(score / scoreMax) * 100}%` }} />
+            {/* Winner announcement */}
+            <div className="text-center mb-5">
+              {selectedWinner ? (
+                <div className="inline-block px-5 py-2 rounded-full font-bold text-sm mb-2 glossy-btn btn-candy-yellow" style={{ color: '#5c3511' }}>
+                  ✓ &nbsp;{selectedWinner} זיהה!
                 </div>
-                <span className="font-black text-lg w-5 text-right text-white" dir="ltr">{score}</span>
-              </div>
-            ))}
-          </div>
+              ) : (
+                <div className="inline-block px-5 py-2 rounded-full font-bold text-sm mb-2" style={{ background: '#f0e6d0', border: '2px solid #dcc9ad', color: '#8b5e34' }}>
+                  אף אחד לא זיהה
+                </div>
+              )}
+              <p className="text-xs truncate text-brown-light">{song.trackName} — {song.artistName}</p>
+            </div>
 
-          <div className="px-5 pb-safe pt-3 flex flex-col gap-2.5 flex-shrink-0">
-            <button
-              onClick={() => { setShowScores(false); onNextSong(selectedWinner ?? undefined); }}
-              className="w-full py-4 rounded-2xl bg-[#FFDA57] text-[#0C0C0C] font-black text-base active:opacity-80 transition-opacity"
-            >
-              שיר הבא
-            </button>
-            {onFinish && (
+            {/* Scores */}
+            <div className="flex-1 flex flex-col gap-2.5 mb-5">
+              {displayScores.map(({ name, score }, i) => {
+                const color = PLAYER_COLORS[groupPlayers.indexOf(name) % PLAYER_COLORS.length];
+                const isWinner = name === selectedWinner;
+                return (
+                  <div
+                    key={name}
+                    className="flex items-center gap-3 px-4 py-3 rounded-3xl"
+                    style={{
+                      background: isWinner ? 'rgba(255,219,44,0.2)' : '#fff',
+                      border: `2.5px solid ${isWinner ? '#ffbf00' : '#dcc9ad'}`,
+                      boxShadow: isWinner ? '0 4px 0 #e6a800' : '0 4px 0 #c4a882',
+                    }}
+                  >
+                    <span className="text-xs font-bold w-5 text-center text-brown-light" dir="ltr">{i + 1}</span>
+                    <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold text-white flex-shrink-0" style={{ background: color }}>
+                      {name.charAt(0)}
+                    </div>
+                    <span className="flex-1 text-sm font-bold text-brown">{name}</span>
+                    {isWinner && (
+                      <span className="text-xs font-bold px-2 py-0.5 rounded-full" style={{ background: '#ffdb2c', color: '#5c3511', border: '1.5px solid #b8860b' }}>+1</span>
+                    )}
+                    <div className="w-16 h-2 rounded-full overflow-hidden" style={{ background: '#e9dcc5' }} dir="ltr">
+                      <div className="h-full rounded-full" style={{ width: `${(score / scoreMax) * 100}%`, background: isWinner ? '#ffbf00' : '#c4a882' }} />
+                    </div>
+                    <span className="font-bold text-base w-6 text-right text-brown" dir="ltr">{score}</span>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Actions */}
+            <div className="flex flex-col gap-3">
               <button
-                onClick={() => { setShowScores(false); onFinish?.(selectedWinner ?? undefined); }}
-                className="w-full py-3 rounded-2xl bg-white/[0.06] border border-white/[0.08] text-white font-bold text-base active:opacity-70 transition-opacity"
+                onClick={() => { setShowScores(false); onNextSong(selectedWinner ?? undefined); }}
+                className="w-full py-4 rounded-[2.5rem] font-bold text-xl glossy-btn btn-candy-yellow active:opacity-80 transition-opacity"
+                style={{ color: '#5c3511' }}
               >
-                סיים משחק
+                השיר הבא ←
               </button>
-            )}
+              {onFinish && (
+                <button
+                  onClick={() => { setShowScores(false); onFinish?.(selectedWinner ?? undefined); }}
+                  className="w-full py-3 rounded-[2.5rem] font-bold text-base"
+                  style={{ background: '#f0e6d0', border: '2.5px solid #dcc9ad', color: '#8b5e34', boxShadow: '0 4px 0 #c4a882' }}
+                >
+                  סיים משחק
+                </button>
+              )}
+            </div>
           </div>
         </>
       )}
 
-      {/* ── Main play screen ── */}
+      {/* ── MAIN PLAY SCREEN ── */}
       {!showScores && (
-      <>
+        <>
+          <Header />
 
-      {/* Top bar */}
-      <div className="relative flex items-center justify-center h-13 flex-shrink-0 px-4">
-        <button onClick={onBack} className="absolute left-3 w-9 h-9 flex items-center justify-center text-white/40 hover:text-[#FFDA57] transition-colors">
-          <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-        </button>
-        <span className="text-sm font-bold text-white/70">זהה את השיר</span>
-        {!ready && (
-          <div className="absolute right-4">
-            <div className="w-4 h-4 border-2 border-[#FFDA57]/20 border-t-[#FFDA57] rounded-full animate-spin" />
-          </div>
-        )}
-      </div>
-
-      {/* Song info — visible after reveal */}
-      {(!hideMetadata || revealed) && (
-        <div className="flex items-center gap-3 mx-4 mb-1 bg-[#141414] border border-white/[0.07] rounded-xl px-3 py-2.5 flex-shrink-0">
-          {song.artworkUrl100 && (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={song.artworkUrl100} alt="" className="w-10 h-10 rounded-lg flex-shrink-0 object-cover" />
-          )}
-          <div className="min-w-0">
-            <p className="font-bold text-sm truncate">{song.trackName}</p>
-            <p className="text-white/45 text-xs truncate">{song.artistName}</p>
-          </div>
-        </div>
-      )}
-
-      {/* ── PRE-REVEAL ── */}
-      {!revealed && (
-        <div className="flex-1 flex flex-col px-4 pb-1 min-h-0 overflow-hidden">
-
-          {/* Hidden song card */}
-          {hideMetadata && (
-            <div className="bg-[#141414] border border-white/[0.07] rounded-xl px-4 py-3 flex items-center justify-between mb-3 flex-shrink-0">
-              <div className="flex gap-1 items-end h-6">
-                {[55,100,40,80,60,90,45].map((h, i) => (
-                  <div
-                    key={i}
-                    className="w-1 rounded-sm bg-[#FFDA57]"
-                    style={{
-                      height: `${h}%`,
-                      animation: `mba 0.7s ease-in-out infinite alternate`,
-                      animationDelay: `${i * 0.08}s`,
-                      transformOrigin: 'bottom',
-                    }}
-                  />
-                ))}
+          {/* Song info strip — shown when metadata visible */}
+          {(!hideMetadata || revealed) && (
+            <div className="flex items-center gap-3 mx-4 mt-3 px-3 py-2.5 rounded-2xl flex-shrink-0"
+              style={{ background: '#fff', border: '2px solid #dcc9ad', boxShadow: '0 3px 0 #c4a882' }}
+            >
+              {song.artworkUrl100 && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={song.artworkUrl100} alt="" className="w-10 h-10 rounded-xl flex-shrink-0 object-cover" style={{ border: '2px solid #dcc9ad' }} />
+              )}
+              <div className="min-w-0">
+                <p className="font-bold text-sm truncate text-brown">{song.trackName}</p>
+                <p className="text-xs truncate text-brown-light">{song.artistName}</p>
               </div>
-              <span className="text-white/10 font-bold tracking-[0.35em] text-sm">● ● ● ●</span>
             </div>
           )}
 
-          {/* Duration + ring + play */}
-          <div className="flex items-center justify-center gap-6 mb-4 flex-shrink-0">
-            {/* Progress ring */}
-            <div className="relative w-20 h-20 flex items-center justify-center">
-              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 80 80">
-                <circle cx="40" cy="40" r="34" fill="none" stroke="rgba(255,218,87,0.1)" strokeWidth="5"/>
-                <circle
-                  key={snippetKey}
-                  cx="40" cy="40" r="34"
-                  fill="none" stroke="#FFDA57" strokeWidth="5"
-                  strokeLinecap="round"
-                  strokeDasharray="213.6"
-                  strokeDashoffset={playing ? undefined : '213.6'}
-                  transform="rotate(-90 40 40)"
-                  style={playing ? { animation: `progress-ring-large ${revealDuration}s linear forwards` } : {}}
-                />
-              </svg>
-              <span className="text-base font-black text-[#FFDA57]" dir="ltr">{fmtReveal(revealDuration)}</span>
-            </div>
+          {/* ── PRE-REVEAL ── */}
+          {!revealed && (
+            <div className="flex-1 flex flex-col items-center px-6 pt-6 pb-2 min-h-0 overflow-hidden">
 
-            {/* Play button */}
-            <button
-              onClick={handlePlay}
-              disabled={!ready}
-              className={`w-16 h-16 rounded-full flex items-center justify-center text-xl shadow-lg transition-all disabled:opacity-40 ${
-                playing ? 'bg-[#FFDA57]/20 border-2 border-[#FFDA57]/40' : 'bg-[#FFDA57]'
-              }`}
-            >
-              {!ready
-                ? <div className="w-5 h-5 border-2 border-[#0C0C0C]/30 border-t-[#0C0C0C] rounded-full animate-spin" />
-                : playing
-                  ? <span className="text-[#FFDA57] text-xl font-bold">■</span>
-                  : <svg width="20" height="22" viewBox="0 0 20 22" fill="#0C0C0C"><path d="M1.5 1.5l17 9.5-17 9.5z"/></svg>
-              }
-            </button>
-          </div>
-
-          {/* Expose more */}
-          <div className="flex-shrink-0 mb-3">
-            <p className="text-center text-white/35 text-xs mb-2.5 font-semibold tracking-widest uppercase">חשוף עוד</p>
-            <div className="flex gap-2 justify-center">
-              {INCREMENTS.map((n) => {
-                const label = n === 0.25 ? '+¼s' : n === 0.5 ? '+½s' : '+1s';
-                return (
-                  <button
-                    key={n}
-                    dir="ltr"
-                    onClick={() => handleReveal(n)}
-                    disabled={!ready || revealDuration + n > 30}
-                    className="px-5 py-2.5 rounded-xl font-bold text-sm transition-colors bg-[#141414] border border-white/[0.08] text-white/70 hover:border-[#FFDA57]/30 hover:text-[#FFDA57] disabled:opacity-30 disabled:cursor-not-allowed"
-                  >
-                    {label}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Start offset */}
-          <div className="flex-shrink-0">
-            <p className="text-center text-white/35 text-xs mb-2.5 font-semibold tracking-widest uppercase">התחל מ (שניות)</p>
-            <div className="flex items-center gap-3 justify-center">
-              <button
-                onClick={() => handleStartCommit(startOffset + 1)}
-                disabled={!ready || startOffset >= Math.floor(duration)}
-                className="w-10 h-10 rounded-xl bg-[#141414] border border-white/[0.08] text-white/70 font-bold disabled:opacity-30 disabled:cursor-not-allowed hover:border-white/20 transition-colors"
-              >‹</button>
-              <input
-                type="number"
-                min={0}
-                max={Math.floor(duration)}
-                value={startOffset}
-                disabled={!ready}
-                onChange={(e) => handleStartInput(e.target.value)}
-                onBlur={(e) => handleStartCommit(parseInt(e.target.value, 10) || 0)}
-                onKeyDown={(e) => e.key === 'Enter' && handleStartCommit(startOffset)}
-                className="w-24 bg-[#141414] border border-white/[0.08] rounded-xl px-3 py-2 text-center text-xl font-black outline-none focus:border-[#FFDA57]/30 disabled:opacity-50 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
-              />
-              <button
-                onClick={() => handleStartCommit(startOffset - 1)}
-                disabled={!ready || startOffset <= 0}
-                className="w-10 h-10 rounded-xl bg-[#141414] border border-white/[0.08] text-white/70 font-bold disabled:opacity-30 disabled:cursor-not-allowed hover:border-white/20 transition-colors"
-              >›</button>
-            </div>
-            <button
-              onClick={handleReset}
-              disabled={!ready || revealDuration === 0.5}
-              className="mt-2 w-full py-1.5 text-xs text-white/25 hover:text-white/50 disabled:opacity-0 transition-colors"
-            >
-              ↺ אפס ל-0.5 שניות
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* ── POST-REVEAL ── */}
-      {revealed && (
-        <div className="flex-1 flex flex-col px-4 pb-1 min-h-0 overflow-hidden">
-
-          {/* Play + scrubber */}
-          <div className="flex items-center gap-3 mb-3 flex-shrink-0">
-            <button
-              onClick={handlePlay}
-              disabled={!ready}
-              className={`w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0 transition-all disabled:opacity-40 ${
-                playing ? 'bg-[#FFDA57]/15 border border-[#FFDA57]/30' : 'bg-[#FFDA57]'
-              }`}
-            >
-              {!ready
-                ? <div className="w-4 h-4 border-2 border-[#0C0C0C]/30 border-t-[#0C0C0C] rounded-full animate-spin" />
-                : playing
-                  ? <span className="text-[#FFDA57] text-sm font-bold">■</span>
-                  : <svg width="14" height="16" viewBox="0 0 14 16" fill="#0C0C0C"><path d="M1 1l12 7-12 7z"/></svg>
-              }
-            </button>
-            <div className="flex-1" dir="ltr">
-              <input
-                type="range"
-                min={0}
-                max={Math.floor(duration)}
-                step={1}
-                value={startOffset}
-                disabled={!ready}
-                onMouseDown={() => { scrubbingRef.current = true; }}
-                onTouchStart={() => { scrubbingRef.current = true; }}
-                onChange={(e) => setStartOffset(Number(e.target.value))}
-                onMouseUp={(e) => { scrubbingRef.current = false; handleStartCommit(Number((e.target as HTMLInputElement).value)); }}
-                onTouchEnd={(e) => { scrubbingRef.current = false; handleStartCommit(Number((e.target as HTMLInputElement).value)); }}
-                className="w-full accent-[#FFDA57] disabled:opacity-50"
-              />
-              <div className="flex justify-between text-xs text-white/25 mt-0.5">
-                <span>{fmt(startOffset)}</span>
-                <span>{fmt(Math.floor(duration))}</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Links */}
-          <div className="flex items-center justify-between mb-3 flex-shrink-0">
-            <button
-              onClick={() => { handleStop(); setRevealed(false); revealedRef.current = false; }}
-              className="text-white/35 hover:text-white/60 text-xs transition-colors"
-            >
-              → חזור לניחוש
-            </button>
-            <a
-              href={`https://www.youtube.com/watch?v=${videoId}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1 text-xs text-white/35 hover:text-red-400 transition-colors"
-            >
-              <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-              </svg>
-              YouTube
-            </a>
-          </div>
-
-          {/* Group winner selection */}
-          {groupPlayers && (
-            <div className="flex-1 flex flex-col min-h-0">
-              <p className="text-center text-white/40 text-xs font-semibold mb-3 tracking-widest uppercase">מי זיהה ראשון?</p>
-              <div className="grid grid-cols-2 gap-2.5">
-                {groupPlayers.map(player => (
-                  <button
-                    key={player}
-                    onClick={() => handleSelectWinner(player)}
-                    className="py-4 rounded-2xl font-black text-lg bg-[#141414] border border-white/[0.07] text-white hover:border-[#FFDA57]/30 hover:text-[#FFDA57] active:bg-[#FFDA57] active:text-[#0C0C0C] active:border-[#FFDA57] transition-colors"
-                  >
-                    {player}
-                  </button>
-                ))}
-                <button
-                  onClick={() => handleSelectWinner(null)}
-                  className="col-span-2 py-3 rounded-2xl font-semibold text-sm bg-transparent border border-white/[0.06] text-white/30 hover:text-white/50 transition-colors"
+              {/* Hidden song card */}
+              {hideMetadata && (
+                <div className="w-full mb-6 px-4 py-3 rounded-3xl flex items-center justify-between flex-shrink-0"
+                  style={{ background: '#fff', border: '2px solid #dcc9ad', boxShadow: '0 4px 0 #c4a882' }}
                 >
-                  אף אחד לא זיהה
+                  <div className="flex items-end gap-1" style={{ height: 24 }}>
+                    {[55, 100, 40, 80, 60, 90, 45].map((h, i) => (
+                      <div
+                        key={i}
+                        className="w-1.5 rounded-sm"
+                        style={{
+                          height: `${h}%`,
+                          background: '#ffbf00',
+                          animation: playing ? `mba 0.75s ease-in-out infinite alternate` : 'none',
+                          animationDelay: `${[0, 0.1, 0.18, 0.08, 0.22, 0.15, 0.05][i]}s`,
+                          transformOrigin: 'bottom',
+                          transform: playing ? undefined : 'scaleY(0.4)',
+                          opacity: playing ? 1 : 0.5,
+                        }}
+                      />
+                    ))}
+                  </div>
+                  <span className="font-bold tracking-[0.35em] text-sm" style={{ color: 'rgba(139,94,52,0.15)', direction: 'ltr' }}>● &nbsp;● &nbsp;● &nbsp;●</span>
+                </div>
+              )}
+
+              {/* Play button + duration bubble */}
+              <div className="relative flex items-center justify-center mb-8 flex-shrink-0">
+                {/* Loading ring / progress ring */}
+                <div className="absolute inset-0 flex items-center justify-center" style={{ width: 176, height: 176 }}>
+                  <svg width="176" height="176" viewBox="0 0 176 176" className="absolute inset-0">
+                    <circle cx="88" cy="88" r="82" fill="none" stroke="rgba(184,134,11,0.15)" strokeWidth="6"/>
+                    <circle
+                      key={snippetKey}
+                      cx="88" cy="88" r="82"
+                      fill="none" stroke="rgba(184,134,11,0.5)" strokeWidth="6"
+                      strokeLinecap="round"
+                      strokeDasharray="515.2"
+                      strokeDashoffset={playing ? undefined : '515.2'}
+                      transform="rotate(-90 88 88)"
+                      style={playing ? { animation: `progress-ring-play ${revealDuration}s linear forwards` } : {}}
+                    />
+                  </svg>
+                </div>
+
+                {/* Main play circle */}
+                <button
+                  onClick={handlePlay}
+                  disabled={!ready}
+                  className="w-44 h-44 rounded-full flex items-center justify-center glossy-btn btn-candy-yellow relative z-10"
+                  style={{ opacity: ready ? 1 : 0.6 }}
+                >
+                  {!ready ? (
+                    <div className="w-8 h-8 border-4 rounded-full animate-spin" style={{ borderColor: 'rgba(92,53,17,0.2)', borderTopColor: '#5c3511' }} />
+                  ) : playing ? (
+                    /* Stop icon */
+                    <div className="w-8 h-8 rounded-md" style={{ background: '#5c3511' }} />
+                  ) : (
+                    /* Play triangle */
+                    <div className="w-0 h-0 ml-2" style={{
+                      borderTop: '22px solid transparent',
+                      borderBottom: '22px solid transparent',
+                      borderLeft: '38px solid #5c3511',
+                    }} />
+                  )}
+                </button>
+
+                {/* Duration speech bubble */}
+                <div
+                  className="absolute z-20"
+                  style={{ right: -4, top: '38%' }}
+                >
+                  <div className="relative flex items-center justify-center px-4 py-2 rounded-2xl"
+                    style={{ background: '#fff', border: '2px solid #dcc9ad', boxShadow: '0 3px 6px rgba(0,0,0,0.12)', minWidth: 56 }}
+                  >
+                    {/* Pointer left */}
+                    <div className="absolute" style={{ left: -9, top: '50%', transform: 'translateY(-50%)', width: 0, height: 0, borderTop: '8px solid transparent', borderBottom: '8px solid transparent', borderRight: '9px solid #dcc9ad' }} />
+                    <div className="absolute" style={{ left: -6, top: '50%', transform: 'translateY(-50%)', width: 0, height: 0, borderTop: '6px solid transparent', borderBottom: '6px solid transparent', borderRight: '7px solid #fff' }} />
+                    <span className="font-bold text-lg" style={{ color: '#b8860b' }} dir="ltr">{fmtDur(revealDuration)}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Increment buttons */}
+              <div className="flex gap-3 w-full mb-7 flex-shrink-0" dir="ltr">
+                {INCREMENTS.map((n, idx) => {
+                  const label = n === 0.25 ? '+¼s' : n === 0.5 ? '+½s' : '+1s';
+                  const cls = idx === 0 ? 'btn-candy-red' : idx === 1 ? 'btn-candy-green' : 'btn-candy-blue';
+                  const textColor = idx === 0 ? '#8b2222' : idx === 1 ? '#3d6010' : '#1a5c8b';
+                  return (
+                    <button
+                      key={n}
+                      onClick={() => handleReveal(n)}
+                      disabled={!ready || revealDuration + n > 30}
+                      className={`flex-1 h-16 rounded-[2rem] font-bold text-2xl glossy-btn ${cls}`}
+                      style={{ color: textColor }}
+                    >
+                      {label}
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Start offset */}
+              <div className="w-full flex flex-col items-center gap-3 flex-shrink-0">
+                <label className="font-bold text-lg text-brown">התחל מ (שניות)</label>
+                <div className="flex items-center gap-3 w-full justify-center" dir="ltr">
+                  {/* − */}
+                  <button
+                    onClick={() => handleStartCommit(startOffset - 1)}
+                    disabled={!ready || startOffset <= 0}
+                    className="w-14 h-14 rounded-full flex items-center justify-center text-3xl font-bold circle-ctrl text-brown"
+                  >
+                    −
+                  </button>
+                  {/* Value */}
+                  <div className="flex-1 max-w-[160px] h-14 flex items-center justify-center rounded-3xl text-2xl font-bold text-brown value-box">
+                    {startOffset}
+                  </div>
+                  {/* + */}
+                  <button
+                    onClick={() => handleStartCommit(startOffset + 1)}
+                    disabled={!ready || startOffset >= Math.floor(duration)}
+                    className="w-14 h-14 rounded-full flex items-center justify-center text-3xl font-bold circle-ctrl text-brown"
+                  >
+                    +
+                  </button>
+                </div>
+                <button
+                  onClick={handleReset}
+                  disabled={!ready || revealDuration === 0.5}
+                  className="text-xs text-brown-light disabled:opacity-0 transition-opacity"
+                >
+                  ↺ אפס ל-0.5 שניות
                 </button>
               </div>
             </div>
           )}
-        </div>
-      )}
 
-      {/* Bottom bar */}
-      <div className="px-4 pb-safe pt-2 flex flex-col gap-2.5 flex-shrink-0">
-        {!revealed && (
-          <button
-            onClick={handleRevealSong}
-            disabled={!ready}
-            className="w-full py-4 rounded-2xl bg-[#FFDA57] text-[#0C0C0C] font-black text-base active:opacity-80 transition-opacity disabled:opacity-40"
-          >
-            חשוף את השיר
-          </button>
-        )}
-        {revealed && !groupPlayers && (
-          <>
-            <button
-              onClick={() => { handleStop(); onNextSong(undefined); }}
-              className="w-full py-4 rounded-2xl bg-[#FFDA57] text-[#0C0C0C] font-black text-base active:opacity-80 transition-opacity"
-            >
-              שיר הבא
-            </button>
-            {onFinish && (
+          {/* ── POST-REVEAL ── */}
+          {revealed && (
+            <div className="flex-1 flex flex-col px-5 pt-4 pb-2 min-h-0 overflow-hidden">
+
+              {/* Play + scrubber */}
+              <div className="flex items-center gap-3 mb-4 flex-shrink-0">
+                <button
+                  onClick={handlePlay}
+                  disabled={!ready}
+                  className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 glossy-btn btn-candy-yellow"
+                  style={{ opacity: ready ? 1 : 0.5 }}
+                >
+                  {playing
+                    ? <div className="w-4 h-4 rounded-sm" style={{ background: '#5c3511' }} />
+                    : <div className="w-0 h-0 ml-1" style={{ borderTop: '10px solid transparent', borderBottom: '10px solid transparent', borderLeft: '18px solid #5c3511' }} />
+                  }
+                </button>
+                <div className="flex-1" dir="ltr">
+                  <input
+                    type="range"
+                    min={0}
+                    max={Math.floor(duration)}
+                    step={1}
+                    value={startOffset}
+                    disabled={!ready}
+                    onMouseDown={() => { scrubbingRef.current = true; }}
+                    onTouchStart={() => { scrubbingRef.current = true; }}
+                    onChange={(e) => setStartOffset(Number(e.target.value))}
+                    onMouseUp={(e) => { scrubbingRef.current = false; handleStartCommit(Number((e.target as HTMLInputElement).value)); }}
+                    onTouchEnd={(e) => { scrubbingRef.current = false; handleStartCommit(Number((e.target as HTMLInputElement).value)); }}
+                    className="w-full accent-[#ffbf00] disabled:opacity-50"
+                  />
+                  <div className="flex justify-between text-xs text-brown-light mt-0.5">
+                    <span>{fmt(startOffset)}</span>
+                    <span>{fmt(Math.floor(duration))}</span>
+                  </div>
+                </div>
+                <a
+                  href={`https://www.youtube.com/watch?v=${videoId}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 text-xs text-brown-light flex-shrink-0"
+                >
+                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                  </svg>
+                </a>
+              </div>
+
+              {/* Back to guessing */}
               <button
-                onClick={() => { handleStop(); onFinish?.(undefined); }}
-                className="w-full py-3 rounded-2xl bg-white/[0.06] border border-white/[0.08] text-white font-bold text-base active:opacity-70"
+                onClick={() => { handleStop(); setRevealed(false); revealedRef.current = false; }}
+                className="mb-4 text-sm text-brown-light text-right self-end"
               >
-                סיים
+                → חזור לניחוש
+              </button>
+
+              {/* Group: winner selection */}
+              {groupPlayers && (
+                <div className="flex-1 flex flex-col min-h-0">
+                  <p className="text-center font-bold text-sm mb-4 text-brown">מי זיהה ראשון?</p>
+                  <div className="grid grid-cols-2 gap-3">
+                    {groupPlayers.map((player, i) => {
+                      const color = PLAYER_COLORS[i % PLAYER_COLORS.length];
+                      return (
+                        <button
+                          key={player}
+                          onClick={() => handleSelectWinner(player)}
+                          className="py-4 rounded-3xl font-bold text-lg text-white glossy-btn"
+                          style={{
+                            background: `linear-gradient(to bottom, ${color}dd, ${color})`,
+                            border: `2.5px solid ${color}99`,
+                            boxShadow: `0 5px 0 ${color}88`,
+                            textShadow: '0 1px 2px rgba(0,0,0,0.25)',
+                          }}
+                        >
+                          {player}
+                        </button>
+                      );
+                    })}
+                    <button
+                      onClick={() => handleSelectWinner(null)}
+                      className="col-span-2 py-3 rounded-3xl font-bold text-sm text-brown"
+                      style={{ background: '#f0e6d0', border: '2px solid #dcc9ad', boxShadow: '0 3px 0 #c4a882' }}
+                    >
+                      אף אחד לא זיהה
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Bottom bar */}
+          <div className="px-5 pb-safe pt-2 flex flex-col gap-3 flex-shrink-0">
+            {!revealed && (
+              <button
+                onClick={handleRevealSong}
+                disabled={!ready}
+                className="w-full py-5 rounded-[2.5rem] font-bold text-3xl glossy-btn btn-candy-yellow disabled:opacity-50"
+                style={{ color: '#5c3511', textShadow: '-1px -1px 0 rgba(255,255,255,0.4), 0 3px 0 rgba(92,53,17,0.3)' }}
+              >
+                חשוף את השיר
               </button>
             )}
-          </>
-        )}
-      </div>
-
-      </>
+            {revealed && !groupPlayers && (
+              <>
+                <button
+                  onClick={() => { handleStop(); onNextSong(undefined); }}
+                  className="w-full py-5 rounded-[2.5rem] font-bold text-2xl glossy-btn btn-candy-yellow"
+                  style={{ color: '#5c3511' }}
+                >
+                  השיר הבא ←
+                </button>
+                {onFinish && (
+                  <button
+                    onClick={() => { handleStop(); onFinish?.(undefined); }}
+                    className="w-full py-3 rounded-[2.5rem] font-bold text-base text-brown"
+                    style={{ background: '#f0e6d0', border: '2.5px solid #dcc9ad', boxShadow: '0 4px 0 #c4a882' }}
+                  >
+                    סיים
+                  </button>
+                )}
+              </>
+            )}
+          </div>
+        </>
       )}
     </div>
   );
