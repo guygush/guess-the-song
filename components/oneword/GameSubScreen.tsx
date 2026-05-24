@@ -25,28 +25,31 @@ interface HintCardProps {
 
 function HintCard({ hint, senderName, rejected, showRejectButton, onToggleReject }: HintCardProps) {
   return (
-    <div className={`relative overflow-hidden rounded-xl px-3 py-2 text-center min-w-[72px] border transition-colors ${
-      rejected
-        ? 'bg-[#FF4757]/10 border-[#FF4757]/20'
-        : 'bg-[#141414] border-white/[0.08]'
-    }`}>
-      <p className={`font-bold text-sm ${rejected ? 'text-white/30' : 'text-white'}`}>{hint.word}</p>
-      {senderName && <p className="text-xs text-white/30 mt-0.5">{senderName}</p>}
+    <div className={`relative overflow-hidden rounded-2xl px-3 py-2.5 text-center min-w-[72px] candy-card transition-all ${
+      rejected ? '' : ''
+    }`}
+      style={rejected
+        ? { background: 'rgba(192,57,43,0.06)', borderColor: 'rgba(192,57,43,0.3)', boxShadow: '0 3px 0 rgba(192,57,43,0.2)' }
+        : { boxShadow: '0 3px 0 #c4a882' }
+      }
+    >
+      <p className={`font-bold text-sm text-brown ${rejected ? 'opacity-30' : ''}`}>{hint.word}</p>
+      {senderName && <p className="text-xs text-brown-light mt-0.5">{senderName}</p>}
       {rejected && (
         <div className="absolute inset-0 pointer-events-none">
           <svg className="w-full h-full" preserveAspectRatio="none">
-            <line x1="0" y1="0" x2="100%" y2="100%" stroke="#FF4757" strokeWidth="1.5" opacity="0.5" />
+            <line x1="0" y1="0" x2="100%" y2="100%" stroke="#c0392b" strokeWidth="1.5" opacity="0.4" />
           </svg>
         </div>
       )}
       {showRejectButton && (
         <button
           onClick={onToggleReject}
-          className={`absolute top-1 right-1 w-4 h-4 rounded-full flex items-center justify-center text-[10px] font-bold transition-colors ${
-            rejected
-              ? 'bg-[#FF4757]/40 text-white'
-              : 'bg-white/[0.10] text-white/40 hover:bg-[#FF4757]/40 hover:text-white'
-          }`}
+          className="absolute top-1 right-1 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold transition-colors"
+          style={rejected
+            ? { background: 'rgba(192,57,43,0.3)', color: '#c0392b' }
+            : { background: '#f4e6d4', border: '1px solid #dcc9ad', color: '#8b5e34' }
+          }
         >
           ✕
         </button>
@@ -115,7 +118,7 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
   if (!room.guesser_order.length) {
     return (
       <div className="flex-1 flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-[#FFDA57]/20 border-t-[#FFDA57] rounded-full animate-spin" />
+        <div className="w-10 h-10 candy-spinner-yellow" />
       </div>
     );
   }
@@ -127,29 +130,31 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
       <div className="flex-1 flex flex-col min-h-0 overflow-hidden">
         <div className="flex-1 min-h-0 overflow-y-auto px-5 pt-4 pb-2 flex flex-col gap-4">
 
-          <div className="bg-[#141414] border border-white/[0.06] rounded-2xl p-5 text-center flex-shrink-0">
-            <p className="text-xs text-white/40 font-semibold tracking-widest uppercase mb-2">התור שלך לנחש</p>
-            <div className="text-4xl font-black text-[#FFDA57]">?</div>
+          <div className="candy-card rounded-3xl p-5 text-center flex-shrink-0"
+            style={{ boxShadow: '0 4px 0 #c4a882' }}
+          >
+            <p className="text-xs text-brown-light font-bold tracking-widest uppercase mb-2">התור שלך לנחש</p>
+            <div className="text-4xl font-black text-brown" style={{ opacity: 0.2 }}>?</div>
           </div>
 
           {!effectiveHintsApproved ? (
             <div className="flex-1 flex flex-col items-center justify-center gap-3 py-6">
-              <div className="w-8 h-8 border-2 border-[#FFDA57]/20 border-t-[#FFDA57] rounded-full animate-spin" />
+              <div className="w-10 h-10 candy-spinner-yellow" />
               {!allHintsSent ? (
                 <>
-                  <p className="text-white/50 text-sm">מחכה לרמזים...</p>
-                  <p className="text-white/30 text-xs">{hints.length} מתוך {activeHinters.length} רמזים התקבלו</p>
+                  <p className="text-brown text-sm font-semibold">מחכה לרמזים...</p>
+                  <p className="text-brown-light text-xs">{hints.length} מתוך {activeHinters.length} רמזים התקבלו</p>
                 </>
               ) : (
-                <p className="text-white/50 text-sm">ממתין לאישור המנהל...</p>
+                <p className="text-brown text-sm font-semibold">ממתין לאישור המנהל...</p>
               )}
             </div>
           ) : (
             <div className="flex flex-col gap-3">
-              <p className="text-xs text-white/40 font-semibold tracking-widest uppercase">הרמזים שלך</p>
+              <p className="text-xs text-brown-light font-bold tracking-widest uppercase">הרמזים שלך</p>
               <div className="flex flex-wrap gap-2">
                 {visibleHints.map(h => (
-                  <span key={h.id} className="bg-[#FFDA57]/10 text-[#FFDA57] border border-[#FFDA57]/20 px-4 py-2 rounded-xl font-bold text-base">
+                  <span key={h.id} className="px-4 py-2 rounded-2xl font-bold text-base glossy-btn btn-candy-yellow" style={{ color: '#5c3511' }}>
                     {h.word}
                   </span>
                 ))}
@@ -160,7 +165,7 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
 
         {effectiveHintsApproved && (
           <div className="px-5 pt-3 pb-safe flex-shrink-0">
-            {guessError && <p className="text-[#FF4757] text-sm text-right mb-2">{guessError}</p>}
+            {guessError && <p className="candy-error mb-2">{guessError}</p>}
             <div className="flex gap-2">
               <input
                 value={guessInput}
@@ -168,16 +173,16 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
                 onKeyDown={e => e.key === 'Enter' && handleSendGuess()}
                 placeholder="הניחוש שלך..."
                 disabled={submitting}
-                className="flex-1 min-w-0 bg-[#141414] border border-white/[0.08] rounded-xl px-4 py-3 text-base text-white outline-none focus:border-[#FFDA57]/50 placeholder-white/20 disabled:opacity-50 transition-colors"
+                className="candy-input flex-1 min-w-0"
+                style={{ borderRadius: '0.875rem' }}
               />
               <button
                 onClick={handleSendGuess}
                 disabled={submitting}
-                className="shrink-0 px-5 rounded-xl bg-[#FFDA57] text-[#0C0C0C] font-black transition-opacity active:opacity-80 disabled:opacity-50 flex items-center justify-center"
+                className="shrink-0 px-5 rounded-2xl font-bold glossy-btn btn-candy-yellow disabled:opacity-50 flex items-center justify-center"
+                style={{ color: '#5c3511' }}
               >
-                {submitting
-                  ? <div className="w-5 h-5 border-[2px] border-[#0C0C0C]/20 border-t-[#0C0C0C] rounded-full animate-spin" />
-                  : 'שלח'}
+                {submitting ? <div className="w-5 h-5 candy-spinner" /> : 'שלח'}
               </button>
             </div>
           </div>
@@ -194,16 +199,18 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
       <div className="flex-1 min-h-0 overflow-y-auto px-5 pt-4 pb-2 flex flex-col gap-4">
 
         {/* Word card */}
-        <div className="bg-[#141414] border border-white/[0.06] rounded-2xl p-5 text-center flex-shrink-0">
-          <p className="text-xs text-white/40 font-semibold tracking-widest uppercase mb-2">המילה לתאר</p>
-          <p className="text-3xl font-black">{room.current_word}</p>
-          <p className="text-white/30 text-xs mt-2">{guesser?.name} מנסה לנחש</p>
+        <div className="candy-card rounded-3xl p-5 text-center flex-shrink-0"
+          style={{ background: 'rgba(255,219,44,0.1)', borderColor: '#b8860b', boxShadow: '0 4px 0 #c4a882' }}
+        >
+          <p className="text-xs text-brown-light font-bold tracking-widest uppercase mb-2">המילה לתאר</p>
+          <p className="text-3xl font-black text-brown">{room.current_word}</p>
+          <p className="text-brown-light text-xs mt-2">{guesser?.name} מנסה לנחש</p>
         </div>
 
         {/* Hint input */}
         {!myHint && (
           <div className="flex flex-col gap-1.5 flex-shrink-0">
-            {hintError && <p className="text-[#FF4757] text-sm text-right">{hintError}</p>}
+            {hintError && <p className="candy-error">{hintError}</p>}
             <div className="flex gap-2">
               <input
                 value={hintInput}
@@ -211,16 +218,16 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
                 onKeyDown={e => e.key === 'Enter' && handleSendHint()}
                 placeholder="רמז במילה אחת..."
                 disabled={submitting}
-                className="flex-1 min-w-0 bg-[#141414] border border-white/[0.08] rounded-xl px-4 py-3 text-base text-white outline-none focus:border-[#FFDA57]/50 placeholder-white/20 disabled:opacity-50 transition-colors"
+                className="candy-input flex-1 min-w-0"
+                style={{ borderRadius: '0.875rem' }}
               />
               <button
                 onClick={handleSendHint}
                 disabled={submitting}
-                className="shrink-0 px-5 rounded-xl bg-[#FFDA57] text-[#0C0C0C] font-black transition-opacity active:opacity-80 disabled:opacity-50 flex items-center justify-center"
+                className="shrink-0 px-5 rounded-2xl font-bold glossy-btn btn-candy-yellow disabled:opacity-50 flex items-center justify-center"
+                style={{ color: '#5c3511' }}
               >
-                {submitting
-                  ? <div className="w-5 h-5 border-[2px] border-[#0C0C0C]/20 border-t-[#0C0C0C] rounded-full animate-spin" />
-                  : 'שלח'}
+                {submitting ? <div className="w-5 h-5 candy-spinner" /> : 'שלח'}
               </button>
             </div>
           </div>
@@ -229,7 +236,7 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
         {/* Hints grid */}
         {showHints && hints.length > 0 && (
           <div className="flex flex-col gap-3">
-            <p className="text-xs text-white/40 font-semibold tracking-widest uppercase">
+            <p className="text-xs text-brown-light font-bold tracking-widest uppercase">
               רמזים שהתקבלו ({hints.length}/{activeHinters.length})
             </p>
             <div className="flex flex-wrap gap-2">
@@ -250,34 +257,32 @@ export default function GameSubScreen({ room, myPlayerId, players, hints, isOrga
           </div>
         )}
 
-        {/* Count before submitting */}
         {!showHints && hints.length > 0 && (
-          <p className="text-center text-white/40 text-sm flex-shrink-0">
+          <p className="text-center text-brown-light text-sm flex-shrink-0">
             {hints.length} מתוך {activeHinters.length} רמזים נשלחו
           </p>
         )}
 
-        {/* Status messages */}
         {showHints && allHintsSent && !hintsApproved && !effectiveIsOrganizer && (
           <div className="flex items-center justify-center gap-2 py-2 flex-shrink-0">
-            <div className="w-4 h-4 border-2 border-[#FFDA57]/20 border-t-[#FFDA57] rounded-full animate-spin" />
-            <p className="text-white/50 text-sm">ממתין לאישור המנהל...</p>
+            <div className="w-5 h-5 candy-spinner-yellow" />
+            <p className="text-brown text-sm">ממתין לאישור המנהל...</p>
           </div>
         )}
         {showHints && hintsApproved && (
           <div className="flex items-center justify-center gap-2 py-2 flex-shrink-0">
-            <div className="w-4 h-4 border-2 border-[#FFDA57]/20 border-t-[#FFDA57] rounded-full animate-spin" />
-            <p className="text-white/50 text-sm">ממתין לניחוש של {guesser?.name}...</p>
+            <div className="w-5 h-5 candy-spinner-yellow" />
+            <p className="text-brown text-sm">ממתין לניחוש של {guesser?.name}...</p>
           </div>
         )}
       </div>
 
-      {/* Approve button */}
       {effectiveIsOrganizer && allHintsSent && !hintsApproved && (
         <div className="px-5 pt-3 pb-safe flex-shrink-0">
           <button
             onClick={() => onBroadcast('hints_approved', {})}
-            className="w-full py-4 rounded-2xl bg-[#FFDA57] text-[#0C0C0C] font-black text-lg active:opacity-80 transition-opacity"
+            className="w-full py-5 rounded-[2.5rem] font-bold text-xl glossy-btn btn-candy-yellow"
+            style={{ color: '#5c3511' }}
           >
             אשר רמזים ושלח לניחוש
           </button>

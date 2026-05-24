@@ -47,20 +47,22 @@ export default function TurnSummarySubScreen({ room, isOrganizer, players, guess
     return (
       <div className="flex-1 flex flex-col min-h-0 overflow-hidden">
         <div className="flex-1 flex flex-col items-center justify-center px-5 gap-6">
-          <div className="text-4xl">🏆</div>
-          <div className="bg-[#141414] border border-white/[0.06] rounded-2xl p-6 w-full text-center">
-            <p className="text-xs text-white/40 font-semibold tracking-widest uppercase mb-2">ניקוד סופי</p>
-            <p className="text-5xl font-black text-[#FFDA57]" dir="ltr">{room.total_score}</p>
-            <p className="text-white/30 text-sm mt-2">מתוך {totalTurns} תורים</p>
+          <div className="text-5xl">🏆</div>
+          <div className="candy-card rounded-3xl p-6 w-full text-center" style={{ boxShadow: '0 4px 0 #c4a882' }}>
+            <p className="text-xs text-brown-light font-bold tracking-widest uppercase mb-2">ניקוד סופי</p>
+            <p className="text-5xl font-black text-brown" dir="ltr"
+              style={{ textShadow: '0 2px 0 #c4a882' }}>{room.total_score}</p>
+            <p className="text-brown-light text-sm mt-2">מתוך {totalTurns} תורים</p>
           </div>
           {room.end_reason && (
-            <p className="text-white/40 text-sm text-center">{room.end_reason}</p>
+            <p className="text-brown-light text-sm text-center">{room.end_reason}</p>
           )}
         </div>
         <div className="px-5 pt-3 pb-safe flex-shrink-0">
           <button
             onClick={onBackToHub}
-            className="w-full py-4 rounded-2xl bg-[#FFDA57] text-[#0C0C0C] font-black text-lg active:opacity-80 transition-opacity"
+            className="w-full py-5 rounded-[2.5rem] font-bold text-2xl glossy-btn btn-candy-yellow"
+            style={{ color: '#5c3511' }}
           >
             בחזרה למסך הראשי
           </button>
@@ -74,22 +76,26 @@ export default function TurnSummarySubScreen({ room, isOrganizer, players, guess
       <div className="flex-1 flex flex-col px-5 pt-4 gap-4 min-h-0 overflow-y-auto">
 
         {/* Result card */}
-        <div className={`rounded-2xl p-5 text-center border flex-shrink-0 ${
-          guess.is_correct
-            ? 'bg-[#FFDA57]/10 border-[#FFDA57]/25'
-            : 'bg-[#FF4757]/10 border-[#FF4757]/20'
-        }`}>
+        <div className="candy-card rounded-3xl p-5 text-center flex-shrink-0"
+          style={guess.is_correct
+            ? { background: 'rgba(255,219,44,0.12)', borderColor: '#b8860b', boxShadow: '0 4px 0 #c4a882' }
+            : { background: 'rgba(192,57,43,0.06)', borderColor: 'rgba(192,57,43,0.3)', boxShadow: '0 4px 0 rgba(192,57,43,0.2)' }
+          }
+        >
           <p className="text-3xl mb-2">{guess.is_correct ? '✓' : '✗'}</p>
-          <p className="text-xs text-white/40 font-semibold tracking-widest uppercase mb-2">המילה הייתה</p>
-          <p className={`text-2xl font-black ${guess.is_correct ? 'text-[#FFDA57]' : 'text-white'}`}>{room.current_word}</p>
-          <p className="text-white/40 text-sm mt-2">הניחוש: <span className="text-white font-bold">{guess.guess}</span></p>
+          <p className="text-xs text-brown-light font-bold tracking-widest uppercase mb-2">המילה הייתה</p>
+          <p className="text-2xl font-black text-brown">{room.current_word}</p>
+          <p className="text-brown-light text-sm mt-2">
+            הניחוש: <span className="font-bold text-brown">{guess.guess}</span>
+          </p>
         </div>
 
         {/* Score card */}
-        <div className="bg-[#141414] border border-white/[0.06] rounded-2xl p-4 text-center flex-shrink-0">
-          <p className="text-xs text-white/40 font-semibold tracking-widest uppercase mb-1">ניקוד</p>
-          <p className="text-4xl font-black text-[#FFDA57]" dir="ltr">{room.total_score}</p>
-          <p className="text-white/30 text-xs mt-1">מתוך {totalTurns} תורים</p>
+        <div className="candy-card rounded-3xl p-4 text-center flex-shrink-0" style={{ boxShadow: '0 4px 0 #c4a882' }}>
+          <p className="text-xs text-brown-light font-bold tracking-widest uppercase mb-1">ניקוד</p>
+          <p className="text-4xl font-black text-brown" dir="ltr"
+            style={{ textShadow: '0 2px 0 #c4a882' }}>{room.total_score}</p>
+          <p className="text-brown-light text-xs mt-1">מתוך {totalTurns} תורים</p>
         </div>
       </div>
 
@@ -99,26 +105,27 @@ export default function TurnSummarySubScreen({ room, isOrganizer, players, guess
             <button
               onClick={handleNext}
               disabled={busy}
-              className="w-full py-4 rounded-2xl bg-[#FFDA57] text-[#0C0C0C] font-black text-lg active:opacity-80 transition-opacity disabled:opacity-50 flex items-center justify-center"
+              className="w-full py-5 rounded-[2.5rem] font-bold text-2xl glossy-btn btn-candy-yellow disabled:opacity-50 flex items-center justify-center"
+              style={{ color: '#5c3511' }}
             >
               {loading === 'next'
-                ? <div className="w-6 h-6 border-[2.5px] border-[#0C0C0C]/20 border-t-[#0C0C0C] rounded-full animate-spin" />
+                ? <div className="w-7 h-7 candy-spinner" />
                 : 'תור הבא'}
             </button>
             <button
               onClick={handleEnd}
               disabled={busy}
-              className="w-full py-3 rounded-2xl bg-white/[0.06] border border-white/[0.08] text-white/70 font-semibold transition-colors disabled:opacity-50 active:bg-white/[0.10] flex items-center justify-center"
+              className="w-full py-4 rounded-[2.5rem] font-bold text-lg candy-btn-secondary disabled:opacity-50 flex items-center justify-center"
             >
               {loading === 'end'
-                ? <div className="w-5 h-5 border-2 border-white/20 border-t-white/70 rounded-full animate-spin" />
+                ? <div className="w-6 h-6 candy-spinner" />
                 : 'סיים משחק'}
             </button>
           </>
         ) : (
-          <div className="flex items-center justify-center gap-2 py-3">
-            <div className="w-4 h-4 border-2 border-[#FFDA57]/20 border-t-[#FFDA57] rounded-full animate-spin" />
-            <p className="text-white/50 text-sm">ממתין לתור הבא...</p>
+          <div className="flex items-center justify-center gap-3 py-4">
+            <div className="w-5 h-5 candy-spinner-yellow" />
+            <p className="text-brown text-sm">ממתין לתור הבא...</p>
           </div>
         )}
       </div>

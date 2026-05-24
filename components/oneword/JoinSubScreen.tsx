@@ -50,23 +50,24 @@ export default function JoinSubScreen({ playerId, onJoined }: Props) {
   return (
     <div className="flex-1 flex flex-col justify-center px-5 pb-safe gap-5 min-h-0 overflow-hidden">
 
-      {/* Name input */}
+      {/* Name */}
       <div className="flex flex-col gap-1.5">
-        <p className="text-xs text-white/40 font-semibold tracking-widest uppercase">השם שלך</p>
+        <p className="text-xs text-brown-light font-bold tracking-widest uppercase">השם שלך</p>
         <input
           value={name}
           onChange={e => setName(e.target.value)}
           placeholder="הכנס שם..."
           disabled={busy}
-          className="w-full bg-[#141414] border border-white/[0.08] rounded-xl px-4 py-3 text-base text-white outline-none focus:border-[#FFDA57]/50 placeholder-white/20 disabled:opacity-50 transition-colors"
+          className="candy-input"
+          style={{ borderRadius: '0.875rem' }}
         />
       </div>
 
       {/* Join divider */}
       <div className="flex items-center gap-3">
-        <div className="flex-1 h-px bg-white/[0.06]" />
-        <span className="text-xs text-white/30">הצטרף לחדר קיים</span>
-        <div className="flex-1 h-px bg-white/[0.06]" />
+        <div className="flex-1 h-px" style={{ background: '#dcc9ad', opacity: 0.5 }} />
+        <span className="text-xs text-brown-light">הצטרף לחדר קיים</span>
+        <div className="flex-1 h-px" style={{ background: '#dcc9ad', opacity: 0.5 }} />
       </div>
 
       {/* Join row */}
@@ -78,38 +79,40 @@ export default function JoinSubScreen({ playerId, onJoined }: Props) {
           maxLength={4}
           dir="ltr"
           disabled={busy}
-          className="flex-1 min-w-0 bg-[#141414] border border-white/[0.08] rounded-xl px-4 py-3 text-base text-center tracking-widest font-bold text-white outline-none focus:border-[#FFDA57]/50 placeholder-white/20 disabled:opacity-50 transition-colors"
+          className="candy-input flex-1 min-w-0 text-center tracking-widest font-bold"
+          style={{ borderRadius: '0.875rem' }}
         />
         <button
           onClick={handleJoin}
           disabled={busy}
-          className="shrink-0 px-5 py-3 rounded-xl bg-white/[0.06] border border-white/[0.08] text-white/80 font-bold transition-colors disabled:opacity-50 flex items-center justify-center active:bg-white/[0.10]"
+          className="shrink-0 px-5 py-3 rounded-2xl font-bold candy-btn-secondary disabled:opacity-50 flex items-center justify-center"
         >
           {loading === 'join'
-            ? <div className="w-5 h-5 border-[2.5px] border-white/20 border-t-white rounded-full animate-spin" />
+            ? <div className="w-5 h-5 candy-spinner" />
             : 'הצטרף'}
         </button>
       </div>
 
       {/* Or divider */}
       <div className="flex items-center gap-3">
-        <div className="flex-1 h-px bg-white/[0.06]" />
-        <span className="text-xs text-white/30">או</span>
-        <div className="flex-1 h-px bg-white/[0.06]" />
+        <div className="flex-1 h-px" style={{ background: '#dcc9ad', opacity: 0.5 }} />
+        <span className="text-xs text-brown-light">או</span>
+        <div className="flex-1 h-px" style={{ background: '#dcc9ad', opacity: 0.5 }} />
       </div>
 
       {/* Create */}
       <button
         onClick={handleCreate}
         disabled={busy}
-        className="w-full py-4 rounded-2xl bg-[#FFDA57] text-[#0C0C0C] font-black text-lg active:opacity-80 transition-opacity disabled:opacity-50 flex items-center justify-center"
+        className="w-full py-5 rounded-[2.5rem] font-bold text-2xl glossy-btn btn-candy-yellow disabled:opacity-50 flex items-center justify-center"
+        style={{ color: '#5c3511' }}
       >
         {loading === 'create'
-          ? <div className="w-6 h-6 border-[2.5px] border-[#0C0C0C]/20 border-t-[#0C0C0C] rounded-full animate-spin" />
+          ? <div className="w-7 h-7 candy-spinner" />
           : 'צור חדר'}
       </button>
 
-      {error && <p className="text-[#FF4757] text-center text-sm">{error}</p>}
+      {error && <p className="candy-error">{error}</p>}
     </div>
   );
 }

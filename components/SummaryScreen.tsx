@@ -6,59 +6,68 @@ interface Props {
 }
 
 const MEDALS = ['🥇', '🥈', '🥉'];
+const PLAYER_COLORS = ['#5EB3F8', '#FF6B9D', '#3ECF8E', '#B69AF0', '#FF8C42', '#FFDA57'];
 
 export default function SummaryScreen({ players, onDone }: Props) {
   const sorted = [...players].sort((a, b) => b.score - a.score);
   const max = sorted[0]?.score || 1;
 
   return (
-    <div className="flex flex-col h-dvh bg-[#0C0C0C] text-white overflow-hidden">
+    <div className="flex flex-col h-dvh play-page overflow-hidden">
 
       {/* Header */}
-      <div className="flex items-center justify-center h-13 flex-shrink-0 px-4">
-        <h1 className="text-sm font-bold tracking-wide text-white/70">סיכום משחק</h1>
+      <div className="play-header flex-shrink-0">
+        <div className="flex items-center justify-center px-4 py-3">
+          <h1 className="text-sm font-bold text-brown">סיכום משחק</h1>
+        </div>
+        <div className="play-wavy opacity-50" />
       </div>
 
       {/* Trophy */}
-      <div className="text-center pt-2 pb-4 flex-shrink-0">
-        <div className="text-4xl mb-1">🏆</div>
-        <p className="text-white/40 text-xs tracking-widest uppercase">תוצאות</p>
+      <div className="text-center pt-4 pb-3 flex-shrink-0">
+        <div className="text-5xl mb-1">🏆</div>
+        <p className="text-brown-light text-xs tracking-widest uppercase font-semibold">תוצאות</p>
       </div>
 
       {/* Leaderboard */}
-      <div className="flex-1 flex flex-col justify-center px-5 gap-2.5">
-        {sorted.map(({ name, score }, i) => (
-          <div
-            key={name}
-            className={`flex items-center gap-3 px-4 py-3.5 rounded-2xl border ${
-              i === 0
-                ? 'bg-[#FFDA57]/10 border-[#FFDA57]/25'
-                : 'bg-[#141414] border-white/[0.06]'
-            }`}
-          >
-            <span className="text-xl w-7 text-center flex-shrink-0">{MEDALS[i] ?? `${i + 1}.`}</span>
-            <span className={`font-bold text-base flex-1 ${i === 0 ? 'text-[#FFDA57]' : 'text-white'}`}>
-              {name}
-            </span>
-            {/* score bar */}
-            <div className="flex items-center gap-2 flex-shrink-0">
-              <div className="w-16 h-1.5 bg-white/8 rounded-full overflow-hidden" dir="ltr">
-                <div
-                  className="h-full rounded-full bg-[#FFDA57]"
-                  style={{ width: `${(score / max) * 100}%` }}
-                />
+      <div className="flex-1 flex flex-col justify-center px-5 gap-3 min-h-0 overflow-y-auto">
+        {sorted.map(({ name, score }, i) => {
+          const color = PLAYER_COLORS[i % PLAYER_COLORS.length];
+          const isFirst = i === 0;
+          return (
+            <div
+              key={name}
+              className="flex items-center gap-3 px-4 py-3.5 rounded-3xl candy-card"
+              style={isFirst
+                ? { background: 'rgba(255,219,44,0.15)', borderColor: '#b8860b', boxShadow: '0 4px 0 #c4a882' }
+                : { boxShadow: '0 3px 0 #c4a882' }
+              }
+            >
+              <span className="text-xl w-8 text-center flex-shrink-0">{MEDALS[i] ?? `${i + 1}.`}</span>
+              <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold text-white flex-shrink-0" style={{ background: color }}>
+                {name.charAt(0)}
               </div>
-              <span className="font-black text-lg w-6 text-right" dir="ltr">{score}</span>
+              <span className="font-bold text-base flex-1 text-brown">{name}</span>
+              <div className="flex items-center gap-2 flex-shrink-0">
+                <div className="w-16 h-2 rounded-full overflow-hidden" style={{ background: '#e9dcc5' }} dir="ltr">
+                  <div
+                    className="h-full rounded-full"
+                    style={{ width: `${(score / max) * 100}%`, background: isFirst ? '#ffbf00' : '#c4a882' }}
+                  />
+                </div>
+                <span className="font-black text-lg w-6 text-right text-brown" dir="ltr">{score}</span>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       {/* Done button */}
-      <div className="px-5 pb-safe pt-3 flex-shrink-0">
+      <div className="px-5 pb-safe pt-4 flex-shrink-0">
         <button
           onClick={onDone}
-          className="w-full py-4 rounded-2xl bg-[#FFDA57] text-[#0C0C0C] font-black text-lg active:opacity-80 transition-opacity"
+          className="w-full py-5 rounded-[2.5rem] font-bold text-2xl glossy-btn btn-candy-yellow active:opacity-80 transition-opacity"
+          style={{ color: '#5c3511' }}
         >
           סיום
         </button>

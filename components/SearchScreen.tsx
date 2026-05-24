@@ -168,40 +168,31 @@ export default function SearchScreen({ onSelect, onBackToHub }: Props) {
   const filledPlayers = playerInputs.filter(s => s.trim());
   const anyLoading = loadingRandom || loadingGroup;
 
-  const pill = (active: boolean) =>
-    `px-4 py-2 rounded-xl text-sm font-semibold transition-colors border ${
-      active
-        ? 'bg-[#FFDA57] text-[#0C0C0C] border-[#FFDA57]'
-        : 'bg-white/[0.04] text-white/50 border-white/[0.08] hover:text-white/80'
-    }`;
+  const pill = (active: boolean) => active
+    ? 'px-4 py-2 rounded-2xl text-sm font-bold btn-candy-yellow glossy-btn'
+    : 'px-4 py-2 rounded-2xl text-sm font-semibold candy-btn-secondary';
 
   return (
-    <div className="flex flex-col h-dvh bg-[#0C0C0C] text-white">
+    <div className="flex flex-col h-dvh play-page">
       <Header title="זהה את השיר" onBack={onBackToHub} />
 
       {/* Mode toggle */}
-      <div className="px-4 pt-1 pb-3 flex-shrink-0">
-        <div className="flex bg-[#141414] border border-white/[0.07] rounded-xl p-1">
-          <button
-            onClick={() => setMode('search')}
-            className={`flex-1 py-2 rounded-lg text-sm font-semibold transition-colors ${
-              mode === 'search'
-                ? 'bg-[#FFDA57] text-[#0C0C0C]'
-                : 'text-white/40 hover:text-white/70'
-            }`}
-          >
-            חפש שיר
-          </button>
-          <button
-            onClick={() => setMode('test')}
-            className={`flex-1 py-2 rounded-lg text-sm font-semibold transition-colors ${
-              mode === 'test'
-                ? 'bg-[#FFDA57] text-[#0C0C0C]'
-                : 'text-white/40 hover:text-white/70'
-            }`}
-          >
-            בחן את עצמך
-          </button>
+      <div className="px-4 pt-3 pb-3 flex-shrink-0">
+        <div className="flex candy-card rounded-2xl p-1 gap-1" style={{ boxShadow: '0 4px 0 #c4a882' }}>
+          {(['search', 'test'] as const).map((m) => (
+            <button
+              key={m}
+              onClick={() => setMode(m)}
+              className={`flex-1 py-2.5 rounded-xl text-sm font-bold transition-all ${
+                mode === m
+                  ? 'btn-candy-yellow glossy-btn'
+                  : 'text-brown-light'
+              }`}
+              style={mode === m ? { color: '#5c3511' } : {}}
+            >
+              {m === 'search' ? 'חפש שיר' : 'בחן את עצמך'}
+            </button>
+          ))}
         </div>
       </div>
 
@@ -214,13 +205,12 @@ export default function SearchScreen({ onSelect, onBackToHub }: Props) {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="חפש שיר / זמר / להקה..."
-              className="w-full bg-[#141414] border border-white/[0.08] rounded-xl px-4 py-3 text-base outline-none focus:border-[#FFDA57]/40 focus:ring-1 focus:ring-[#FFDA57]/20 placeholder-white/25 transition-colors"
+              className="candy-input"
+              style={{ borderRadius: '0.875rem' }}
               autoFocus
             />
             {loadingInitial && (
-              <div className="absolute left-4 top-1/2 -translate-y-1/2">
-                <div className="w-4 h-4 border-2 border-[#FFDA57]/30 border-t-[#FFDA57] rounded-full animate-spin" />
-              </div>
+              <div className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 candy-spinner" />
             )}
           </div>
         </div>
@@ -230,55 +220,50 @@ export default function SearchScreen({ onSelect, onBackToHub }: Props) {
       {mode === 'search' && (
         <div className="flex-1 overflow-y-auto px-4 pb-4 space-y-2 min-h-0">
           {visible.map((song) => (
-            <div key={song.trackId} className="flex items-center gap-2 bg-[#141414] border border-white/[0.06] rounded-xl p-3">
+            <div key={song.trackId} className="flex items-center gap-2 candy-card rounded-2xl p-3" style={{ boxShadow: '0 3px 0 #c4a882' }}>
               <button
                 onClick={() => { stopPreview(); onSelect(song); }}
                 className="flex-1 flex items-center gap-3 text-right min-w-0"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={song.artworkUrl100} alt="" className="w-12 h-12 rounded-lg flex-shrink-0 object-cover" />
+                <img src={song.artworkUrl100} alt="" className="w-12 h-12 rounded-xl flex-shrink-0 object-cover" style={{ border: '2px solid #dcc9ad' }} />
                 <div className="min-w-0">
-                  <p className="font-semibold text-sm truncate">{song.trackName}</p>
-                  <p className="text-white/45 text-xs truncate mt-0.5">{song.artistName}</p>
+                  <p className="font-bold text-sm truncate text-brown">{song.trackName}</p>
+                  <p className="text-brown-light text-xs truncate mt-0.5">{song.artistName}</p>
                 </div>
               </button>
 
               <button
                 onClick={() => handlePreview(song)}
-                className={`relative w-9 h-9 rounded-full flex-shrink-0 flex items-center justify-center text-sm transition-colors ${
-                  playingId === song.trackId
-                    ? 'bg-[#FFDA57]/20 text-[#FFDA57]'
-                    : 'bg-white/[0.06] text-white/60 hover:bg-white/10'
+                className={`relative w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center text-sm transition-all glossy-btn ${
+                  playingId === song.trackId ? 'btn-candy-yellow' : 'candy-btn-secondary'
                 }`}
+                style={{ minWidth: 40 }}
               >
                 {playingId === song.trackId && (
                   <svg className="absolute inset-0 w-full h-full" viewBox="0 0 40 40">
                     <circle
                       cx="20" cy="20" r="18"
-                      fill="none"
-                      stroke="#FFDA57"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeDasharray="113.1"
-                      strokeDashoffset="113.1"
+                      fill="none" stroke="rgba(184,134,11,0.4)" strokeWidth="2"
+                      strokeLinecap="round" strokeDasharray="113.1" strokeDashoffset="113.1"
                       transform="rotate(-90 20 20)"
                       style={{ animation: `progress-ring ${PREVIEW_SECONDS}s linear forwards` }}
                     />
                   </svg>
                 )}
-                <span className="text-xs">{playingId === song.trackId ? '■' : '▶'}</span>
+                <span className="text-xs font-bold" style={{ color: playingId === song.trackId ? '#5c3511' : '#8b5e34' }}>
+                  {playingId === song.trackId ? '■' : '▶'}
+                </span>
               </button>
             </div>
           ))}
 
           <div ref={sentinelRef} className="min-h-[40px] flex justify-center items-center">
-            {hasMore && (
-              <div className="w-5 h-5 border-2 border-[#FFDA57]/30 border-t-[#FFDA57] rounded-full animate-spin" />
-            )}
+            {hasMore && <div className="w-6 h-6 candy-spinner" />}
           </div>
 
           {!loadingInitial && query.trim() && visible.length === 0 && (
-            <p className="text-center text-white/35 text-sm mt-8">לא נמצאו תוצאות</p>
+            <p className="text-center text-brown-light text-sm mt-8">לא נמצאו תוצאות</p>
           )}
         </div>
       )}
@@ -288,10 +273,11 @@ export default function SearchScreen({ onSelect, onBackToHub }: Props) {
         <div className="flex-1 overflow-y-auto px-4 pb-4 min-h-0">
 
           <div className="mb-5">
-            <p className="text-xs text-white/40 mb-2.5 font-semibold tracking-widest uppercase">שפה</p>
-            <div className="flex gap-2">
+            <p className="text-xs text-brown-light mb-2.5 font-bold tracking-widest uppercase">שפה</p>
+            <div className="flex gap-2 flex-wrap">
               {LANGUAGES.map(({ id, label }) => (
-                <button key={id} onClick={() => { setSelectedLanguage(id); setRandomError(false); }} className={pill(selectedLanguage === id)}>
+                <button key={id} onClick={() => { setSelectedLanguage(id); setRandomError(false); }} className={pill(selectedLanguage === id)}
+                  style={selectedLanguage === id ? { color: '#5c3511' } : {}}>
                   {label}
                 </button>
               ))}
@@ -299,10 +285,11 @@ export default function SearchScreen({ onSelect, onBackToHub }: Props) {
           </div>
 
           <div className="mb-5">
-            <p className="text-xs text-white/40 mb-2.5 font-semibold tracking-widest uppercase">עשור</p>
+            <p className="text-xs text-brown-light mb-2.5 font-bold tracking-widest uppercase">עשור</p>
             <div className="flex flex-wrap gap-2">
               {DECADES.map((d) => (
-                <button key={d} onClick={() => { setSelectedDecades(prev => prev.includes(d) ? prev.filter(x => x !== d) : [...prev, d]); setRandomError(false); }} className={pill(selectedDecades.includes(d))}>
+                <button key={d} onClick={() => { setSelectedDecades(prev => prev.includes(d) ? prev.filter(x => x !== d) : [...prev, d]); setRandomError(false); }} className={pill(selectedDecades.includes(d))}
+                  style={selectedDecades.includes(d) ? { color: '#5c3511' } : {}}>
                   {d}
                 </button>
               ))}
@@ -310,32 +297,31 @@ export default function SearchScreen({ onSelect, onBackToHub }: Props) {
           </div>
 
           <div className="mb-6">
-            <p className="text-xs text-white/40 mb-2.5 font-semibold tracking-widest uppercase">מיקום</p>
+            <p className="text-xs text-brown-light mb-2.5 font-bold tracking-widest uppercase">מיקום</p>
             <div className="flex gap-2">
-              <button onClick={() => { setTopOnly(true); setRandomError(false); }} className={pill(topOnly)}>טופ 5</button>
-              <button onClick={() => { setTopOnly(false); setRandomError(false); }} className={pill(!topOnly)}>כל המיקומים</button>
+              <button onClick={() => { setTopOnly(true); setRandomError(false); }} className={pill(topOnly)}
+                style={topOnly ? { color: '#5c3511' } : {}}>טופ 5</button>
+              <button onClick={() => { setTopOnly(false); setRandomError(false); }} className={pill(!topOnly)}
+                style={!topOnly ? { color: '#5c3511' } : {}}>כל המיקומים</button>
             </div>
           </div>
 
-          {randomError && (
-            <p className="text-center text-[#FF4757] text-sm mb-4">לא נמצאו שירים, נסה קריטריונים אחרים</p>
-          )}
+          {randomError && <p className="candy-error mb-4">לא נמצאו שירים, נסה קריטריונים אחרים</p>}
 
           <div className="flex flex-col gap-3">
             <button
               onClick={handleTestYourself}
               disabled={anyLoading}
-              className="w-full py-4 rounded-2xl bg-[#FFDA57] text-[#0C0C0C] font-black text-base transition-opacity disabled:opacity-50 flex items-center justify-center"
+              className="w-full py-4 rounded-[2rem] font-bold text-xl glossy-btn btn-candy-yellow disabled:opacity-50 flex items-center justify-center"
+              style={{ color: '#5c3511' }}
             >
-              {loadingRandom
-                ? <div className="w-5 h-5 border-2 border-[#0C0C0C]/30 border-t-[#0C0C0C] rounded-full animate-spin" />
-                : 'משחק אישי'}
+              {loadingRandom ? <div className="w-6 h-6 candy-spinner" /> : 'משחק אישי'}
             </button>
 
             <button
               onClick={() => { setShowGroupModal(true); setGroupError(false); }}
               disabled={anyLoading}
-              className="w-full py-4 rounded-2xl bg-white/[0.06] border border-white/[0.08] text-white font-bold text-base transition-colors hover:bg-white/10 disabled:opacity-50 flex items-center justify-center"
+              className="w-full py-4 rounded-[2rem] font-bold text-xl candy-btn-secondary disabled:opacity-50 flex items-center justify-center"
             >
               משחק קבוצתי
             </button>
@@ -346,21 +332,21 @@ export default function SearchScreen({ onSelect, onBackToHub }: Props) {
       {/* Group modal */}
       {showGroupModal && (
         <div
-          className="fixed inset-0 bg-black/80 flex items-end justify-center z-50"
+          className="fixed inset-0 flex items-end justify-center z-50"
+          style={{ background: 'rgba(139,94,52,0.4)' }}
           onClick={() => { if (!loadingGroup) setShowGroupModal(false); }}
         >
           <div
-            className="bg-[#141414] border border-white/[0.08] rounded-t-3xl w-full max-w-md p-5 pb-safe"
+            className="play-page w-full max-w-md pb-safe rounded-t-3xl p-5"
+            style={{ border: '2px solid #dcc9ad', borderBottom: 'none' }}
             onClick={e => e.stopPropagation()}
           >
             <div className="flex items-center justify-between mb-5">
-              <h2 className="text-base font-bold">שחקנים</h2>
+              <h2 className="text-base font-bold text-brown">שחקנים</h2>
               <button
                 onClick={() => { if (!loadingGroup) setShowGroupModal(false); }}
-                className="text-white/40 hover:text-white transition-colors w-8 h-8 flex items-center justify-center"
-              >
-                ✕
-              </button>
+                className="w-9 h-9 rounded-full flex items-center justify-center candy-btn-secondary text-sm"
+              >✕</button>
             </div>
 
             <div className="grid grid-cols-2 gap-2 mb-5">
@@ -371,23 +357,21 @@ export default function SearchScreen({ onSelect, onBackToHub }: Props) {
                   onChange={e => updatePlayerInput(i, e.target.value)}
                   placeholder={`שחקן ${i + 1}`}
                   disabled={loadingGroup}
-                  className="bg-[#1e1e1e] border border-white/[0.07] rounded-xl px-3 py-2.5 text-sm outline-none focus:border-[#FFDA57]/30 placeholder-white/25 disabled:opacity-50"
+                  className="candy-input"
+                  style={{ borderRadius: '0.875rem' }}
                 />
               ))}
             </div>
 
-            {groupError && (
-              <p className="text-center text-[#FF4757] text-sm mb-3">לא נמצאו שירים, נסה קריטריונים אחרים</p>
-            )}
+            {groupError && <p className="candy-error mb-3">לא נמצאו שירים, נסה קריטריונים אחרים</p>}
 
             <button
               onClick={handleStartGroupGame}
               disabled={filledPlayers.length < 2 || loadingGroup}
-              className="w-full py-3.5 rounded-2xl bg-[#FFDA57] text-[#0C0C0C] font-black text-base transition-opacity disabled:opacity-50 flex items-center justify-center"
+              className="w-full py-4 rounded-[2rem] font-bold text-xl glossy-btn btn-candy-yellow disabled:opacity-50 flex items-center justify-center"
+              style={{ color: '#5c3511' }}
             >
-              {loadingGroup
-                ? <div className="w-5 h-5 border-2 border-[#0C0C0C]/30 border-t-[#0C0C0C] rounded-full animate-spin" />
-                : 'התחל'}
+              {loadingGroup ? <div className="w-6 h-6 candy-spinner" /> : 'התחל'}
             </button>
           </div>
         </div>

@@ -4,62 +4,86 @@ interface Props {
   onSelectGame: (game: 'guess-the-song' | 'one-word') => void;
 }
 
+const GAMES = [
+  {
+    id: 'guess-the-song' as const,
+    emoji: '🎵',
+    title: 'זהה את השיר',
+    subtitle: 'נגן קטע ונחשו',
+    accentColor: '#ffdb2c',
+    borderColor: '#b8860b',
+    shadowColor: '#c4a882',
+  },
+  {
+    id: 'one-word' as const,
+    emoji: '💬',
+    title: 'במילה אחת',
+    subtitle: 'תנו רמזים, נחשו מילה',
+    accentColor: '#a9e4ff',
+    borderColor: '#5cade2',
+    shadowColor: '#4a9acc',
+  },
+];
+
 export default function GameHubScreen({ onSelectGame }: Props) {
   return (
-    <div className="flex flex-col h-dvh bg-[#0C0C0C] text-white overflow-hidden">
+    <div className="flex flex-col h-dvh play-page overflow-hidden">
 
-      {/* ambient glow */}
-      <div className="pointer-events-none fixed inset-0 overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] rounded-full bg-[#FFDA57]/[0.04] blur-3xl" />
+      {/* Header */}
+      <div className="play-header flex-shrink-0">
+        <div className="flex items-center justify-center px-4 py-3">
+          <h1 className="text-sm font-bold text-brown">משחקי לילה</h1>
+        </div>
+        <div className="play-wavy opacity-50" />
       </div>
 
-      <div className="relative flex-1 flex flex-col items-center justify-center px-6 gap-10">
+      {/* Content */}
+      <div className="flex-1 flex flex-col items-center justify-center px-6 gap-8">
 
         {/* Logo */}
         <div className="text-center">
-          <div className="text-5xl mb-4">🎮</div>
-          <h1 className="text-3xl font-black tracking-tight">משחקי לילה</h1>
-          <p className="text-white/35 text-sm mt-2 tracking-wide">בחרו משחק להתחיל</p>
+          <div className="text-6xl mb-3">🎮</div>
+          <p className="text-brown-light text-sm">בחרו משחק להתחיל</p>
         </div>
 
         {/* Game cards */}
         <div className="flex flex-col gap-4 w-full max-w-xs">
+          {GAMES.map(game => (
+            <button
+              key={game.id}
+              onClick={() => onSelectGame(game.id)}
+              className="w-full candy-card rounded-3xl p-5 flex items-center gap-4 active:translate-y-1 transition-transform"
+              style={{ borderRadius: '1.5rem' }}
+            >
+              {/* Icon */}
+              <div
+                className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl flex-shrink-0 glossy-btn"
+                style={{
+                  background: `linear-gradient(to bottom, ${game.accentColor}dd, ${game.accentColor})`,
+                  border: `2px solid ${game.borderColor}`,
+                  boxShadow: `0 4px 0 ${game.shadowColor}`,
+                }}
+              >
+                {game.emoji}
+              </div>
 
-          <button
-            onClick={() => onSelectGame('guess-the-song')}
-            className="group w-full bg-[#141414] border border-white/[0.07] rounded-2xl p-5 text-right flex items-center gap-4 active:scale-[0.98] transition-transform"
-          >
-            <div className="w-12 h-12 rounded-xl bg-[#FFDA57]/10 border border-[#FFDA57]/20 flex items-center justify-center text-2xl flex-shrink-0">
-              🎵
-            </div>
-            <div className="flex-1 min-w-0">
-              <p className="font-bold text-lg leading-tight">זהה את השיר</p>
-              <p className="text-white/35 text-xs mt-0.5">נגן קטע ונחשו</p>
-            </div>
-            <div className="w-8 h-8 rounded-full bg-[#FFDA57] flex items-center justify-center flex-shrink-0">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="#0C0C0C">
-                <path d="M2 2l10 5-10 5z"/>
-              </svg>
-            </div>
-          </button>
+              {/* Text */}
+              <div className="flex-1 min-w-0 text-right">
+                <p className="font-bold text-lg text-brown leading-tight">{game.title}</p>
+                <p className="text-brown-light text-xs mt-0.5">{game.subtitle}</p>
+              </div>
 
-          <button
-            onClick={() => onSelectGame('one-word')}
-            className="group w-full bg-[#141414] border border-white/[0.07] rounded-2xl p-5 text-right flex items-center gap-4 active:scale-[0.98] transition-transform"
-          >
-            <div className="w-12 h-12 rounded-xl bg-[#FFDA57]/10 border border-[#FFDA57]/20 flex items-center justify-center text-2xl flex-shrink-0">
-              💬
-            </div>
-            <div className="flex-1 min-w-0">
-              <p className="font-bold text-lg leading-tight">במילה אחת</p>
-              <p className="text-white/35 text-xs mt-0.5">תנו רמזים, נחשו מילה</p>
-            </div>
-            <div className="w-8 h-8 rounded-full bg-[#FFDA57] flex items-center justify-center flex-shrink-0">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="#0C0C0C">
-                <path d="M2 2l10 5-10 5z"/>
-              </svg>
-            </div>
-          </button>
+              {/* Arrow */}
+              <div
+                className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 glossy-btn btn-candy-yellow"
+                style={{ minWidth: 36 }}
+              >
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M8 6L4 2M8 6L4 10" stroke="#5c3511" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+            </button>
+          ))}
         </div>
       </div>
     </div>

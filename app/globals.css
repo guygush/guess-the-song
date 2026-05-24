@@ -124,6 +124,55 @@ html, body {
 .text-brown { color: #8b5e34; }
 .text-brown-light { color: #b8884a; }
 
+/* ── Shared candy utilities ── */
+.candy-card {
+  background: #fff;
+  border: 2px solid #dcc9ad;
+  box-shadow: 0 4px 0 #c4a882;
+}
+
+.candy-input {
+  background: #fff;
+  border: 2px solid #dcc9ad;
+  border-radius: 0.875rem;
+  padding: 0.75rem 1rem;
+  color: #8b5e34;
+  outline: none;
+  font-size: 1rem;
+  width: 100%;
+  transition: border-color 0.15s;
+}
+.candy-input:focus { border-color: #ffbf00; }
+.candy-input::placeholder { color: rgba(139,94,52,0.3); }
+.candy-input:disabled { opacity: 0.5; }
+
+.candy-btn-secondary {
+  background: #f4e6d4;
+  border: 2.5px solid #dcc9ad;
+  box-shadow: 0 4px 0 #c4a882;
+  color: #8b5e34;
+  font-weight: 700;
+}
+.candy-btn-secondary:active { transform: translateY(2px); box-shadow: 0 2px 0 #c4a882; }
+.candy-btn-secondary:disabled { opacity: 0.45; pointer-events: none; }
+
+.candy-spinner {
+  border: 3px solid rgba(139,94,52,0.15);
+  border-top-color: #8b5e34;
+  border-radius: 50%;
+  animation: candy-spin 0.7s linear infinite;
+}
+@keyframes candy-spin { to { transform: rotate(360deg); } }
+
+.candy-spinner-yellow {
+  border: 3px solid rgba(255,191,0,0.2);
+  border-top-color: #ffbf00;
+  border-radius: 50%;
+  animation: candy-spin 0.7s linear infinite;
+}
+
+.candy-error { color: #c0392b; font-size: 0.875rem; text-align: center; }
+
 .btn-candy-yellow:disabled,
 .btn-candy-blue:disabled,
 .btn-candy-green:disabled,
