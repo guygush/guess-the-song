@@ -191,29 +191,21 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
   // ── Shared header ────────────────────────────────────────────────
   const Header = ({ title }: { title?: string }) => (
     <header className="play-header flex-shrink-0">
-      <div className="flex items-center justify-between px-4 py-3 text-brown">
-        {/* Back */}
+      <div className="relative flex items-center justify-center px-4 py-3">
+        {/* Back — always on visual left */}
         <button
           onClick={onBack}
-          className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
+          className="absolute left-4 w-10 h-10 rounded-full flex items-center justify-center"
           style={{ background: '#f4e6d4', border: '2px solid #dcc9ad', boxShadow: '0 3px 0 #c4a882' }}
         >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
             <path d="M15 19l-7-7 7-7" stroke="#8b5e34" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </button>
-
-        {/* Title */}
-        <span className="flex-1 text-center text-sm font-bold text-brown truncate px-3">
+        {/* Title centered */}
+        <span className="text-sm font-bold text-brown truncate">
           {title ?? 'משחקי לילה - זהה את השיר'}
         </span>
-
-        {/* Dots */}
-        <div className="flex gap-1 items-center flex-shrink-0">
-          <div className="w-2 h-2 rounded-full" style={{ background: '#8b5e34' }} />
-          <div className="w-2 h-2 rounded-full" style={{ background: '#8b5e34' }} />
-          <div className="w-2 h-2 rounded-full" style={{ background: '#8b5e34' }} />
-        </div>
       </div>
       <div className="play-wavy opacity-50" />
     </header>
@@ -327,85 +319,33 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
           {!revealed && (
             <div className="flex-1 flex flex-col items-center px-6 pt-6 pb-2 min-h-0 overflow-hidden">
 
-              {/* Hidden song card */}
-              {hideMetadata && (
-                <div className="w-full mb-6 px-4 py-3 rounded-3xl flex items-center justify-between flex-shrink-0"
-                  style={{ background: '#fff', border: '2px solid #dcc9ad', boxShadow: '0 4px 0 #c4a882' }}
-                >
-                  <div className="flex items-end gap-1" style={{ height: 24 }}>
-                    {[55, 100, 40, 80, 60, 90, 45].map((h, i) => (
-                      <div
-                        key={i}
-                        className="w-1.5 rounded-sm"
-                        style={{
-                          height: `${h}%`,
-                          background: '#ffbf00',
-                          animation: playing ? `mba 0.75s ease-in-out infinite alternate` : 'none',
-                          animationDelay: `${[0, 0.1, 0.18, 0.08, 0.22, 0.15, 0.05][i]}s`,
-                          transformOrigin: 'bottom',
-                          transform: playing ? undefined : 'scaleY(0.4)',
-                          opacity: playing ? 1 : 0.5,
-                        }}
-                      />
-                    ))}
-                  </div>
-                  <span className="font-bold tracking-[0.35em] text-sm" style={{ color: 'rgba(139,94,52,0.15)', direction: 'ltr' }}>● &nbsp;● &nbsp;● &nbsp;●</span>
-                </div>
-              )}
-
-              {/* Play button + duration bubble */}
-              <div className="relative flex items-center justify-center mb-8 flex-shrink-0">
-                {/* Loading ring / progress ring */}
-                <div className="absolute inset-0 flex items-center justify-center" style={{ width: 176, height: 176 }}>
-                  <svg width="176" height="176" viewBox="0 0 176 176" className="absolute inset-0">
-                    <circle cx="88" cy="88" r="82" fill="none" stroke="rgba(184,134,11,0.15)" strokeWidth="6"/>
-                    <circle
-                      key={snippetKey}
-                      cx="88" cy="88" r="82"
-                      fill="none" stroke="rgba(184,134,11,0.5)" strokeWidth="6"
-                      strokeLinecap="round"
-                      strokeDasharray="515.2"
-                      strokeDashoffset={playing ? undefined : '515.2'}
-                      transform="rotate(-90 88 88)"
-                      style={playing ? { animation: `progress-ring-play ${revealDuration}s linear forwards` } : {}}
-                    />
-                  </svg>
-                </div>
-
-                {/* Main play circle */}
+              {/* Play button (centered) + duration bubble (to its right) */}
+              <div className="relative flex items-center justify-center mb-8 flex-shrink-0" style={{ height: 92 }}>
+                {/* Play circle — half the original size, centered */}
                 <button
                   onClick={handlePlay}
                   disabled={!ready}
-                  className="w-44 h-44 rounded-full flex items-center justify-center glossy-btn btn-candy-yellow relative z-10"
+                  className="w-[88px] h-[88px] rounded-full flex items-center justify-center glossy-btn btn-candy-yellow"
                   style={{ opacity: ready ? 1 : 0.6 }}
                 >
                   {!ready ? (
-                    <div className="w-8 h-8 border-4 rounded-full animate-spin" style={{ borderColor: 'rgba(92,53,17,0.2)', borderTopColor: '#5c3511' }} />
+                    <div className="w-5 h-5 border-4 rounded-full animate-spin" style={{ borderColor: 'rgba(92,53,17,0.2)', borderTopColor: '#5c3511' }} />
                   ) : playing ? (
-                    /* Stop icon */
-                    <div className="w-8 h-8 rounded-md" style={{ background: '#5c3511' }} />
+                    <div className="w-5 h-5 rounded-sm" style={{ background: '#5c3511' }} />
                   ) : (
-                    /* Play triangle */
-                    <div className="w-0 h-0 ml-2" style={{
-                      borderTop: '22px solid transparent',
-                      borderBottom: '22px solid transparent',
-                      borderLeft: '38px solid #5c3511',
-                    }} />
+                    <div className="w-0 h-0 ml-1" style={{ borderTop: '14px solid transparent', borderBottom: '14px solid transparent', borderLeft: '24px solid #5c3511' }} />
                   )}
                 </button>
 
-                {/* Duration speech bubble */}
-                <div
-                  className="absolute z-20"
-                  style={{ right: -4, top: '38%' }}
-                >
-                  <div className="relative flex items-center justify-center px-4 py-2 rounded-2xl"
-                    style={{ background: '#fff', border: '2px solid #dcc9ad', boxShadow: '0 3px 6px rgba(0,0,0,0.12)', minWidth: 56 }}
+                {/* Duration bubble — adjacent to the right of the button */}
+                <div className="absolute" style={{ left: 'calc(50% + 56px)' }}>
+                  <div className="relative flex items-center justify-center px-3 py-1.5 rounded-2xl"
+                    style={{ background: '#fff', border: '2px solid #dcc9ad', boxShadow: '0 3px 6px rgba(0,0,0,0.1)', minWidth: 52 }}
                   >
-                    {/* Pointer left */}
+                    {/* Left-pointing arrow */}
                     <div className="absolute" style={{ left: -9, top: '50%', transform: 'translateY(-50%)', width: 0, height: 0, borderTop: '8px solid transparent', borderBottom: '8px solid transparent', borderRight: '9px solid #dcc9ad' }} />
                     <div className="absolute" style={{ left: -6, top: '50%', transform: 'translateY(-50%)', width: 0, height: 0, borderTop: '6px solid transparent', borderBottom: '6px solid transparent', borderRight: '7px solid #fff' }} />
-                    <span className="font-bold text-lg" style={{ color: '#b8860b' }} dir="ltr">{fmtDur(revealDuration)}</span>
+                    <span className="font-bold text-base" style={{ color: '#b8860b' }} dir="ltr">{fmtDur(revealDuration)}</span>
                   </div>
                 </div>
               </div>
