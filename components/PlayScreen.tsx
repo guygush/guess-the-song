@@ -182,82 +182,83 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
     setShowScores(true);
   };
 
-  // ── Score screen ────────────────────────────────────────────────
-  if (showScores && groupPlayers) {
-    const base = scores ?? {};
-    const displayScores = [...groupPlayers]
-      .map(name => ({ name, score: (base[name] ?? 0) + (name === selectedWinner ? 1 : 0) }))
-      .sort((a, b) => b.score - a.score);
-    const max = displayScores[0]?.score || 1;
+  // ── Derived score data (used when showScores) ───────────────────
+  const scoreBase = scores ?? {};
+  const displayScores = groupPlayers
+    ? [...groupPlayers]
+        .map(name => ({ name, score: (scoreBase[name] ?? 0) + (name === selectedWinner ? 1 : 0) }))
+        .sort((a, b) => b.score - a.score)
+    : [];
+  const scoreMax = displayScores[0]?.score || 1;
 
-    return (
-      <div className="flex flex-col h-dvh bg-[#0C0C0C] text-white overflow-hidden">
-        {/* Top bar */}
-        <div className="relative flex items-center justify-center h-13 flex-shrink-0 px-4">
-          <button onClick={onBack} className="absolute left-3 w-9 h-9 flex items-center justify-center text-white/40 hover:text-[#FFDA57] transition-colors">
-            <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-          </button>
-          <span className="text-sm font-bold text-white/70">ניקוד</span>
-        </div>
-
-        {/* Winner announcement */}
-        <div className="text-center px-4 py-3 flex-shrink-0">
-          {selectedWinner
-            ? <p className="text-lg font-black text-[#FFDA57]">{selectedWinner} זיהה את השיר!</p>
-            : <p className="text-lg font-black text-white/40">אף אחד לא זיהה</p>
-          }
-          <p className="text-white/35 text-xs mt-1 truncate">{song.trackName} — {song.artistName}</p>
-        </div>
-
-        {/* Scores */}
-        <div className="flex-1 flex flex-col justify-center px-5 gap-2.5 min-h-0">
-          {displayScores.map(({ name, score }, i) => (
-            <div
-              key={name}
-              className={`flex items-center gap-3 px-4 py-3 rounded-2xl border ${
-                name === selectedWinner
-                  ? 'bg-[#FFDA57]/10 border-[#FFDA57]/25'
-                  : 'bg-[#141414] border-white/[0.06]'
-              }`}
-            >
-              <span className={`font-bold flex-1 text-base ${name === selectedWinner ? 'text-[#FFDA57]' : 'text-white'}`}>{name}</span>
-              <div className="w-14 h-1.5 bg-white/8 rounded-full overflow-hidden" dir="ltr">
-                <div className="h-full rounded-full bg-[#FFDA57]" style={{ width: `${(score / max) * 100}%` }} />
-              </div>
-              <span className="font-black text-lg w-5 text-right text-white" dir="ltr">{score}</span>
-            </div>
-          ))}
-        </div>
-
-        {/* Buttons */}
-        <div className="px-5 pb-safe pt-3 flex flex-col gap-2.5 flex-shrink-0">
-          <button
-            onClick={() => { setShowScores(false); onNextSong(selectedWinner ?? undefined); }}
-            className="w-full py-4 rounded-2xl bg-[#FFDA57] text-[#0C0C0C] font-black text-base active:opacity-80 transition-opacity"
-          >
-            שיר הבא
-          </button>
-          {onFinish && (
-            <button
-              onClick={() => { setShowScores(false); onFinish?.(selectedWinner ?? undefined); }}
-              className="w-full py-3 rounded-2xl bg-white/[0.06] border border-white/[0.08] text-white font-bold text-base active:opacity-70 transition-opacity"
-            >
-              סיים משחק
-            </button>
-          )}
-        </div>
-      </div>
-    );
-  }
-
-  // ── Main play screen ────────────────────────────────────────────
+  // ── Single return — hidden player div always stays in the DOM ───
   return (
     <div className="flex flex-col h-dvh bg-[#0C0C0C] text-white overflow-hidden">
 
-      {/* Hidden YouTube player */}
+      {/* Hidden YouTube player — must always be mounted */}
       <div style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden', opacity: 0 }}>
         <div ref={containerRef} />
       </div>
+
+      {/* ── Score screen ── */}
+      {showScores && groupPlayers && (
+        <>
+          <div className="relative flex items-center justify-center h-13 flex-shrink-0 px-4">
+            <button onClick={onBack} className="absolute left-3 w-9 h-9 flex items-center justify-center text-white/40 hover:text-[#FFDA57] transition-colors">
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            </button>
+            <span className="text-sm font-bold text-white/70">ניקוד</span>
+          </div>
+
+          <div className="text-center px-4 py-3 flex-shrink-0">
+            {selectedWinner
+              ? <p className="text-lg font-black text-[#FFDA57]">{selectedWinner} זיהה את השיר!</p>
+              : <p className="text-lg font-black text-white/40">אף אחד לא זיהה</p>
+            }
+            <p className="text-white/35 text-xs mt-1 truncate">{song.trackName} — {song.artistName}</p>
+          </div>
+
+          <div className="flex-1 flex flex-col justify-center px-5 gap-2.5 min-h-0">
+            {displayScores.map(({ name, score }) => (
+              <div
+                key={name}
+                className={`flex items-center gap-3 px-4 py-3 rounded-2xl border ${
+                  name === selectedWinner
+                    ? 'bg-[#FFDA57]/10 border-[#FFDA57]/25'
+                    : 'bg-[#141414] border-white/[0.06]'
+                }`}
+              >
+                <span className={`font-bold flex-1 text-base ${name === selectedWinner ? 'text-[#FFDA57]' : 'text-white'}`}>{name}</span>
+                <div className="w-14 h-1.5 bg-white/[0.08] rounded-full overflow-hidden" dir="ltr">
+                  <div className="h-full rounded-full bg-[#FFDA57]" style={{ width: `${(score / scoreMax) * 100}%` }} />
+                </div>
+                <span className="font-black text-lg w-5 text-right text-white" dir="ltr">{score}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="px-5 pb-safe pt-3 flex flex-col gap-2.5 flex-shrink-0">
+            <button
+              onClick={() => { setShowScores(false); onNextSong(selectedWinner ?? undefined); }}
+              className="w-full py-4 rounded-2xl bg-[#FFDA57] text-[#0C0C0C] font-black text-base active:opacity-80 transition-opacity"
+            >
+              שיר הבא
+            </button>
+            {onFinish && (
+              <button
+                onClick={() => { setShowScores(false); onFinish?.(selectedWinner ?? undefined); }}
+                className="w-full py-3 rounded-2xl bg-white/[0.06] border border-white/[0.08] text-white font-bold text-base active:opacity-70 transition-opacity"
+              >
+                סיים משחק
+              </button>
+            )}
+          </div>
+        </>
+      )}
+
+      {/* ── Main play screen ── */}
+      {!showScores && (
+      <>
 
       {/* Top bar */}
       <div className="relative flex items-center justify-center h-13 flex-shrink-0 px-4">
@@ -525,6 +526,9 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
           </>
         )}
       </div>
+
+      </>
+      )}
     </div>
   );
 }
