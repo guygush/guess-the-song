@@ -15,7 +15,7 @@ interface Props {
   scores?: Record<string, number>;
 }
 
-const INCREMENTS = [1, 0.5, 0.25];
+const INCREMENTS = [0.25, 0.5, 1];
 const DEFAULT_DURATION = 300;
 const PLAYER_COLORS = ['#5EB3F8', '#FF6B9D', '#3ECF8E', '#B69AF0', '#FF8C42', '#FFDA57'];
 
@@ -301,18 +301,27 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
 
           {/* Song info strip — shown when metadata visible */}
           {(!hideMetadata || revealed) && (
-            <div className="flex items-center gap-3 mx-4 mt-3 px-3 py-2.5 rounded-2xl flex-shrink-0"
-              style={{ background: '#fff', border: '2px solid #dcc9ad', boxShadow: '0 3px 0 #c4a882' }}
-            >
-              {song.artworkUrl100 && (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={song.artworkUrl100} alt="" className="w-10 h-10 rounded-xl flex-shrink-0 object-cover" style={{ border: '2px solid #dcc9ad' }} />
-              )}
-              <div className="min-w-0">
-                <p className="font-bold text-sm truncate text-brown">{song.trackName}</p>
-                <p className="text-xs truncate text-brown-light">{song.artistName}</p>
+            revealed ? (
+              <div className="flex flex-col items-center mx-4 mt-3 px-3 py-2.5 rounded-2xl flex-shrink-0 text-center"
+                style={{ background: '#fff', border: '2px solid #dcc9ad', boxShadow: '0 3px 0 #c4a882' }}
+              >
+                <p className="font-bold text-sm text-brown">{song.trackName}</p>
+                <p className="text-xs text-brown-light mt-0.5">{song.artistName}</p>
               </div>
-            </div>
+            ) : (
+              <div className="flex items-center gap-3 mx-4 mt-3 px-3 py-2.5 rounded-2xl flex-shrink-0"
+                style={{ background: '#fff', border: '2px solid #dcc9ad', boxShadow: '0 3px 0 #c4a882' }}
+              >
+                {song.artworkUrl100 && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={song.artworkUrl100} alt="" className="w-10 h-10 rounded-xl flex-shrink-0 object-cover" style={{ border: '2px solid #dcc9ad' }} />
+                )}
+                <div className="min-w-0">
+                  <p className="font-bold text-sm truncate text-brown">{song.trackName}</p>
+                  <p className="text-xs truncate text-brown-light">{song.artistName}</p>
+                </div>
+              </div>
+            )
           )}
 
           {/* ── PRE-REVEAL ── */}
@@ -354,8 +363,8 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
               <div className="flex gap-3 w-full mb-7 flex-shrink-0" dir="ltr">
                 {INCREMENTS.map((n, idx) => {
                   const label = n === 0.25 ? '+¼s' : n === 0.5 ? '+½s' : '+1s';
-                  const cls = idx === 0 ? 'btn-candy-red' : idx === 1 ? 'btn-candy-green' : 'btn-candy-blue';
-                  const textColor = idx === 0 ? '#8b2222' : idx === 1 ? '#3d6010' : '#1a5c8b';
+                  const cls = n === 1 ? 'btn-candy-red' : n === 0.5 ? 'btn-candy-green' : 'btn-candy-blue';
+                  const textColor = n === 1 ? '#8b2222' : n === 0.5 ? '#3d6010' : '#1a5c8b';
                   return (
                     <button
                       key={n}
@@ -411,7 +420,7 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
             <div className="flex-1 flex flex-col px-5 pt-4 pb-2 min-h-0 overflow-hidden">
 
               {/* Play + scrubber */}
-              <div className="flex items-center gap-3 mb-4 flex-shrink-0">
+              <div className="flex items-center gap-3 mb-2 flex-shrink-0">
                 <button
                   onClick={handlePlay}
                   disabled={!ready}
@@ -443,25 +452,28 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
                     <span>{fmt(Math.floor(duration))}</span>
                   </div>
                 </div>
+              </div>
+
+              {/* YouTube + back to guessing — below timeline */}
+              <div className="flex items-center justify-between mb-4 flex-shrink-0 px-1">
                 <a
                   href={`https://www.youtube.com/watch?v=${videoId}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1 text-xs text-brown-light flex-shrink-0"
+                  className="flex items-center gap-1.5 text-xs text-brown-light"
                 >
                   <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                   </svg>
+                  YouTube
                 </a>
+                <button
+                  onClick={() => { handleStop(); setRevealed(false); revealedRef.current = false; }}
+                  className="text-sm text-brown-light"
+                >
+                  → חזור לניחוש
+                </button>
               </div>
-
-              {/* Back to guessing */}
-              <button
-                onClick={() => { handleStop(); setRevealed(false); revealedRef.current = false; }}
-                className="mb-4 text-sm text-brown-light text-right self-end"
-              >
-                → חזור לניחוש
-              </button>
 
               {/* Group: winner selection */}
               {groupPlayers && (

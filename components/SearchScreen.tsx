@@ -20,7 +20,7 @@ const LANGUAGES: { id: 'hebrew' | 'foreign' | 'both'; label: string }[] = [
 ];
 
 export default function SearchScreen({ onSelect, onBackToHub }: Props) {
-  const [mode, setMode] = useState<'search' | 'test'>('search');
+  const [mode, setMode] = useState<'search' | 'test'>('test');
 
   const [query, setQuery] = useState('');
   const [visible, setVisible] = useState<Song[]>([]);
@@ -179,7 +179,7 @@ export default function SearchScreen({ onSelect, onBackToHub }: Props) {
       {/* Mode toggle */}
       <div className="px-4 pt-3 pb-3 flex-shrink-0">
         <div className="flex candy-card rounded-2xl p-1 gap-1" style={{ boxShadow: '0 4px 0 #c4a882' }}>
-          {(['search', 'test'] as const).map((m) => (
+          {(['test', 'search'] as const).map((m) => (
             <button
               key={m}
               onClick={() => setMode(m)}
@@ -274,7 +274,7 @@ export default function SearchScreen({ onSelect, onBackToHub }: Props) {
 
           <div className="mb-5">
             <p className="text-xs text-brown-light mb-2.5 font-bold tracking-widest uppercase">שפה</p>
-            <div className="flex gap-2 flex-wrap">
+            <div className="flex gap-2 flex-wrap justify-center">
               {LANGUAGES.map(({ id, label }) => (
                 <button key={id} onClick={() => { setSelectedLanguage(id); setRandomError(false); }} className={pill(selectedLanguage === id)}
                   style={selectedLanguage === id ? { color: '#5c3511' } : {}}>
@@ -286,7 +286,7 @@ export default function SearchScreen({ onSelect, onBackToHub }: Props) {
 
           <div className="mb-5">
             <p className="text-xs text-brown-light mb-2.5 font-bold tracking-widest uppercase">עשור</p>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 justify-center">
               {DECADES.map((d) => (
                 <button key={d} onClick={() => { setSelectedDecades(prev => prev.includes(d) ? prev.filter(x => x !== d) : [...prev, d]); setRandomError(false); }} className={pill(selectedDecades.includes(d))}
                   style={selectedDecades.includes(d) ? { color: '#5c3511' } : {}}>
@@ -298,7 +298,7 @@ export default function SearchScreen({ onSelect, onBackToHub }: Props) {
 
           <div className="mb-6">
             <p className="text-xs text-brown-light mb-2.5 font-bold tracking-widest uppercase">מיקום</p>
-            <div className="flex gap-2">
+            <div className="flex gap-2 justify-center">
               <button onClick={() => { setTopOnly(true); setRandomError(false); }} className={pill(topOnly)}
                 style={topOnly ? { color: '#5c3511' } : {}}>טופ 5</button>
               <button onClick={() => { setTopOnly(false); setRandomError(false); }} className={pill(!topOnly)}
@@ -310,20 +310,20 @@ export default function SearchScreen({ onSelect, onBackToHub }: Props) {
 
           <div className="flex flex-col gap-3">
             <button
-              onClick={handleTestYourself}
+              onClick={() => { setShowGroupModal(true); setGroupError(false); }}
               disabled={anyLoading}
               className="w-full py-4 rounded-[2rem] font-bold text-xl glossy-btn btn-candy-yellow disabled:opacity-50 flex items-center justify-center"
               style={{ color: '#5c3511' }}
             >
-              {loadingRandom ? <div className="w-6 h-6 candy-spinner" /> : 'משחק אישי'}
+              משחק קבוצתי
             </button>
 
             <button
-              onClick={() => { setShowGroupModal(true); setGroupError(false); }}
+              onClick={handleTestYourself}
               disabled={anyLoading}
               className="w-full py-4 rounded-[2rem] font-bold text-xl candy-btn-secondary disabled:opacity-50 flex items-center justify-center"
             >
-              משחק קבוצתי
+              {loadingRandom ? <div className="w-6 h-6 candy-spinner" /> : 'משחק אישי'}
             </button>
           </div>
         </div>

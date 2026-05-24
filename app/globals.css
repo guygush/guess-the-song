@@ -56,11 +56,11 @@ html, body {
 .glossy-btn::before {
   content: '';
   position: absolute;
-  top: 8%;
-  left: 8%;
-  width: 32%;
-  height: 58%;
-  background: radial-gradient(ellipse at 40% 35%, rgba(255,255,255,0.82) 0%, rgba(255,255,255,0) 70%);
+  top: 10%;
+  left: 10%;
+  width: min(38%, 28px);
+  height: min(55%, 28px);
+  background: radial-gradient(ellipse at 40% 35%, rgba(255,255,255,0.88) 0%, rgba(255,255,255,0) 70%);
   border-radius: 50%;
   pointer-events: none;
 }

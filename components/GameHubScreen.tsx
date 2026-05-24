@@ -70,7 +70,6 @@ export default function GameHubScreen({ onSelectGame }: Props) {
               {/* Text */}
               <div className="flex-1 min-w-0 text-right">
                 <p className="font-bold text-lg text-brown leading-tight">{game.title}</p>
-                <p className="text-brown-light text-xs mt-0.5">{game.subtitle}</p>
               </div>
 
               {/* Arrow */}
@@ -79,7 +78,7 @@ export default function GameHubScreen({ onSelectGame }: Props) {
                 style={{ minWidth: 36 }}
               >
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                  <path d="M8 6L4 2M8 6L4 10" stroke="#5c3511" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M4 6L8 2M4 6L8 10" stroke="#5c3511" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </div>
             </button>
