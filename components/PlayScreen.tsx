@@ -225,20 +225,6 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
           <Header />
           <div className="flex-1 flex flex-col min-h-0 px-5 pt-4 pb-safe overflow-y-auto">
 
-            {/* Winner announcement */}
-            <div className="text-center mb-5">
-              {selectedWinner ? (
-                <div className="inline-block px-5 py-2 rounded-full font-bold text-sm mb-2 glossy-btn btn-candy-yellow" style={{ color: '#5c3511' }}>
-                  ✓ &nbsp;{selectedWinner} זיהה!
-                </div>
-              ) : (
-                <div className="inline-block px-5 py-2 rounded-full font-bold text-sm mb-2" style={{ background: '#f0e6d0', border: '2px solid #dcc9ad', color: '#8b5e34' }}>
-                  אף אחד לא זיהה
-                </div>
-              )}
-              <p className="text-xs truncate text-brown-light">{song.trackName} — {song.artistName}</p>
-            </div>
-
             {/* Scores */}
             <div className="flex-1 flex flex-col gap-2.5 mb-5">
               {displayScores.map(({ name, score }, i) => {
