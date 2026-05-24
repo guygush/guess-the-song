@@ -356,7 +356,7 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
                       key={n}
                       onClick={() => handleReveal(n)}
                       disabled={!ready || revealDuration + n > 30}
-                      className={`flex-1 h-16 rounded-[2rem] font-bold text-2xl glossy-btn ${cls}`}
+                      className={`flex-1 py-4 rounded-[2rem] font-bold text-2xl glossy-btn ${cls}`}
                       style={{ color: textColor }}
                     >
                       {label}
@@ -486,7 +486,7 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
                     })}
                     <button
                       onClick={() => handleSelectWinner(null)}
-                      className="col-span-2 py-3 rounded-3xl font-bold text-sm text-brown"
+                      className="col-span-2 py-4 rounded-3xl font-bold text-sm text-brown"
                       style={{ background: '#f0e6d0', border: '2px solid #dcc9ad', boxShadow: '0 3px 0 #c4a882' }}
                     >
                       אף אחד לא זיהה
@@ -521,7 +521,7 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
                 {onFinish && (
                   <button
                     onClick={() => { handleStop(); onFinish?.(undefined); }}
-                    className="w-full py-3 rounded-[2.5rem] font-bold text-base text-brown"
+                    className="w-full py-4 rounded-[2.5rem] font-bold text-base text-brown"
                     style={{ background: '#f0e6d0', border: '2.5px solid #dcc9ad', boxShadow: '0 4px 0 #c4a882' }}
                   >
                     סיים
