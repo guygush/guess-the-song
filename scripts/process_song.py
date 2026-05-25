@@ -20,6 +20,8 @@ import time
 import urllib.parse
 import urllib.request
 
+import requests
+
 PYTHON_DIR = os.path.dirname(sys.executable)
 FFMPEG_BIN = r"C:\ffmpeg-8.1.1-full_build-shared\bin"
 FFMPEG = os.path.join(FFMPEG_BIN, "ffmpeg.exe")
