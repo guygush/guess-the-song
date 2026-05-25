@@ -223,6 +223,7 @@ export default function Home() {
 
     return (
       <StemPlayScreen
+        key={screen.song.trackId}
         song={screen.song}
         groupPlayers={groupPlayers}
         scores={scores}
