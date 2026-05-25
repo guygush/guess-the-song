@@ -94,6 +94,26 @@ html, body {
   box-shadow: 0 1px 5px rgba(170,60,48,0.35);
 }
 
+.btn-candy-purple {
+  background: linear-gradient(to bottom, #e8c0ff, #b870f0);
+  border: 2px solid #8840c0;
+  box-shadow: 0 3px 10px rgba(130,50,190,0.4), 0 1px 3px rgba(0,0,0,0.08);
+}
+.btn-candy-purple:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 5px rgba(130,50,190,0.35);
+}
+
+.btn-candy-orange {
+  background: linear-gradient(to bottom, #ffd490, #ff8c20);
+  border: 2px solid #cc5f00;
+  box-shadow: 0 3px 10px rgba(190,90,0,0.4), 0 1px 3px rgba(0,0,0,0.08);
+}
+.btn-candy-orange:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 5px rgba(190,90,0,0.35);
+}
+
 .circle-ctrl {
   background: linear-gradient(to bottom, #fdf4e8, #ecdcc4);
   border: 2px solid #d4b98a;
@@ -166,6 +186,8 @@ html, body {
 .btn-candy-blue:disabled,
 .btn-candy-green:disabled,
 .btn-candy-red:disabled,
+.btn-candy-purple:disabled,
+.btn-candy-orange:disabled,
 .circle-ctrl:disabled {
   opacity: 0.45;
   pointer-events: none;

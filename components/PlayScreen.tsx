@@ -18,8 +18,8 @@ interface Props {
 const INCREMENTS = [0.25, 0.5, 1];
 const DEFAULT_DURATION = 300;
 const PLAYER_COLORS = ['#5EB3F8', '#FF6B9D', '#3ECF8E', '#B69AF0', '#FF8C42', '#FFDA57'];
-const CANDY_CLASSES = ['btn-candy-blue', 'btn-candy-green', 'btn-candy-red', 'btn-candy-yellow'];
-const CANDY_TEXT_COLORS = ['#1a5c8b', '#3d6010', '#8b2222', '#5c3511'];
+const CANDY_CLASSES = ['btn-candy-blue', 'btn-candy-green', 'btn-candy-red', 'btn-candy-yellow', 'btn-candy-purple', 'btn-candy-orange'];
+const CANDY_TEXT_COLORS = ['#1a5c8b', '#3d6010', '#8b2222', '#5c3511', '#5c1a8b', '#7a3000'];
 
 function fmt(sec: number) {
   const m = Math.floor(sec / 60);
