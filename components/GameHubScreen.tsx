@@ -1,7 +1,7 @@
 'use client';
 
 interface Props {
-  onSelectGame: (game: 'guess-the-song' | 'one-word') => void;
+  onSelectGame: (game: 'guess-the-song' | 'one-word' | 'stems') => void;
 }
 
 const GAMES = [
@@ -22,6 +22,15 @@ const GAMES = [
     accentColor: '#a9e4ff',
     borderColor: '#5cade2',
     shadowColor: '#4a9acc',
+  },
+  {
+    id: 'stems' as const,
+    emoji: '🥁',
+    title: 'איך שיר נולד?',
+    subtitle: 'נחש מהכלים בלבד',
+    accentColor: '#e8c0ff',
+    borderColor: '#8840c0',
+    shadowColor: 'rgba(130,50,190,0.5)',
   },
 ];
 

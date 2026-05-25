@@ -7,8 +7,11 @@ import LoadingScreen from '@/components/LoadingScreen';
 import PlayScreen from '@/components/PlayScreen';
 import SummaryScreen from '@/components/SummaryScreen';
 import OneWordScreen from '@/components/OneWordScreen';
+import StemSetupScreen from '@/components/StemSetupScreen';
+import StemPlayScreen from '@/components/StemPlayScreen';
 import { findVideoId } from '@/lib/youtube';
 import { loadChartSongs, pickRandomSong, chartSongToSong, type TestConfig } from '@/lib/charts';
+import { loadStemManifest, pickStemSong, type StemSong } from '@/lib/stems';
 import type { Song } from '@/lib/itunes';
 
 type Screen =
@@ -17,11 +20,18 @@ type Screen =
   | { name: 'loading'; song: Song; hideMetadata?: boolean; testConfig?: TestConfig; groupPlayers?: string[]; scores?: Record<string, number>; playedSongs?: Set<string> }
   | { name: 'play'; song: Song; videoId: string; hideMetadata?: boolean; testConfig?: TestConfig; groupPlayers?: string[]; scores: Record<string, number>; playedSongs?: Set<string> }
   | { name: 'summary'; players: { name: string; score: number }[] }
-  | { name: 'one-word' };
+  | { name: 'one-word' }
+  | { name: 'stems-setup' }
+  | { name: 'stems-play'; song: StemSong; groupPlayers?: string[]; scores: Record<string, number>; playedSongs: Set<number> };
 
 function addPoint(scores: Record<string, number>, winner: string | undefined): Record<string, number> {
   if (!winner) return scores;
   return { ...scores, [winner]: (scores[winner] ?? 0) + 1 };
+}
+
+function addPoints(scores: Record<string, number>, winner: string | undefined, points: number): Record<string, number> {
+  if (!winner) return scores;
+  return { ...scores, [winner]: (scores[winner] ?? 0) + points };
 }
 
 export default function Home() {
@@ -66,10 +76,12 @@ export default function Home() {
       hasHistoryEntryRef.current = false;
       suppressPushRef.current = true;
       const s = screenRef.current;
-      if (s.name === 'search' || s.name === 'one-word' || s.name === 'summary') {
+      if (s.name === 'search' || s.name === 'one-word' || s.name === 'summary' || s.name === 'stems-setup') {
         setScreen({ name: 'hub' });
       } else if (s.name === 'play' || s.name === 'loading') {
         setScreen({ name: 'search' });
+      } else if (s.name === 'stems-play') {
+        setScreen({ name: 'stems-setup' });
       }
     };
     window.addEventListener('popstate', onPopState);
@@ -120,7 +132,11 @@ export default function Home() {
   if (screen.name === 'hub') {
     return (
       <GameHubScreen
-        onSelectGame={(game) => setScreen(game === 'one-word' ? { name: 'one-word' } : { name: 'search' })}
+        onSelectGame={(game) => {
+          if (game === 'one-word') setScreen({ name: 'one-word' });
+          else if (game === 'stems') setScreen({ name: 'stems-setup' });
+          else setScreen({ name: 'search' });
+        }}
       />
     );
   }
@@ -167,6 +183,52 @@ export default function Home() {
         onNextSong={onNextSong}
         onFinish={onFinish}
         onBack={() => setScreen({ name: 'search' })}
+      />
+    );
+  }
+
+  if (screen.name === 'stems-setup') {
+    return (
+      <StemSetupScreen
+        onStart={(song, players) => {
+          setScreen({ name: 'stems-play', song, groupPlayers: players, scores: {}, playedSongs: new Set([song.trackId]) });
+        }}
+        onBackToHub={() => setScreen({ name: 'hub' })}
+      />
+    );
+  }
+
+  if (screen.name === 'stems-play') {
+    const { groupPlayers, scores, playedSongs } = screen;
+
+    const onNextSong = async (winner?: string, points?: number) => {
+      const newScores = winner && points ? addPoints(scores, winner, points) : scores;
+      const songs = await loadStemManifest();
+      const next = pickStemSong(songs, 'both', [], playedSongs);
+      if (!next) {
+        if (groupPlayers) {
+          setScreen({ name: 'summary', players: groupPlayers.map(name => ({ name, score: newScores[name] ?? 0 })) });
+        } else {
+          setScreen({ name: 'stems-setup' });
+        }
+        return;
+      }
+      setScreen({ name: 'stems-play', song: next, groupPlayers, scores: newScores, playedSongs: new Set([...playedSongs, next.trackId]) });
+    };
+
+    const onFinish = groupPlayers ? (winner?: string, points?: number) => {
+      const newScores = winner && points ? addPoints(scores, winner, points) : scores;
+      setScreen({ name: 'summary', players: groupPlayers.map(name => ({ name, score: newScores[name] ?? 0 })) });
+    } : undefined;
+
+    return (
+      <StemPlayScreen
+        song={screen.song}
+        groupPlayers={groupPlayers}
+        scores={scores}
+        onNextSong={onNextSong}
+        onFinish={onFinish}
+        onBack={() => setScreen({ name: 'stems-setup' })}
       />
     );
   }
