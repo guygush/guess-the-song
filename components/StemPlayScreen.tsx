@@ -218,6 +218,10 @@ export default function StemPlayScreen({ song, groupPlayers, scores, onNextSong,
   }, [stage, stopSources, startStem]);
 
   const handleContinue = useCallback(() => {
+    // Unmute all stems so the reveal plays the full song
+    for (const name of ['other', 'vocals']) {
+      if (gainsRef.current[name]) gainsRef.current[name].gain.value = 1;
+    }
     stopSources();
     setPlaying(false);
     playOffsetRef.current = 0;
@@ -326,11 +330,6 @@ export default function StemPlayScreen({ song, groupPlayers, scores, onNextSong,
             {/* Play button with progress ring */}
             <div className="flex items-center justify-center mb-8 flex-shrink-0">
               <div className="relative w-[88px] h-[88px]">
-                <svg className="absolute inset-0 pointer-events-none" style={{ transform: 'rotate(-90deg)' }} viewBox="0 0 88 88">
-                  <circle cx="44" cy="44" r="40" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="4" />
-                  <circle cx="44" cy="44" r="40" fill="none" stroke="rgba(92,53,17,0.5)" strokeWidth="4"
-                    strokeDasharray={251.33} strokeDashoffset={251.33 * (1 - progress)} strokeLinecap="round" />
-                </svg>
                 <button
                   onClick={handlePlay}
                   className="w-full h-full rounded-full flex items-center justify-center glossy-btn btn-candy-yellow"
@@ -340,6 +339,11 @@ export default function StemPlayScreen({ song, groupPlayers, scores, onNextSong,
                     : <div className="w-0 h-0 ml-1" style={{ borderTop: '14px solid transparent', borderBottom: '14px solid transparent', borderLeft: '24px solid #5c3511' }} />
                   }
                 </button>
+                <svg className="absolute inset-0 pointer-events-none" style={{ transform: 'rotate(-90deg)' }} viewBox="0 0 88 88">
+                  <circle cx="44" cy="44" r="40" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="4" />
+                  <circle cx="44" cy="44" r="40" fill="none" stroke="rgba(92,53,17,0.5)" strokeWidth="4"
+                    strokeDasharray={251.33} strokeDashoffset={251.33 * (1 - progress)} strokeLinecap="round" />
+                </svg>
               </div>
             </div>
 
@@ -371,11 +375,6 @@ export default function StemPlayScreen({ song, groupPlayers, scores, onNextSong,
             {/* Play button with progress ring */}
             <div className="flex items-center justify-center mb-6 flex-shrink-0">
               <div className="relative w-[88px] h-[88px]">
-                <svg className="absolute inset-0 pointer-events-none" style={{ transform: 'rotate(-90deg)' }} viewBox="0 0 88 88">
-                  <circle cx="44" cy="44" r="40" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="4" />
-                  <circle cx="44" cy="44" r="40" fill="none" stroke="rgba(92,53,17,0.5)" strokeWidth="4"
-                    strokeDasharray={251.33} strokeDashoffset={251.33 * (1 - progress)} strokeLinecap="round" />
-                </svg>
                 <button
                   onClick={handlePlay}
                   className="w-full h-full rounded-full flex items-center justify-center glossy-btn btn-candy-yellow"
@@ -385,6 +384,11 @@ export default function StemPlayScreen({ song, groupPlayers, scores, onNextSong,
                     : <div className="w-0 h-0 ml-1" style={{ borderTop: '14px solid transparent', borderBottom: '14px solid transparent', borderLeft: '24px solid #5c3511' }} />
                   }
                 </button>
+                <svg className="absolute inset-0 pointer-events-none" style={{ transform: 'rotate(-90deg)' }} viewBox="0 0 88 88">
+                  <circle cx="44" cy="44" r="40" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="4" />
+                  <circle cx="44" cy="44" r="40" fill="none" stroke="rgba(92,53,17,0.5)" strokeWidth="4"
+                    strokeDasharray={251.33} strokeDashoffset={251.33 * (1 - progress)} strokeLinecap="round" />
+                </svg>
               </div>
             </div>
 

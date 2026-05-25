@@ -343,11 +343,6 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
               <div className="relative flex items-center justify-center mb-8 flex-shrink-0" style={{ height: 92 }}>
                 {/* Play button with progress ring */}
                 <div className="relative w-[88px] h-[88px]">
-                  <svg className="absolute inset-0 pointer-events-none" style={{ transform: 'rotate(-90deg)' }} viewBox="0 0 88 88">
-                    <circle cx="44" cy="44" r="40" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="4" />
-                    <circle cx="44" cy="44" r="40" fill="none" stroke="rgba(92,53,17,0.5)" strokeWidth="4"
-                      strokeDasharray={251.33} strokeDashoffset={251.33 * (1 - progress)} strokeLinecap="round" />
-                  </svg>
                   <button
                     onClick={handlePlay}
                     disabled={!ready}
@@ -362,6 +357,11 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
                       <div className="w-0 h-0 ml-1" style={{ borderTop: '14px solid transparent', borderBottom: '14px solid transparent', borderLeft: '24px solid #5c3511' }} />
                     )}
                   </button>
+                  <svg className="absolute inset-0 pointer-events-none" style={{ transform: 'rotate(-90deg)' }} viewBox="0 0 88 88">
+                    <circle cx="44" cy="44" r="40" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="4" />
+                    <circle cx="44" cy="44" r="40" fill="none" stroke="rgba(92,53,17,0.5)" strokeWidth="4"
+                      strokeDasharray={251.33} strokeDashoffset={251.33 * (1 - progress)} strokeLinecap="round" />
+                  </svg>
                 </div>
 
                 {/* Duration bubble — adjacent to the right of the button */}
@@ -440,11 +440,6 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
               {/* Play + scrubber */}
               <div className="flex items-center gap-3 mb-2 flex-shrink-0">
                 <div className="relative w-12 h-12 flex-shrink-0">
-                  <svg className="absolute inset-0 pointer-events-none" style={{ transform: 'rotate(-90deg)' }} viewBox="0 0 48 48">
-                    <circle cx="24" cy="24" r="21" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="3" />
-                    <circle cx="24" cy="24" r="21" fill="none" stroke="rgba(92,53,17,0.5)" strokeWidth="3"
-                      strokeDasharray={131.95} strokeDashoffset={131.95 * (1 - progress)} strokeLinecap="round" />
-                  </svg>
                   <button
                     onClick={handlePlay}
                     disabled={!ready}
@@ -456,6 +451,11 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
                       : <div className="w-0 h-0 ml-1" style={{ borderTop: '10px solid transparent', borderBottom: '10px solid transparent', borderLeft: '18px solid #5c3511' }} />
                     }
                   </button>
+                  <svg className="absolute inset-0 pointer-events-none" style={{ transform: 'rotate(-90deg)' }} viewBox="0 0 48 48">
+                    <circle cx="24" cy="24" r="21" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="3" />
+                    <circle cx="24" cy="24" r="21" fill="none" stroke="rgba(92,53,17,0.5)" strokeWidth="3"
+                      strokeDasharray={131.95} strokeDashoffset={131.95 * (1 - progress)} strokeLinecap="round" />
+                  </svg>
                 </div>
                 <div className="flex-1" dir="ltr">
                   <input
