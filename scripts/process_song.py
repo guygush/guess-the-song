@@ -20,6 +20,9 @@ import time
 import urllib.parse
 import urllib.request
 
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
 import requests
 
 PYTHON_DIR = os.path.dirname(sys.executable)
@@ -230,6 +233,10 @@ def main():
     t_batch = time.time()
 
     for i, entry in enumerate(entries):
+        if entry.get("position", 1) > 5:
+            print(f"[{args.index + i}] SKIP (position {entry.get('position')}) — {entry['performer']} — {entry['song']}")
+            results.append({"skipped": True, "track_id": None})
+            continue
         try:
             r = process(entry, args.index + i, manifest_ids, token)
             results.append(r)
