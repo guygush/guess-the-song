@@ -31,9 +31,7 @@ export default function GameHubScreen({ onSelectGame }: Props) {
 
       {/* Header */}
       <div className="play-header flex-shrink-0">
-        <div className="flex items-center justify-center px-4 py-3">
-          <h1 className="text-sm font-bold text-brown">צפוף</h1>
-        </div>
+        <div className="h-3" />
         <div className="play-wavy opacity-50" />
       </div>
 
@@ -42,7 +40,8 @@ export default function GameHubScreen({ onSelectGame }: Props) {
 
         {/* Logo */}
         <div className="text-center">
-          <div className="text-6xl mb-3">🎮</div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo.png" alt="צפוף" className="h-24 w-auto mx-auto mb-2" />
           <p className="text-brown-light text-sm">בחרו משחק להתחיל</p>
         </div>
 
