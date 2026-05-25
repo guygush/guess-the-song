@@ -216,10 +216,14 @@ export default function Home() {
       setScreen({ name: 'stems-play', song: next, groupPlayers, scores: newScores, playedSongs: new Set([...playedSongs, next.trackId]) });
     };
 
-    const onFinish = groupPlayers ? (winner?: string, points?: number) => {
-      const newScores = winner && points ? addPoints(scores, winner, points) : scores;
-      setScreen({ name: 'summary', players: groupPlayers.map(name => ({ name, score: newScores[name] ?? 0 })) });
-    } : undefined;
+    const onFinish = (winner?: string, points?: number) => {
+      if (groupPlayers) {
+        const newScores = winner && points ? addPoints(scores, winner, points) : scores;
+        setScreen({ name: 'summary', players: groupPlayers.map(name => ({ name, score: newScores[name] ?? 0 })) });
+      } else {
+        setScreen({ name: 'stems-setup' });
+      }
+    };
 
     return (
       <StemPlayScreen
