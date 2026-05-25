@@ -42,7 +42,7 @@ export default function GameHubScreen({ onSelectGame }: Props) {
         <div className="text-center">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/logo.png" alt="צפוף" className="h-24 w-auto mx-auto mb-2" />
-          <p className="text-brown-light text-sm">בחרו משחק להתחיל</p>
+          <p className="text-brown-light text-sm">ערב גיבוש משפחתי</p>
         </div>
 
         {/* Game cards */}
