@@ -18,6 +18,8 @@ interface Props {
 const INCREMENTS = [0.25, 0.5, 1];
 const DEFAULT_DURATION = 300;
 const PLAYER_COLORS = ['#5EB3F8', '#FF6B9D', '#3ECF8E', '#B69AF0', '#FF8C42', '#FFDA57'];
+const CANDY_CLASSES = ['btn-candy-blue', 'btn-candy-green', 'btn-candy-red', 'btn-candy-yellow'];
+const CANDY_TEXT_COLORS = ['#1a5c8b', '#3d6010', '#8b2222', '#5c3511'];
 
 function fmt(sec: number) {
   const m = Math.floor(sec / 60);
@@ -467,18 +469,14 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
                   <p className="text-center font-bold text-sm mb-4 text-brown">מי זיהה ראשון?</p>
                   <div className="grid grid-cols-2 gap-3">
                     {groupPlayers.map((player, i) => {
-                      const color = PLAYER_COLORS[i % PLAYER_COLORS.length];
+                      const cls = CANDY_CLASSES[i % CANDY_CLASSES.length];
+                      const textColor = CANDY_TEXT_COLORS[i % CANDY_TEXT_COLORS.length];
                       return (
                         <button
                           key={player}
                           onClick={() => handleSelectWinner(player)}
-                          className="py-4 rounded-3xl font-bold text-lg text-white glossy-btn"
-                          style={{
-                            background: `linear-gradient(to bottom, ${color}dd, ${color})`,
-                            border: `2.5px solid ${color}99`,
-                            boxShadow: `0 3px 10px ${color}55`,
-                            textShadow: '0 1px 2px rgba(0,0,0,0.25)',
-                          }}
+                          className={`py-4 rounded-[2rem] font-bold text-xl glossy-btn ${cls}`}
+                          style={{ color: textColor }}
                         >
                           {player}
                         </button>
@@ -486,8 +484,7 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
                     })}
                     <button
                       onClick={() => handleSelectWinner(null)}
-                      className="col-span-2 py-4 rounded-3xl font-bold text-sm text-brown"
-                      style={{ background: '#f0e6d0', border: '2px solid #dcc9ad', boxShadow: '0 3px 8px rgba(196,168,130,0.3), 0 1px 2px rgba(0,0,0,0.06)' }}
+                      className="col-span-2 py-4 rounded-[2rem] font-bold text-base glossy-btn candy-btn-secondary"
                     >
                       אף אחד לא זיהה
                     </button>
