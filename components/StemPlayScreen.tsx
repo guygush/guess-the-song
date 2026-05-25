@@ -69,6 +69,8 @@ export default function StemPlayScreen({ song, groupPlayers, scores, onNextSong,
     src.connect(gain);
     src.start(0, Math.min(offset, buf.duration - 0.01));
     src.onended = () => {
+      // If this source is no longer in the active list, it was manually stopped — ignore.
+      if (!activeSourcesRef.current.includes(src)) return;
       if (!endHandledRef.current && playingRef.current) {
         endHandledRef.current = true;
         playOffsetRef.current = 0;
@@ -122,7 +124,6 @@ export default function StemPlayScreen({ song, groupPlayers, scores, onNextSong,
     const ctx = audioCtxRef.current;
     if (!ctx) return;
     ctx.resume().then(() => {
-      endHandledRef.current = true;
       stopSources();
       endHandledRef.current = false;
       playStartAcTimeRef.current = ctx.currentTime;
@@ -151,7 +152,6 @@ export default function StemPlayScreen({ song, groupPlayers, scores, onNextSong,
     const ctx = audioCtxRef.current;
     if (!ctx) return;
     ctx.resume().then(() => {
-      endHandledRef.current = true;
       stopSources();
       endHandledRef.current = false;
       playOffsetRef.current = 0;
@@ -181,12 +181,10 @@ export default function StemPlayScreen({ song, groupPlayers, scores, onNextSong,
 
     if (playingRef.current) {
       playOffsetRef.current = getCurrentOffset();
-      endHandledRef.current = true;
       stopSources();
       setPlaying(false);
     } else {
       const offset = playOffsetRef.current;
-      endHandledRef.current = true;
       stopSources();
       endHandledRef.current = false;
       playStartAcTimeRef.current = ctx.currentTime;
@@ -209,7 +207,6 @@ export default function StemPlayScreen({ song, groupPlayers, scores, onNextSong,
     const ctx = audioCtxRef.current;
     if (!ctx) return;
     ctx.resume().then(() => {
-      endHandledRef.current = true;
       stopSources();
       endHandledRef.current = false;
       playOffsetRef.current = 0;
@@ -225,7 +222,6 @@ export default function StemPlayScreen({ song, groupPlayers, scores, onNextSong,
     for (const name of ['other', 'vocals']) {
       if (gainsRef.current[name]) gainsRef.current[name].gain.value = 1;
     }
-    endHandledRef.current = true;
     stopSources();
     setPlaying(false);
     playOffsetRef.current = 0;
