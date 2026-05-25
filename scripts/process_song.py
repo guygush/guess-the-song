@@ -1,14 +1,14 @@
 """
 Fetch songs from israeli-charts.json, separate into stems with Demucs, encode to MP3,
-upload to Vercel Blob, and update public/data/stems-manifest.json.
+upload to Cloudflare R2, and update public/data/stems-manifest.json.
 
 Usage:
   python scripts/process_song.py                      # 1 song from index 0
   python scripts/process_song.py --index 5            # 1 song from index 5
   python scripts/process_song.py --index 0 --count 4 # 4 songs starting at index 0
 
-Requires BLOB_READ_WRITE_TOKEN env var (or in .env.local at repo root).
-Get it from: Vercel dashboard → your project → Storage → Blob → Token.
+Requires R2 credentials in .env.local:
+  R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, R2_BUCKET_NAME, R2_PUBLIC_URL
 """
 
 import argparse
@@ -23,7 +23,8 @@ import urllib.request
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
-import requests
+import boto3
+from botocore.config import Config
 
 PYTHON_DIR = os.path.dirname(sys.executable)
 FFMPEG_BIN = r"C:\ffmpeg-8.1.1-full_build-shared\bin"
@@ -36,25 +37,45 @@ OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "output")
 STEMS_DIR = os.path.join(OUTPUT_DIR, "htdemucs")
 
 ITUNES_SEARCH = "https://itunes.apple.com/search?term={term}&media=music&entity=song&limit=10"
-BLOB_UPLOAD_URL = "https://blob.vercel-storage.com/stems/{track_id}/{filename}?access=public&addRandomSuffix=0"
 
 
-def load_blob_token() -> str:
-    token = os.environ.get("BLOB_READ_WRITE_TOKEN", "")
-    if not token:
-        env_local = os.path.join(os.path.dirname(__file__), "..", ".env.local")
-        if os.path.exists(env_local):
-            for line in open(env_local).read().splitlines():
-                if line.startswith("BLOB_READ_WRITE_TOKEN="):
-                    token = line.split("=", 1)[1].strip().strip('"').strip("'")
-                    break
-    if not token:
-        print("ERROR: BLOB_READ_WRITE_TOKEN not set.")
-        print("  Get it from: Vercel dashboard → your project → Storage → Blob → Token")
-        print("  Then set it: set BLOB_READ_WRITE_TOKEN=vercel_blob_rw_... (Windows)")
-        print("  Or add it to .env.local: BLOB_READ_WRITE_TOKEN=vercel_blob_rw_...")
+def load_env_local() -> dict:
+    env_local = os.path.join(os.path.dirname(__file__), "..", ".env.local")
+    result = {}
+    if os.path.exists(env_local):
+        for line in open(env_local).read().splitlines():
+            if "=" in line and not line.startswith("#"):
+                k, v = line.split("=", 1)
+                result[k.strip()] = v.strip().strip('"').strip("'")
+    return result
+
+
+def load_r2_config():
+    env = load_env_local()
+    keys = ["R2_ACCOUNT_ID", "R2_ACCESS_KEY_ID", "R2_SECRET_ACCESS_KEY", "R2_BUCKET_NAME", "R2_PUBLIC_URL"]
+    cfg = {k: os.environ.get(k, env.get(k, "")) for k in keys}
+    missing = [k for k, v in cfg.items() if not v]
+    if missing:
+        print(f"ERROR: Missing R2 config: {', '.join(missing)}")
         sys.exit(1)
-    return token
+    return cfg
+
+
+def make_r2_client(cfg):
+    return boto3.client(
+        "s3",
+        endpoint_url=f"https://{cfg['R2_ACCOUNT_ID']}.r2.cloudflarestorage.com",
+        aws_access_key_id=cfg["R2_ACCESS_KEY_ID"],
+        aws_secret_access_key=cfg["R2_SECRET_ACCESS_KEY"],
+        config=Config(signature_version="s3v4"),
+        region_name="auto",
+    )
+
+
+def upload_stem(r2, bucket: str, public_url: str, mp3_path: str, track_id: int, stem_name: str) -> str:
+    key = f"stems/{track_id}/{stem_name}.mp3"
+    r2.upload_file(mp3_path, bucket, key, ExtraArgs={"ContentType": "audio/mpeg"})
+    return f"{public_url}/{key}"
 
 
 def load_manifest() -> list:
@@ -69,23 +90,12 @@ def save_manifest(entries: list) -> None:
         json.dump(entries, f, ensure_ascii=False, indent=2)
 
 
-def upload_stem(mp3_path: str, track_id: int, filename: str, token: str) -> str:
-    url = BLOB_UPLOAD_URL.format(track_id=track_id, filename=filename)
-    with open(mp3_path, "rb") as f:
-        resp = requests.put(url, data=f, headers={
-            "Authorization": f"Bearer {token}",
-            "Content-Type": "audio/mpeg",
-        }, timeout=60)
-    resp.raise_for_status()
-    return resp.json()["url"]
-
-
 def check_deps():
     missing = []
     if not os.path.exists(FFMPEG):
-        missing.append(f"ffmpeg not found at {FFMPEG_BIN} — install full-shared build from https://www.gyan.dev/ffmpeg/builds/")
+        missing.append(f"ffmpeg not found at {FFMPEG_BIN}")
     if not os.path.exists(DEMUCS):
-        missing.append(f"demucs not found at {DEMUCS}\n  Run: pip install demucs")
+        missing.append(f"demucs not found at {DEMUCS} — run: pip install demucs")
     if missing:
         print("Missing dependencies:")
         for m in missing:
@@ -117,11 +127,7 @@ def run(cmd, label):
         raise RuntimeError(f"{label} failed:\n{result.stderr.decode(errors='replace')}")
 
 
-def already_done(track_id, manifest_ids: set):
-    return track_id in manifest_ids
-
-
-def process(entry, idx, manifest_ids: set, token: str):
+def process(entry, idx, manifest_ids: set, r2, cfg):
     t_start = time.time()
     print(f"\n[{idx}] {entry['performer']} — {entry['song']} ({entry['year']})")
     print("-" * 60)
@@ -136,28 +142,23 @@ def process(entry, idx, manifest_ids: set, token: str):
     track_id = result["trackId"]
     print(f"found trackId={track_id}  ({time.time()-t0:.1f}s)")
 
-    # Already processed?
-    if already_done(track_id, manifest_ids):
+    if track_id in manifest_ids:
         print("SKIP — already in manifest")
         return {"skipped": True, "track_id": track_id}
-
-    t_search = time.time() - t0
 
     # 2. Download preview
     m4a_path = os.path.join(OUTPUT_DIR, f"{track_id}.m4a")
     t0 = time.time()
     print("Downloading preview...", end=" ", flush=True)
     download(result["previewUrl"], m4a_path)
-    t_download = time.time() - t0
-    print(f"{os.path.getsize(m4a_path)//1024} KB  ({t_download:.1f}s)")
+    print(f"{os.path.getsize(m4a_path)//1024} KB  ({time.time()-t0:.1f}s)")
 
     # 3. Trim to 15s
     wav_path = os.path.join(OUTPUT_DIR, f"{track_id}_15s.wav")
     t0 = time.time()
     print("Trimming to 15s...", end=" ", flush=True)
     run([FFMPEG, "-y", "-i", m4a_path, "-t", "15", "-ar", "44100", wav_path], "ffmpeg trim")
-    t_trim = time.time() - t0
-    print(f"done  ({t_trim:.1f}s)")
+    print(f"done  ({time.time()-t0:.1f}s)")
     os.remove(m4a_path)
 
     # 4. Demucs
@@ -168,7 +169,7 @@ def process(entry, idx, manifest_ids: set, token: str):
     print(f"done  ({t_demucs:.1f}s)")
     os.remove(wav_path)
 
-    # 5. Encode stems to MP3 and delete WAVs
+    # 5. Encode stems to MP3
     stem_dir = os.path.join(STEMS_DIR, f"{track_id}_15s")
     stem_wavs = [f for f in os.listdir(stem_dir) if f.endswith(".wav")]
     t0 = time.time()
@@ -177,20 +178,18 @@ def process(entry, idx, manifest_ids: set, token: str):
         wav = os.path.join(stem_dir, wav_name)
         run([FFMPEG, "-y", "-i", wav, "-b:a", "64k", wav.replace(".wav", ".mp3")], f"encode {wav_name}")
         os.remove(wav)
-    t_encode = time.time() - t0
-    print(f"done  ({t_encode:.1f}s)")
+    print(f"done  ({time.time()-t0:.1f}s)")
 
-    # 6. Upload to Vercel Blob
+    # 6. Upload to R2
     stem_mp3s = sorted(f for f in os.listdir(stem_dir) if f.endswith(".mp3"))
     t0 = time.time()
-    print("Uploading to Vercel Blob...", end=" ", flush=True)
-    blob_urls: dict = {}
+    print("Uploading to R2...", end=" ", flush=True)
+    r2_urls: dict = {}
     for mp3_name in stem_mp3s:
-        mp3_path = os.path.join(stem_dir, mp3_name)
-        stem_key = mp3_name.replace(".mp3", "")  # drums, bass, other, vocals
-        blob_urls[stem_key] = upload_stem(mp3_path, track_id, mp3_name, token)
-    t_upload = time.time() - t0
-    print(f"done  ({t_upload:.1f}s)")
+        stem_name = mp3_name.replace(".mp3", "")
+        r2_urls[stem_name] = upload_stem(r2, cfg["R2_BUCKET_NAME"], cfg["R2_PUBLIC_URL"],
+                                          os.path.join(stem_dir, mp3_name), track_id, stem_name)
+    print(f"done  ({time.time()-t0:.1f}s)")
 
     # 7. Update manifest
     manifest = load_manifest()
@@ -200,7 +199,7 @@ def process(entry, idx, manifest_ids: set, token: str):
         "performer": entry["performer"],
         "year": entry["year"],
         "language": entry["language"],
-        "stems": blob_urls,
+        "stems": r2_urls,
     })
     save_manifest(manifest)
     manifest_ids.add(track_id)
@@ -220,7 +219,8 @@ def main():
     args = parser.parse_args()
 
     check_deps()
-    token = load_blob_token()
+    cfg = load_r2_config()
+    r2 = make_r2_client(cfg)
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
     with open(CHARTS_JSON, encoding="utf-8") as f:
@@ -238,7 +238,7 @@ def main():
             results.append({"skipped": True, "track_id": None})
             continue
         try:
-            r = process(entry, args.index + i, manifest_ids, token)
+            r = process(entry, args.index + i, manifest_ids, r2, cfg)
             results.append(r)
         except Exception as e:
             print(f"\nERROR: {e}")
