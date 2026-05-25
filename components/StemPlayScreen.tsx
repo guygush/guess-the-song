@@ -17,7 +17,7 @@ const CANDY_CLASSES = ['btn-candy-blue', 'btn-candy-green', 'btn-candy-red', 'bt
 const CANDY_TEXT_COLORS = ['#1a5c8b', '#3d6010', '#8b2222', '#5c3511', '#5c1a8b', '#7a3000'];
 const PLAYER_COLORS = ['#5EB3F8', '#FF6B9D', '#3ECF8E', '#B69AF0', '#FF8C42', '#FFDA57'];
 
-const STAGE_LABELS = ['תופים + בס', 'תופים + בס + כלים', 'כל הכלים'];
+const STAGE_LABELS = ['תופים + בס', 'תופים + בס + כלים', 'תופים + בס + כלים + שירה'];
 const STAGE_POINTS = [3, 2, 1];
 
 export default function StemPlayScreen({ song, groupPlayers, scores, onNextSong, onFinish, onBack }: Props) {
@@ -98,7 +98,7 @@ export default function StemPlayScreen({ song, groupPlayers, scores, onNextSong,
       return buf;
     };
 
-    // Eager: drums + bass — blocks play button
+    // Eager: drums + bass — auto-plays when ready
     Promise.all([
       loadStem('drums', song.stems.drums),
       loadStem('bass', song.stems.bass),
@@ -113,6 +113,23 @@ export default function StemPlayScreen({ song, groupPlayers, scores, onNextSong,
       ctx.close();
     };
   }, [song, stopSources]);
+
+  // Auto-play as soon as drums+bass are ready
+  useEffect(() => {
+    if (!eagerReady) return;
+    const ctx = audioCtxRef.current;
+    if (!ctx) return;
+    ctx.resume().then(() => {
+      endHandledRef.current = false;
+      stopSources();
+      playStartAcTimeRef.current = ctx.currentTime;
+      for (const name of ['drums', 'bass', 'other', 'vocals']) {
+        startStem(name, 0);
+      }
+      setPlaying(true);
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [eagerReady]);
 
   // When a lazy stem loads while playing, start its source at current position
   useEffect(() => {
@@ -157,7 +174,20 @@ export default function StemPlayScreen({ song, groupPlayers, scores, onNextSong,
     if (gainsRef.current[stemName]) {
       gainsRef.current[stemName].gain.value = 1;
     }
-  }, [stage]);
+    // Restart playback from beginning so the new stem is immediately audible
+    const ctx = audioCtxRef.current;
+    if (!ctx) return;
+    ctx.resume().then(() => {
+      playOffsetRef.current = 0;
+      endHandledRef.current = false;
+      stopSources();
+      playStartAcTimeRef.current = ctx.currentTime;
+      for (const name of ['drums', 'bass', 'other', 'vocals']) {
+        startStem(name, 0);
+      }
+      setPlaying(true);
+    });
+  }, [stage, stopSources, startStem]);
 
   const handleContinue = useCallback(() => {
     stopSources();
@@ -296,7 +326,7 @@ export default function StemPlayScreen({ song, groupPlayers, scores, onNextSong,
               >
                 {(stage === 1 && !otherReady) || (stage === 2 && !vocalsReady)
                   ? <><div className="w-5 h-5 rounded-full border-2 animate-spin" style={{ borderColor: 'rgba(61,96,16,0.2)', borderTopColor: '#3d6010' }} />טוען...</>
-                  : stage >= 3 ? 'כל הכלים פועלים' : 'חשוף עוד'}
+                  : stage >= 3 ? 'תופים+בס+כלים+שירה' : 'חשוף עוד'}
               </button>
             </div>
           </>
