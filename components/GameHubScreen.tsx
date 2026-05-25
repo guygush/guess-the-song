@@ -32,7 +32,7 @@ export default function GameHubScreen({ onSelectGame }: Props) {
       {/* Header */}
       <div className="play-header flex-shrink-0">
         <div className="flex items-center justify-center px-4 py-3">
-          <h1 className="text-sm font-bold text-brown">משחקי לילה</h1>
+          <h1 className="text-sm font-bold text-brown">צפוף</h1>
         </div>
         <div className="play-wavy opacity-50" />
       </div>

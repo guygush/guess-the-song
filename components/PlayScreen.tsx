@@ -58,7 +58,7 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
       set(value: MediaMetadata | null) {
         descriptor?.set?.call(
           this,
-          revealedRef.current ? value : new MediaMetadata({ title: 'נחש את השיר', artist: '', artwork: [] })
+          revealedRef.current ? value : new MediaMetadata({ title: 'צפוף', artist: '', artwork: [] })
         );
       },
       get() { return descriptor?.get?.call(this); },
@@ -204,7 +204,7 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
         </button>
         {/* Title centered */}
         <span className="text-sm font-bold text-brown truncate">
-          {title ?? 'משחקי לילה - זהה את השיר'}
+          {title ?? 'צפוף'}
         </span>
       </div>
       <div className="play-wavy opacity-50" />

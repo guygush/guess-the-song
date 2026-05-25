@@ -5,13 +5,13 @@ import './globals.css';
 const varelaRound = Varela_Round({ weight: '400', subsets: ['latin', 'hebrew'] });
 
 export const metadata: Metadata = {
-  title: 'נחש את השיר',
-  description: 'כמה תווים אתה צריך?',
+  title: 'צפוף',
+  description: 'משחקי מוזיקה וניחושים',
   manifest: '/manifest.json',
   appleWebApp: {
     capable: true,
-    statusBarStyle: 'black-translucent',
-    title: 'נחש את השיר',
+    statusBarStyle: 'default',
+    title: 'צפוף',
   },
 };
 
@@ -21,13 +21,14 @@ export const viewport: Viewport = {
   maximumScale: 1,
   userScalable: false,
   viewportFit: 'cover',
-  themeColor: '#4F46E5',
+  themeColor: '#fcf8e8',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="he" dir="rtl">
       <head>
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/icon-192.png" />
       </head>
       <body className={varelaRound.className}>{children}</body>

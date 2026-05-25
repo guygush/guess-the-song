@@ -1,14 +1,14 @@
 {
-  "name": "נחש את השיר",
-  "short_name": "נחש שיר",
-  "description": "כמה תווים אתה צריך?",
+  "name": "צפוף",
+  "short_name": "צפוף",
+  "description": "משחקי מוזיקה וניחושים",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
   "dir": "rtl",
   "lang": "he",
-  "background_color": "#030712",
-  "theme_color": "#4F46E5",
+  "background_color": "#fffcf0",
+  "theme_color": "#fcf8e8",
   "icons": [
     {
       "src": "/icon-192.png",
