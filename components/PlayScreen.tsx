@@ -39,10 +39,14 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
   const playerRef = useRef<YT.Player | null>(null);
   const stopTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const progressIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const snippetStartMsRef = useRef(0);
+  const snippetDurMsRef = useRef(500);
   const scrubbingRef = useRef(false);
   const revealedRef = useRef(false);
 
   const [ready, setReady] = useState(false);
+  const [progress, setProgress] = useState(0);
   const [playing, setPlaying] = useState(false);
   const [snippetKey, setSnippetKey] = useState(0);
   const [startOffset, setStartOffset] = useState(0);
@@ -115,6 +119,22 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
     return () => { if (pollRef.current) { clearInterval(pollRef.current); pollRef.current = null; } };
   }, [revealed, playing]);
 
+  // Progress ring tracking
+  useEffect(() => {
+    if (progressIntervalRef.current) { clearInterval(progressIntervalRef.current); progressIntervalRef.current = null; }
+    if (!playing) { setProgress(0); return; }
+    progressIntervalRef.current = setInterval(() => {
+      if (revealed) {
+        const t = playerRef.current?.getCurrentTime() ?? 0;
+        const d = playerRef.current?.getDuration() ?? duration;
+        setProgress(d > 0 ? t / d : 0);
+      } else {
+        setProgress(Math.min((Date.now() - snippetStartMsRef.current) / snippetDurMsRef.current, 1));
+      }
+    }, 50);
+    return () => { if (progressIntervalRef.current) { clearInterval(progressIntervalRef.current); progressIntervalRef.current = null; } };
+  }, [playing, revealed, duration]);
+
   const clearStop = () => {
     if (stopTimerRef.current) { clearTimeout(stopTimerRef.current); stopTimerRef.current = null; }
   };
@@ -123,6 +143,9 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
     const p = playerRef.current;
     if (!p) return;
     clearStop();
+    snippetStartMsRef.current = Date.now();
+    snippetDurMsRef.current = dur * 1000;
+    setProgress(0);
     p.seekTo(offset, true);
     p.playVideo();
     setPlaying(true);
@@ -318,21 +341,28 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
 
               {/* Play button (centered) + duration bubble (to its right) */}
               <div className="relative flex items-center justify-center mb-8 flex-shrink-0" style={{ height: 92 }}>
-                {/* Play circle — half the original size, centered */}
-                <button
-                  onClick={handlePlay}
-                  disabled={!ready}
-                  className="w-[88px] h-[88px] rounded-full flex items-center justify-center glossy-btn btn-candy-yellow"
-                  style={{ opacity: ready ? 1 : 0.6 }}
-                >
-                  {!ready ? (
-                    <div className="w-5 h-5 border-4 rounded-full animate-spin" style={{ borderColor: 'rgba(92,53,17,0.2)', borderTopColor: '#5c3511' }} />
-                  ) : playing ? (
-                    <div className="w-5 h-5 rounded-sm" style={{ background: '#5c3511' }} />
-                  ) : (
-                    <div className="w-0 h-0 ml-1" style={{ borderTop: '14px solid transparent', borderBottom: '14px solid transparent', borderLeft: '24px solid #5c3511' }} />
-                  )}
-                </button>
+                {/* Play button with progress ring */}
+                <div className="relative w-[88px] h-[88px]">
+                  <svg className="absolute inset-0 pointer-events-none" style={{ transform: 'rotate(-90deg)' }} viewBox="0 0 88 88">
+                    <circle cx="44" cy="44" r="40" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="4" />
+                    <circle cx="44" cy="44" r="40" fill="none" stroke="rgba(92,53,17,0.5)" strokeWidth="4"
+                      strokeDasharray={251.33} strokeDashoffset={251.33 * (1 - progress)} strokeLinecap="round" />
+                  </svg>
+                  <button
+                    onClick={handlePlay}
+                    disabled={!ready}
+                    className="w-full h-full rounded-full flex items-center justify-center glossy-btn btn-candy-yellow"
+                    style={{ opacity: ready ? 1 : 0.6 }}
+                  >
+                    {!ready ? (
+                      <div className="w-5 h-5 border-4 rounded-full animate-spin" style={{ borderColor: 'rgba(92,53,17,0.2)', borderTopColor: '#5c3511' }} />
+                    ) : playing ? (
+                      <div className="w-5 h-5 rounded-sm" style={{ background: '#5c3511' }} />
+                    ) : (
+                      <div className="w-0 h-0 ml-1" style={{ borderTop: '14px solid transparent', borderBottom: '14px solid transparent', borderLeft: '24px solid #5c3511' }} />
+                    )}
+                  </button>
+                </div>
 
                 {/* Duration bubble — adjacent to the right of the button */}
                 <div className="absolute" style={{ left: 'calc(50% + 56px)' }}>
@@ -409,17 +439,24 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
 
               {/* Play + scrubber */}
               <div className="flex items-center gap-3 mb-2 flex-shrink-0">
-                <button
-                  onClick={handlePlay}
-                  disabled={!ready}
-                  className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 glossy-btn btn-candy-yellow"
-                  style={{ opacity: ready ? 1 : 0.5 }}
-                >
-                  {playing
-                    ? <div className="w-4 h-4 rounded-sm" style={{ background: '#5c3511' }} />
-                    : <div className="w-0 h-0 ml-1" style={{ borderTop: '10px solid transparent', borderBottom: '10px solid transparent', borderLeft: '18px solid #5c3511' }} />
-                  }
-                </button>
+                <div className="relative w-12 h-12 flex-shrink-0">
+                  <svg className="absolute inset-0 pointer-events-none" style={{ transform: 'rotate(-90deg)' }} viewBox="0 0 48 48">
+                    <circle cx="24" cy="24" r="21" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="3" />
+                    <circle cx="24" cy="24" r="21" fill="none" stroke="rgba(92,53,17,0.5)" strokeWidth="3"
+                      strokeDasharray={131.95} strokeDashoffset={131.95 * (1 - progress)} strokeLinecap="round" />
+                  </svg>
+                  <button
+                    onClick={handlePlay}
+                    disabled={!ready}
+                    className="w-full h-full rounded-full flex items-center justify-center glossy-btn btn-candy-yellow"
+                    style={{ opacity: ready ? 1 : 0.5 }}
+                  >
+                    {playing
+                      ? <div className="w-4 h-4 rounded-sm" style={{ background: '#5c3511' }} />
+                      : <div className="w-0 h-0 ml-1" style={{ borderTop: '10px solid transparent', borderBottom: '10px solid transparent', borderLeft: '18px solid #5c3511' }} />
+                    }
+                  </button>
+                </div>
                 <div className="flex-1" dir="ltr">
                   <input
                     type="range"

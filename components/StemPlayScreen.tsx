@@ -31,6 +31,7 @@ export default function StemPlayScreen({ song, groupPlayers, scores, onNextSong,
   const endHandledRef = useRef(false);
   const playingRef = useRef(false);
   const stageRef = useRef(1);
+  const progressIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   // UI state
   const [eagerReady, setEagerReady] = useState(false);
@@ -41,6 +42,7 @@ export default function StemPlayScreen({ song, groupPlayers, scores, onNextSong,
   const [revealed, setRevealed] = useState(false);
   const [selectedWinner, setSelectedWinner] = useState<string | null>(null);
   const [showScores, setShowScores] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => { playingRef.current = playing; }, [playing]);
   useEffect(() => { stageRef.current = stage; }, [stage]);
@@ -130,6 +132,32 @@ export default function StemPlayScreen({ song, groupPlayers, scores, onNextSong,
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [eagerReady]);
+
+  // Progress ring tracking
+  useEffect(() => {
+    if (progressIntervalRef.current) { clearInterval(progressIntervalRef.current); progressIntervalRef.current = null; }
+    if (!playing) { setProgress(0); return; }
+    const dur = buffersRef.current.drums?.duration || 15;
+    progressIntervalRef.current = setInterval(() => {
+      setProgress(Math.min(getCurrentOffset() / dur, 1));
+    }, 50);
+    return () => { if (progressIntervalRef.current) { clearInterval(progressIntervalRef.current); progressIntervalRef.current = null; } };
+  }, [playing, getCurrentOffset]);
+
+  // Auto-play when song is revealed
+  useEffect(() => {
+    if (!revealed) return;
+    const ctx = audioCtxRef.current;
+    if (!ctx) return;
+    ctx.resume().then(() => {
+      playOffsetRef.current = 0;
+      endHandledRef.current = false;
+      stopSources();
+      playStartAcTimeRef.current = ctx.currentTime;
+      for (const name of ['drums', 'bass', 'other', 'vocals']) startStem(name, 0);
+      setPlaying(true);
+    });
+  }, [revealed, stopSources, startStem]);
 
   // When a lazy stem loads while playing, start its source at current position
   useEffect(() => {
@@ -295,17 +323,24 @@ export default function StemPlayScreen({ song, groupPlayers, scores, onNextSong,
       <div className="flex-1 flex flex-col items-center px-6 pt-6 pb-2 min-h-0 overflow-hidden">
         {!revealed ? (
           <>
-            {/* Play button */}
+            {/* Play button with progress ring */}
             <div className="flex items-center justify-center mb-8 flex-shrink-0">
-              <button
-                onClick={handlePlay}
-                className="w-[88px] h-[88px] rounded-full flex items-center justify-center glossy-btn btn-candy-yellow"
-              >
-                {playing
-                  ? <div className="w-5 h-5 rounded-sm" style={{ background: '#5c3511' }} />
-                  : <div className="w-0 h-0 ml-1" style={{ borderTop: '14px solid transparent', borderBottom: '14px solid transparent', borderLeft: '24px solid #5c3511' }} />
-                }
-              </button>
+              <div className="relative w-[88px] h-[88px]">
+                <svg className="absolute inset-0 pointer-events-none" style={{ transform: 'rotate(-90deg)' }} viewBox="0 0 88 88">
+                  <circle cx="44" cy="44" r="40" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="4" />
+                  <circle cx="44" cy="44" r="40" fill="none" stroke="rgba(92,53,17,0.5)" strokeWidth="4"
+                    strokeDasharray={251.33} strokeDashoffset={251.33 * (1 - progress)} strokeLinecap="round" />
+                </svg>
+                <button
+                  onClick={handlePlay}
+                  className="w-full h-full rounded-full flex items-center justify-center glossy-btn btn-candy-yellow"
+                >
+                  {playing
+                    ? <div className="w-5 h-5 rounded-sm" style={{ background: '#5c3511' }} />
+                    : <div className="w-0 h-0 ml-1" style={{ borderTop: '14px solid transparent', borderBottom: '14px solid transparent', borderLeft: '24px solid #5c3511' }} />
+                  }
+                </button>
+              </div>
             </div>
 
             {/* Stage label */}
@@ -331,29 +366,52 @@ export default function StemPlayScreen({ song, groupPlayers, scores, onNextSong,
             </div>
           </>
         ) : (
-          /* Revealed: winner selection (group) */
-          groupPlayers && (
-            <div className="w-full flex-1 flex flex-col min-h-0">
-              <p className="text-center font-bold text-sm mb-4 text-brown">מי זיהה ראשון?</p>
-              <div className="grid grid-cols-2 gap-3">
-                {groupPlayers.map((player, i) => {
-                  const cls = CANDY_CLASSES[i % CANDY_CLASSES.length];
-                  const textColor = CANDY_TEXT_COLORS[i % CANDY_TEXT_COLORS.length];
-                  return (
-                    <button key={player} onClick={() => handleSelectWinner(player)}
-                      className={`py-4 rounded-[2rem] font-bold text-xl glossy-btn ${cls}`}
-                      style={{ color: textColor }}>
-                      {player}
-                    </button>
-                  );
-                })}
-                <button onClick={() => handleSelectWinner(null)}
-                  className="col-span-2 py-4 rounded-[2rem] font-bold text-base glossy-btn candy-btn-secondary">
-                  אף אחד לא זיהה
+          /* Revealed: play button + optional winner selection */
+          <div className="w-full flex-1 flex flex-col items-center min-h-0">
+            {/* Play button with progress ring */}
+            <div className="flex items-center justify-center mb-6 flex-shrink-0">
+              <div className="relative w-[88px] h-[88px]">
+                <svg className="absolute inset-0 pointer-events-none" style={{ transform: 'rotate(-90deg)' }} viewBox="0 0 88 88">
+                  <circle cx="44" cy="44" r="40" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="4" />
+                  <circle cx="44" cy="44" r="40" fill="none" stroke="rgba(92,53,17,0.5)" strokeWidth="4"
+                    strokeDasharray={251.33} strokeDashoffset={251.33 * (1 - progress)} strokeLinecap="round" />
+                </svg>
+                <button
+                  onClick={handlePlay}
+                  className="w-full h-full rounded-full flex items-center justify-center glossy-btn btn-candy-yellow"
+                >
+                  {playing
+                    ? <div className="w-5 h-5 rounded-sm" style={{ background: '#5c3511' }} />
+                    : <div className="w-0 h-0 ml-1" style={{ borderTop: '14px solid transparent', borderBottom: '14px solid transparent', borderLeft: '24px solid #5c3511' }} />
+                  }
                 </button>
               </div>
             </div>
-          )
+
+            {/* Winner selection (group only) */}
+            {groupPlayers && (
+              <div className="w-full flex-1 flex flex-col min-h-0">
+                <p className="text-center font-bold text-sm mb-4 text-brown">מי זיהה ראשון?</p>
+                <div className="grid grid-cols-2 gap-3">
+                  {groupPlayers.map((player, i) => {
+                    const cls = CANDY_CLASSES[i % CANDY_CLASSES.length];
+                    const textColor = CANDY_TEXT_COLORS[i % CANDY_TEXT_COLORS.length];
+                    return (
+                      <button key={player} onClick={() => handleSelectWinner(player)}
+                        className={`py-4 rounded-[2rem] font-bold text-xl glossy-btn ${cls}`}
+                        style={{ color: textColor }}>
+                        {player}
+                      </button>
+                    );
+                  })}
+                  <button onClick={() => handleSelectWinner(null)}
+                    className="col-span-2 py-4 rounded-[2rem] font-bold text-base glossy-btn candy-btn-secondary">
+                    אף אחד לא זיהה
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
         )}
       </div>
 
