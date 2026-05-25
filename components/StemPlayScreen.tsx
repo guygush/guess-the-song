@@ -122,8 +122,9 @@ export default function StemPlayScreen({ song, groupPlayers, scores, onNextSong,
     const ctx = audioCtxRef.current;
     if (!ctx) return;
     ctx.resume().then(() => {
-      endHandledRef.current = false;
+      endHandledRef.current = true;
       stopSources();
+      endHandledRef.current = false;
       playStartAcTimeRef.current = ctx.currentTime;
       for (const name of ['drums', 'bass', 'other', 'vocals']) {
         startStem(name, 0);
@@ -150,9 +151,10 @@ export default function StemPlayScreen({ song, groupPlayers, scores, onNextSong,
     const ctx = audioCtxRef.current;
     if (!ctx) return;
     ctx.resume().then(() => {
-      playOffsetRef.current = 0;
-      endHandledRef.current = false;
+      endHandledRef.current = true;
       stopSources();
+      endHandledRef.current = false;
+      playOffsetRef.current = 0;
       playStartAcTimeRef.current = ctx.currentTime;
       for (const name of ['drums', 'bass', 'other', 'vocals']) startStem(name, 0);
       setPlaying(true);
@@ -179,12 +181,14 @@ export default function StemPlayScreen({ song, groupPlayers, scores, onNextSong,
 
     if (playingRef.current) {
       playOffsetRef.current = getCurrentOffset();
+      endHandledRef.current = true;
       stopSources();
       setPlaying(false);
     } else {
       const offset = playOffsetRef.current;
-      endHandledRef.current = false;
+      endHandledRef.current = true;
       stopSources();
+      endHandledRef.current = false;
       playStartAcTimeRef.current = ctx.currentTime;
       for (const name of ['drums', 'bass', 'other', 'vocals']) {
         startStem(name, offset);
@@ -202,13 +206,13 @@ export default function StemPlayScreen({ song, groupPlayers, scores, onNextSong,
     if (gainsRef.current[stemName]) {
       gainsRef.current[stemName].gain.value = 1;
     }
-    // Restart playback from beginning so the new stem is immediately audible
     const ctx = audioCtxRef.current;
     if (!ctx) return;
     ctx.resume().then(() => {
-      playOffsetRef.current = 0;
-      endHandledRef.current = false;
+      endHandledRef.current = true;
       stopSources();
+      endHandledRef.current = false;
+      playOffsetRef.current = 0;
       playStartAcTimeRef.current = ctx.currentTime;
       for (const name of ['drums', 'bass', 'other', 'vocals']) {
         startStem(name, 0);
@@ -218,10 +222,10 @@ export default function StemPlayScreen({ song, groupPlayers, scores, onNextSong,
   }, [stage, stopSources, startStem]);
 
   const handleContinue = useCallback(() => {
-    // Unmute all stems so the reveal plays the full song
     for (const name of ['other', 'vocals']) {
       if (gainsRef.current[name]) gainsRef.current[name].gain.value = 1;
     }
+    endHandledRef.current = true;
     stopSources();
     setPlaying(false);
     playOffsetRef.current = 0;
