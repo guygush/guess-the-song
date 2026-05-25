@@ -50,5 +50,1409 @@
       "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/695745657/other-GqIXi8tmIJ5Vao5y6CzfNtMFqztTZr.mp3",
       "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/695745657/vocals-MRo4ny7zF25W4sNsBacv09oNdfQkS3.mp3"
     }
+  },
+  {
+    "trackId": 254939266,
+    "song": "Hey! Baby",
+    "performer": "Bruce Channel",
+    "year": 1962,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/254939266/bass-HSE010iJYpWoonw0UuAYDGuTKSswRF.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/254939266/drums-lJaa7lGjlmJkPF08M5ntRL85bWy43K.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/254939266/other-jku6gtfXnPSnBNLo6ClSwx6BxIBIM3.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/254939266/vocals-DvwJBq9VvYKOqFeStVoOooD3f4KwwP.mp3"
+    }
+  },
+  {
+    "trackId": 1337689457,
+    "song": "Walkin' Back to Happiness",
+    "performer": "Helen Shapiro",
+    "year": 1962,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1337689457/bass-W7q7nBwK4pLO7AYhNOnDHHw2V2PEpo.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1337689457/drums-TMKDxLrATbATKURZaUAXnQVeoa6f1Y.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1337689457/other-RzSO4jWCMxJItcFWrY8xe64Hd0xeQg.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1337689457/vocals-YT0MwoCpjicY5DVJXbFoWM4MLVhyZi.mp3"
+    }
+  },
+  {
+    "trackId": 691685287,
+    "song": "I Remember You",
+    "performer": "Frank Ifield",
+    "year": 1962,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/691685287/bass-6w1r6786JK6J5V528MSPM3Y0xM2zQR.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/691685287/drums-jHh3ncIdjeonOSe6DSA8EDmDY7Qs5h.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/691685287/other-5pvuCFeAAFI4Tsd4FJFrclWF5CDio3.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/691685287/vocals-qoVL8Qm6sNlqAiPHi4CgTii3VUxwBm.mp3"
+    }
+  },
+  {
+    "trackId": 700056565,
+    "song": "The Young Ones",
+    "performer": "Cliff Richard",
+    "year": 1962,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/700056565/bass-PXKgkHgrSpt1COBHMgTQhv12zKcCvG.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/700056565/drums-caV8HSgShsDkkqlcDithCOixkOBXUl.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/700056565/other-h57Xvveq7WwtQMyDmgosc654zSJ4vC.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/700056565/vocals-Bei0xjfPUiUcvTNIivgqjTC8B4reH0.mp3"
+    }
+  },
+  {
+    "trackId": 388128266,
+    "song": "Can't Help Falling in Love",
+    "performer": "Elvis Presley",
+    "year": 1962,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/388128266/bass-NRPmO4nggWSmqH1uPPol3hJSnHGUeg.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/388128266/drums-yqwVrquu1DGEDXdXtvDX5ASDgVdt0E.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/388128266/other-UfUBDmQBRtatIMLd4wrbsFr3u1AwT3.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/388128266/vocals-dKpw9ZcGXHV5SeVa1ZPQBpFklQD8xk.mp3"
+    }
+  },
+  {
+    "trackId": 263586233,
+    "song": "Stranger on the Shore",
+    "performer": "Acker Bilk",
+    "year": 1962,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/263586233/bass-R2xbPJMsDRvvOlx3K8kW9gwBZeMAqH.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/263586233/drums-E2b8f3YKB98FATwnWzBSXjEkjKC2SP.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/263586233/other-RypOrNgJ4BC6jBDjHyOHmWkkXCo9Gn.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/263586233/vocals-oW5aONpsKledSqgWdC3BCz1fBKGksx.mp3"
+    }
+  },
+  {
+    "trackId": 30393600,
+    "song": "Multiplication",
+    "performer": "Bobby Darin",
+    "year": 1962,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/30393600/bass-J56X4nBz9WETzWsOttgvQBgsRPlKOL.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/30393600/drums-zYGSZUkUA2P7HHLqrbPeyuwOAFleSY.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/30393600/other-AHyO8YSQpqDh4kG0KxrP8MzR1nk8Mr.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/30393600/vocals-gTsaaGwsM4yhFwKjqplw8AH3z6QJey.mp3"
+    }
+  },
+  {
+    "trackId": 1664606411,
+    "song": "Loveland",
+    "performer": "Paul Anka",
+    "year": 1962,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1664606411/bass-4a3w1OPwZgGf4p7nqUvT1ecbbOCiBt.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1664606411/drums-525Nuk5vOnWY2pP8tN3CS1zujJH6Xy.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1664606411/other-Eq3dFAPaIk1IS6DDpXmurebVhg8YLb.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1664606411/vocals-tkZ11Uyoa8DtLDqchqjO7zoG4fExaE.mp3"
+    }
+  },
+  {
+    "trackId": 306677750,
+    "song": "Moon River",
+    "performer": "Henry Mancini",
+    "year": 1962,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/306677750/bass-jfw90apVsFPUhIGQcNL8T658tpTKhV.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/306677750/drums-JIU3eI5N2vpZRAilsWU8zFT0RwzfHK.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/306677750/other-E9T3fIQpQmzMuocqsEsQDKysdGKdd6.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/306677750/vocals-rG2ad6cvtAp97XeIiWyFC7XpqWBuEA.mp3"
+    }
+  },
+  {
+    "trackId": 388128277,
+    "song": "Good Luck Charm",
+    "performer": "Elvis Presley",
+    "year": 1962,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/388128277/bass-iNSHwRRdYGtm6dKdcT6T6okZ7uwlP9.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/388128277/drums-tvGSjYfUOgDnhc7FLj17sJbacwuWpz.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/388128277/other-k9yr5cqmrzbeQ6YT8Qz2iGfxv3tMDB.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/388128277/vocals-n9dpI75ovemS6qvS74PhZ39vqSh0C7.mp3"
+    }
+  },
+  {
+    "trackId": 1444229017,
+    "song": "Vacation",
+    "performer": "Connie Francis",
+    "year": 1962,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1444229017/bass-W3guv1ZpCTZJVYN9extQQFwxw1C0fn.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1444229017/drums-6nwiksdPoo8tfvCXDrCZgQsnA3tRoi.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1444229017/other-XR8fnxo3u1eic3g1lo1OnG1NnfIOVS.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1444229017/vocals-DXM2DtY34LyoWWKUFk7tRZDIIoKjcq.mp3"
+    }
+  },
+  {
+    "trackId": 273994241,
+    "song": "Breaking Up Is Hard to Do",
+    "performer": "Neil Sedaka",
+    "year": 1962,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/273994241/bass-YhEcwSMaGtxuCHKS4k0hOg9UkTLAVd.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/273994241/drums-p5zRQks99RZYffDelmgz9vSV9gB7ML.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/273994241/other-zKvoctHsMWNpwQjmMo7FOuLfXSHh6Q.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/273994241/vocals-aZQwM2rBO3XxwqB48wjAqXD1LawBID.mp3"
+    }
+  },
+  {
+    "trackId": 15147073,
+    "song": "Let's Twist Again",
+    "performer": "Chubby Checker",
+    "year": 1962,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/15147073/bass-0Camf7wjXi1Cwyl5Y77tqlyA7zblBs.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/15147073/drums-wrQQYj948WOSxG7BFztFECNIRWFq3a.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/15147073/other-zhCp3guHvsQTlbgBT94S4fPjKvglqO.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/15147073/vocals-F5KpFCF5RAxxcfDHoFPTY0RxxsZ1qt.mp3"
+    }
+  },
+  {
+    "trackId": 304760997,
+    "song": "The Lion Sleeps Tonight",
+    "performer": "The Tokens",
+    "year": 1962,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/304760997/bass-aJRJfyMK3fG2dtdiJf5JpAvKl6Cqao.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/304760997/drums-ACRg4p3YIVXzJoMwFQQ521NhRIQuN2.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/304760997/other-w13pZvUcFGIFFHIzWhr7jurq4YCLUO.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/304760997/vocals-VcFT1R8Ak7arhaTSbYl2b5lVnzMTvV.mp3"
+    }
+  },
+  {
+    "trackId": 696083475,
+    "song": "Tell Me What He Said",
+    "performer": "Helen Shapiro",
+    "year": 1962,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/696083475/bass-FBVJtTOKi23DIb0iCeN2zP2W5IDMms.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/696083475/drums-8iXVA62KcupHHzrfvPiFOd4FjRSatM.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/696083475/other-WmUmAvYCJi2uP26BZEepUltocO9tJa.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/696083475/vocals-SpRpDftzvaoPfmuySSRVqsFnt6gQ6W.mp3"
+    }
+  },
+  {
+    "trackId": 388128283,
+    "song": "She's Not You",
+    "performer": "Elvis Presley",
+    "year": 1962,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/388128283/bass-yw64a5qIOsHd9OD0OZ73SsLT7gN1Se.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/388128283/drums-x348P2yilrQwYzTiCG4SR4rvB3jQis.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/388128283/other-uuJ4kxs3RQsTWc17uZLkF55EA5MMFa.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/388128283/vocals-Ze4NIRgoFxlJ0Q8W5iSx8FHGZGrZK2.mp3"
+    }
+  },
+  {
+    "trackId": 171096046,
+    "song": "Big Bad John",
+    "performer": "Jimmy Dean",
+    "year": 1962,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/171096046/bass-ifkKIZBsSd5uLwSyQH53WGKoTVwTKq.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/171096046/drums-jgZeim838zllHrAJFBztyBC8pN4CXY.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/171096046/other-bRJYJHc50NS3uYCjryTzPaNUigul9D.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/171096046/vocals-CZoUWkwm3UzeK2NmFWKxaaLERHwnPs.mp3"
+    }
+  },
+  {
+    "trackId": 1713066754,
+    "song": "From Me to You",
+    "performer": "The Beatles",
+    "year": 1963,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1713066754/bass-vpBEU24nZglCm7XjutodYC4ZBU0NKS.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1713066754/drums-wTCo4IriOivl8us1Lq1oaFAR9lUzir.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1713066754/other-e6Y2egPk2v1eoldHhoCwxTE242WBAx.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1713066754/vocals-sfBaHhBV3tqSPiM8wHWgOepC1SbK8Z.mp3"
+    }
+  },
+  {
+    "trackId": 696776229,
+    "song": "Bachelor Boy",
+    "performer": "Cliff Richard",
+    "year": 1963,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/696776229/bass-TicHfJ7uC97b9FpDsCqIGNQ2T8qOod.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/696776229/drums-jUeJduKZILSWtqx8t7jrHj95R004tr.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/696776229/other-RRR48BN5D9K3KwuhbuqmjhgnOTd3iU.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/696776229/vocals-Uj0yrgpGDEFB5wS3tZb6seAwIG3pRV.mp3"
+    }
+  },
+  {
+    "trackId": 217635783,
+    "song": "Return to Sender",
+    "performer": "Elvis Presley",
+    "year": 1963,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/217635783/bass-Uo3BqROfOY1UFc8I9qXEdXL2HczH9J.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/217635783/drums-jF3WlbcLMnP6olLBHoRsf3MH1JxzE8.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/217635783/other-2QhngaXVvqxwuo3tDSwug09okQZzTD.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/217635783/vocals-Z604JWMlrnmnM8ezrOtC8pLd61xaCg.mp3"
+    }
+  },
+  {
+    "trackId": 1441165136,
+    "song": "Twist and Shout",
+    "performer": "The Beatles",
+    "year": 1963,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441165136/bass-rhoYdVnKjaKvW9rveUbGzgn2uuPPaX.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441165136/drums-VjTnpgoGjCnuoUZV94ehQlHKSVHv50.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441165136/other-mi2Dl2K8OK06p3LJFHzXkoySyBijZ1.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441165136/vocals-OExIjmrC0b9U1fhTPT6ZRyxXSZbPxt.mp3"
+    }
+  },
+  {
+    "trackId": 704845008,
+    "song": "Hey Paula",
+    "performer": "Paul & Paula",
+    "year": 1963,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/704845008/bass-ATVI2y8xNAQh1MtwBQsOgi7qzNh80O.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/704845008/drums-dPb4Ch0fqX4qGcVhrP1nW7XSyoWkiA.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/704845008/other-Q8FJRjQcgkDG8TtNEJWPETY2NNyJOx.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/704845008/vocals-yMta2SZYgilMxAbQFaPSljRS9VCsPF.mp3"
+    }
+  },
+  {
+    "trackId": 1440922004,
+    "song": "It's My Party",
+    "performer": "Lesley Gore",
+    "year": 1963,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440922004/bass-bXdAbKbAwVoI9TSiMHIspxnZrbVVhQ.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440922004/drums-NIiVBMLCfsfc7dCwpxg4Egyu5xjE2S.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440922004/other-BjxqJEtpdN89jZN9l3LK2MomcMjbpM.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440922004/vocals-0lh7QYXVSTdAWvCXbvBGRebMd667EL.mp3"
+    }
+  },
+  {
+    "trackId": 1600073423,
+    "song": "It's All in the Game",
+    "performer": "Cliff Richard",
+    "year": 1963,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1600073423/bass-1FIw9aeXrg7uwkHtPrMWktp4JcLGsN.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1600073423/drums-Btews0oghXKC2zxsdxSwPcjb3aZQBI.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1600073423/other-IEJNEtxBnQB3QvFZci7RuVZlCVkCAP.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1600073423/vocals-ewfACfwTHDZF46q4Mu6OiTHytzrHNV.mp3"
+    }
+  },
+  {
+    "trackId": 712132503,
+    "song": "Walk Right In",
+    "performer": "The Rooftop Singers",
+    "year": 1963,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/712132503/bass-wg8mRLjlFhK2N04EnBwj7ZHfsZJJ32.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/712132503/drums-NhLcR4nyQM4Yqw57YEyggOdnJcDrO3.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/712132503/other-lhqCIrJWnxO5xoytbgz1tjrmLhNmjR.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/712132503/vocals-anxY7jdkkw5Eo7viN8N76JAiHko2gz.mp3"
+    }
+  },
+  {
+    "trackId": 695745062,
+    "song": "Summer Holiday",
+    "performer": "Cliff Richard",
+    "year": 1963,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/695745062/bass-KCQpNMBMbRsGTl1y2UH4PxBoIN5alP.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/695745062/drums-Gv8pM2D9ziHffDOeS1jyLdop6B4DH5.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/695745062/other-oVh1DFBSUaDRzM6duZbe1xEiJv0Gi2.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/695745062/vocals-aqgozaKvHU4QNeeLJoqxolcLuAqj9L.mp3"
+    }
+  },
+  {
+    "trackId": 1826616308,
+    "song": "Devil in Disguise",
+    "performer": "Elvis Presley",
+    "year": 1963,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1826616308/bass-qwLUl7Ra2vTV1nuJ15JB9qQSFrzP9U.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1826616308/drums-WdImkH1YVu2fp4EPgrLX0oGyvNo7wm.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1826616308/other-qYUQCW4ySD3Ha0ng6pNxee9glKPi47.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1826616308/vocals-IaQ56PPBtMHjyf2uBGSLvnKGO3xfBI.mp3"
+    }
+  },
+  {
+    "trackId": 696776240,
+    "song": "Lucky Lips",
+    "performer": "Cliff Richard",
+    "year": 1963,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/696776240/bass-c5FLmBIrF6BCWldhjjJEQ2O1NbYHob.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/696776240/drums-qUyO5GnWUF1Uci5azBcgxMB4k1Dx5h.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/696776240/other-wfwIeSTff8ZhLVgnpCHeJppiO0pJtO.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/696776240/vocals-C2VWXQD5XBoa1iepA9HXWftzD98hGu.mp3"
+    }
+  },
+  {
+    "trackId": 704731865,
+    "song": "Sukiyaki",
+    "performer": "Kyu Sakamoto",
+    "year": 1963,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/704731865/bass-Mcg92N5C53f9AAhebCQoN71f7S1xA9.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/704731865/drums-K3uSMCm1gHztWdEF56tQ54E34B3h6v.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/704731865/other-jjNLLO8kOsRItzipEERBhIDgPG4PuY.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/704731865/vocals-Myt4MW5aLunnuuWJ4ZEAv3udoevFbN.mp3"
+    }
+  },
+  {
+    "trackId": 1208915172,
+    "song": "If I Had a Hammer",
+    "performer": "Trini Lopez",
+    "year": 1963,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1208915172/bass-sGUOxVpjQPtkoDVXcPCYeU8o5YVNN7.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1208915172/drums-6jORFLSd0tuUod2EhEhEkJtJQlfFB0.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1208915172/other-yaYUUez68reqmM0W0Vb790kiFqrvTh.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1208915172/vocals-9VT9lVXIadwJte8DUEfvR0oTewV9PU.mp3"
+    }
+  },
+  {
+    "trackId": 79029898,
+    "song": "Puff the Magic Dragon",
+    "performer": "Peter, Paul & Mary",
+    "year": 1963,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/79029898/bass-ZRB8MvYKO294NgBHBROCFdz91K4SHm.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/79029898/drums-z0qnSt6FFr9ZokRorGbgWoaOM6bhyR.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/79029898/other-wjUe0ZWRNA0YOlX5TIJauDQURpkOD0.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/79029898/vocals-KFcptVjQ0hF4mtwWBI2WcQfGAmjF8H.mp3"
+    }
+  },
+  {
+    "trackId": 706260534,
+    "song": "I Will Follow Him",
+    "performer": "Little Peggy March",
+    "year": 1963,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/706260534/bass-t4O78upsiJXuvwlUdIz88S2FjNEIuX.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/706260534/drums-LpFeTXSD2nlKKfZkP2tHJ2MXRNY7BA.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/706260534/other-aebiLdX5rFlzYEWZncGkC0bu1Qos33.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/706260534/vocals-Mbksq3IrjhRd10FS3ke4b7c27zvVm0.mp3"
+    }
+  },
+  {
+    "trackId": 1434776490,
+    "song": "Losing You",
+    "performer": "Brenda Lee",
+    "year": 1963,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1434776490/bass-qeWmn4DuX7FSiZdYRIOlOkB9SX2uCd.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1434776490/drums-RLsc47zUGTuioTxqJ3jBXU3Y4pJXWq.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1434776490/other-hNClbn1Tkx2CcGROqXE2MkkZeWEPB9.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1434776490/vocals-rmdNq4VwyVqJe18Sn5QTgB2rxtblhn.mp3"
+    }
+  },
+  {
+    "trackId": 1441164418,
+    "song": "I Should Have Known Better",
+    "performer": "The Beatles",
+    "year": 1964,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441164418/bass-eI9sZYQ7sAOoSfl4yLxYvp6QQHLKZB.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441164418/drums-pJ39hH7c4TDgIUWCbyul17j2Z12uHl.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441164418/other-0EHjtq7Ob2Lt9P3w0V6IyJV130DV4N.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441164418/vocals-alyBmWuBqUi9RtK5dtVChUkW4Js6Nr.mp3"
+    }
+  },
+  {
+    "trackId": 1441164417,
+    "song": "A Hard Day's Night",
+    "performer": "The Beatles",
+    "year": 1964,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441164417/bass-ADtVz6YfVmycKElzM7uQI9uQXuzqAw.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441164417/drums-75lfTeYkriA1sHMgKK8f2AvFEHCBKU.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441164417/other-jwgSdjPyRQqs0Pl4gWqunnLtP4ABWV.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441164417/vocals-l8rSrP6EqMpeclaGJjE0VlbdVHOgCr.mp3"
+    }
+  },
+  {
+    "trackId": 217635876,
+    "song": "Viva Las Vegas",
+    "performer": "Elvis Presley",
+    "year": 1964,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/217635876/bass-xLvSQvd9Ouxuaq5sxaPupCvdqWMT5q.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/217635876/drums-msD6xBSKIPVgYAnXy0qL7veX8MyamE.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/217635876/other-ITEO7lEzZMPKJfbVyBoVxIsfRilfOr.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/217635876/vocals-dFzWrHeTtKk6l4J8ZUAiBhRS4CsapY.mp3"
+    }
+  },
+  {
+    "trackId": 948937000,
+    "song": "Kissin' Cousins",
+    "performer": "Elvis Presley",
+    "year": 1964,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/948937000/bass-GWHMssMvNCpsf22hSCm2DsLUsnxfZc.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/948937000/drums-SbUmkRnysPOVkoqtX4MaDiVLTWjNgh.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/948937000/other-Sj83nFCuVNZrx9suM1Ikzfy2HWffF1.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/948937000/vocals-ByENKCffd9ab79lnBV9PabILvWjR2W.mp3"
+    }
+  },
+  {
+    "trackId": 734625831,
+    "song": "You're My World",
+    "performer": "Cilla Black",
+    "year": 1964,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/734625831/bass-F8qlJJhquikmKKmWWlYwlfPQlSyXll.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/734625831/drums-e4fW7yNlK0eAVZJG7o1K2EaVPmYcrE.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/734625831/other-mKjxe5Vvjb4HEtZ66ghsoOJt2WcyMD.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/734625831/vocals-8lPXGDI8KBxZ9rxGp1K1DKbH8wUEmT.mp3"
+    }
+  },
+  {
+    "trackId": 1440743961,
+    "song": "House of the Rising Sun",
+    "performer": "The Animals",
+    "year": 1964,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440743961/bass-mSwrecA6DCWB92f0XlIPUZaHl5mHca.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440743961/drums-HfN2akyKXoTtTXENl0TbaQijFQSLE5.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440743961/other-g97x9a7R3rsMNzhIiKFp2JTY03qonv.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440743961/vocals-4DZqljJRln3MHUPfAQJnvTWT1PqO1e.mp3"
+    }
+  },
+  {
+    "trackId": 691546555,
+    "song": "A World Without Love",
+    "performer": "Peter & Gordon",
+    "year": 1964,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/691546555/bass-ymHcKAHeIqHmqIRbnlnqGZ0AvwFQYz.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/691546555/drums-Vh4M0vTJgS2VejGGF8NP1U2sMNfuFw.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/691546555/other-8BXX1XFj4lDG84Ob8NxhRHorzGdxyf.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/691546555/vocals-BLFcLpZMSpvHvSnE60IQXEChR06EUC.mp3"
+    }
+  },
+  {
+    "trackId": 1497228010,
+    "song": "Always Something There to Remind Me",
+    "performer": "Sandy Shaw",
+    "year": 1964,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1497228010/bass-X65db8rhWPc6QoNvkcZcZhS4gwqju8.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1497228010/drums-7a5Y24WEqWYEnZ87xO9VaOdzjyQaa3.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1497228010/other-zctJ3etdL5X2wRWR97ZJtWGpv7bLph.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1497228010/vocals-V7SYRjBXAYwsA9G14VPkCPqYamhrSa.mp3"
+    }
+  },
+  {
+    "trackId": 951743836,
+    "song": "Suspicion",
+    "performer": "Elvis Presley",
+    "year": 1964,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/951743836/bass-t57pOXLGEB9qmJm6UeHwJ6wWhHlf6k.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/951743836/drums-VSn96upcrTIOtBJt6qx7AeqHe2fJ3r.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/951743836/other-5bHT3yv8dKIVyJQ05UJhU3z0dFe4DQ.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/951743836/vocals-C9DPtWa7HKR2G4NehMcP3Q5rObBR7B.mp3"
+    }
+  },
+  {
+    "trackId": 1436264571,
+    "song": "Don't Throw Your Love Away",
+    "performer": "The Searchers",
+    "year": 1964,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1436264571/bass-owVu9c5tAV2n2EWaFpC0STlTdog7yh.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1436264571/drums-7LCBdRlKqbkqe7a4ffsoZfQEVsgGgc.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1436264571/other-CYX57aNKgfrJnmlyvdpeIAqWnkESbP.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1436264571/vocals-jqy7Gd708dcmICZsWPufPadS1Na1vv.mp3"
+    }
+  },
+  {
+    "trackId": 696539647,
+    "song": "Anyone Who Had a Heart",
+    "performer": "Cilla Black",
+    "year": 1964,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/696539647/bass-KOwshs7j0rvbEi9wEQDcgG8gzsFuuo.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/696539647/drums-wvd340ESTd0e5LI6CCcM8vI9AVSZH3.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/696539647/other-ClnN47dh6IP3zjbQyON1pKYYT9PBXq.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/696539647/vocals-vNoOS3grKr7BH8ZuO3UpgbmAL6aiU9.mp3"
+    }
+  },
+  {
+    "trackId": 1443334806,
+    "song": "My Boy Lollipop",
+    "performer": "Millie",
+    "year": 1964,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1443334806/bass-pG14eNHJjHa7oPjWF0oWY9k37OC4eA.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1443334806/drums-kcIajK3igPHsbmnkxEVp3dWEISHag9.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1443334806/other-Hgr1DafxACOmyIJZg72jo79Y5U9NvT.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1443334806/vocals-hPvvTs4efk2UCv3SM3p7mGdEtRWGIc.mp3"
+    }
+  },
+  {
+    "trackId": 691550586,
+    "song": "You'll Never Walk Alone",
+    "performer": "Gerry & The Pacemakers",
+    "year": 1964,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/691550586/bass-0H4rIshTLBsZBhFAdMFfZrkUSSOIwQ.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/691550586/drums-04tlydfuUiANrJTqEI0K3BEHCpLgdL.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/691550586/other-y28oahsOzil3xBlU37MzVEhMu5KeBY.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/691550586/vocals-LEaM4fSpjpYTDUNWyTXiBGBXxUgyv5.mp3"
+    }
+  },
+  {
+    "trackId": 1138098304,
+    "song": "Crying in the Chapel",
+    "performer": "Elvis Presley",
+    "year": 1965,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1138098304/bass-m9TL5Y8XdFyJqPQyTppwR7RgRHOx57.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1138098304/drums-Ocd9mqeAiqIVempcVA321UFZ6aPLgi.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1138098304/other-BBUj9RLeD2DzoNGbj69cZ1vRiZ0hQr.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1138098304/vocals-LTQ9rq5IJJMMwPVdm67Nr5ywHNm8D4.mp3"
+    }
+  },
+  {
+    "trackId": 1441164805,
+    "song": "Yesterday",
+    "performer": "The Beatles",
+    "year": 1965,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441164805/bass-t25tLGZzAbyrd3xKfjv5MX8XfDXhOL.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441164805/drums-pSwB49vZIcovc54exzcaE5F0tOxTzA.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441164805/other-IjjjSwjrBRb4tQ7qFpzYGczKf9Tdky.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441164805/vocals-Gb7mmv8Qu4dJngL9hOQPOVBjqjJsyF.mp3"
+    }
+  },
+  {
+    "trackId": 1441164536,
+    "song": "Help!",
+    "performer": "The Beatles",
+    "year": 1965,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441164536/bass-C6sfc4NmB90yV5SlOiVlO79j5lkIBe.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441164536/drums-zryuCGilX2EgC8p8eiPwTmDVwqzcnu.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441164536/other-0uGCFOakUpV3ZOORoqNJ2GrAXKP3WD.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441164536/vocals-j9lR79iotN82OZvEGW4LF9sfAeObMM.mp3"
+    }
+  },
+  {
+    "trackId": 153421332,
+    "song": "Mr. Tambourine Man",
+    "performer": "The Byrds",
+    "year": 1965,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/153421332/bass-63u9ftgKb4lKgvnMbvd5QT8HSGVCWW.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/153421332/drums-51MFYclXpmrsJkDfrvXNJXUzDLlkqL.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/153421332/other-KSGvjRe6xWB0uiAYNNaeWwLk0HksHc.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/153421332/vocals-B4YHJJPHgtpRaUOX3yhwikfngJjoKo.mp3"
+    }
+  },
+  {
+    "trackId": 1441165099,
+    "song": "Eight Days a Week",
+    "performer": "The Beatles",
+    "year": 1965,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441165099/bass-eUzWGGUccQZ6vwCbpYVKVz3zQPH3of.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441165099/drums-YOOD9Zjy7UQlNNo8wGX67L6Wnupm9P.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441165099/other-KzWujAZFpZrFLCnsmohz3I8e6eqdFM.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441165099/vocals-IxxDt2ojW1hYrbWp7L5Ktrlnv9Dt3n.mp3"
+    }
+  },
+  {
+    "trackId": 1710160485,
+    "song": "Downtown",
+    "performer": "Petula Clark",
+    "year": 1965,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1710160485/bass-NqC5BNwniWKJYJXflXwa1BFNgWmhzv.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1710160485/drums-NuespaZ4qRTnwYCylfztZsObs2ko5F.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1710160485/other-OLpcVuJplr3svPBEAIe8t5OPMavXj1.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1710160485/vocals-Y7Brgen0TdW2Du2kHTMgzA8X63tALH.mp3"
+    }
+  },
+  {
+    "trackId": 1443726599,
+    "song": "Mrs. Brown You've Got a Lovely Daughter",
+    "performer": "Herman's Hermits",
+    "year": 1965,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1443726599/bass-OOCONrfsEAyTT6dnf6sJ9m04twATVD.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1443726599/drums-mq9ACwHyBW4ICfbBgAIuvVBXhNg5XN.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1443726599/other-5DLhPSORi0DNRoPqciu9d0rYEFDQNf.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1443726599/vocals-ZCi8D9dxQ6GjC2TWjpoULZwcVxX2Np.mp3"
+    }
+  },
+  {
+    "trackId": 726353667,
+    "song": "The Minute You're Gone",
+    "performer": "Cliff Richard",
+    "year": 1965,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/726353667/bass-M9SnSlP7Ch13JzwyqYzoXaCUg36n9j.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/726353667/drums-SjMXdkc0W3qDYbHoZlWLTAUsVXWO6E.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/726353667/other-fXp4isRQBa24MVsGGIR0u9YjfOAMA0.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/726353667/vocals-6aKxbCGoMsgNQvOrjaxPL4qe7LKUQU.mp3"
+    }
+  },
+  {
+    "trackId": 1467380180,
+    "song": "Girl Don't Come",
+    "performer": "Sandy Shaw",
+    "year": 1965,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1467380180/bass-4knAwQoSSKaIcLYxsa4Kf2OzcYV2iv.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1467380180/drums-8K9j8D7gEIRvzaPSNCalBmnEyVdtrp.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1467380180/other-mRyiGlgTbXkEu398TtBoaQggFZq11K.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1467380180/vocals-At2hDPvU5EqKPQ2qPPFi6vBnoXknnz.mp3"
+    }
+  },
+  {
+    "trackId": 192966100,
+    "song": "Mr. Lonely",
+    "performer": "Bobby Vinton",
+    "year": 1965,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/192966100/bass-Y3TCZI2QBJo0MmpRiFTK73fx6w8eBa.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/192966100/drums-eufAbadOVlLrXQxX7Sa8C3qgV1bmDl.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/192966100/other-gWZlqHrohnEE4NS6uaqPKkrpJ7J6wY.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/192966100/vocals-h5kSlzIJblTnsodynwQd9DhuZs9uyF.mp3"
+    }
+  },
+  {
+    "trackId": 26174226,
+    "song": "You've Got Your Troubles",
+    "performer": "The Fortunes",
+    "year": 1965,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/26174226/bass-DSMD5Mh27QK2kIngL1sn5N7zaGoFCq.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/26174226/drums-HnlZomyCQJrdx8a1x3yMDOvIgh2wEX.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/26174226/other-PqcrLTkbKKx09PROL7HQt5857nJnm2.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/26174226/vocals-tew51DlUFbfZkfQntlqTdZVg31aEe0.mp3"
+    }
+  },
+  {
+    "trackId": 1443424289,
+    "song": "Strangers in the Night",
+    "performer": "Frank Sinatra",
+    "year": 1966,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1443424289/bass-ApUWrSTWSkbBTplCEXT8XDrJ9MuZ7p.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1443424289/drums-zHzC1wRkZk7GhQU1o7isGJ9Lnp6cXm.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1443424289/other-F09vemsfqQF1PdOwD6Uq7CVesnvXWx.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1443424289/vocals-bkXAPwF26rbD3uWqn18JWotZyNy6B5.mp3"
+    }
+  },
+  {
+    "trackId": 1576574977,
+    "song": "These Boots Are Made for Walkin'",
+    "performer": "Nancy Sinatra",
+    "year": 1966,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1576574977/bass-0scNFc4KbOV2ycpkVDNCT3gm8F0Aud.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1576574977/drums-dDNfGr6IEYGe0R1XdzcIblJ3PCsfZh.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1576574977/other-eIJErFErA6WjVZZXtdQW3NSydjayeT.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1576574977/vocals-aFegICwgvDNHeXkDvk4euO2thbfDGu.mp3"
+    }
+  },
+  {
+    "trackId": 1441164806,
+    "song": "Eleanor Rigby",
+    "performer": "The Beatles",
+    "year": 1966,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441164806/bass-hQfPJlI07nHgrG32AzLYN2mgrBHrXx.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441164806/drums-SzYjcW9xnYFf9U0JaVazZEmIiFzDfb.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441164806/other-VTDUKAxVXIga694qq7XsuEQMWdVmab.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441164806/vocals-WwTp27WEvObXCO2ORRy4TN87m6qlag.mp3"
+    }
+  },
+  {
+    "trackId": 192480260,
+    "song": "The Sound of Silence",
+    "performer": "Simon & Garfunkel",
+    "year": 1966,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/192480260/bass-coGrhE5iLrCvtSgqizl77DPOmaGLJN.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/192480260/drums-YKcHyESujH4gBZXcmXqFNrYx8Vr8M8.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/192480260/other-Ej9czdB2Ohk4KwPkceK7q8ZBxi35kg.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/192480260/vocals-yfXJIhfaXuGLMkC8UFEs6gItDcTqEq.mp3"
+    }
+  },
+  {
+    "trackId": 1440745782,
+    "song": "Paint It Black",
+    "performer": "The Rolling Stones",
+    "year": 1966,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440745782/bass-VmmdKlSyj67ZocNzf0ZQJCvaRc1Opd.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440745782/drums-Qepvtys738AHpjASxKK1F7zDmTViCz.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440745782/other-AN7tVe8x3bCWiOU4yBi2Q1Z4l1Ozj5.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440745782/vocals-F1LmYq0zAhnnwkAkM1EfIbgP27qt2R.mp3"
+    }
+  },
+  {
+    "trackId": 1440795944,
+    "song": "Monday, Monday",
+    "performer": "The Mamas & the Papas",
+    "year": 1966,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440795944/bass-xZ0NjhCsDEhTQBAhc52e9w3V9cAhWs.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440795944/drums-jOxbq5VYjDYxr4HwES9YrX3WNPSrnM.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440795944/other-xRdUrpfkLNgu6zKyccOXw4Gbqvg8TD.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440795944/vocals-ZRy8C01CKDJRcEzTj1LX0oDJKat6wT.mp3"
+    }
+  },
+  {
+    "trackId": 1475182476,
+    "song": "Wild Thing",
+    "performer": "The Troggs",
+    "year": 1966,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1475182476/bass-fb6QpRQEPnbpIWkLASWEBULl9Fmu3g.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1475182476/drums-U075Qb9lyIZbEBnFTsrpF04tTR93OU.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1475182476/other-IWTsSGxOWfS0dvxxcwZ3HUymVwb1JK.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1475182476/vocals-ksRzjpX0SVO6ooVxaqNKmK7xpIeimV.mp3"
+    }
+  },
+  {
+    "trackId": 303141566,
+    "song": "Black Is Black",
+    "performer": "Los Bravos",
+    "year": 1966,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/303141566/bass-uqTaEdaBZoFVMXw26XZyoN48luxEMl.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/303141566/drums-cTvqinR2cSg4302a1tMF8OnOF2o2al.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/303141566/other-1zHeJAdDkmAjfDOtg6905Ha4NHSHDx.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/303141566/vocals-naZiFbGA8ULD5ZplU1RCKmmz4hykPh.mp3"
+    }
+  },
+  {
+    "trackId": 1571518762,
+    "song": "Winchester Cathedral",
+    "performer": "New Vaudeville Band",
+    "year": 1966,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1571518762/bass-gDM4R3g8s1vE0UwbuaiivNcdk9Geco.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1571518762/drums-xHinK2xbIAFjpuCFpHY6iJCJAUtlSA.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1571518762/other-4XXKwViHcuO9bz8Am8oGupWqIdQrqC.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1571518762/vocals-j6jOdTpf2vSBwCaE3dMgAZpA10WW3m.mp3"
+    }
+  },
+  {
+    "trackId": 1676481024,
+    "song": "My Love",
+    "performer": "Petula Clark",
+    "year": 1966,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1676481024/bass-HQBjQ3DelH1UbBs3egXffdRHTlPOfJ.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1676481024/drums-0jaxfcnlB1uFkzxYsK12ufe0o6fems.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1676481024/other-TCvtbmaLOnl0W4E1yUKwzYIoYr6QTU.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1676481024/vocals-kj7zVDJV2lF064WVZP5lOfuLc84JlL.mp3"
+    }
+  },
+  {
+    "trackId": 253838638,
+    "song": "Daydream",
+    "performer": "The Lovin' Spoonful",
+    "year": 1966,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/253838638/bass-Vlb0RlwAOjIr4VPsyigFtzm4T77CuA.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/253838638/drums-Jv1cuohOuHik847COnax53MkhpM6UE.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/253838638/other-Wecfvk6LsvHFaUNomkH2cuglAqlvZ7.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/253838638/vocals-CKRWp7qADllQZCWaiQjYX8LRcErWIw.mp3"
+    }
+  },
+  {
+    "trackId": 1138096776,
+    "song": "Love Letters",
+    "performer": "Elvis Presley",
+    "year": 1966,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1138096776/bass-LQltPhVmNEcnKZsJPZGelyYlFB7F3H.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1138096776/drums-ySp0qolA17rMoo4TSxNJwx3Hn4cTso.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1138096776/other-vEryfTALjJtte5Llu32Ss3WUxy7ab4.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1138096776/vocals-iG6N55sMYUdyBJLFZzLzj8lPus5yIc.mp3"
+    }
+  },
+  {
+    "trackId": 79087150,
+    "song": "Happy Together",
+    "performer": "The Turtles",
+    "year": 1967,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/79087150/bass-yQ4xAuFaoZlyaV0Rxu9yJ7ByUHL9nN.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/79087150/drums-ZVPV7UKxVTi27t2tCZDrbgkMIZMc2X.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/79087150/other-s7DgyyvVgro6gMNJXqs6h6V6yxd2Zi.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/79087150/vocals-fQAlDpKYDQGkrJ6jBY8tp9Sh7we4fa.mp3"
+    }
+  },
+  {
+    "trackId": 1450142860,
+    "song": "San Francisco",
+    "performer": "Scott McKenzie",
+    "year": 1967,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1450142860/bass-cGQcAq2aslIvhJyhBTXIe9oNj4mRLw.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1450142860/drums-M0UT7TTXmFVJvdJ2VvyjNw7sVx54ak.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1450142860/other-S1wfbKMyDLD3JftDtNSlsJ4PONhXHg.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1450142860/vocals-LigeRtVKyVB7zD11JMatQ53jwOATpB.mp3"
+    }
+  },
+  {
+    "trackId": 1441163780,
+    "song": "All You Need Is Love",
+    "performer": "The Beatles",
+    "year": 1967,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441163780/bass-nqDdolzz2hPqTZbmZWpvEORMfH25qa.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441163780/drums-JeTHSL8mDeT8InKM3zhUCq4TaBHJqw.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441163780/other-TxuazkeZ3GEX44xJGgv56XsVGcBUh8.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441163780/vocals-X3VmRm6xvXGQYoBrVqgINQ4y4u2sGQ.mp3"
+    }
+  },
+  {
+    "trackId": 1440796325,
+    "song": "California Dreamin'",
+    "performer": "The Mamas & the Papas",
+    "year": 1967,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440796325/bass-TBzzJ2IfJDmTVh4YnTnad9Prwfgb8C.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440796325/drums-72Xs25tkzgftVnabP3KYCxaFXQnLJF.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440796325/other-pTyhVmgrA8u3pffzoWAmQLvYOnCRds.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440796325/vocals-ocsOOyawr611dxrLcXpiuIm1ZpYAiJ.mp3"
+    }
+  },
+  {
+    "trackId": 1682051688,
+    "song": "A Whiter Shade of Pale",
+    "performer": "Procol Harum",
+    "year": 1967,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1682051688/bass-dTATt3xcfS7cremYly3yOt6Ax06yFY.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1682051688/drums-q7fbpup7qzWSmF08LTwxDCxNIzk3qw.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1682051688/other-3BXwnnw7YdXC1MpQvg92FcuXi1suld.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1682051688/vocals-KvxXj1y7IJndEgWg38J0E7Y7HhgE8O.mp3"
+    }
+  },
+  {
+    "trackId": 1441163777,
+    "song": "Penny Lane",
+    "performer": "The Beatles",
+    "year": 1967,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441163777/bass-KJRPtRhzzL10DyjJSaxADoTeXL0fLh.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441163777/drums-tLYJXzrBRaedKaejCbwilgLzpl39Om.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441163777/other-G8sEUlBGvF54GY7q2GP6FUrgAFkSfo.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441163777/vocals-adxiQ9mMJMR7mRi9DGvE4iRe8gPL0y.mp3"
+    }
+  },
+  {
+    "trackId": 1443064778,
+    "song": "Silence Is Golden",
+    "performer": "The Tremeloes",
+    "year": 1967,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1443064778/bass-ebptnebknLLxMAddukL8o8Sku2kRIe.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1443064778/drums-5ogx4pdHoISNQfg0fF4Y80b2qMPTSK.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1443064778/other-yVt3tx7uqbJVLYoXOj3JlqmCCCQvht.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1443064778/vocals-M7G128AKaOhiVuIGBrkfG3665jmo5j.mp3"
+    }
+  },
+  {
+    "trackId": 1440858703,
+    "song": "Somethin' Stupid",
+    "performer": "Frank Sinatra & Nancy Sinatra",
+    "year": 1967,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440858703/bass-USmDUzpY8HqD4cU56ZyHfCQp2LuXVw.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440858703/drums-yc7LGV8XgWxBIlyGcYtzlV6YTYj3zL.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440858703/other-k5dqcIv5uSPOsmS3sAa47FPN8JGTKR.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440858703/vocals-rykw2fMUoHxI5xLmSfZ8wnB0IDDfQA.mp3"
+    }
+  },
+  {
+    "trackId": 1440780641,
+    "song": "There's a Kind of Hush",
+    "performer": "Herman's Hermits",
+    "year": 1967,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440780641/bass-OOW35Y2apd2S5cMedQNrreXkmPogyu.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440780641/drums-NrtQeLOTLLFeB4y9S6YTWBuYvJFwcd.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440780641/other-nrlY2AuwdUvKhGezscLecf25H4rGwc.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440780641/vocals-vk54hpJ4hYdbOKw13Fi39MRwCLv0nW.mp3"
+    }
+  },
+  {
+    "trackId": 1442865074,
+    "song": "Good Vibrations",
+    "performer": "The Beach Boys",
+    "year": 1967,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1442865074/bass-bhI02WaKPLG5xNjqPcMbunyEdr9oYj.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1442865074/drums-lzc3083dkBkck2riXFWYHpnSD1giGR.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1442865074/other-K26Bjwr4tTvLbOhWWjP3q2ZTgzhfl1.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1442865074/vocals-uB4bSrMYiG8UoQrazkj8ramZCn6AaW.mp3"
+    }
+  },
+  {
+    "trackId": 1440717883,
+    "song": "Ruby Tuesday",
+    "performer": "The Rolling Stones",
+    "year": 1967,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440717883/bass-kzipdH70kxIBiQUnliWscrJgP3CJWB.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440717883/drums-IfO5ahzt5ZOloGVak6ea2nOtm5rg9Z.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440717883/other-rlAF8L5SdjOtKlbPbOvL9dVGcaAc0U.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440717883/vocals-CBWRQVEnxA6eQD45xSl6Qf8RFIwS9S.mp3"
+    }
+  },
+  {
+    "trackId": 176080628,
+    "song": "I'm a Believer",
+    "performer": "The Monkees",
+    "year": 1967,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/176080628/bass-DS0AhqBACwEdV87Eig2gDqT4Lmg4NK.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/176080628/drums-pQrdPDxHBw22dOJzu7GUeivJdmiGG6.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/176080628/other-aex9FXQcDTTMS2CiCk1L5DfswNaPjq.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/176080628/vocals-Xnk7vlyTtrwDRAa0bOmAhogM3aCMFS.mp3"
+    }
+  },
+  {
+    "trackId": 1676471099,
+    "song": "This Is My Song",
+    "performer": "Petula Clark",
+    "year": 1967,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1676471099/bass-EP1leUPL9zQZ02vGSavtZJ8EVpr1P8.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1676471099/drums-xVpcDfKhPl7SerJQVkZcODxbOhgK4n.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1676471099/other-2JZedHZCeKP9cNQdiB4PtuRWPLNdv9.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1676471099/vocals-uqL4xQSBANAawdRWA03cv9ateuer4n.mp3"
+    }
+  },
+  {
+    "trackId": 1467380894,
+    "song": "Puppet on a String",
+    "performer": "Sandy Shaw",
+    "year": 1967,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1467380894/bass-XTbfuxODf6TIITYfvyXg4Qp6bAMqad.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1467380894/drums-EPSNDwDRh1aevcO2Rd8IU24dSjapeG.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1467380894/other-EDEgexNvIbggOmVjOzGOwY519weEk8.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1467380894/vocals-Sv1teVCjRlkRZzX5GTWR7SnyQfLer0.mp3"
+    }
+  },
+  {
+    "trackId": 1441133277,
+    "song": "Hey Jude",
+    "performer": "The Beatles",
+    "year": 1968,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441133277/bass-jlt85MP2XKVPCwsf6fImMuW4mkmmsv.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441133277/drums-U6qiwlF7MZL9CgAgVhv313N5JFjiaL.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441133277/other-nScEHrnuY1WmdVLqlS5zqNalEV3wHS.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441133277/vocals-QPlR9ibTBrvwXjfV9EQpRQQtGjvnOz.mp3"
+    }
+  },
+  {
+    "trackId": 1434895945,
+    "song": "Delilah",
+    "performer": "Tom Jones",
+    "year": 1968,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1434895945/bass-KjjQSyNnlPANbZKi6VTxNyxtRX8uUw.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1434895945/drums-hHxj1jaVMeaavK8mGxbC3IBfKCi29v.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1434895945/other-5AOzzSokIhkduu4DHog1h0bKuHoevL.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1434895945/vocals-cPd3SmT6Viuw99rkNJlBLbFomZZ30G.mp3"
+    }
+  },
+  {
+    "trackId": 771776323,
+    "song": "Those Were the Days",
+    "performer": "Mary Hopkin",
+    "year": 1968,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/771776323/bass-cl0oRxibyKcMOU97oaH6NceQhNgfzn.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/771776323/drums-ixJZTUcvsVf3oCuTJaqImcJxhb7Ctf.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/771776323/other-3mNZCOHNuhSj3rjfxdR5LYzHF3E2Fa.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/771776323/vocals-Lh0m9TnVSwyDMfJmYOXoNrDA8sKtRA.mp3"
+    }
+  },
+  {
+    "trackId": 696777650,
+    "song": "Congratulations",
+    "performer": "Cliff Richard",
+    "year": 1968,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/696777650/bass-IcBmuEBa2o7YlAZ1YOfMy6V2LvfFzX.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/696777650/drums-gbeiN6GIqb47tlvvFGR4EIEJpUdOqA.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/696777650/other-Yvet8rKkr5ApqxVK38IMCXhWCsm5Jf.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/696777650/vocals-3PF90hN2BSvSBnEh26ZoP3VknHOyLq.mp3"
+    }
+  },
+  {
+    "trackId": 313382209,
+    "song": "To Sir with Love",
+    "performer": "Lulu",
+    "year": 1968,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/313382209/bass-SZBgCYSJwHGescr9oN7q8LKC75ohW0.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/313382209/drums-lhVplPL4JbzwAiXaYUXHnrAZikurlz.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/313382209/other-Y7Zu4B4SOLfdoM6m80OhkjwtyUw9wx.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/313382209/vocals-guAa8yJSpti13WRsd9rdLI5Du24wei.mp3"
+    }
+  },
+  {
+    "trackId": 1441133276,
+    "song": "Lady Madonna",
+    "performer": "The Beatles",
+    "year": 1968,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441133276/bass-9q3mwOm8kSeRmbJOhNIF2IE0KuOe69.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441133276/drums-e02AlnJ9B0Phuwi5o8E8gEV9r70WNJ.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441133276/other-5VfWsYCbFOAQzFY8rrPrjwinuqcjeF.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441133276/vocals-yBPkKCrQxjhZHCj6n4zhbDzn8us5gA.mp3"
+    }
+  },
+  {
+    "trackId": 933583588,
+    "song": "I Say a Little Prayer",
+    "performer": "Aretha Franklin",
+    "year": 1968,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/933583588/bass-nVncmG2eIAva0yxo4CqW8Co4jHxEto.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/933583588/drums-ZTowbfId6B2oHKMV26ocbkt6uaf2vY.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/933583588/other-CACoMhmE88p6kvYt4iCMDPYSeDDEqC.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/933583588/vocals-O8DsY8babkK9BeBEC2l9CSKvY3weL2.mp3"
+    }
+  },
+  {
+    "trackId": 193890785,
+    "song": "Young Girl",
+    "performer": "Union Gap",
+    "year": 1968,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/193890785/bass-TL6krbY3u6uNDefxh1ilsy0qbt9bKh.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/193890785/drums-qqWnAqygAxzCMQDvTe8hB5gOz9ZDf8.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/193890785/other-n8BibOFJqvb1dprk8Q0lspWK5U115D.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/193890785/vocals-PuMnevWB08P2TPrh17D9hNDT1pb4MY.mp3"
+    }
+  },
+  {
+    "trackId": 1677291792,
+    "song": "Mony Mony",
+    "performer": "Tommy James & The Shondells",
+    "year": 1968,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1677291792/bass-w1adEkUIJ5jcdQQPVURCx4av3faOW8.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1677291792/drums-3aj2zwI7uzFENWu88lIo0MYc8fYhZs.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1677291792/other-1CxhIjB3YxguoPWYllBiZIBWfEoFzk.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1677291792/vocals-5utfDOWE2mMjZI3Br2RFnxfAzb8lm6.mp3"
+    }
+  },
+  {
+    "trackId": 1690310954,
+    "song": "L'amour est bleu",
+    "performer": "Paul Mauriat",
+    "year": 1968,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1690310954/bass-K3EHWxnQVAFdUSl8W7rmewNsVqJp1x.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1690310954/drums-RNLe1Oo2vWfXnvPpnUx0dgtA6KMqoV.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1690310954/other-Hj7uOKbFLXpUgdXGrWIg75UKTXVeuW.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1690310954/vocals-t5oiMpPjUlCcmWRfCOzRy2SDzpdlCG.mp3"
+    }
+  },
+  {
+    "trackId": 1443157384,
+    "song": "A Man Without Love",
+    "performer": "Engelbert Humperdinck",
+    "year": 1968,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1443157384/bass-zsDw87RtNVv1PulMRy5KqdWoJ14h2r.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1443157384/drums-AdCuvZ3ba5li4y10kJvSxOsOICvCvz.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1443157384/other-VyAfWam5GLAAUumstDVghPyP4b45QF.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1443157384/vocals-Bjh6ybTMgm9tbGOAnV1Z1dweidLtxU.mp3"
+    }
+  },
+  {
+    "trackId": 298625734,
+    "song": "The Good, the Bad and the Ugly",
+    "performer": "Hugo Montenegro",
+    "year": 1968,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/298625734/bass-MUmLCUZ9GMpeK2B5ylNdNF69MwbFwy.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/298625734/drums-tbSy2xIc2zFU59KLNxEeY7lmEhYgmH.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/298625734/other-fLcJesBVPF4zYOy7Ibtodf9Ptz5Jj8.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/298625734/vocals-3vOCOtfcHXezYSjLEgtf2toQW36pw4.mp3"
+    }
+  },
+  {
+    "trackId": 303080548,
+    "song": "In the Year 2525",
+    "performer": "Zager & Evans",
+    "year": 1969,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/303080548/bass-ZbyBmLKT0848gDKZz3tEeg82YnqsJE.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/303080548/drums-eypVXt0tKaCbvP36SorJFlWn0Zqn4o.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/303080548/other-6r3hPrvtYgz8UeZeHHdjsD47elypFz.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/303080548/vocals-rljfZrdc3aNuFPgrJfPHf7PB27KhRV.mp3"
+    }
+  },
+  {
+    "trackId": 214805381,
+    "song": "Sugar Sugar",
+    "performer": "The Archies",
+    "year": 1969,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/214805381/bass-zVXNOgRKYSdK3HVrvITwEVcfNwYX98.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/214805381/drums-cExcTI0cdNKWQtdTY1bTA6K7IMMLfp.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/214805381/other-faUloMqQnaqaeAAu8fifmV0NKbksUu.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/214805381/vocals-V89FZFTKbCr2PdD9x6W3F7ISyDsU6y.mp3"
+    }
+  },
+  {
+    "trackId": 1441133287,
+    "song": "The Ballad of John and Yoko",
+    "performer": "The Beatles",
+    "year": 1969,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441133287/bass-FSCVxlzcGWnecl6VPDvMBa2DoyteSM.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441133287/drums-Q25D2V4sK9Eh5PiR9nwx9s2P9lsmFI.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441133287/other-CebEvWTWNYRQ9IBs424GCvg2yQXbjK.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441133287/vocals-HQ24cku9BGQtNufNCdbiyvljWr31yi.mp3"
+    }
+  },
+  {
+    "trackId": 1444089693,
+    "song": "Dizzy",
+    "performer": "Tommy Roe",
+    "year": 1969,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1444089693/bass-foCiCU3ruFWMJYqtHVtzmoY7MJxpvs.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1444089693/drums-2nruFnpF1RMRlEJsDgXWETuL3Y9acR.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1444089693/other-PiNjg8TjltQdvRb8v5EG6i0zkLydwy.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1444089693/vocals-YpTNgkknD0CiGw9vPBlySmmMEhb8sK.mp3"
+    }
+  },
+  {
+    "trackId": 388128537,
+    "song": "In the Ghetto",
+    "performer": "Elvis Presley",
+    "year": 1969,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/388128537/bass-MhvrJbLJW76jwJ1YyrQrZtNq2qjLje.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/388128537/drums-f9KCsR9HJ3VfWgWexieYjXmkYAQyUL.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/388128537/other-dVVy8h6U4pJvylgiJXNNNHGCfoobts.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/388128537/vocals-xOOWcFAYh8gjFhGY16sgI83b4pSQNX.mp3"
+    }
+  },
+  {
+    "trackId": 1441164953,
+    "song": "Get Back",
+    "performer": "The Beatles",
+    "year": 1969,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441164953/bass-wsIwmrANcjM8EJDGvzegzUZBiatUTe.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441164953/drums-X08na5ZMRZk4VwtsCfUgK4oml2UdlU.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441164953/other-48lDaYRJpxfsAzoynoqXe0CE2zTsRF.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1441164953/vocals-Cmsc0NS8sa164OAwKm53TxxnBB3Qko.mp3"
+    }
+  },
+  {
+    "trackId": 715789227,
+    "song": "Give Peace a Chance",
+    "performer": "Plastic Ono Band",
+    "year": 1969,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/715789227/bass-gJKL62WQdaRnbBubEEPJiZPkW0ruqT.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/715789227/drums-yoXKUWxNBeEWlE0MFLxRxJQIYJw0TV.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/715789227/other-93Tp64PnSXKnddFgttiyzi6EanU9J2.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/715789227/vocals-HBTN2RpVDrsuNXRCD0xbsKXTQCDmX0.mp3"
+    }
+  },
+  {
+    "trackId": 303078892,
+    "song": "Aquarius/Let the Sunshine In",
+    "performer": "The Fifth Dimension",
+    "year": 1969,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/303078892/bass-NsfM5J53I98yqb6Qr9sMtwalEehbmI.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/303078892/drums-wi3tXcYILureGILaZB4vRMyDPbAtBv.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/303078892/other-sFe9RwfmxGhoEocKEbueh91vprfG4t.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/303078892/vocals-rM8Gt0SzR7MkJQMJziQdpDPlWq1aMA.mp3"
+    }
+  },
+  {
+    "trackId": 1440765871,
+    "song": "Honky Tonk Women",
+    "performer": "The Rolling Stones",
+    "year": 1969,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440765871/bass-ANkwxA9uU9PIdJw4uhDwSfkxGORKnI.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440765871/drums-BjpxJJPJNqCrZCSTNGxigecYTIIziG.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440765871/other-I36JIQdL9pkhfeEPZxCvUkbqPHqKi5.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440765871/vocals-XcREDWxySyMyMNvqrzrHN8ZL5GERZb.mp3"
+    }
+  },
+  {
+    "trackId": 192970205,
+    "song": "He Ain't Heavy, He's My Brother",
+    "performer": "The Hollies",
+    "year": 1969,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/192970205/bass-4xCHZiEEiQwKEmo7J0wKDMg5R4tGgy.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/192970205/drums-4JwMucBIoCxOFf1bq2iPv8mlbzrWCq.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/192970205/other-mVFIBocuWVIeuURyt7g1N7Q5QS1zQF.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/192970205/vocals-BFdVzqaC0rFpwVQpdpESzOpitUwRIM.mp3"
+    }
+  },
+  {
+    "trackId": 1440952840,
+    "song": "Bad Moon Rising",
+    "performer": "Creedence Clearwater Revival",
+    "year": 1969,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440952840/bass-oT5QpzIfyoN1FAUA2FYPKwFx6Ts9gR.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440952840/drums-MuYywhWdPJ6XsL8acPhFj6IJcQLZUF.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440952840/other-mjofGi6UqMVdvBEWGLuQnYvSrPwTNt.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1440952840/vocals-UIUOusJXtsP4qWWT5w3W9ETi30qbED.mp3"
+    }
+  },
+  {
+    "trackId": 1454381911,
+    "song": "Where Do You Go To",
+    "performer": "Peter Sarstedt",
+    "year": 1969,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1454381911/bass-O1RR1VvFnHMM2hA8JxxkcbLY7llYME.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1454381911/drums-5f3SnNrSrMOrlsKbaNktrKldlIbfIA.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1454381911/other-ZLthUkY46VCMN2qFbp34T9yENAI0hh.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1454381911/vocals-j1G1beOnvLZTAtiVSftcU1dZr2AnC6.mp3"
+    }
+  },
+  {
+    "trackId": 1443220646,
+    "song": "Je t'aime... moi non plus",
+    "performer": "Jane Birkin & Serge Gainsbourg",
+    "year": 1969,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1443220646/bass-H6FJy4ibnmesAhwXzP9dzvf2cBFCCd.mp3",
+      "drums": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1443220646/drums-hC6drFlNq3ADxlWxzHZJezK4DC0w8I.mp3",
+      "other": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1443220646/other-3wJYQQmqj1CQjl4uEqbNrYjDH0Ce9u.mp3",
+      "vocals": "https://qedgx6owyzwpmh1p.public.blob.vercel-storage.com/stems/1443220646/vocals-dMHik008QYhk8sZIzccbmgCQwSpOhj.mp3"
+    }
   }
 ]
