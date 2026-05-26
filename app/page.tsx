@@ -204,7 +204,9 @@ export default function Home() {
     const onNextSong = async (winner?: string, points?: number) => {
       const newScores = winner && points ? addPoints(scores, winner, points) : scores;
       const songs = await loadStemManifest();
+      console.log('[stems] picking next song', { language, decades, playedCount: playedSongs.size });
       const next = pickStemSong(songs, language, decades, playedSongs);
+      console.log('[stems] picked', next ? `${next.performer} (${next.language})` : 'null');
       if (!next) {
         if (groupPlayers) {
           setScreen({ name: 'summary', players: groupPlayers.map(name => ({ name, score: newScores[name] ?? 0 })) });
