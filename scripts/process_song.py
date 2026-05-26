@@ -14,6 +14,7 @@ Requires R2 credentials in .env.local:
 import argparse
 import json
 import os
+import ssl
 import subprocess
 import sys
 import time
@@ -24,7 +25,14 @@ if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 import boto3
+import urllib3
 from botocore.config import Config
+
+# Python 3.14 raised minimum SSL key strength — some endpoints (R2, iTunes) use
+# certs that fail the new default. Lower to SECLEVEL=1 for outbound script calls.
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+_ssl_ctx = ssl.create_default_context()
+_ssl_ctx.set_ciphers("DEFAULT@SECLEVEL=1")
 
 PYTHON_DIR = os.path.dirname(sys.executable)
 FFMPEG_BIN = r"C:\ffmpeg-8.1.1-full_build-shared\bin"
@@ -69,6 +77,7 @@ def make_r2_client(cfg):
         aws_secret_access_key=cfg["R2_SECRET_ACCESS_KEY"],
         config=Config(signature_version="s3v4"),
         region_name="auto",
+        verify=False,
     )
 
 
@@ -86,8 +95,10 @@ def load_manifest() -> list:
 
 
 def save_manifest(entries: list) -> None:
-    with open(MANIFEST_JSON, "w", encoding="utf-8") as f:
+    tmp = MANIFEST_JSON + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
         json.dump(entries, f, ensure_ascii=False, indent=2)
+    os.replace(tmp, MANIFEST_JSON)  # atomic on same filesystem
 
 
 def check_deps():
@@ -107,7 +118,7 @@ def search_itunes(song, performer):
     term = urllib.parse.quote(f"{performer} {song}")
     url = ITUNES_SEARCH.format(term=term)
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-    with urllib.request.urlopen(req, timeout=10) as r:
+    with urllib.request.urlopen(req, timeout=10, context=_ssl_ctx) as r:
         data = json.loads(r.read())
     results = [x for x in data.get("results", []) if x.get("previewUrl")]
     return results[0] if results else None
@@ -115,7 +126,7 @@ def search_itunes(song, performer):
 
 def download(url, dest):
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-    with urllib.request.urlopen(req, timeout=30) as r, open(dest, "wb") as f:
+    with urllib.request.urlopen(req, timeout=30, context=_ssl_ctx) as r, open(dest, "wb") as f:
         f.write(r.read())
 
 
@@ -153,11 +164,11 @@ def process(entry, idx, manifest_ids: set, r2, cfg):
     download(result["previewUrl"], m4a_path)
     print(f"{os.path.getsize(m4a_path)//1024} KB  ({time.time()-t0:.1f}s)")
 
-    # 3. Trim to 15s
-    wav_path = os.path.join(OUTPUT_DIR, f"{track_id}_15s.wav")
+    # 3. Trim to 30s
+    wav_path = os.path.join(OUTPUT_DIR, f"{track_id}.wav")
     t0 = time.time()
-    print("Trimming to 15s...", end=" ", flush=True)
-    run([FFMPEG, "-y", "-i", m4a_path, "-t", "15", "-ar", "44100", wav_path], "ffmpeg trim")
+    print("Trimming to 30s...", end=" ", flush=True)
+    run([FFMPEG, "-y", "-i", m4a_path, "-t", "30", "-ar", "44100", wav_path], "ffmpeg trim")
     print(f"done  ({time.time()-t0:.1f}s)")
     os.remove(m4a_path)
 
@@ -170,7 +181,7 @@ def process(entry, idx, manifest_ids: set, r2, cfg):
     os.remove(wav_path)
 
     # 5. Encode stems to MP3
-    stem_dir = os.path.join(STEMS_DIR, f"{track_id}_15s")
+    stem_dir = os.path.join(STEMS_DIR, f"{track_id}")
     stem_wavs = [f for f in os.listdir(stem_dir) if f.endswith(".wav")]
     t0 = time.time()
     print("Encoding to MP3 (64kbps)...", end=" ", flush=True)

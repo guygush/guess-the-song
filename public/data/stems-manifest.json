@@ -1573,6 +1573,19 @@
     }
   },
   {
+    "trackId": 1440833534,
+    "song": "From Me to You",
+    "performer": "The Beatles",
+    "year": 1963,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1440833534/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1440833534/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1440833534/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1440833534/vocals.mp3"
+    }
+  },
+  {
     "trackId": 80815248,
     "song": "Papa Don't Preach",
     "performer": "Madonna",
@@ -1599,6 +1612,19 @@
     }
   },
   {
+    "trackId": 1845835732,
+    "song": "In the Army Now",
+    "performer": "Status Quo",
+    "year": 1986,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1845835732/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1845835732/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1845835732/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1845835732/vocals.mp3"
+    }
+  },
+  {
     "trackId": 398483947,
     "song": "Rock Me Amadeus",
     "performer": "Falco",
@@ -1609,6 +1635,19 @@
       "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/398483947/drums.mp3",
       "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/398483947/other.mp3",
       "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/398483947/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 80815248,
+    "song": "Papa Don't Preach",
+    "performer": "Madonna",
+    "year": 1986,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/80815248/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/80815248/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/80815248/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/80815248/vocals.mp3"
     }
   },
   {
@@ -1625,6 +1664,19 @@
     }
   },
   {
+    "trackId": 80815275,
+    "song": "True Blue",
+    "performer": "Madonna",
+    "year": 1986,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/80815275/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/80815275/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/80815275/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/80815275/vocals.mp3"
+    }
+  },
+  {
     "trackId": 80815277,
     "song": "La Isla Bonita",
     "performer": "Madonna",
@@ -1635,6 +1687,19 @@
       "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/80815277/drums.mp3",
       "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/80815277/other.mp3",
       "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/80815277/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 398483947,
+    "song": "Rock Me Amadeus",
+    "performer": "Falco",
+    "year": 1986,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/398483947/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/398483947/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/398483947/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/398483947/vocals.mp3"
     }
   },
   {
@@ -1661,6 +1726,32 @@
       "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1440729860/drums.mp3",
       "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1440729860/other.mp3",
       "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1440729860/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 387194076,
+    "song": "Take My Breath Away",
+    "performer": "Berlin",
+    "year": 1986,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/387194076/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/387194076/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/387194076/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/387194076/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 80815277,
+    "song": "La Isla Bonita",
+    "performer": "Madonna",
+    "year": 1987,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/80815277/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/80815277/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/80815277/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/80815277/vocals.mp3"
     }
   },
   {
@@ -2873,16 +2964,16 @@
     }
   },
   {
-    "trackId": 1817217063,
+    "trackId": 1817217411,
     "song": "Hips Don't Lie",
     "performer": "Shakira ft. Wyclef Jean",
     "year": 2006,
     "language": "foreign",
     "stems": {
-      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1817217063/bass.mp3",
-      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1817217063/drums.mp3",
-      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1817217063/other.mp3",
-      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1817217063/vocals.mp3"
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1817217411/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1817217411/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1817217411/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1817217411/vocals.mp3"
     }
   },
   {
@@ -3549,16 +3640,16 @@
     }
   },
   {
-    "trackId": 1444879255,
+    "trackId": 1440841384,
     "song": "One Dance",
     "performer": "Drake ft. Wizkid & Kyla",
     "year": 2016,
     "language": "foreign",
     "stems": {
-      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1444879255/bass.mp3",
-      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1444879255/drums.mp3",
-      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1444879255/other.mp3",
-      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1444879255/vocals.mp3"
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1440841384/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1440841384/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1440841384/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1440841384/vocals.mp3"
     }
   },
   {
@@ -3767,6 +3858,3555 @@
       "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1468166326/drums.mp3",
       "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1468166326/other.mp3",
       "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1468166326/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 804670913,
+    "song": "על כפיו יביא",
+    "performer": "רבקה זהר",
+    "year": 1969,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/804670913/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/804670913/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/804670913/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/804670913/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1134002608,
+    "song": "שירו של צנחן",
+    "performer": "להקת פיקוד המרכז",
+    "year": 1969,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1134002608/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1134002608/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1134002608/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1134002608/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1183192971,
+    "song": "בדרך חזרה",
+    "performer": "אבי טולדנו",
+    "year": 1969,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1183192971/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1183192971/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1183192971/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1183192971/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1434556119,
+    "song": "מה אברך",
+    "performer": "להקת חיל הים",
+    "year": 1969,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1434556119/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1434556119/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1434556119/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1434556119/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1134002130,
+    "song": "שנינו מאותו הכפר",
+    "performer": "להקת פיקוד מרכז",
+    "year": 1969,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1134002130/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1134002130/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1134002130/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1134002130/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 487574043,
+    "song": "פתאום עכשיו, פתאום היום",
+    "performer": "שלמה ארצי",
+    "year": 1970,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/487574043/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/487574043/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/487574043/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/487574043/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1572558688,
+    "song": "לצפון באהבה",
+    "performer": "להקת פיקוד צפון",
+    "year": 1970,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572558688/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572558688/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572558688/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572558688/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1730537665,
+    "song": "אהבתה של תרזה די-מון",
+    "performer": "אילנית",
+    "year": 1970,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1730537665/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1730537665/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1730537665/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1730537665/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1572430591,
+    "song": "שיר לשלום",
+    "performer": "להקת הנח\"ל",
+    "year": 1970,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572430591/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572430591/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572430591/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572430591/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1454530160,
+    "song": "מתוק מתוק",
+    "performer": "להקת פיקוד צפון",
+    "year": 1971,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1454530160/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1454530160/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1454530160/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1454530160/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1390477391,
+    "song": "אני חולם על נעמי",
+    "performer": "חדוה ודוד",
+    "year": 1971,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1390477391/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1390477391/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1390477391/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1390477391/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1570455541,
+    "song": "אני ואתה",
+    "performer": "אריק איינשטיין",
+    "year": 1971,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1570455541/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1570455541/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1570455541/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1570455541/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1701611298,
+    "song": "ומתוק האור בעיניים",
+    "performer": "ששי קשת",
+    "year": 1971,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1701611298/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1701611298/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1701611298/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1701611298/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1227886318,
+    "song": "חופשי ומאושר",
+    "performer": "אילן ואילנית",
+    "year": 1971,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1227886318/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1227886318/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1227886318/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1227886318/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1455010026,
+    "song": "היום היום",
+    "performer": "שלישיית פיקוד מרכז",
+    "year": 1972,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1455010026/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1455010026/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1455010026/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1455010026/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1228730802,
+    "song": "חייך וחיי",
+    "performer": "בעז שרעבי",
+    "year": 1972,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1228730802/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1228730802/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1228730802/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1228730802/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1456256772,
+    "song": "על אם הדרך",
+    "performer": "להקת חיל הים",
+    "year": 1972,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1456256772/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1456256772/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1456256772/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1456256772/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 498935450,
+    "song": "אל תשאל ילד",
+    "performer": "שלמה ארצי",
+    "year": 1972,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/498935450/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/498935450/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/498935450/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/498935450/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 757782824,
+    "song": "המגפיים של ברוך",
+    "performer": "כוורת",
+    "year": 1973,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/757782824/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/757782824/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/757782824/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/757782824/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1227895088,
+    "song": "אי שם",
+    "performer": "אילנית",
+    "year": 1973,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1227895088/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1227895088/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1227895088/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1227895088/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 498835432,
+    "song": "שיר בבוקר בבוקר",
+    "performer": "שלמה ארצי",
+    "year": 1973,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/498835432/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/498835432/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/498835432/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/498835432/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1133159027,
+    "song": "אמא אדמה",
+    "performer": "אריק איינשטיין",
+    "year": 1973,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1133159027/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1133159027/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1133159027/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1133159027/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1063322058,
+    "song": "שש עשרה מלאו לנער",
+    "performer": "גבי שושן",
+    "year": 1973,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1063322058/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1063322058/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1063322058/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1063322058/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 584818001,
+    "song": "נתתי לה חיי",
+    "performer": "כוורת",
+    "year": 1974,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/584818001/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/584818001/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/584818001/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/584818001/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 757782840,
+    "song": "יו יה",
+    "performer": "כוורת",
+    "year": 1974,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/757782840/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/757782840/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/757782840/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/757782840/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 684762316,
+    "song": "אין לך מה לדאוג",
+    "performer": "עוזי פוקס",
+    "year": 1974,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/684762316/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/684762316/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/684762316/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/684762316/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 586593225,
+    "song": "גוליית",
+    "performer": "כוורת",
+    "year": 1975,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/586593225/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/586593225/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/586593225/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/586593225/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1455097740,
+    "song": "מוכרחים להמשיך לנגן",
+    "performer": "להקת חיל האוויר",
+    "year": 1975,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1455097740/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1455097740/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1455097740/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1455097740/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1407281189,
+    "song": "בארץ אהבתי השקד פורח",
+    "performer": "צוות הווי חטיבת הצנחנים",
+    "year": 1975,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1407281189/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1407281189/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1407281189/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1407281189/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 486194300,
+    "song": "את ואני",
+    "performer": "שלמה ארצי",
+    "year": 1975,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/486194300/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/486194300/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/486194300/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/486194300/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1571267785,
+    "song": "כמו צמח בר",
+    "performer": "חוה אלברשטיין",
+    "year": 1975,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571267785/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571267785/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571267785/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571267785/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1538324505,
+    "song": "רוצי שמוליק קורא לך",
+    "performer": "אריאל זילבר",
+    "year": 1976,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1538324505/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1538324505/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1538324505/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1538324505/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1571267780,
+    "song": "את תלכי בשדה",
+    "performer": "חוה אלברשטיין",
+    "year": 1976,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571267780/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571267780/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571267780/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571267780/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1572560692,
+    "song": "אמור שלום",
+    "performer": "שוקולד מנטה מסטיק",
+    "year": 1976,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572560692/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572560692/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572560692/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572560692/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1571753434,
+    "song": "דמדומים",
+    "performer": "צביקה פיק",
+    "year": 1976,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571753434/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571753434/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571753434/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571753434/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1571270251,
+    "song": "סליחות",
+    "performer": "יהודית רביץ",
+    "year": 1977,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571270251/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571270251/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571270251/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571270251/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 494214953,
+    "song": "בלילה על הדשא",
+    "performer": "חבורת הזמר של פיקוד צפון",
+    "year": 1977,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/494214953/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/494214953/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/494214953/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/494214953/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1730538852,
+    "song": "אהבה היא שיר לשניים",
+    "performer": "אילנית",
+    "year": 1977,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1730538852/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1730538852/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1730538852/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1730538852/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1571753707,
+    "song": "אהבה בסוף הקיץ",
+    "performer": "צביקה פיק",
+    "year": 1977,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571753707/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571753707/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571753707/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571753707/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1571753645,
+    "song": "נאסף תשרי",
+    "performer": "צביקה פיק",
+    "year": 1978,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571753645/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571753645/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571753645/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571753645/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 768063889,
+    "song": "עטור מצחך",
+    "performer": "אריק איינשטיין",
+    "year": 1978,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/768063889/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/768063889/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/768063889/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/768063889/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 726946403,
+    "song": "עוד לא אהבתי די",
+    "performer": "יהורם גאון",
+    "year": 1978,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/726946403/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/726946403/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/726946403/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/726946403/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1134039004,
+    "song": "רציתי שתדע",
+    "performer": "עוזי חיטמן",
+    "year": 1978,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1134039004/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1134039004/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1134039004/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1134039004/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1724997885,
+    "song": "הללויה",
+    "performer": "גלי עטרי וחלב ודבש",
+    "year": 1979,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1724997885/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1724997885/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1724997885/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1724997885/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1571753643,
+    "song": "מרי לו",
+    "performer": "צביקה פיק",
+    "year": 1979,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571753643/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571753643/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571753643/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571753643/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1454524261,
+    "song": "גן נעול",
+    "performer": "שוקי ודורית",
+    "year": 1979,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1454524261/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1454524261/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1454524261/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1454524261/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 757782832,
+    "song": "צליל מכוון",
+    "performer": "צליל מכוון",
+    "year": 1979,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/757782832/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/757782832/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/757782832/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/757782832/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1640109949,
+    "song": "לא אני הוא האיש",
+    "performer": "צביקה פיק",
+    "year": 1979,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1640109949/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1640109949/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1640109949/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1640109949/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1571753426,
+    "song": "על חטא",
+    "performer": "צביקה פיק",
+    "year": 1980,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571753426/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571753426/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571753426/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571753426/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 6764757446,
+    "song": "כל חיי",
+    "performer": "אבי טולדנו",
+    "year": 1980,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/6764757446/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/6764757446/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/6764757446/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/6764757446/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 486889309,
+    "song": "אני שומע שוב (שיר חייל)",
+    "performer": "שלמה ארצי",
+    "year": 1980,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/486889309/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/486889309/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/486889309/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/486889309/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1571753672,
+    "song": "לראות אותה היום",
+    "performer": "תיסלם",
+    "year": 1981,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571753672/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571753672/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571753672/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571753672/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1571753662,
+    "song": "רדיו חזק",
+    "performer": "תיסלם",
+    "year": 1981,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571753662/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571753662/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571753662/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571753662/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 757896120,
+    "song": "לא עוזב את העיר",
+    "performer": "שלמה ארצי",
+    "year": 1981,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/757896120/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/757896120/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/757896120/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/757896120/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1498472611,
+    "song": "סיוון",
+    "performer": "יגאל בשן",
+    "year": 1981,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1498472611/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1498472611/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1498472611/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1498472611/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1338767868,
+    "song": "הלילה",
+    "performer": "הכל עובר חביבי",
+    "year": 1981,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1338767868/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1338767868/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1338767868/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1338767868/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1571289130,
+    "song": "יום שישי",
+    "performer": "בנזין",
+    "year": 1982,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571289130/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571289130/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571289130/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571289130/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1247638825,
+    "song": "הורה",
+    "performer": "אבי טולדנו",
+    "year": 1982,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1247638825/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1247638825/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1247638825/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1247638825/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 878724304,
+    "song": "הפרח בגני",
+    "performer": "זוהר ארגוב",
+    "year": 1982,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/878724304/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/878724304/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/878724304/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/878724304/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1795758100,
+    "song": "אל הדרך",
+    "performer": "אילנית",
+    "year": 1982,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1795758100/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1795758100/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1795758100/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1795758100/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 633912763,
+    "song": "חי",
+    "performer": "עפרה חזה",
+    "year": 1983,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/633912763/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/633912763/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/633912763/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/633912763/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1523213409,
+    "song": "בחברה להגנת הטבע",
+    "performer": "אריאל זילבר",
+    "year": 1983,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1523213409/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1523213409/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1523213409/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1523213409/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1571759362,
+    "song": "בוקר של כיף",
+    "performer": "תיסלם",
+    "year": 1983,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571759362/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571759362/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571759362/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571759362/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1571747474,
+    "song": "יושב על הגדר",
+    "performer": "אריק איינשטיין",
+    "year": 1983,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571747474/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571747474/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571747474/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571747474/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1572432605,
+    "song": "הרומבה",
+    "performer": "דויד ברוזה",
+    "year": 1983,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572432605/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572432605/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572432605/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572432605/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1572593540,
+    "song": "תרקוד",
+    "performer": "שלמה ארצי",
+    "year": 1984,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572593540/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572593540/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572593540/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572593540/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1642899341,
+    "song": "בפרדס ליד השוקת",
+    "performer": "יהורם גאון",
+    "year": 1984,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1642899341/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1642899341/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1642899341/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1642899341/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 450208372,
+    "song": "רוב הזמן את אשתי",
+    "performer": "שלמה ארצי",
+    "year": 1984,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/450208372/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/450208372/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/450208372/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/450208372/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 583712751,
+    "song": "אצלי הכל בסדר",
+    "performer": "בעז שרעבי",
+    "year": 1984,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/583712751/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/583712751/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/583712751/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/583712751/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1571739089,
+    "song": "משמרת לילה",
+    "performer": "בנזין",
+    "year": 1984,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571739089/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571739089/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571739089/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571739089/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 803952873,
+    "song": "אנחנו נשארים בארץ",
+    "performer": "כמו צועני",
+    "year": 1985,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/803952873/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/803952873/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/803952873/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/803952873/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1720123267,
+    "song": "עולה עולה",
+    "performer": "יזהר כהן",
+    "year": 1985,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1720123267/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1720123267/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1720123267/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1720123267/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1571267209,
+    "song": "מחכים למשיח",
+    "performer": "שלום חנוך",
+    "year": 1985,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571267209/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571267209/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571267209/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571267209/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1778347182,
+    "song": "עוד נגיע",
+    "performer": "ירדנה ארזי",
+    "year": 1985,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1778347182/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1778347182/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1778347182/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1778347182/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1450360965,
+    "song": "אדמה",
+    "performer": "עפרה חזה",
+    "year": 1985,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1450360965/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1450360965/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1450360965/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1450360965/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1465631433,
+    "song": "שביל הבריחה",
+    "performer": "ריטה",
+    "year": 1986,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1465631433/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1465631433/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1465631433/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1465631433/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1572596500,
+    "song": "נרקוד נשכח",
+    "performer": "שלמה ארצי",
+    "year": 1986,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572596500/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572596500/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572596500/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572596500/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1778346833,
+    "song": "שוב בתמונה",
+    "performer": "ירדנה ארזי",
+    "year": 1986,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1778346833/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1778346833/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1778346833/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1778346833/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 201162146,
+    "song": "רכבת לילה",
+    "performer": "משינה",
+    "year": 1986,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/201162146/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/201162146/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/201162146/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/201162146/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 843729366,
+    "song": "אסמרלדה",
+    "performer": "גלי עטרי",
+    "year": 1986,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/843729366/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/843729366/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/843729366/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/843729366/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1571270859,
+    "song": "באה מאהבה",
+    "performer": "יהודית רביץ",
+    "year": 1987,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571270859/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571270859/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571270859/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571270859/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 491685439,
+    "song": "שלל שרב",
+    "performer": "גידי גוב",
+    "year": 1987,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/491685439/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/491685439/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/491685439/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/491685439/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1332995730,
+    "song": "סוד",
+    "performer": "אדם",
+    "year": 1987,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1332995730/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1332995730/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1332995730/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1332995730/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1778346300,
+    "song": "כשהצועני אוהב",
+    "performer": "ירדנה ארזי",
+    "year": 1987,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1778346300/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1778346300/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1778346300/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1778346300/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1572560559,
+    "song": "מצטער",
+    "performer": "אדם",
+    "year": 1988,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572560559/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572560559/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572560559/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572560559/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1571268815,
+    "song": "נפאל",
+    "performer": "גלי עטרי",
+    "year": 1988,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571268815/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571268815/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571268815/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571268815/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1778347283,
+    "song": "עגילי דמאר",
+    "performer": "ירדנה ארזי",
+    "year": 1988,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1778347283/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1778347283/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1778347283/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1778347283/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1778346056,
+    "song": "בן אדם",
+    "performer": "ירדנה ארזי",
+    "year": 1988,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1778346056/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1778346056/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1778346056/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1778346056/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1465631111,
+    "song": "עטוף ברחמים",
+    "performer": "ריטה",
+    "year": 1988,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1465631111/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1465631111/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1465631111/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1465631111/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1571749981,
+    "song": "ריקוד המכונה",
+    "performer": "משינה",
+    "year": 1989,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571749981/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571749981/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571749981/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571749981/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 582290851,
+    "song": "איך הוא שר",
+    "performer": "דני רובס",
+    "year": 1989,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/582290851/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/582290851/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/582290851/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/582290851/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 493294416,
+    "song": "בדרך אל הים",
+    "performer": "משינה",
+    "year": 1989,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/493294416/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/493294416/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/493294416/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/493294416/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 582587710,
+    "song": "מלנכולי",
+    "performer": "החברים של נטאשה",
+    "year": 1989,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/582587710/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/582587710/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/582587710/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/582587710/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 492685163,
+    "song": "ציירי לך שפם",
+    "performer": "נוער שוליים",
+    "year": 1990,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/492685163/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/492685163/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/492685163/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/492685163/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 777569719,
+    "song": "ציפור מדבר",
+    "performer": "אתניקס",
+    "year": 1990,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/777569719/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/777569719/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/777569719/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/777569719/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1465936073,
+    "song": "שרה ברחובות",
+    "performer": "ריטה",
+    "year": 1990,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1465936073/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1465936073/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1465936073/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1465936073/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 492685165,
+    "song": "ענוג",
+    "performer": "נוער שוליים",
+    "year": 1990,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/492685165/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/492685165/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/492685165/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/492685165/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1468776812,
+    "song": "הקיץ האחרון",
+    "performer": "שפיות זמנית",
+    "year": 1991,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1468776812/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1468776812/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1468776812/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1468776812/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 777543347,
+    "song": "כתם הפרי",
+    "performer": "אתניקס",
+    "year": 1991,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/777543347/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/777543347/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/777543347/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/777543347/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1449415126,
+    "song": "כאן (שיר)",
+    "performer": "אורנה ומשה דץ",
+    "year": 1991,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1449415126/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1449415126/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1449415126/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1449415126/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 777543342,
+    "song": "קטורנה מסאלה",
+    "performer": "אתניקס וזהבה בן",
+    "year": 1991,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/777543342/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/777543342/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/777543342/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/777543342/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1571284071,
+    "song": "רואה לך בעיניים",
+    "performer": "אתי אנקרי",
+    "year": 1991,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571284071/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571284071/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571284071/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571284071/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1571288947,
+    "song": "אהבה קצרה",
+    "performer": "מאיר בנאי",
+    "year": 1992,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571288947/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571288947/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571288947/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571288947/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 777543340,
+    "song": "תותים",
+    "performer": "אתניקס",
+    "year": 1992,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/777543340/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/777543340/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/777543340/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/777543340/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 484993163,
+    "song": "אני בא",
+    "performer": "שלמה ארצי ועמיר לב",
+    "year": 1992,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/484993163/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/484993163/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/484993163/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/484993163/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 797520535,
+    "song": "קלנדיה",
+    "performer": "אתניקס",
+    "year": 1992,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/797520535/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/797520535/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/797520535/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/797520535/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 910812969,
+    "song": "זודיאק",
+    "performer": "ירון חדד",
+    "year": 1992,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/910812969/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/910812969/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/910812969/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/910812969/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 777579910,
+    "song": "בובה",
+    "performer": "אתניקס",
+    "year": 1993,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/777579910/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/777579910/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/777579910/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/777579910/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 616092776,
+    "song": "קראת לי אסתר",
+    "performer": "אתי אנקרי",
+    "year": 1993,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/616092776/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/616092776/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/616092776/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/616092776/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 777543357,
+    "song": "מקדש האהבה",
+    "performer": "אתניקס",
+    "year": 1993,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/777543357/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/777543357/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/777543357/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/777543357/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1452920469,
+    "song": "ליפול על גן עדן",
+    "performer": "תופעת דופלר",
+    "year": 1993,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1452920469/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1452920469/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1452920469/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1452920469/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1572556474,
+    "song": "האם להיות בך מאוהב",
+    "performer": "אביב גפן",
+    "year": 1994,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572556474/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572556474/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572556474/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572556474/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 777606956,
+    "song": "לא לבד",
+    "performer": "אתניקס",
+    "year": 1994,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/777606956/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/777606956/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/777606956/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/777606956/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1527263660,
+    "song": "קח אותי לשם",
+    "performer": "שרון חזיז",
+    "year": 1994,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1527263660/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1527263660/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1527263660/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1527263660/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 634884709,
+    "song": "יעקב",
+    "performer": "ללדין",
+    "year": 1994,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/634884709/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/634884709/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/634884709/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/634884709/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 843729379,
+    "song": "השיר שיביא לך אהבה",
+    "performer": "גלי עטרי",
+    "year": 1994,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/843729379/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/843729379/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/843729379/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/843729379/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1277749013,
+    "song": "תפוחים ותמרים",
+    "performer": "רמי קלינשטיין",
+    "year": 1995,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1277749013/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1277749013/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1277749013/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1277749013/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1465934675,
+    "song": "ערב כחול עמוק",
+    "performer": "ריטה",
+    "year": 1995,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1465934675/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1465934675/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1465934675/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1465934675/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1572556205,
+    "song": "אהבנו",
+    "performer": "אביב גפן",
+    "year": 1995,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572556205/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572556205/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572556205/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572556205/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1527967994,
+    "song": "ישנן בנות",
+    "performer": "דנה אינטרנשיונל",
+    "year": 1995,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1527967994/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1527967994/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1527967994/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1527967994/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1527967996,
+    "song": "אני לא יכולה בלעדיך",
+    "performer": "דנה אינטרנשיונל",
+    "year": 1995,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1527967996/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1527967996/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1527967996/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1527967996/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 499531147,
+    "song": "שניים",
+    "performer": "שלמה ארצי וריטה",
+    "year": 1996,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/499531147/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/499531147/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/499531147/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/499531147/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1571753906,
+    "song": "אני רוצה גם",
+    "performer": "יהודה פוליקר",
+    "year": 1996,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571753906/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571753906/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571753906/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571753906/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 452581222,
+    "song": "מנגב לך ת'דמעות",
+    "performer": "שלמה ארצי",
+    "year": 1996,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/452581222/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/452581222/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/452581222/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/452581222/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1466761755,
+    "song": "עד שתעזוב",
+    "performer": "ריטה",
+    "year": 1996,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1466761755/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1466761755/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1466761755/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1466761755/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1277603528,
+    "song": "כל מה שתרצי",
+    "performer": "רמי קלינשטיין",
+    "year": 1997,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1277603528/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1277603528/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1277603528/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1277603528/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1572555752,
+    "song": "צאי אל החלון",
+    "performer": "אייל גולן ואתניקס",
+    "year": 1997,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572555752/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572555752/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572555752/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572555752/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1572555750,
+    "song": "לב של גבר",
+    "performer": "אייל גולן",
+    "year": 1997,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572555750/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572555750/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572555750/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572555750/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 600788104,
+    "song": "אהוב יקר",
+    "performer": "רונית שחר",
+    "year": 1997,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/600788104/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/600788104/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/600788104/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/600788104/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 632093908,
+    "song": "עוד שבת",
+    "performer": "טיפקס",
+    "year": 1997,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/632093908/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/632093908/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/632093908/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/632093908/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1606191891,
+    "song": "דמעות",
+    "performer": "אייל גולן",
+    "year": 1998,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1606191891/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1606191891/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1606191891/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1606191891/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1831829754,
+    "song": "דיווה",
+    "performer": "דנה אינטרנשיונל",
+    "year": 1998,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1831829754/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1831829754/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1831829754/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1831829754/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1606191888,
+    "song": "יפה שלי",
+    "performer": "אייל גולן",
+    "year": 1998,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1606191888/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1606191888/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1606191888/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1606191888/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 934499811,
+    "song": "גשם",
+    "performer": "אלי לוזון",
+    "year": 1998,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/934499811/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/934499811/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/934499811/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/934499811/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1102770500,
+    "song": "כמו סינדרלה",
+    "performer": "שרית חדד",
+    "year": 1999,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1102770500/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1102770500/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1102770500/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1102770500/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1465630942,
+    "song": "תפתח חלון",
+    "performer": "ריטה",
+    "year": 1999,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1465630942/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1465630942/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1465630942/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1465630942/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1219974642,
+    "song": "הסתכלי אלי",
+    "performer": "אייל גולן",
+    "year": 1999,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1219974642/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1219974642/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1219974642/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1219974642/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1714626512,
+    "song": "אהבה אסורה",
+    "performer": "זהבה בן",
+    "year": 1999,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1714626512/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1714626512/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1714626512/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1714626512/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1133156030,
+    "song": "לכל אחד יש",
+    "performer": "שלומי שבת וליאור נרקיס",
+    "year": 2000,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1133156030/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1133156030/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1133156030/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1133156030/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1571292234,
+    "song": "עד הקצה",
+    "performer": "דנה ברגר",
+    "year": 2000,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571292234/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571292234/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571292234/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571292234/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 804717821,
+    "song": "פרפרים",
+    "performer": "אורי בנאי",
+    "year": 2000,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/804717821/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/804717821/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/804717821/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/804717821/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1815755524,
+    "song": "שקר החן הבל היופי",
+    "performer": "השרוף",
+    "year": 2000,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1815755524/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1815755524/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1815755524/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1815755524/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 624493502,
+    "song": "יושבים בבית קפה",
+    "performer": "טיפקס",
+    "year": 2001,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/624493502/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/624493502/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/624493502/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/624493502/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1492293037,
+    "song": "היא לא דומה",
+    "performer": "ארקדי דוכין",
+    "year": 2001,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1492293037/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1492293037/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1492293037/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1492293037/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 624543161,
+    "song": "באושר ובעוני",
+    "performer": "שי עמר",
+    "year": 2001,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/624543161/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/624543161/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/624543161/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/624543161/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1571291602,
+    "song": "תגידי שטוב",
+    "performer": "כנסיית השכל",
+    "year": 2001,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571291602/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571291602/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571291602/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571291602/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1571748339,
+    "song": "איך קוראים לאהבה שלי",
+    "performer": "יהודה פוליקר",
+    "year": 2001,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571748339/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571748339/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571748339/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571748339/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1571748876,
+    "song": "מדברים על שלום",
+    "performer": "מוקי",
+    "year": 2002,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571748876/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571748876/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571748876/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571748876/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 782952758,
+    "song": "רנה",
+    "performer": "אריאל הורוביץ",
+    "year": 2002,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/782952758/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/782952758/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/782952758/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/782952758/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 624516324,
+    "song": "מלנכוליה אהובתי",
+    "performer": "חמי רודנר",
+    "year": 2002,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/624516324/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/624516324/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/624516324/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/624516324/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 796055906,
+    "song": "אם תלך",
+    "performer": "הפרויקט של עידן רייכל",
+    "year": 2003,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/796055906/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/796055906/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/796055906/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/796055906/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 796055910,
+    "song": "בואי",
+    "performer": "הפרויקט של עידן רייכל",
+    "year": 2003,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/796055910/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/796055910/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/796055910/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/796055910/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1571748595,
+    "song": "חלומות",
+    "performer": "איל גולן",
+    "year": 2003,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571748595/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571748595/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571748595/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1571748595/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1572178218,
+    "song": "אהבת נעורי",
+    "performer": "שלום חנוך",
+    "year": 2003,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572178218/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572178218/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572178218/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572178218/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 796055913,
+    "song": "מדברים בשקט",
+    "performer": "הפרויקט של עידן רייכל",
+    "year": 2003,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/796055913/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/796055913/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/796055913/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/796055913/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1572174598,
+    "song": "יום ועוד יומיים",
+    "performer": "שי גבסו",
+    "year": 2004,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572174598/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572174598/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572174598/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572174598/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1508424587,
+    "song": "הלב",
+    "performer": "מאיה בוסקילה",
+    "year": 2004,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1508424587/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1508424587/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1508424587/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1508424587/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1645083740,
+    "song": "ים של דמעות",
+    "performer": "נינט טייב",
+    "year": 2004,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1645083740/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1645083740/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1645083740/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1645083740/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1572174599,
+    "song": "המילים החסרות",
+    "performer": "שי גבסו",
+    "year": 2004,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572174599/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572174599/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572174599/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572174599/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 779613912,
+    "song": "השקט שנשאר",
+    "performer": "שירי מימון",
+    "year": 2005,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/779613912/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/779613912/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/779613912/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/779613912/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1492304710,
+    "song": "מי אוהב אותך יותר ממני",
+    "performer": "ארקדי דוכין",
+    "year": 2005,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1492304710/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1492304710/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1492304710/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1492304710/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 796055901,
+    "song": "ממעמקים",
+    "performer": "הפרויקט של עידן רייכל",
+    "year": 2005,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/796055901/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/796055901/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/796055901/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/796055901/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 641885745,
+    "song": "לשם",
+    "performer": "מירי מסיקה",
+    "year": 2005,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/641885745/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/641885745/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/641885745/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/641885745/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 587325888,
+    "song": "תתנו לו צ'אנס",
+    "performer": "שלישיית מה קשור",
+    "year": 2005,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/587325888/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/587325888/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/587325888/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/587325888/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 356352395,
+    "song": "ואת",
+    "performer": "הראל סקעת",
+    "year": 2006,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/356352395/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/356352395/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/356352395/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/356352395/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 489843471,
+    "song": "איתי",
+    "performer": "קרן פלס",
+    "year": 2006,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/489843471/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/489843471/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/489843471/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/489843471/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 633821064,
+    "song": "שיר אהבה פשוט",
+    "performer": "איה כורם",
+    "year": 2006,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/633821064/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/633821064/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/633821064/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/633821064/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 489843480,
+    "song": "אם אלה החיים",
+    "performer": "קרן פלס",
+    "year": 2006,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/489843480/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/489843480/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/489843480/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/489843480/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 633838886,
+    "song": "עכשיו אתה חוזר בחזרה",
+    "performer": "מירי מסיקה",
+    "year": 2007,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/633838886/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/633838886/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/633838886/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/633838886/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1526272706,
+    "song": "תראי זה אני",
+    "performer": "סינרגיה",
+    "year": 2007,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1526272706/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1526272706/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1526272706/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1526272706/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1572172186,
+    "song": "יום חדש נפלא",
+    "performer": "אריק ברמן",
+    "year": 2007,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572172186/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572172186/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572172186/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572172186/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 633838751,
+    "song": "ממי",
+    "performer": "מירי מסיקה",
+    "year": 2007,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/633838751/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/633838751/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/633838751/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/633838751/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1661827954,
+    "song": "אנא בכח",
+    "performer": "עובדיה חממה",
+    "year": 2007,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1661827954/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1661827954/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1661827954/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1661827954/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1234569688,
+    "song": "הוזה אותך מולי",
+    "performer": "אייל גולן",
+    "year": 2008,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1234569688/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1234569688/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1234569688/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1234569688/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1222402663,
+    "song": "ריקוד רומנטי",
+    "performer": "ישי לוי",
+    "year": 2008,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1222402663/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1222402663/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1222402663/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1222402663/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1239188536,
+    "song": "אבא",
+    "performer": "שלומי שבת",
+    "year": 2008,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1239188536/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1239188536/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1239188536/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1239188536/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1572449769,
+    "song": "ים הרחמים",
+    "performer": "קובי אפללו",
+    "year": 2008,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572449769/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572449769/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572449769/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572449769/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1190111575,
+    "song": "זה אני",
+    "performer": "אייל גולן",
+    "year": 2009,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1190111575/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1190111575/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1190111575/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1190111575/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 497330406,
+    "song": "אבא",
+    "performer": "אביתר בנאי",
+    "year": 2009,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/497330406/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/497330406/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/497330406/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/497330406/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 497330430,
+    "song": "עד מחר",
+    "performer": "אביתר בנאי",
+    "year": 2009,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/497330430/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/497330430/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/497330430/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/497330430/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 796055896,
+    "song": "חלומות של אחרים",
+    "performer": "הפרויקט של עידן רייכל",
+    "year": 2009,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/796055896/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/796055896/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/796055896/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/796055896/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 796055890,
+    "song": "שאריות של החיים",
+    "performer": "הפרויקט של עידן רייכל",
+    "year": 2009,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/796055890/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/796055890/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/796055890/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/796055890/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1623128740,
+    "song": "אורות",
+    "performer": "אברהם טל",
+    "year": 2010,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1623128740/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1623128740/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1623128740/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1623128740/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1798975050,
+    "song": "אצלך בעולם",
+    "performer": "היהודים",
+    "year": 2010,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1798975050/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1798975050/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1798975050/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1798975050/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1043504734,
+    "song": "אישה מהשמיים",
+    "performer": "גלעד שגב",
+    "year": 2010,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1043504734/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1043504734/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1043504734/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1043504734/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1572555729,
+    "song": "מחוזקים לעולם",
+    "performer": "אברהם טל",
+    "year": 2010,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572555729/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572555729/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572555729/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572555729/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1572554902,
+    "song": "אה אה אה",
+    "performer": "אפרת גוש",
+    "year": 2010,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572554902/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572554902/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572554902/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572554902/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1433661361,
+    "song": "כאב של לוחמים",
+    "performer": "עידן עמדי",
+    "year": 2011,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1433661361/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1433661361/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1433661361/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1433661361/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1190275630,
+    "song": "כשאחר",
+    "performer": "אייל גולן",
+    "year": 2011,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1190275630/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1190275630/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1190275630/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1190275630/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1533293184,
+    "song": "כל מה שיש לי",
+    "performer": "נתן גושן",
+    "year": 2011,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1533293184/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1533293184/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1533293184/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1533293184/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1433904608,
+    "song": "ללכת'",
+    "performer": "לירן דנינו",
+    "year": 2011,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1433904608/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1433904608/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1433904608/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1433904608/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1433922423,
+    "song": "יש לך",
+    "performer": "שלומי שבת",
+    "year": 2012,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1433922423/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1433922423/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1433922423/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1433922423/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 910816809,
+    "song": "זיקוקים",
+    "performer": "משה פרץ",
+    "year": 2012,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/910816809/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/910816809/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/910816809/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/910816809/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1190078401,
+    "song": "כשאת איתו",
+    "performer": "אייל גולן",
+    "year": 2012,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1190078401/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1190078401/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1190078401/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1190078401/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1533293187,
+    "song": "גבולות הגיון",
+    "performer": "נתן גושן",
+    "year": 2012,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1533293187/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1533293187/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1533293187/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1533293187/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 779428644,
+    "song": "מישהו פעם",
+    "performer": "עברי לידר",
+    "year": 2012,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/779428644/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/779428644/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/779428644/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/779428644/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1433641222,
+    "song": "נגמר",
+    "performer": "עידן עמדי",
+    "year": 2013,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1433641222/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1433641222/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1433641222/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1433641222/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1533293332,
+    "song": "עוד",
+    "performer": "נתן גושן",
+    "year": 2013,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1533293332/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1533293332/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1533293332/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1533293332/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 611998484,
+    "song": "אני לא מפסיק להתרגש ממך",
+    "performer": "דני רובס",
+    "year": 2013,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/611998484/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/611998484/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/611998484/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/611998484/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 993803511,
+    "song": "תמיד חוזר אלייך",
+    "performer": "אדם גורליצקי",
+    "year": 2013,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/993803511/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/993803511/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/993803511/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/993803511/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1580694971,
+    "song": "תרגיל בהתעוררות",
+    "performer": "שלומי שבן וחוה אלברשטיין",
+    "year": 2014,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1580694971/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1580694971/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1580694971/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1580694971/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1433561386,
+    "song": "אל תאמר",
+    "performer": "יובל דיין",
+    "year": 2014,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1433561386/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1433561386/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1433561386/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1433561386/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 807499769,
+    "song": "ילד של אבא",
+    "performer": "מוקי",
+    "year": 2014,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/807499769/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/807499769/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/807499769/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/807499769/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 934893397,
+    "song": "ואם פרידה",
+    "performer": "דיקלה",
+    "year": 2014,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/934893397/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/934893397/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/934893397/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/934893397/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1546240647,
+    "song": "Golden Boy",
+    "performer": "נדב גדג'",
+    "year": 2015,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1546240647/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1546240647/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1546240647/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1546240647/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1378885556,
+    "song": "למה לי למה לך",
+    "performer": "שמעון בוסקילה",
+    "year": 2015,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1378885556/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1378885556/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1378885556/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1378885556/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 961419562,
+    "song": "טיפות",
+    "performer": "עילי בוטנר וילדי החוץ",
+    "year": 2015,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/961419562/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/961419562/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/961419562/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/961419562/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 993777170,
+    "song": "דרך השלום",
+    "performer": "פאר טסי",
+    "year": 2015,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/993777170/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/993777170/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/993777170/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/993777170/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1594846325,
+    "song": "בא לי לדבר",
+    "performer": "גיא ויהל",
+    "year": 2015,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1594846325/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1594846325/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1594846325/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1594846325/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1644713320,
+    "song": "החיים שלנו תותים",
+    "performer": "חנן בן ארי",
+    "year": 2016,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1644713320/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1644713320/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1644713320/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1644713320/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1646334328,
+    "song": "מתוקה מהחיים",
+    "performer": "דדי דדון",
+    "year": 2016,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1646334328/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1646334328/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1646334328/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1646334328/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1447235775,
+    "song": "היא רק רוצה לרקוד",
+    "performer": "עומר אדם ומשה פרץ",
+    "year": 2016,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1447235775/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1447235775/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1447235775/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1447235775/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1123663405,
+    "song": "סלסולים",
+    "performer": "סטטיק ובן-אל תבורי",
+    "year": 2016,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1123663405/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1123663405/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1123663405/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1123663405/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1447119423,
+    "song": "אחרי כל השנים",
+    "performer": "עומר אדם",
+    "year": 2016,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1447119423/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1447119423/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1447119423/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1447119423/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1588488595,
+    "song": "כל הזמן הזה",
+    "performer": "נצ'י נצ'",
+    "year": 2017,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1588488595/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1588488595/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1588488595/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1588488595/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1572558420,
+    "song": "ויקיפדיה",
+    "performer": "חנן בן ארי",
+    "year": 2017,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572558420/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572558420/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572558420/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572558420/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1243615969,
+    "song": "טודו בום",
+    "performer": "סטטיק ובן-אל תבורי",
+    "year": 2017,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1243615969/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1243615969/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1243615969/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1243615969/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1447119417,
+    "song": "בסוף הכל חולף",
+    "performer": "עומר אדם",
+    "year": 2017,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1447119417/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1447119417/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1447119417/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1447119417/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1572453188,
+    "song": "תמיד חלמתי",
+    "performer": "אליעד",
+    "year": 2017,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572453188/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572453188/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572453188/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572453188/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1447223851,
+    "song": "שני משוגעים",
+    "performer": "עומר אדם",
+    "year": 2018,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1447223851/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1447223851/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1447223851/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1447223851/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1393107604,
+    "song": "Toy",
+    "performer": "נטע ברזילי",
+    "year": 2018,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1393107604/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1393107604/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1393107604/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1393107604/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1580939839,
+    "song": "ואם תבואי אליי",
+    "performer": "עידן רייכל",
+    "year": 2018,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1580939839/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1580939839/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1580939839/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1580939839/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1327532361,
+    "song": "שמישהו יעצור אותי",
+    "performer": "עדן חסון",
+    "year": 2018,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1327532361/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1327532361/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1327532361/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1327532361/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1447223208,
+    "song": "חברות שלך",
+    "performer": "עומר אדם",
+    "year": 2018,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1447223208/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1447223208/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1447223208/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1447223208/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1449461674,
+    "song": "יאסו",
+    "performer": "סטטיק ובן-אל תבורי, עדן בן זקן וסטפן לגר",
+    "year": 2019,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1449461674/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1449461674/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1449461674/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1449461674/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1444579717,
+    "song": "קירות",
+    "performer": "איתי לוי",
+    "year": 2019,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1444579717/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1444579717/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1444579717/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1444579717/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1447218181,
+    "song": "רחוק מכולם",
+    "performer": "עומר אדם",
+    "year": 2019,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1447218181/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1447218181/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1447218181/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1447218181/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1459792657,
+    "song": "ממה את מפחדת",
+    "performer": "אייל גולן ובניה ברבי",
+    "year": 2019,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1459792657/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1459792657/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1459792657/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1459792657/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1572558234,
+    "song": "אם תרצי",
+    "performer": "חנן בן ארי",
+    "year": 2020,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572558234/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572558234/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572558234/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572558234/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1516833077,
+    "song": "מיליון דולר",
+    "performer": "נועה קירל, שחר סאול",
+    "year": 2020,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1516833077/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1516833077/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1516833077/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1516833077/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1533293762,
+    "song": "נחכה לך",
+    "performer": "נתן גושן וישי ריבו",
+    "year": 2020,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1533293762/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1533293762/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1533293762/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1533293762/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1520242231,
+    "song": "ג'וני",
+    "performer": "בר צברי",
+    "year": 2021,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1520242231/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1520242231/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1520242231/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1520242231/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1508643487,
+    "song": "שבוע טוב",
+    "performer": "אברהם טל",
+    "year": 2020,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1508643487/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1508643487/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1508643487/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1508643487/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1572558510,
+    "song": "אמן על הילדים",
+    "performer": "חנן בן ארי",
+    "year": 2021,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572558510/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572558510/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572558510/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572558510/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1817217063,
+    "song": "Hips Don't Lie",
+    "performer": "Shakira ft. Wyclef Jean",
+    "year": 2006,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1817217063/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1817217063/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1817217063/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1817217063/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1444879255,
+    "song": "One Dance",
+    "performer": "Drake ft. Wizkid & Kyla",
+    "year": 2016,
+    "language": "foreign",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1444879255/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1444879255/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1444879255/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1444879255/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1552895096,
+    "song": "סיבת הסיבות",
+    "performer": "ישי ריבו",
+    "year": 2021,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1552895096/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1552895096/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1552895096/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1552895096/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1572558510,
+    "song": "אמן על הילדים",
+    "performer": "חנן בן ארי",
+    "year": 2021,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572558510/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572558510/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572558510/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572558510/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1596653059,
+    "song": "ליבינג דה דרים",
+    "performer": "נונו",
+    "year": 2022,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1596653059/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1596653059/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1596653059/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1596653059/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1552895096,
+    "song": "סיבת הסיבות",
+    "performer": "ישי ריבו",
+    "year": 2021,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1552895096/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1552895096/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1552895096/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1552895096/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1638116432,
+    "song": "קרן שמש",
+    "performer": "בניה ברבי",
+    "year": 2023,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1638116432/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1638116432/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1638116432/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1638116432/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1765280254,
+    "song": "רסיסים",
+    "performer": "רביב כנר",
+    "year": 2021,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1765280254/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1765280254/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1765280254/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1765280254/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1637530309,
+    "song": "פנתרה",
+    "performer": "נועה קירל",
+    "year": 2022,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1637530309/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1637530309/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1637530309/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1637530309/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1643470812,
+    "song": "קופידון",
+    "performer": "אגם בוחבוט",
+    "year": 2023,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1643470812/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1643470812/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1643470812/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1643470812/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1572558510,
+    "song": "אמן על הילדים",
+    "performer": "חנן בן ארי",
+    "year": 2021,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572558510/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572558510/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572558510/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1572558510/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1765280254,
+    "song": "רסיסים",
+    "performer": "רביב כנר",
+    "year": 2021,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1765280254/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1765280254/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1765280254/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1765280254/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1656238187,
+    "song": "עד שתבואי עד אליי",
+    "performer": "עדן חסון",
+    "year": 2023,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1656238187/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1656238187/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1656238187/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1656238187/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1643470812,
+    "song": "קופידון",
+    "performer": "אגם בוחבוט",
+    "year": 2023,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1643470812/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1643470812/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1643470812/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1643470812/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1638116432,
+    "song": "קרן שמש",
+    "performer": "בניה ברבי",
+    "year": 2023,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1638116432/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1638116432/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1638116432/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1638116432/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1596653059,
+    "song": "ליבינג דה דרים",
+    "performer": "נונו",
+    "year": 2022,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1596653059/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1596653059/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1596653059/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1596653059/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1737668591,
+    "song": "עם ישראל חי",
+    "performer": "איל גולן",
+    "year": 2024,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1737668591/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1737668591/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1737668591/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1737668591/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1700218665,
+    "song": "לצאת מדיכאון",
+    "performer": "יגל אושרי",
+    "year": 2024,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1700218665/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1700218665/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1700218665/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1700218665/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1637530309,
+    "song": "פנתרה",
+    "performer": "נועה קירל",
+    "year": 2023,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1637530309/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1637530309/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1637530309/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1637530309/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1717478571,
+    "song": "אין לי מקום אחר",
+    "performer": "איתי לוי",
+    "year": 2024,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1717478571/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1717478571/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1717478571/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1717478571/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1643470812,
+    "song": "קופידון",
+    "performer": "אגם בוחבוט",
+    "year": 2023,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1643470812/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1643470812/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1643470812/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1643470812/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1656238187,
+    "song": "עד שתבואי עד אליי",
+    "performer": "עדן חסון",
+    "year": 2023,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1656238187/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1656238187/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1656238187/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1656238187/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1729163760,
+    "song": "גיבורי על",
+    "performer": "התקווה 6",
+    "year": 2024,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1729163760/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1729163760/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1729163760/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1729163760/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1767790541,
+    "song": "מה יהיה מחר",
+    "performer": "פאר טסי",
+    "year": 2025,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1767790541/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1767790541/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1767790541/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1767790541/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1709856124,
+    "song": "תחזור",
+    "performer": "הפרויקט של עידן רייכל",
+    "year": 2024,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1709856124/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1709856124/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1709856124/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1709856124/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1788899600,
+    "song": "לא לפנות אליי",
+    "performer": "נסרין קדרי",
+    "year": 2025,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1788899600/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1788899600/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1788899600/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1788899600/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1737668591,
+    "song": "עם ישראל חי",
+    "performer": "איל גולן",
+    "year": 2024,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1737668591/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1737668591/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1737668591/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1737668591/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1700218665,
+    "song": "לצאת מדיכאון",
+    "performer": "יגל אושרי",
+    "year": 2024,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1700218665/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1700218665/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1700218665/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1700218665/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1763493507,
+    "song": "בן אדם",
+    "performer": "אודיה",
+    "year": 2025,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1763493507/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1763493507/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1763493507/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1763493507/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1767790541,
+    "song": "מה יהיה מחר",
+    "performer": "פאר טסי",
+    "year": 2025,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1767790541/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1767790541/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1767790541/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1767790541/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1717478571,
+    "song": "אין לי מקום אחר",
+    "performer": "איתי לוי",
+    "year": 2024,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1717478571/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1717478571/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1717478571/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1717478571/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1763493507,
+    "song": "בן אדם",
+    "performer": "אודיה",
+    "year": 2025,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1763493507/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1763493507/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1763493507/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1763493507/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1729163760,
+    "song": "גיבורי על",
+    "performer": "התקווה 6",
+    "year": 2024,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1729163760/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1729163760/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1729163760/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1729163760/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1779465417,
+    "song": "את לא יודעת כמה שאני אוהב אותך",
+    "performer": "אודיה",
+    "year": 2025,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1779465417/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1779465417/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1779465417/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1779465417/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1709856124,
+    "song": "תחזור",
+    "performer": "הפרויקט של עידן רייכל",
+    "year": 2024,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1709856124/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1709856124/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1709856124/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1709856124/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1767790541,
+    "song": "מה יהיה מחר",
+    "performer": "פאר טסי",
+    "year": 2025,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1767790541/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1767790541/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1767790541/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1767790541/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1788899600,
+    "song": "לא לפנות אליי",
+    "performer": "נסרין קדרי",
+    "year": 2025,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1788899600/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1788899600/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1788899600/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1788899600/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1763493507,
+    "song": "בן אדם",
+    "performer": "אודיה",
+    "year": 2025,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1763493507/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1763493507/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1763493507/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1763493507/vocals.mp3"
+    }
+  },
+  {
+    "trackId": 1779465417,
+    "song": "את לא יודעת כמה שאני אוהב אותך",
+    "performer": "אודיה",
+    "year": 2025,
+    "language": "hebrew",
+    "stems": {
+      "bass": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1779465417/bass.mp3",
+      "drums": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1779465417/drums.mp3",
+      "other": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1779465417/other.mp3",
+      "vocals": "https://pub-d345c31261e54db893c1b5945406568f.r2.dev/stems/1779465417/vocals.mp3"
     }
   }
 ]
