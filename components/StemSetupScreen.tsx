@@ -5,7 +5,7 @@ import Header from '@/components/Header';
 import { loadStemManifest, pickStemSong, type StemSong } from '@/lib/stems';
 
 interface Props {
-  onStart: (song: StemSong, groupPlayers?: string[]) => void;
+  onStart: (song: StemSong, language: 'hebrew' | 'foreign' | 'both', decades: string[], groupPlayers?: string[]) => void;
   onBackToHub: () => void;
 }
 
@@ -45,7 +45,7 @@ export default function StemSetupScreen({ onStart, onBackToHub }: Props) {
     const song = pick();
     setLoadingSolo(false);
     if (!song) { setError(true); return; }
-    onStart(song);
+    onStart(song, selectedLanguage, selectedDecades);
   };
 
   const handleStartGroup = () => {
@@ -56,7 +56,7 @@ export default function StemSetupScreen({ onStart, onBackToHub }: Props) {
     const song = pick();
     setLoadingGroup(false);
     if (!song) { setError(true); return; }
-    onStart(song, players);
+    onStart(song, selectedLanguage, selectedDecades, players);
   };
 
   const updatePlayerInput = (i: number, value: string) =>

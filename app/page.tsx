@@ -22,7 +22,7 @@ type Screen =
   | { name: 'summary'; players: { name: string; score: number }[] }
   | { name: 'one-word' }
   | { name: 'stems-setup' }
-  | { name: 'stems-play'; song: StemSong; groupPlayers?: string[]; scores: Record<string, number>; playedSongs: Set<number> };
+  | { name: 'stems-play'; song: StemSong; groupPlayers?: string[]; scores: Record<string, number>; playedSongs: Set<number>; language: 'hebrew' | 'foreign' | 'both'; decades: string[] };
 
 function addPoint(scores: Record<string, number>, winner: string | undefined): Record<string, number> {
   if (!winner) return scores;
@@ -190,8 +190,8 @@ export default function Home() {
   if (screen.name === 'stems-setup') {
     return (
       <StemSetupScreen
-        onStart={(song, players) => {
-          setScreen({ name: 'stems-play', song, groupPlayers: players, scores: {}, playedSongs: new Set([song.trackId]) });
+        onStart={(song, language, decades, players) => {
+          setScreen({ name: 'stems-play', song, groupPlayers: players, scores: {}, playedSongs: new Set([song.trackId]), language, decades });
         }}
         onBackToHub={() => setScreen({ name: 'hub' })}
       />
@@ -199,12 +199,12 @@ export default function Home() {
   }
 
   if (screen.name === 'stems-play') {
-    const { groupPlayers, scores, playedSongs } = screen;
+    const { groupPlayers, scores, playedSongs, language, decades } = screen;
 
     const onNextSong = async (winner?: string, points?: number) => {
       const newScores = winner && points ? addPoints(scores, winner, points) : scores;
       const songs = await loadStemManifest();
-      const next = pickStemSong(songs, 'both', [], playedSongs);
+      const next = pickStemSong(songs, language, decades, playedSongs);
       if (!next) {
         if (groupPlayers) {
           setScreen({ name: 'summary', players: groupPlayers.map(name => ({ name, score: newScores[name] ?? 0 })) });
@@ -213,7 +213,7 @@ export default function Home() {
         }
         return;
       }
-      setScreen({ name: 'stems-play', song: next, groupPlayers, scores: newScores, playedSongs: new Set([...playedSongs, next.trackId]) });
+      setScreen({ name: 'stems-play', song: next, groupPlayers, scores: newScores, playedSongs: new Set([...playedSongs, next.trackId]), language, decades });
     };
 
     const onFinish = (winner?: string, points?: number) => {
