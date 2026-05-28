@@ -34,6 +34,11 @@ function addPoints(scores: Record<string, number>, winner: string | undefined, p
   return { ...scores, [winner]: (scores[winner] ?? 0) + points };
 }
 
+function applyPenalty(scores: Record<string, number>, penaltyPlayer: string | undefined): Record<string, number> {
+  if (!penaltyPlayer) return scores;
+  return { ...scores, [penaltyPlayer]: (scores[penaltyPlayer] ?? 0) - 0.5 };
+}
+
 export default function Home() {
   const [screen, setScreen] = useState<Screen>({ name: 'hub' });
   const screenRef = useRef(screen);
@@ -156,13 +161,13 @@ export default function Home() {
   if (screen.name === 'play') {
     const { testConfig, groupPlayers, scores } = screen;
 
-    const onNextSong = (winner?: string) => {
+    const onNextSong = (winner?: string, penaltyPlayer?: string) => {
       if (!testConfig) { setScreen({ name: 'search' }); return; }
-      handleTestNext(testConfig, groupPlayers, addPoint(scores, winner), screen.playedSongs);
+      handleTestNext(testConfig, groupPlayers, applyPenalty(addPoint(scores, winner), penaltyPlayer), screen.playedSongs);
     };
 
-    const onFinish = testConfig ? (winner?: string) => {
-      const newScores = addPoint(scores, winner);
+    const onFinish = testConfig ? (winner?: string, penaltyPlayer?: string) => {
+      const newScores = applyPenalty(addPoint(scores, winner), penaltyPlayer);
       if (groupPlayers) {
         setScreen({
           name: 'summary',

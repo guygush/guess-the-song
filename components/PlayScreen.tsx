@@ -7,8 +7,8 @@ import type { Song } from '@/lib/itunes';
 interface Props {
   song: Song;
   videoId: string;
-  onNextSong: (winner?: string) => void;
-  onFinish?: (winner?: string) => void;
+  onNextSong: (winner?: string, penaltyPlayer?: string) => void;
+  onFinish?: (winner?: string, penaltyPlayer?: string) => void;
   onBack: () => void;
   hideMetadata?: boolean;
   groupPlayers?: string[];
@@ -55,6 +55,8 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
   const [revealed, setRevealed] = useState(false);
   const [selectedWinner, setSelectedWinner] = useState<string | null>(null);
   const [showScores, setShowScores] = useState(false);
+  const [penaltyMode, setPenaltyMode] = useState(false);
+  const [penaltyPlayer, setPenaltyPlayer] = useState<string | null>(null);
 
   useEffect(() => {
     if (!hideMetadata || !('mediaSession' in navigator)) return;
@@ -208,10 +210,11 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
   const scoreBase = scores ?? {};
   const displayScores = groupPlayers
     ? [...groupPlayers]
-        .map(name => ({ name, score: (scoreBase[name] ?? 0) + (name === selectedWinner ? 1 : 0) }))
+        .map(name => ({ name, score: (scoreBase[name] ?? 0) + (name === selectedWinner ? 1 : 0) + (name === penaltyPlayer ? -0.5 : 0) }))
         .sort((a, b) => b.score - a.score)
     : [];
-  const scoreMax = displayScores[0]?.score || 1;
+  const scoreMax = Math.max(1, ...displayScores.map(d => d.score));
+  const fmtScore = (s: number) => s % 1 === 0 ? String(s) : s.toFixed(1);
 
   // ── Shared header ────────────────────────────────────────────────
   const Header = ({ title }: { title?: string }) => (
@@ -273,10 +276,13 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
                     {isWinner && (
                       <span className="text-xs font-bold px-2 py-0.5 rounded-full" style={{ background: '#ffdb2c', color: '#5c3511', border: '1.5px solid #b8860b' }}>+1</span>
                     )}
+                    {name === penaltyPlayer && (
+                      <span className="text-xs font-bold px-2 py-0.5 rounded-full" style={{ background: '#fee2e2', color: '#991b1b', border: '1.5px solid #fca5a5' }}>-½</span>
+                    )}
                     <div className="w-16 h-2 rounded-full overflow-hidden" style={{ background: '#e9dcc5' }} dir="ltr">
                       <div className="h-full rounded-full" style={{ width: `${(score / scoreMax) * 100}%`, background: isWinner ? '#ffbf00' : '#c4a882' }} />
                     </div>
-                    <span className="font-bold text-base w-6 text-right text-brown" dir="ltr">{score}</span>
+                    <span className="font-bold text-base w-6 text-right text-brown" dir="ltr">{fmtScore(score)}</span>
                   </div>
                 );
               })}
@@ -285,7 +291,7 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
             {/* Actions */}
             <div className="flex flex-col gap-3">
               <button
-                onClick={() => { setShowScores(false); onNextSong(selectedWinner ?? undefined); }}
+                onClick={() => { setShowScores(false); onNextSong(selectedWinner ?? undefined, penaltyPlayer ?? undefined); }}
                 className="w-full py-4 rounded-[2.5rem] font-bold text-xl glossy-btn btn-candy-yellow active:opacity-80 transition-opacity"
                 style={{ color: '#5c3511' }}
               >
@@ -293,7 +299,7 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
               </button>
               {onFinish && (
                 <button
-                  onClick={() => { setShowScores(false); onFinish?.(selectedWinner ?? undefined); }}
+                  onClick={() => { setShowScores(false); onFinish?.(selectedWinner ?? undefined, penaltyPlayer ?? undefined); }}
                   className="w-full py-3 rounded-[2.5rem] font-bold text-base"
                   style={{ background: '#f0e6d0', border: '2.5px solid #dcc9ad', color: '#8b5e34', boxShadow: '0 3px 8px rgba(196,168,130,0.3), 0 1px 2px rgba(0,0,0,0.06)' }}
                 >
@@ -503,25 +509,51 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
               {/* Group: winner selection */}
               {groupPlayers && (
                 <div className="flex-1 flex flex-col min-h-0">
-                  <p className="text-center font-bold text-sm mb-4 text-brown">מי זיהה ראשון?</p>
+                  <div className="flex items-center justify-between mb-4">
+                    <p className="font-bold text-sm text-brown">{penaltyMode ? 'מי טעה בזיהוי?' : 'מי זיהה ראשון?'}</p>
+                    <button
+                      onClick={() => setPenaltyMode(m => !m)}
+                      className="text-xs font-bold px-3 py-1.5 rounded-2xl transition-colors"
+                      style={penaltyMode
+                        ? { background: '#fee2e2', color: '#991b1b', border: '1.5px solid #fca5a5' }
+                        : penaltyPlayer
+                          ? { background: '#fee2e2', color: '#991b1b', border: '1.5px solid #fca5a5', opacity: 0.7 }
+                          : { background: '#f0e6d0', color: '#8b5e34', border: '1.5px solid #dcc9ad' }
+                      }
+                    >
+                      טעות בזיהוי
+                    </button>
+                  </div>
                   <div className="grid grid-cols-2 gap-3">
                     {groupPlayers.map((player, i) => {
                       const cls = CANDY_CLASSES[i % CANDY_CLASSES.length];
                       const textColor = CANDY_TEXT_COLORS[i % CANDY_TEXT_COLORS.length];
+                      const isPenalty = player === penaltyPlayer;
                       return (
                         <button
                           key={player}
-                          onClick={() => handleSelectWinner(player)}
-                          className={`py-4 rounded-[2rem] font-bold text-xl glossy-btn ${cls}`}
-                          style={{ color: textColor }}
+                          onClick={() => {
+                            if (penaltyMode) {
+                              setPenaltyPlayer(player);
+                              setPenaltyMode(false);
+                            } else {
+                              handleSelectWinner(player);
+                            }
+                          }}
+                          className={`py-4 rounded-[2rem] font-bold text-xl glossy-btn ${isPenalty && !penaltyMode ? '' : cls}`}
+                          style={isPenalty && !penaltyMode
+                            ? { background: '#fee2e2', color: '#991b1b', border: '2px solid #fca5a5' }
+                            : { color: textColor }
+                          }
                         >
                           {player}
                         </button>
                       );
                     })}
                     <button
-                      onClick={() => handleSelectWinner(null)}
+                      onClick={() => { if (!penaltyMode) handleSelectWinner(null); }}
                       className="col-span-2 py-4 rounded-[2rem] font-bold text-base glossy-btn candy-btn-secondary"
+                      style={{ opacity: penaltyMode ? 0.4 : 1 }}
                     >
                       אף אחד לא זיהה
                     </button>
