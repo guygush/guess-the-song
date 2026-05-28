@@ -11,7 +11,7 @@ export interface ChartSong {
 export interface TestConfig {
   language: 'hebrew' | 'foreign' | 'both';
   decades: string[];
-  topOnly: boolean;
+  topN: number | null; // null = all positions
 }
 
 const DECADE_STARTS: Record<string, number> = {
@@ -32,7 +32,7 @@ export function pickRandomSong(
   songs: ChartSong[],
   language: 'hebrew' | 'foreign' | 'both',
   decades: string[],
-  topOnly: boolean,
+  topN: number | null,
   exclude?: Set<string>,
 ): ChartSong | null {
   let pool = songs;
@@ -50,8 +50,8 @@ export function pickRandomSong(
     );
   }
 
-  if (topOnly) {
-    pool = pool.filter(s => s.position <= 5);
+  if (topN !== null) {
+    pool = pool.filter(s => s.position <= topN);
   }
 
   if (exclude?.size) {

@@ -116,7 +116,7 @@ export default function Home() {
   ) {
     try {
       const songs = await loadChartSongs();
-      const picked = pickRandomSong(songs, config.language, config.decades, config.topOnly, playedSongs);
+      const picked = pickRandomSong(songs, config.language, config.decades, config.topN, playedSongs);
       if (!picked) { setScreen({ name: 'search' }); return; }
       const song = chartSongToSong(picked);
       const newPlayed = new Set([...(playedSongs ?? []), `${picked.song}|${picked.performer}`]);

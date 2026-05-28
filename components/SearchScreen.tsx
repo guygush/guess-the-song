@@ -30,7 +30,7 @@ export default function SearchScreen({ onSelect, onBackToHub }: Props) {
 
   const [selectedLanguage, setSelectedLanguage] = useState<'hebrew' | 'foreign' | 'both'>('both');
   const [selectedDecades, setSelectedDecades] = useState<string[]>([]);
-  const [topOnly, setTopOnly] = useState(true);
+  const [topN, setTopN] = useState<number | null>(5);
   const [loadingRandom, setLoadingRandom] = useState(false);
   const [randomError, setRandomError] = useState(false);
 
@@ -120,14 +120,14 @@ export default function SearchScreen({ onSelect, onBackToHub }: Props) {
     stopTimerRef.current = setTimeout(stopPreview, PREVIEW_SECONDS * 1000);
   };
 
-  const getTestConfig = (): TestConfig => ({ language: selectedLanguage, decades: selectedDecades, topOnly });
+  const getTestConfig = (): TestConfig => ({ language: selectedLanguage, decades: selectedDecades, topN });
 
   const handleTestYourself = async () => {
     setLoadingRandom(true);
     setRandomError(false);
     try {
       const songs = await loadChartSongs();
-      const picked = pickRandomSong(songs, selectedLanguage, selectedDecades, topOnly);
+      const picked = pickRandomSong(songs, selectedLanguage, selectedDecades, topN);
       if (!picked) { setRandomError(true); return; }
       const song = chartSongToSong(picked);
       const videoId = await findVideoId(picked.song, picked.performer);
@@ -148,7 +148,7 @@ export default function SearchScreen({ onSelect, onBackToHub }: Props) {
     setGroupError(false);
     try {
       const songs = await loadChartSongs();
-      const picked = pickRandomSong(songs, selectedLanguage, selectedDecades, topOnly);
+      const picked = pickRandomSong(songs, selectedLanguage, selectedDecades, topN);
       if (!picked) { setGroupError(true); return; }
       const song = chartSongToSong(picked);
       const videoId = await findVideoId(picked.song, picked.performer);
@@ -299,10 +299,12 @@ export default function SearchScreen({ onSelect, onBackToHub }: Props) {
           <div className="mb-6">
             <p className="text-xs text-brown-light mb-2.5 font-bold tracking-widest uppercase">מיקום</p>
             <div className="flex gap-2 justify-center">
-              <button onClick={() => { setTopOnly(true); setRandomError(false); }} className={pill(topOnly)}
-                style={topOnly ? { color: '#5c3511' } : {}}>טופ 5</button>
-              <button onClick={() => { setTopOnly(false); setRandomError(false); }} className={pill(!topOnly)}
-                style={!topOnly ? { color: '#5c3511' } : {}}>כל המיקומים</button>
+              <button onClick={() => { setTopN(5); setRandomError(false); }} className={pill(topN === 5)}
+                style={topN === 5 ? { color: '#5c3511' } : {}}>טופ 5</button>
+              <button onClick={() => { setTopN(10); setRandomError(false); }} className={pill(topN === 10)}
+                style={topN === 10 ? { color: '#5c3511' } : {}}>טופ 10</button>
+              <button onClick={() => { setTopN(null); setRandomError(false); }} className={pill(topN === null)}
+                style={topN === null ? { color: '#5c3511' } : {}}>כל המיקומים</button>
             </div>
           </div>
 
