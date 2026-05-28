@@ -319,7 +319,7 @@ export default function StemPlayScreen({ song, groupPlayers, scores, onNextSong,
         <div className="flex flex-col items-center mx-4 mt-3 px-3 py-2.5 rounded-2xl flex-shrink-0 text-center"
           style={{ background: '#fff', border: '2px solid #dcc9ad', boxShadow: '0 3px 8px rgba(196,168,130,0.3), 0 1px 2px rgba(0,0,0,0.06)' }}>
           <p className="font-bold text-sm text-brown">{song.song}</p>
-          <p className="text-xs text-brown-light mt-0.5">{song.performer}</p>
+          <p className="text-xs text-brown-light mt-0.5">{song.performer} ({song.year})</p>
         </div>
       )}
 

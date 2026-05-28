@@ -317,7 +317,7 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
                 style={{ background: '#fff', border: '2px solid #dcc9ad', boxShadow: '0 3px 8px rgba(196,168,130,0.3), 0 1px 2px rgba(0,0,0,0.06)' }}
               >
                 <p className="font-bold text-sm text-brown">{song.trackName}</p>
-                <p className="text-xs text-brown-light mt-0.5">{song.artistName}</p>
+                <p className="text-xs text-brown-light mt-0.5">{song.artistName}{song.year ? ` (${song.year})` : ''}</p>
               </div>
             ) : (
               <div className="flex items-center gap-3 mx-4 mt-3 px-3 py-2.5 rounded-2xl flex-shrink-0"

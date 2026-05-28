@@ -4,6 +4,7 @@ export interface Song {
   artistName: string;
   artworkUrl100: string;
   previewUrl: string;
+  year?: number;
 }
 
 export const PAGE_SIZE = 20;
@@ -15,5 +16,10 @@ export async function searchSongs(query: string): Promise<Song[]> {
     `&media=music&entity=song&limit=${FETCH_LIMIT}`;
   const res = await fetch(url);
   const data = await res.json();
-  return ((data.results ?? []) as Song[]).filter((s) => s.previewUrl);
+  return ((data.results ?? []) as (Song & { releaseDate?: string })[])
+    .filter((s) => s.previewUrl)
+    .map(({ releaseDate, ...s }) => ({
+      ...s,
+      year: releaseDate ? new Date(releaseDate).getFullYear() : undefined,
+    }));
 }

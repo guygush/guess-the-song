@@ -74,5 +74,6 @@ export function chartSongToSong(cs: ChartSong): Song {
     artistName: cs.performer,
     artworkUrl100: '',
     previewUrl: '',
+    year: cs.year,
   };
 }
