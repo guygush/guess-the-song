@@ -277,7 +277,7 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
                       <span className="text-xs font-bold px-2 py-0.5 rounded-full" style={{ background: '#ffdb2c', color: '#5c3511', border: '1.5px solid #b8860b' }}>+1</span>
                     )}
                     {name === penaltyPlayer && (
-                      <span className="text-xs font-bold px-2 py-0.5 rounded-full" style={{ background: '#fee2e2', color: '#991b1b', border: '1.5px solid #fca5a5' }}>-½</span>
+                      <span className="text-xs font-bold px-2 py-0.5 rounded-full" dir="ltr" style={{ background: '#fee2e2', color: '#991b1b', border: '1.5px solid #fca5a5' }}>-½</span>
                     )}
                     <div className="w-16 h-2 rounded-full overflow-hidden" style={{ background: '#e9dcc5' }} dir="ltr">
                       <div className="h-full rounded-full" style={{ width: `${(score / scoreMax) * 100}%`, background: isWinner ? '#ffbf00' : '#c4a882' }} />
@@ -536,6 +536,7 @@ export default function PlayScreen({ song, videoId, onNextSong, onFinish, onBack
                             if (penaltyMode) {
                               setPenaltyPlayer(player);
                               setPenaltyMode(false);
+                              handleSelectWinner(null);
                             } else {
                               handleSelectWinner(player);
                             }
